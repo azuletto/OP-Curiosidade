@@ -77,4 +77,7 @@
     .login-text{
         text-align: center;
     }
-    
+    .input-error {
+    border: 2px solid red;
+    background-color: #ffeaea;
+}

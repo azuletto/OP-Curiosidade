@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <link rel="icon" href="assets/image/favicon.ico" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
-    <link rel="stylesheet" href="style/login-page.css">
-</head>
-<body>
-    <div class="login-container">
+    <head>
+        <link rel="icon" href="assets/image/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="style/login-page.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login page</title>
+    </head>
+    <body>
+        <div class="login-container">
         <h1 class="login-title">👤 Login</h1>
         <hr class="login-hr">
         <div class="login-form">
-            <form class="form" action="" method="post">
+            <form class="form" action="" method="post"> <!--aqui não foi utilizado o form para questões de validação pois a tarefa pedia para validar pelo js-->
                 <div class="input-group">
                     <label class="input-label" for="name">Email:</label>
                     <input class="input" type="text" id="email" name="email" required>
                 </div>
                     <div class="input-group">
-                    <label class="input-label" for="email">Sua senha:</label>
+                    <label class="input-label" for="password">Sua senha:</label>
                     <input class="input" type="password" id="password" name="password" required>
-                </div>    
-                <button class="login-button" type="submit">Enviar</button> <p class="login-text">ou <a href="register.html">Registre-se</a></p>
+                </div>
+                <button class="login-button" type="submit">Entrar</button>
+                <p class="login-text">ou <a href="register.html">Registre-se</a></p>
             </form>
         </div>
     </div>
