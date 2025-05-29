@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <link rel="icon" href="assets/image/favicon.ico" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
-    <link rel="stylesheet" href="style/login-page.css">
-</head>
-<body>
-    <div class="login-container">
-        <h1 class="login-title">👤 Login</h1>
+    <head>
+        <link rel="icon" href="assets/image/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="style/login-page.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login page</title>
+    </head>
+    <body>
+        <div class="login-container">
+            <div class="login-logo-area">
+                <div class="login-circle-logo">
+                    <h1 class="login-title">OC</h1>
+                </div>
+                <div class="login-header">
+                    <h1 class="login-subtitle">Operação Curiosidade</h1>
+                </div>
+            </div>
         <hr class="login-hr">
         <div class="login-form">
             <form class="form" action="" method="post">
                 <div class="input-group">
-                    <label class="input-label" for="name">Email:</label>
-                    <input class="input" type="text" id="email" name="email" required>
+                    <label class="input-label" for=""></label>
+                    <input class="input" type="text" placeholder="Seu email" name="email" required>
                 </div>
-                    <div class="input-group">
-                    <label class="input-label" for="email">Sua senha:</label>
-                    <input class="input" type="password" id="password" name="password" required>
-                </div>    
-                <button class="login-button" type="submit">Enviar</button> <p class="login-text">ou <a href="register.html">Registre-se</a></p>
+                <div class="input-group">
+                    <label class="input-label" for=""></label>
+                    <input class="input" type="password" placeholder="Sua senha" id="password" name="password" required>
+                </div>
+                <button class="login-button" type="submit">Entrar</button>
+                <p class="login-text">ou <a href="register.html">Registre-se</a></p>
             </form>
         </div>
     </div>
