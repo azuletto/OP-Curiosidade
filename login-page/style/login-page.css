@@ -77,7 +77,34 @@
     .login-text{
         text-align: center;
     }
+    .login-title {
+        text-align: center;
+        color: #515551;
+        font-size: 5vh;
+        font-family: fantasy;
+    }
+    .login-logo-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+}
+    .login-subtitle {
+        text-align: center;
+        color: #515551;
+        font-size: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .login-circle-logo {
+        width: 10vh;
+        height: 10vh;
+        background-color: rgb(231, 231, 231);
+        border-radius: 50%;
+    }  
+    .login-header {
+        display: table-column;
+        align-self: auto;
+    }
     .input-error {
-    border: 2px solid red;
-    background-color: #ffeaea;
+        border: 2px solid red;
+        background-color: #ffeaea;
 }
