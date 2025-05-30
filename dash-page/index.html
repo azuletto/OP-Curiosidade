@@ -3,9 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/side.css">
+    <link rel="stylesheet" href="style/footer.css">
     <title>Dashboard page</title>
 </head>
 <body>
-    
+    <header>
+        <div id="menu-hamburguer">
+<button id="hamburguer-button">
+    <img src="assets/image/menu-icon-svg.svg" alt="Menu" style="width: 100%; height: 100%;">
+</button>                <nav>
+                    <ul class="nav-bar">
+                        <li><a class="nav-list" href="index.html">Home</a></li>
+                        <li><a class="nav-list" href="profile.html">Cadastro</a></li>
+                        <li><a class="nav-list" href="settings.html">Relatórios</a></li>
+                    </ul>
+                </nav>
+            </div>
+                <div class="area-search">
+                    <search class="search-bar-area">
+                        <form action="#" method="get">
+                            <input class="search-bar" type="text" placeholder="Pesquisa" name="search" required>
+                            <button class="search-button" type="button">
+                                <img id="search-icon" src="assets/image/search-icon.svg" alt="Search" style="width: 100%; height: 100%;">
+                            </button>
+                        </form>
+                    </search>
+                </div>
+                <div class ="user-area">
+                    <img id="user-photo" src="assets/image/user-icon.svg" alt="">
+                        <p id="username">Nome do usuário</p>
+                            <button id="exit-button" href="../login-page/index.html" type="button" onclick="window.location.href='../login-page/index.html'">
+                                <img src="assets/image/exit-icon.svg" alt="Menu" style="width: 100%; height: 100%;">
+                            </button> 
+                </div>
+    </header>
+        <div class="middle">
+            <aside class="side">
+                <div id="side-menu">
+                    <h2 id="side-title">Facilidades</h2>
+                    <div id="side-list-container">
+                        <ul id="side-list">
+                            <li><a class="side-item" href="reports.html">Contato</a></li>
+                            <li><a class="side-item" href="analytics.html">Feedback</a></li>
+                            <li><a class="side-item" href="help.html">Ajuda</a></li>
+                        </ul>
+                    </div>    
+                </div>
+            </aside>
+            <main id="main">
+                <div id="card-view">
+                    <div class="card">
+                        <h3 class="card-title">Card 1</h3>
+                        <p class="card-text">Conteúdo do Card 1</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">Card 2</h3>
+                        <p class="card-text">Conteúdo do Card 2</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">Card 3</h3>
+                        <p class="card-text">Conteúdo do Card 3</p>
+                    </div>
+                </div>
+                main
+            </main>
+        </div>
+    <footer>
+        <p>&copy; 2025 Operação Curiosidade. Todos os direitos reservados.</p>
+        <p>Contate no <a href="mailto:oliveira.andre.dev@gmail.com">email</a></p>
+    </footer>
 </body>
 </html>
