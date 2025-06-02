@@ -1,0 +1,60 @@
+#opitions-title {
+    margin-left: 30px;
+    font-size: 2vw;
+    font-weight: bold;
+}
+.list-opition {
+    font-size: 1.2vw;
+    margin-left: 0;
+    
+}
+#userlist-opition{
+    font-weight: normal;
+}
+.container {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.400);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.341);
+    background-color: #ffffff;
+}
+td {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.397);
+}
+#report-table {
+    width: 100%;
+}
+#table-header {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#press-button {
+    font-size: 90%;
+    border-color: rgba(0, 0, 0, 0.070);
+    background-color: #6e95bd;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    display: flex;
+    height: 30px;
+    width: 120px;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.166);
+}
+#button-text {
+    display: flex;
+    justify-self: center;
+    align-self: center;
+}
+#press-button:hover {
+    align-content: center;
+    cursor: pointer;
+    background-color: #597999;
+}
+tr {
+    border-style: solid;
+}
