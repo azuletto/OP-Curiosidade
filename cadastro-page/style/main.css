@@ -32,7 +32,7 @@ td {
     
 }
 
-#press-button {
+#register-button {
     font-size: 90%;
     border-color: rgba(0, 0, 0, 0.070);
     background-color: #6e95bd;
@@ -50,7 +50,7 @@ td {
     justify-self: center;
     align-self: center;
 }
-#press-button:hover {
+#register-button:hover {
     align-content: center;
     cursor: pointer;
     background-color: #597999;

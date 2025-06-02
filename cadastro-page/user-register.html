@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/header.css">
     <link rel="stylesheet" href="style/main.css">
-    <link rel="stylesheet" href="style/side.css">
-    <link rel="stylesheet" href="style/footer.css">
-    <title>Relatórios</title>
+    <link rel="stylesheet" href="style/register-form.css">
+
+    <title>Registrar novo usuário</title>
 </head>
 <body>
     <header>
@@ -45,9 +45,45 @@
                     <div class="table-view">
                         <div id="table-header">    
                             <p id="opitions-title">Relatórios</p>
-                            <button id="press-button">
+                            <button id="register-button">
                                 <div id="button-text">Novo cadastro</div>
                             </button>
+                            <dialog>
+                                <form method="dialog">
+                                    <div id="register-box">
+                                        <div id="modal-header">
+                                            <button id="exit-register-modal" onclick="">x</button>
+                                            <h2 id="modal-title">Cadastro de Usuário</h2>
+                                        </div>
+                                                <div id="register-form">
+                                                    <div id="modal-header">
+                                                        <label for="name">Nome</label>
+                                                        <input type="text" id="name" name="name" required>
+                                                    </div>
+                                                    
+                                                    <label for="email">Email</label>
+                                                    <input type="email" id="email" name="email" required>
+                                                    
+                                                    <label for="age">Idade</label>
+                                                    <input type="date" id="age" name="age" required>
+                                                    
+                                                    <label for="adress">Endereço</label>
+                                                    <input type="text" id="adress" name="email" required>
+                                                
+                                                    <label for="info">Outras informações</label>
+                                                    <textarea id="info" name="info"required></textarea>                                                </div>
+
+                                            <div id="submit-area">
+                                                <button type="submit">Salvar</button>
+                                                <button type="reset">Limpar</button>
+                                            </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                </form>
+                            </dialog>
                         </div>
                         
                         <table id="report-table">
@@ -84,5 +120,6 @@
                    </div>
             </main>
         </div>
+        <script src="script/modal.js"></script>
 </body>
 </html>
