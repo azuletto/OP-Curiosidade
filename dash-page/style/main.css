@@ -1,7 +1,7 @@
 #main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: top;
     height: 100vh;
     background-color: #f0f2f5;
     flex:1;
@@ -13,20 +13,51 @@
 }
 #card-view {
     display: flex;
-    flex-direction: row;
+    margin-right: 20px;
+    
 }
 .card {
+    width: 100%;
+    margin-top: 30px;
     margin-left: 20px;
     display: flex;
     flex-direction: column;
     border-style: solid;
-    border-width: 1px;
-    border-color: black;
+    border-width: 5px;
+    justify-content: center;
     text-align: center;
     background-color: #f8f9fa;
     padding: 10px;
-    height: 200px;
+    height: 30vh;
     border-radius: 10px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.256);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.24);
+}
+.card#total {
+    border-color: rgba(0, 0, 128, 0.400);
+}
+.card#month {
+    border-color: rgba(0, 128, 0, 0.400);
+}
+.card {
+    border-color: rgba(128, 0, 0, 0.400)
+}
+.card-title {
+    font-size: 4.5vw;
+    margin-bottom: 0;
+    
+}
+.card-text {
+    font-size: 1.5vw;
+    margin-top: 0;
+    margin-bottom: 10%
+}
+#title-total{
+    color: rgba(0, 0, 128, 0.400);
+}
+#title-month {
+    color: rgba(0, 128, 0, 0.400);
+}
+#title-pending {
+    color:rgba(128, 0, 0, 0.400);
 }
