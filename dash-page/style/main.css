@@ -1,0 +1,99 @@
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    height: 100vh;
+    background-color: #f0f2f5;
+    flex:1;
+}
+.middle {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+#table-title-border {
+    border-style: solid;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-width: 2px;
+}
+#table-title {
+    margin-left: 30px;
+    font-size: 1.3vw;
+    font-weight: bold;
+}
+#table-view {
+    margin-top: 10vh;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    border-color: #cecfd1;
+    
+    border-width: 5px;
+    border-style: solid;
+    margin-left: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.256);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.24);
+}
+#card-view {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 20px;
+    justify-content: center;
+}
+.card {
+    width: 25vw;
+    margin-top: 30px;
+    margin-left: 20px;
+    border-style: solid;
+    border-width: 5px;
+    justify-content: center;
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 10px;
+    height: 30vh;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.256);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.24);
+}
+.card#total {
+    border-color: rgba(0, 0, 128, 0.400);
+}
+.card#month {
+    border-color: rgba(0, 128, 0, 0.400);
+}
+.card {
+    border-color: rgba(128, 0, 0, 0.400)
+}
+.card-title {
+    font-size: 4.5vw;
+    margin-bottom: 0;
+    
+}
+.card-text {
+    font-size: 1.5vw;
+    margin-top: 0;
+    margin-bottom: 10%
+}
+#title-total{
+    color: rgba(0, 0, 128, 0.400);
+}
+#title-month {
+    color: rgba(0, 128, 0, 0.400);
+}
+#title-pending {
+    color:rgba(128, 0, 0, 0.400);
+}
+
+.table-header {
+    border-width: 2px;
+    border-style: solid;
+    border-top: 0;
+}
+td {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.397);
+}

@@ -1,0 +1,9 @@
+footer {
+    display: table-row;
+    font-size: 1vw;
+    width: 100%;
+    font-size: 1.3vw;
+}
+#footer-container {
+    display: inline-block;
+}
