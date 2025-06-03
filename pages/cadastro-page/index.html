@@ -49,7 +49,7 @@
                                 <div id="button-text">Novo cadastro</div>
                             </button>
                             <dialog>
-                                <form method="dialog">
+                                <form id="user-form" method="dialog">
                                         <div style="display: table;">
                                             <div id="modal-header">
                                                 <button id="exit-register-modal" onclick="">x</button>
@@ -59,37 +59,44 @@
                                                     <div id="register-form">
                                             
                                                         <div id="register-area">
-                                                            <div id="modal-header" style="display: flex;">
-                                                                <label for="name">Nome</label>
-                                                                <input class="input-modal" type="text" name="name" required>
+                                                            <div id="modal-header" style="display: flex; flex-direction: column;">
+                                                                <label class="modal-input-name" for="name">Nome</label>
+                                                                <input id="user_name" class="input-modal" type="text" name="name" required>
+                                                                <p style="display: flex; justify-content: left;">Ativo: <input type="checkbox" id="user_status"></p>
                                                             </div>
                                             
                                                             <div style="display: flex; margin-top: 15px; margin-bottom: 5px;">
-                                                                <label for="email">Email</label>
-                                                                <input class="input-modal" type="email" id="email" name="email" required>
+                                                                <label class="modal-input-name" for="email">Email</label>
+                                                                <input id="user_email" class="input-modal" type="email" id="email" name="email" required>
                                             
-                                                                <label for="age">Idade</label>
-                                                                <input class="input-modal" type="date" id="age" name="age" required>
+                                                                <label class="modal-input-name" for="age">Idade</label>
+                                                                <input id="user_age" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="input-modal" type="date" id="age" name="age" required>
                                                             </div>
                                             
                                                             <div>
-                                                                <label for="adress" style="display: flex;">Endereço</label>
-                                                                <input class="input-modal" type="text" id="adress" name="email" required>
+                                                                <label class="modal-input-name" for="adress" style="display: flex; margin-bottom: 15px; margin-top: 15px;">Endereço</label>
+                                                                <input id="user_adress" class="input-modal" style="margin-bottom: 15px;" type="text" id="adress" name="email" required>
                                                             </div>
                                                         </div>
                                                             <label for="info">Outras informações</label>
-                                                            <textarea class="info" name="info"required></textarea>
+                                                            <textarea id="user_info" class="info" name="info"required></textarea>
                                                 <div id="others" style="display: table-column;">
                                                     <h3 id="modal-subtitle">Interesses</h3>
-                                                    <textarea class="info" name="info"required></textarea>
+                                                    <textarea id="user_interess" class="info" name="info"required></textarea>
                                                     <h3 id="modal-subtitle">Sentimentos</h3>
-                                                    <textarea class="info" name="info"required></textarea>
+                                                    <textarea id = "user_feelings" class="info" name="info"required></textarea>
                                                     <h3 id="modal-subtitle">Valores</h3>
-                                                    <textarea class="info" name="info"required></textarea>
+                                                    <textarea id="user_valors" class="info" name="info"required></textarea>
                                                 </div>
                                             <div id="submit-area">
-                                                <button class="submit-buttons" type="submit">Salvar</button>
-                                                <button type="reset">Limpar</button>
+                                                <button id="submit-button" class="submit-buttons" type="submit">
+                                                    <img style="width: 15%; justify-self: center;" src="assets/image/confirm-icon.svg" alt="confirmar">
+                                                    <p style="justify-self: center; margin-left: 10px;">Salvar</p>
+                                                </button>
+                                                <button id="erase-button" class="submit-buttons"type="reset">
+                                                    <img style="width: 17%; justify-self: center;" src="assets/image/cancel-icon.svg" alt="limpar">
+                                                    <p style="justify-self: center; margin-left: 10px;">Limpar</p>
+                                                </button>
                                             </div>
                                     </div>
                                     
@@ -135,5 +142,6 @@
             </main>
         </div>
         <script src="script/modal.js"></script>
+        <script src="../../src/create-user.js"></script>
 </body>
 </html>

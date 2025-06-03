@@ -1,0 +1,70 @@
+#register-form {
+    display: flex;
+    flex-direction: column;
+}
+#exit-register-modal {
+    height: 25px;
+    width: 25px;
+    border-width: 0;
+    border-radius: 3px;
+    font-family: sans-serif;
+    font-weight: bolder;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.300);
+}
+#exit-register-modal:hover{
+    background-color: rgba(255, 0, 0, 0.364);
+    cursor: pointer;
+}
+.submit-buttons {
+    display: inline-flex;
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 20vw;
+    border: 0;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.400);
+    
+}
+#submit-button:hover {
+    cursor: pointer;
+    background-color: rgba(4, 218, 75, 0.479);
+}
+.modal-input-name {
+    margin-right: 10px;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+#erase-button:hover {
+    cursor: pointer;
+    background-color: rgba(183, 0, 0, 0.507);
+}
+.input-modal {
+    justify-self: center;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.400);
+    border-radius: 10px;
+    width: 90%;
+    height: 30px;
+    border-width: 0px;
+    margin-left: 5px;
+    margin-right: 10px;
+    
+}
+.info {
+    margin-top: 15px;
+    padding: 20px;
+    width: 90%;
+    border-radius: 10px;
+    border-width: 0;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.400);
+
+}
+
+.input-modal:invalid {
+  outline-color: #ff6b6b;
+}
+
+dialog {
+    border-width: 0;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.389);
+    border-radius: 10px;
+}
