@@ -1,4 +1,4 @@
-let user = {
+export let user = {
     name:"",
     age:"",
     email:"",
