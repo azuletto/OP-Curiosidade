@@ -1,4 +1,4 @@
-export let user = {
+let user = {
     name:"",
     age:"",
     email:"",
@@ -15,9 +15,6 @@ export let user = {
 let users_list = [];
 
 const submitButton = document.getElementById("submit-button");
-if (!submitButton) {
-    console.error("Submit button not found");
-}
 
 submitButton.addEventListener("click", function(e) {
 
@@ -34,7 +31,9 @@ submitButton.addEventListener("click", function(e) {
 
     
     verfifyUser(user);
+    verifyStorage();    
     saveUser(user);
+    window.location.reload();
     console.log(user);
     
 });
@@ -61,4 +60,13 @@ function saveUser(user) {
     users_list = JSON.parse(localStorage.getItem("users_list"));
 
     console.log("A lista de usuários atualizadas é: "+ JSON.stringify(users_list));
+}
+function verifyStorage() {
+    if(!localStorage.getItem("users_list")) {
+        localStorage.setItem("users_list", JSON.stringify([]));
+        console.log("Local storage initialized with an empty users list.");
+    } else {
+        users_list = JSON.parse(localStorage.getItem("users_list"));
+        console.log("Users list loaded from local storage.");
+    }
 }

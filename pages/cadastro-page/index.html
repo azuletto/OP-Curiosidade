@@ -1,148 +1,137 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/header.css">
-    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="../../global/style/header.css">
+    <link rel="stylesheet" href="../../global/style/main.css">
     <link rel="stylesheet" href="style/register-form.css">
 
     <title>Registrar novo usuário</title>
 </head>
+
 <body>
     <header>
         <div id="menu-hamburguer">
-<button id="hamburguer-button">
-    <img src="assets/image/menu-icon-svg.svg" alt="Menu" style="width: 100%; height: 100%;">
-</button>                <nav>
-                    <ul class="nav-bar">
-                        <li><a class="nav-list" href="../dash-page/index.html">Home</a></li>
-                        <li><a class="nav-list" href="../cadastro-page/index.html">Cadastro</a></li>
-                        <li><a class="nav-list" href="index.html">Relatórios</a></li>
-                    </ul>
-                </nav>
-            </div>
-                <div class="area-search">
-                    <search class="search-bar-area">
-                        <form action="#" method="get">
-                            <input class="search-bar" type="text" placeholder="Pesquisa" name="search" required>
-                            <button class="search-button" type="button">
-                                <img id="search-icon" src="assets/image/search-icon.svg" alt="Search" style="width: 100%; height: 100%;">
-                            </button>
-                        </form>
-                    </search>
-                </div>
-                <div class ="user-area">
+            <button id="hamburguer-button">
+                <img src="assets/image/menu-icon-svg.svg" alt="Menu" style="width: 100%; height: 100%;">
+            </button>
+            <nav>
+                <div class="user-area">
                     <img id="user-photo" src="assets/image/user-icon.svg" alt="">
-                        <p id="username">Nome do usuário</p>
-                            <button id="exit-button" href="../login-page/index.html" type="button" onclick="window.location.href='../login-page/index.html'">
-                                <img src="assets/image/exit-icon.svg" alt="Menu" style="width: 100%; height: 100%;">
-                            </button> 
+                    <p id="username">Nome do usuário</p>
                 </div>
-    </header>
-            <main id="main">
-                <div class="container">
-                    <div class="table-view">
-                        <div id="table-header">    
-                            <p id="opitions-title">Relatórios</p>
-                            <button id="register-button">
-                                <div id="button-text">Novo cadastro</div>
+                <ul class="nav-bar">
+                    <li><a class="nav-list" href="../dash-page/index.html">Home</a></li>
+                    <li><a class="nav-list" href="../cadastro-page/index.html">Cadastro</a></li>
+                    <li><a class="nav-list" href="../report-page/index.html">Relatórios</a></li>
+                    <div style="display: flex; text-align: center;">
+                        <div onclick="window.location.href='../login-page/index.html' " id="logout-area">
+                            <span id="logout-text" style="text-align: center; font-size: 20px;">Sair</span>
+                            <button id="exit-button" href="../login-page/index.html" type="button"
+                                onclick="window.location.href='../login-page/index.html'">
+                                <img src="assets/image/exit-icon.svg" alt="Menu" style="width: 100%; height: 100%;">
                             </button>
-                            <dialog>
-                                <form id="user-form" method="dialog">
-                                        <div style="display: table;">
-                                            <div id="modal-header">
-                                                <button id="exit-register-modal" onclick="">x</button>
-                                                <h2 id="modal-title">Cadastro de Usuário</h2>
-                                                <h3 id="modal-subtitle">Fatos e Dados</h3>
-                                            </div>
-                                                    <div id="register-form">
-                                            
-                                                        <div id="register-area">
-                                                            <div id="modal-header" style="display: flex; flex-direction: column;">
-                                                                <label class="modal-input-name" for="name">Nome</label>
-                                                                <input id="user_name" class="input-modal" type="text" name="name" required>
-                                                                <p style="display: flex; justify-content: left;">Ativo: <input type="checkbox" id="user_status"></p>
-                                                            </div>
-                                            
-                                                            <div style="display: flex; margin-top: 15px; margin-bottom: 5px;">
-                                                                <label class="modal-input-name" for="email">Email</label>
-                                                                <input id="user_email" class="input-modal" type="email" id="email" name="email" required>
-                                            
-                                                                <label class="modal-input-name" for="age">Idade</label>
-                                                                <input id="user_age" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="input-modal" type="date" id="age" name="age" required>
-                                                            </div>
-                                            
-                                                            <div>
-                                                                <label class="modal-input-name" for="adress" style="display: flex; margin-bottom: 15px; margin-top: 15px;">Endereço</label>
-                                                                <input id="user_adress" class="input-modal" style="margin-bottom: 15px;" type="text" id="adress" name="email" required>
-                                                            </div>
-                                                        </div>
-                                                            <label for="info">Outras informações</label>
-                                                            <textarea id="user_info" class="info" name="info"required></textarea>
-                                                <div id="others" style="display: table-column;">
-                                                    <h3 id="modal-subtitle">Interesses</h3>
-                                                    <textarea id="user_interess" class="info" name="info"required></textarea>
-                                                    <h3 id="modal-subtitle">Sentimentos</h3>
-                                                    <textarea id = "user_feelings" class="info" name="info"required></textarea>
-                                                    <h3 id="modal-subtitle">Valores</h3>
-                                                    <textarea id="user_valors" class="info" name="info"required></textarea>
-                                                </div>
-                                            <div id="submit-area">
-                                                <button id="submit-button" class="submit-buttons" type="submit">
-                                                    <img style="width: 15%; justify-self: center;" src="assets/image/confirm-icon.svg" alt="confirmar">
-                                                    <p style="justify-self: center; margin-left: 10px;">Salvar</p>
-                                                </button>
-                                                <button id="erase-button" class="submit-buttons"type="reset">
-                                                    <img style="width: 17%; justify-self: center;" src="assets/image/cancel-icon.svg" alt="limpar">
-                                                    <p style="justify-self: center; margin-left: 10px;">Limpar</p>
-                                                </button>
-                                            </div>
-                                    </div>
-                                    
-                                    
-                                    
-                                    
-                                </form>
-                            </dialog>
                         </div>
-                        
-                        <table id="report-table">
-                            <thead>
-                                <tr>
-                                 <th>Nome</th>
-                                 <th>Email</th>
-                                 <th>Status</th>
-                                </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                                <td>João Silva</td>
-                                 <td>email@exemplo.com</td>
-                                 <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>João Silva</td>
-                                <td>email@exemplo.com</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>João Silva</td>
-                                <td>email@exemplo.com</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>João Silva</td>
-                                <td>email@exemplo.com</td>
-                                <td>Ativo</td>
-                            </tr>
-                        </table>
                     </div>
-                   </div>
-            </main>
+                </ul>
+            </nav>
         </div>
-        <script src="script/modal.js"></script>
-        <script src="../../src/create-user.js"></script>
-        <script src="../../src/edit-user.js"></script>
+        <div class="area-search">
+            <search class="search-bar-area">
+                <form action="#" method="get">
+                    <input class="search-bar" type="text" placeholder="Pesquisa" name="search" required>
+                    <button class="search-button" type="button">
+                        <img id="search-icon" src="assets/image/search-icon.svg" alt="Search"
+                            style="width: 100%; height: 100%;">
+                    </button>
+                </form>
+            </search>
+        </div>
+
+    </header>
+    <main id="main">
+        <div class="table-view">
+            <div id="register-header">
+                <p id="opitions-title">Relatórios</p>
+                <button id="register-button">
+                    <div id="button-text">Novo cadastro</div>
+                </button>
+            </div>
+            <dialog>
+    <form id="user-form" method="dialog">
+        <div id="modal-container">
+            <div id="modal-header">
+                <button id="exit-register-modal">x</button>
+                <h2 id="modal-title">Cadastro de Usuário</h2>
+                <h3 id="modal-subtitle">Fatos e Dados</h3>
+            </div>
+            <div id="register-form">
+                <div id="register-area">
+                    <div class="input-group">
+                        <label class="modal-input-name" for="name">Nome</label>
+                        <input id="user_name" class="input-modal" type="text" name="name" required>
+                        <p class="status-container">Ativo: <input type="checkbox" id="user_status"></p>
+                    </div>
+                    <div class="double-input-group">
+                        <label class="modal-input-name" for="email">Email</label>
+                        <input id="user_email" class="input-modal" type="email" id="email" name="email" required>
+                        <label class="modal-input-name" for="age">Idade</label>
+                        <input id="user_age" class="input-modal date-input" type="date" id="age" name="age" required>
+                    </div>
+                    <div class="input-group">
+                        <label class="modal-input-name" for="adress">Endereço</label>
+                        <input id="user_adress" class="input-modal" type="text" id="adress" name="email" required>
+                    </div>
+                </div>
+                <label for="info">Outras informações</label>
+                <textarea id="user_info" class="info" name="info" required></textarea>
+                <div id="others">
+                    <h3 class="modal-subtitle">Interesses</h3>
+                    <textarea id="user_interess" class="info" name="info" required></textarea>
+                    <h3 class="modal-subtitle">Sentimentos</h3>
+                    <textarea id="user_feelings" class="info" name="info" required></textarea>
+                    <h3 class="modal-subtitle">Valores</h3>
+                    <textarea id="user_valors" class="info" name="info" required></textarea>
+                </div>
+                <div id="submit-area">
+                    <button id="submit-button" class="submit-buttons" type="submit">
+                        <img class="button-icon" src="assets/image/confirm-icon.svg" alt="confirmar">
+                        <p class="button-text">Salvar</p>
+                    </button>
+                    <button id="erase-button" class="submit-buttons" type="reset">
+                        <img class="button-icon" src="assets/image/cancel-icon.svg" alt="limpar">
+                        <p class="button-text">Limpar</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</dialog>
+            <div id="table-container">
+                <p id="table-title">Últimos cadastros</p>
+                <div id="table-view">
+                    <div id="table-title-border">
+                    </div>
+                    <table>
+                        <thead>
+                            <tr id="table-header">
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+    <script src="script/modal.js"></script>
+    <script src="../../src/table.js"></script>
+    <script src="../../src/create-user.js"></script>
+    <script src="../../src/edit-user.js"></script>
 </body>
+
 </html>
