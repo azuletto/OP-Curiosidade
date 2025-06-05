@@ -13,6 +13,7 @@ let user = {
 };
 
 let users_list = [];
+users_list = JSON.parse(localStorage.getItem("users_list")) || [];
 
 const submitButton = document.getElementById("submit-button");
 

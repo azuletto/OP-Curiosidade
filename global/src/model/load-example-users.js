@@ -1,7 +1,7 @@
 let example_users_list = [
     {
         name: "Ana Silva",
-        age: "15/03/1990",
+        age: "1990-03-15",
         email: "ana.silva@example.com",
         adress: "Rua das Flores, 123, São Paulo",
         info: "Designer gráfica",
@@ -14,7 +14,7 @@ let example_users_list = [
     },
     {
         name: "Carlos Oliveira",
-        age: "22/07/1985",
+        age: "1985-07-22",
         email: "carlos.oliveira@example.com",
         adress: "Av. Paulista, 1000, São Paulo",
         info: "Engenheiro de software",
@@ -27,7 +27,7 @@ let example_users_list = [
     },
     {
         name: "Mariana Costa",
-        age: "30/11/1995",
+        age: "1995-11-30",
         email: "mariana.costa@example.com",
         adress: "Rua dos Pinheiros, 45, Rio de Janeiro",
         info: "Médica",
@@ -40,7 +40,7 @@ let example_users_list = [
     },
     {
         name: "Pedro Santos",
-        age: "05/05/1980",
+        age: "1980-05-05",
         email: "pedro.santos@example.com",
         adress: "Av. Brasil, 200, Belo Horizonte",
         info: "Professor universitário",
@@ -53,7 +53,7 @@ let example_users_list = [
     },
     {
         name: "Juliana Pereira",
-        age: "18/09/1992",
+        age: "1992-09-18",
         email: "juliana.pereira@example.com",
         adress: "Rua das Palmeiras, 33, Porto Alegre",
         info: "Jornalista",
@@ -66,7 +66,7 @@ let example_users_list = [
     },
     {
         name: "Lucas Mendes",
-        age: "12/12/1988",
+        age: "1988-12-12",
         email: "lucas.mendes@example.com",
         adress: "Av. Atlântica, 500, Rio de Janeiro",
         info: "Empresário",
@@ -79,7 +79,7 @@ let example_users_list = [
     },
     {
         name: "Fernanda Alves",
-        age: "25/04/1993",
+        age: "1993-04-25",
         email: "fernanda.alves@example.com",
         adress: "Rua das Acácias, 78, Curitiba",
         info: "Psicóloga",
@@ -92,7 +92,7 @@ let example_users_list = [
     },
     {
         name: "Ricardo Nunes",
-        age: "08/08/1975",
+        age: "1975-08-08",
         email: "ricardo.nunes@example.com",
         adress: "Av. das Américas, 3000, Rio de Janeiro",
         info: "Diretor financeiro",
@@ -105,7 +105,7 @@ let example_users_list = [
     },
     {
         name: "Patrícia Lima",
-        age: "03/02/1987",
+        age: "1987-02-03",
         email: "patricia.lima@example.com",
         adress: "Rua das Orquídeas, 12, Salvador",
         info: "Arquiteta",
@@ -118,7 +118,7 @@ let example_users_list = [
     },
     {
         name: "Gustavo Henrique",
-        age: "19/06/1998",
+        age: "1998-06-19",
         email: "gustavo.henrique@example.com",
         adress: "Av. Contorno, 2000, Belo Horizonte",
         info: "Estudante",
@@ -131,7 +131,7 @@ let example_users_list = [
     },
     {
         name: "Amanda Souza",
-        age: "14/10/1991",
+        age: "1991-10-14",
         email: "amanda.souza@example.com",
         adress: "Rua dos Coqueiros, 56, Florianópolis",
         info: "Nutricionista",
@@ -144,7 +144,7 @@ let example_users_list = [
     },
     {
         name: "Roberto Campos",
-        age: "27/01/1983",
+        age: "1983-01-27",
         email: "roberto.campos@example.com",
         adress: "Av. Brigadeiro Faria Lima, 1500, São Paulo",
         info: "Consultor",
@@ -157,7 +157,7 @@ let example_users_list = [
     },
     {
         name: "Isabela Rocha",
-        age: "09/05/1994",
+        age: "1994-05-09",
         email: "isabela.rocha@example.com",
         adress: "Rua das Margaridas, 89, Recife",
         info: "Publicitária",
@@ -170,7 +170,7 @@ let example_users_list = [
     },
     {
         name: "Felipe Cardoso",
-        age: "23/12/1989",
+        age: "1989-12-23",
         email: "felipe.cardoso@example.com",
         adress: "Av. Afonso Pena, 1000, Belo Horizonte",
         info: "Advogado",
@@ -183,7 +183,7 @@ let example_users_list = [
     },
     {
         name: "Camila Martins",
-        age: "07/07/1996",
+        age: "1996-07-07",
         email: "camila.martins@example.com",
         adress: "Rua dos Lírios, 34, Brasília",
         info: "Estudante de medicina",
@@ -196,7 +196,7 @@ let example_users_list = [
     },
     {
         name: "Daniel Torres",
-        age: "16/02/1982",
+        age: "1982-02-16",
         email: "daniel.torres@example.com",
         adress: "Av. Sete de Setembro, 500, Salvador",
         info: "Gerente de projetos",
@@ -209,7 +209,7 @@ let example_users_list = [
     },
     {
         name: "Tatiane Vieira",
-        age: "29/08/1997",
+        age: "1997-08-29",
         email: "tatiane.vieira@example.com",
         adress: "Rua das Violetas, 67, Fortaleza",
         info: "Desenvolvedora front-end",
@@ -222,7 +222,7 @@ let example_users_list = [
     },
     {
         name: "Marcos Antonio",
-        age: "11/04/1978",
+        age: "1978-04-11",
         email: "marcos.antonio@example.com",
         adress: "Av. Paulista, 2000, São Paulo",
         info: "Diretor de marketing",
@@ -235,7 +235,7 @@ let example_users_list = [
     },
     {
         name: "Vanessa Lopes",
-        age: "04/06/1986",
+        age: "1986-06-04",
         email: "vanessa.lopes@example.com",
         adress: "Rua das Hortênsias, 23, Porto Alegre",
         info: "RH especialista",
@@ -248,7 +248,7 @@ let example_users_list = [
     },
     {
         name: "Rafael Mendonça",
-        age: "20/10/1999",
+        age: "1999-10-20",
         email: "rafael.mendonca@example.com",
         adress: "Av. Rio Branco, 100, Rio de Janeiro",
         info: "Estagiário",
@@ -261,7 +261,7 @@ let example_users_list = [
     },
     {
         name: "Larissa Freitas",
-        age: "13/03/1992",
+        age: "1992-03-13",
         email: "larissa.freitas@example.com",
         adress: "Rua dos Jasmins, 45, Curitiba",
         info: "Enfermeira",
@@ -274,7 +274,7 @@ let example_users_list = [
     },
     {
         name: "Eduardo Sampaio",
-        age: "26/09/1984",
+        age: "1984-09-26",
         email: "eduardo.sampaio@example.com",
         adress: "Av. República do Líbano, 500, São Paulo",
         info: "Cientista de dados",
@@ -287,7 +287,7 @@ let example_users_list = [
     },
     {
         name: "Beatriz Castro",
-        age: "01/01/1995",
+        age: "1995-01-01",
         email: "beatriz.castro@example.com",
         adress: "Rua das Azaleias, 89, Recife",
         info: "Produtora de eventos",
@@ -300,7 +300,7 @@ let example_users_list = [
     },
     {
         name: "Thiago Oliveira",
-        age: "17/07/1981",
+        age: "1981-07-17",
         email: "thiago.oliveira@example.com",
         adress: "Av. Tancredo Neves, 1000, Salvador",
         info: "Empreendedor",
@@ -313,7 +313,7 @@ let example_users_list = [
     },
     {
         name: "Carolina Dias",
-        age: "10/11/1990",
+        age: "1990-11-10",
         email: "carolina.dias@example.com",
         adress: "Rua das Gardênias, 56, Florianópolis",
         info: "Fotógrafa",
@@ -326,7 +326,7 @@ let example_users_list = [
     },
     {
         name: "Leonardo Costa",
-        age: "24/05/1987",
+        age: "1987-05-24",
         email: "leonardo.costa@example.com",
         adress: "Av. Dom Pedro II, 300, Belo Horizonte",
         info: "Gerente comercial",
@@ -339,7 +339,7 @@ let example_users_list = [
     },
     {
         name: "Sofia Mendes",
-        age: "06/12/1993",
+        age: "1993-12-06",
         email: "sofia.mendes@example.com",
         adress: "Rua das Tulipas, 78, Porto Alegre",
         info: "Bióloga",
@@ -352,7 +352,7 @@ let example_users_list = [
     },
     {
         name: "Antônio Ribeiro",
-        age: "21/04/1979",
+        age: "1979-04-21",
         email: "antonio.ribeiro@example.com",
         adress: "Av. Brasil, 1500, Rio de Janeiro",
         info: "Jornalista esportivo",
@@ -365,7 +365,7 @@ let example_users_list = [
     },
     {
         name: "Laura Peixoto",
-        age: "02/08/1996",
+        age: "1996-08-02",
         email: "laura.peixoto@example.com",
         adress: "Rua das Camélias, 34, Brasília",
         info: "Analista de sistemas",
@@ -378,7 +378,7 @@ let example_users_list = [
     },
     {
         name: "Gabriel Santos",
-        age: "28/02/1989",
+        age: "1989-02-28",
         email: "gabriel.santos@example.com",
         adress: "Av. Paulista, 3000, São Paulo",
         info: "Músico",
