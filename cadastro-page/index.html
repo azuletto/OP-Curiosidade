@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/register-form.css">
+
+    <title>Registrar novo usuário</title>
+</head>
+<body>
+    <header>
+        <div id="menu-hamburguer">
+<button id="hamburguer-button">
+    <img src="assets/image/menu-icon-svg.svg" alt="Menu" style="width: 100%; height: 100%;">
+</button>                <nav>
+                    <ul class="nav-bar">
+                        <li><a class="nav-list" href="../dash-page/index.html">Home</a></li>
+                        <li><a class="nav-list" href="../cadastro-page/index.html">Cadastro</a></li>
+                        <li><a class="nav-list" href="index.html">Relatórios</a></li>
+                    </ul>
+                </nav>
+            </div>
+                <div class="area-search">
+                    <search class="search-bar-area">
+                        <form action="#" method="get">
+                            <input class="search-bar" type="text" placeholder="Pesquisa" name="search" required>
+                            <button class="search-button" type="button">
+                                <img id="search-icon" src="assets/image/search-icon.svg" alt="Search" style="width: 100%; height: 100%;">
+                            </button>
+                        </form>
+                    </search>
+                </div>
+                <div class ="user-area">
+                    <img id="user-photo" src="assets/image/user-icon.svg" alt="">
+                        <p id="username">Nome do usuário</p>
+                            <button id="exit-button" href="../login-page/index.html" type="button" onclick="window.location.href='../login-page/index.html'">
+                                <img src="assets/image/exit-icon.svg" alt="Menu" style="width: 100%; height: 100%;">
+                            </button> 
+                </div>
+    </header>
+            <main id="main">
+                <div class="container">
+                    <div class="table-view">
+                        <div id="table-header">    
+                            <p id="opitions-title">Relatórios</p>
+                            <button id="register-button">
+                                <div id="button-text">Novo cadastro</div>
+                            </button>
+                            <dialog>
+                                <form method="dialog">
+                                        <div style="display: table;">
+                                            <div id="modal-header">
+                                                <button id="exit-register-modal" onclick="">x</button>
+                                                <h2 id="modal-title">Cadastro de Usuário</h2>
+                                                <h3 id="modal-subtitle">Fatos e Dados</h3>
+                                            </div>
+                                                    <div id="register-form">
+                                            
+                                                        <div id="register-area">
+                                                            <div id="modal-header" style="display: flex;">
+                                                                <label for="name">Nome</label>
+                                                                <input class="input-modal" type="text" name="name" required>
+                                                            </div>
+                                            
+                                                            <div style="display: flex; margin-top: 15px; margin-bottom: 5px;">
+                                                                <label for="email">Email</label>
+                                                                <input class="input-modal" type="email" id="email" name="email" required>
+                                            
+                                                                <label for="age">Idade</label>
+                                                                <input class="input-modal" type="date" id="age" name="age" required>
+                                                            </div>
+                                            
+                                                            <div>
+                                                                <label for="adress" style="display: flex;">Endereço</label>
+                                                                <input class="input-modal" type="text" id="adress" name="email" required>
+                                                            </div>
+                                                        </div>
+                                                            <label for="info">Outras informações</label>
+                                                            <textarea class="info" name="info"required></textarea>
+                                                <div id="others" style="display: table-column;">
+                                                    <h3 id="modal-subtitle">Interesses</h3>
+                                                    <textarea class="info" name="info"required></textarea>
+                                                    <h3 id="modal-subtitle">Sentimentos</h3>
+                                                    <textarea class="info" name="info"required></textarea>
+                                                    <h3 id="modal-subtitle">Valores</h3>
+                                                    <textarea class="info" name="info"required></textarea>
+                                                </div>
+                                            <div id="submit-area">
+                                                <button class="submit-buttons" type="submit">Salvar</button>
+                                                <button type="reset">Limpar</button>
+                                            </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                </form>
+                            </dialog>
+                        </div>
+                        
+                        <table id="report-table">
+                            <thead>
+                                <tr>
+                                 <th>Nome</th>
+                                 <th>Email</th>
+                                 <th>Status</th>
+                                </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                                <td>João Silva</td>
+                                 <td>email@exemplo.com</td>
+                                 <td>Ativo</td>
+                            </tr>
+                            <tr>
+                                <td>João Silva</td>
+                                <td>email@exemplo.com</td>
+                                <td>Ativo</td>
+                            </tr>
+                            <tr>
+                                <td>João Silva</td>
+                                <td>email@exemplo.com</td>
+                                <td>Ativo</td>
+                            </tr>
+                            <tr>
+                                <td>João Silva</td>
+                                <td>email@exemplo.com</td>
+                                <td>Ativo</td>
+                            </tr>
+                        </table>
+                    </div>
+                   </div>
+            </main>
+        </div>
+        <script src="script/modal.js"></script>
+</body>
+</html>
