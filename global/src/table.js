@@ -1,10 +1,11 @@
-let table_data = JSON.parse(localStorage.getItem("users_list"));
+import { loadExampleUsers } from "../src/model/load-example-users.js";
+
+let table_data = loadExampleUsers();
  
 let table = document.querySelector("table");
 
 
 console.log(table_data)
-
 init_table()
 
 function init_table () {
