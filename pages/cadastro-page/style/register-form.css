@@ -1,8 +1,23 @@
+/* Estilos para o diálogo */
+dialog {
+    border-width: 0;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.389);
+    border-radius: 10px;
+}
+
 #register-form {
     display: flex;
     flex-direction: column;
 }
+
+#modal-header {
+    position: relative;
+}
+
 #exit-register-modal {
+    position: absolute;
+    right: 0;
+    top: 0;
     height: 25px;
     width: 25px;
     border-width: 0;
@@ -10,34 +25,22 @@
     font-family: sans-serif;
     font-weight: bolder;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.300);
+    background: none;
+    font-size: 1.2em;
+    cursor: pointer;
 }
-#exit-register-modal:hover{
+
+#exit-register-modal:hover {
     background-color: rgba(255, 0, 0, 0.364);
-    cursor: pointer;
 }
-.submit-buttons {
-    display: inline-flex;
-    margin-top: 20px;
-    margin-right: 20px;
-    width: 20vw;
-    border: 0;
-    border-radius: 15px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.400);
-    
-}
-#submit-button:hover {
-    cursor: pointer;
-    background-color: rgba(4, 218, 75, 0.479);
-}
+
 .modal-input-name {
     margin-right: 10px;
     margin-bottom: 0;
     margin-top: 5px;
+    font-weight: bold;
 }
-#erase-button:hover {
-    cursor: pointer;
-    background-color: rgba(183, 0, 0, 0.507);
-}
+
 .input-modal {
     justify-self: center;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.400);
@@ -47,8 +50,17 @@
     border-width: 0px;
     margin-left: 5px;
     margin-right: 10px;
-    
+    padding: 8px;
 }
+
+.input-modal:invalid {
+    outline-color: #ff6b6b;
+}
+
+.date-input {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .info {
     margin-top: 15px;
     padding: 20px;
@@ -56,15 +68,63 @@
     border-radius: 10px;
     border-width: 0;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.400);
-
+    min-height: 60px;
+    resize: vertical;
 }
 
-.input-modal:invalid {
-  outline-color: #ff6b6b;
+#submit-area {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-dialog {
-    border-width: 0;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.389);
-    border-radius: 10px;
+.submit-buttons {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 20vw;
+    border: 0;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.400);
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+#submit-button:hover {
+    background-color: rgba(4, 218, 75, 0.479);
+}
+#opitions-title {
+    font-size: x-large;
+
+}
+#erase-button:hover {
+    background-color: rgba(183, 0, 0, 0.507);
+}
+#register-button {
+    padding: 1%;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.400);
+    background-color: #DFDFDF;
+}
+#register-button:hover {
+    cursor: pointer;
+    background-color: #b5b5b5;
+}
+#register-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.button-icon {
+    width: 15%;
+    justify-self: center;
+}
+
+.button-text {
+    justify-self: center;
+    margin-left: 10px;
 }
