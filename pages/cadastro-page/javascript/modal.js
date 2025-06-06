@@ -9,3 +9,4 @@ modalButton.onclick = function () {
 modalClose.onclick = function () {
     modal.close()
 }
+

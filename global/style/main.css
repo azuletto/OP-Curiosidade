@@ -113,8 +113,6 @@ td {
     border-color: rgba(0, 0, 0, 0.397);
 }
 tr:hover {
-    scale: 1.05;
-    transition: 100ms;
     background-color: #e7e7e7;
 }
 table {
