@@ -52,14 +52,13 @@
 
     </header>
     <main id="main">
-        <div class="table-view">
-            <div id="register-header">
-                <p id="opitions-title">Relatórios</p>
-                <button id="register-button">
-                    <div id="button-text">Novo cadastro</div>
-                </button>
-            </div>
-            <dialog>
+         <div id="register-header">
+                    <p id="opitions-title">Relatórios</p>
+                    <button id="register-button">
+                        <div id="button-text">Novo cadastro</div>
+                    </button>
+                </div>
+                <dialog>
     <form id="user-form" method="dialog">
         <div id="modal-container">
             <div id="modal-header">
@@ -108,30 +107,34 @@
             </div>
         </div>
     </form>
-</dialog>
-            <div id="table-container">
-                <p id="table-title">Últimos cadastros</p>
-                <div id="table-view">
-                    <div id="table-title-border">
-                    </div>
-                    <table>
-                        <thead>
-                            <tr id="table-header">
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                    </table>
+                </dialog>
+        <div id="table-container">
+            <p id="table-title">Últimos cadastros</p>
+            <div id="table-view">
+                <div id="table-title-border">
                 </div>
+                <table>
+                    <thead>
+                        <tr id="table-header">
+                            <th >Editar</th>
+                            <th >Excluir</th>
+                            <th >Nome</th>
+                            <th >Email</th>
+                            <th >Status</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
     </main>
     </div>
-    <script src="script/modal.js"></script>
-    <script src="../../src/table.js"></script>
-    <script src="../../src/create-user.js"></script>
-    <script src="../../src/edit-user.js"></script>
+    <script src="javascript/modal.js"></script>
+    <script src="../../global/src/javascripts/table.js" type="module"></script>
+    <script src="../../global/src/javascripts/create-user.js" type="module"> </script>
+    <script src="../../global/src/javascripts/edit-user.js" type="module> </script>
+    
 </body>
+
+
 
 </html>

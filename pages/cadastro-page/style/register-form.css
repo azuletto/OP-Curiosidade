@@ -119,6 +119,20 @@ dialog {
     align-items: center;
 
 }
+#delete-button {
+    background-color: #ffffff00;
+    border: none;
+}
+#edit-button {
+    background-color: #ffffff00;
+    border: none;
+}
+#delete-button:hover {
+    cursor: pointer;
+}
+#edit-button:hover{
+    cursor: pointer;
+}
 .button-icon {
     width: 15%;
     justify-self: center;
