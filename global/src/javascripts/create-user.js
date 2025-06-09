@@ -14,6 +14,10 @@ let user = {
     status:""
 };
 
+if (!localStorage.getItem("users_list")) {
+    localStorage.setItem("users_list", JSON.stringify([]));
+}
+
 let users_list = [];
 users_list = JSON.parse(localStorage.getItem("users_list")) || [];
 

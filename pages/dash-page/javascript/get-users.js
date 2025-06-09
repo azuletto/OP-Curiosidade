@@ -1,3 +1,4 @@
+
 let users_list = JSON.parse(localStorage.getItem('users_list'));
 
 let title_total = document.getElementById("title-total");
@@ -16,3 +17,4 @@ let month_users_count = users_list.filter(user => {
 title_month_users.innerHTML = month_users_count.length;
 title_total.innerHTML = users_list.length;
 pending_users.innerHTML = pending_users_count;
+
