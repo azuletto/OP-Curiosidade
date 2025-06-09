@@ -1,17 +1,24 @@
 import { loadExampleUsers } from "../model/load-example-users.js";
+import { deleteUser } from "./delete-user.js";
 import { verifyEdit } from "./edit-user.js" 
+
+if (!localStorage.getItem("users_list")) {
+    localStorage.setItem("users_list", JSON.stringify([]));
+}
 
 let table_data = JSON.parse(localStorage.getItem("users_list")) || [];
 
-localStorage.setItem("edit_mode", JSON.stringify(false));
-
-
-if (localStorage.getItem("users_list") === null) {
+if (table_data.length === 0 && localStorage.getItem("users_list") === "[]") {
     table_data = loadExampleUsers();
     localStorage.setItem("users_list", JSON.stringify(table_data));
 }
+console.log(`Table data loaded: ${table_data.length}`);
 
 let table = document.querySelector("table");
+
+table_data = JSON.parse(localStorage.getItem("users_list"));
+
+console.log(`Table data loaded: ${table_data.length}`);
 
 init_table()
 
@@ -44,7 +51,7 @@ function init_table() {
             t_edit.innerHTML = `<button id="edit-button" onclick="verifyEdit(${table_data[i].id},${edit})"> 
             <img src="../../../pages/cadastro-page/assets/image/edit-icon.svg" alt="Edit User" width="10px" height="10px">
             </button>`
-            t_delete.innerHTML = `<button id="delete-button">
+            t_delete.innerHTML = `<button id="delete-button" onclick="deleteUser(${table_data[i].id})">
             <img style="color:red;" src="../../../pages/cadastro-page/assets/image/delete-icon.svg" alt="Delete user" width="10px" height="10px">
             </button>`
 

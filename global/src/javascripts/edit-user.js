@@ -1,11 +1,12 @@
-export function verifyEdit(userId, edit) {
-    editUser(userId, edit);
-}
 window.verifyEdit = verifyEdit; // Expose the function globally for testing
 
 let user_edit;
 
 const submitButton = document.getElementById("submit-button");
+
+export function verifyEdit(userId, edit) {
+    editUser(userId, edit);
+}
 
 function editUser(userId, edit) {
     localStorage.setItem("edit_mode", JSON.stringify(edit));
@@ -57,9 +58,6 @@ function editUser(userId, edit) {
             window.location.reload();
         });
 
-    } else {
-        console.warn(`Nenhum usuário encontrado com ID: ${userId}`);
-        return null; // Retorno explícito para indicar que não encontrou
     }
 }
 

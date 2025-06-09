@@ -94,7 +94,7 @@ function saveUser(user) {
     users_list.push(user);
     localStorage.setItem("users_list", JSON.stringify(users_list));
 
-    users_list = JSON.parse(localStorage.getItem("users_list"));
+    //users_list = JSON.parse(localStorage.getItem("users_list"));
 
 }
 
