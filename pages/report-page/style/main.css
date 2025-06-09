@@ -32,3 +32,21 @@
     align-items: center;
 
 }
+
+@media print {
+    header {
+        display: none;
+    }
+    #press-header {
+        display: none;
+    }
+    #table-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    #table-view {
+        overflow: hidden;
+    }
+    }
