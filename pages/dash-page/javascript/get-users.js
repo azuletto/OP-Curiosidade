@@ -1,3 +1,4 @@
+
 let users_list = JSON.parse(localStorage.getItem('users_list'));
 
 let title_total = document.getElementById("title-total");
