@@ -6,6 +6,8 @@ if (!localStorage.getItem("users_list")) {
     localStorage.setItem("users_list", JSON.stringify([]));
 }
 
+localStorage.setItem("edit_mode", JSON.stringify(false));
+
 let table_data = JSON.parse(localStorage.getItem("users_list")) || [];
 
 if (table_data.length === 0 && localStorage.getItem("users_list") === "[]") {
