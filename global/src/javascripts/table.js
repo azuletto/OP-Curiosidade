@@ -16,6 +16,34 @@ if (table_data.length === 0 && localStorage.getItem("users_list") === "[]") {
 }
 
 let table = document.querySelector("table");
+let search_input = document.querySelector(".search-bar");
+
+if (search_input) {
+    search_input.addEventListener("keyup", function () {
+        let filter = search_input.value.toLowerCase();
+        let rows = table.querySelectorAll("tbody tr");
+
+        rows.forEach(row => {
+            let nameCell = row.querySelector("td:nth-child(1)");
+            let emailCell = row.querySelector("td:nth-child(2)");
+            let statusCell = row.querySelector("td:nth-child(3)");
+
+            if (nameCell && emailCell && statusCell) {
+                let nameText = nameCell.textContent.toLowerCase();
+                let emailText = emailCell.textContent.toLowerCase();
+                let statusText = statusCell.textContent.toLowerCase();
+
+                if (nameText.includes(filter) || emailText.includes(filter) || statusText.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        });
+    });
+} else {
+    console.warn("Elemento 'search-bar' não encontrado");
+}
 
 table_data = JSON.parse(localStorage.getItem("users_list"));
 
@@ -23,14 +51,17 @@ table_data = JSON.parse(localStorage.getItem("users_list"));
 init_table()
 
 function init_table() {
+
     let table_max;
     let body = document.createElement("tbody")
+
     if (window.location.pathname.includes("dash-page")) {
         table_max = 10;
         sort_by_time_stamp();
     } else {
         table_max = table_data.length;
     }
+
     for (let i = 0; i < table_max; i++) {
 
         let tr = document.createElement("tr")
