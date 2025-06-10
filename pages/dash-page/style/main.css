@@ -4,8 +4,9 @@
     justify-content: top;
     height: 100vh;
     background-color: #f0f2f5;
-    flex:1;
+    flex: 1;
 }
+
 #table-title-border {
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.236);
@@ -14,52 +15,60 @@
     border-left: 0;
     border-right: 0;
 }
+
 #table-title {
     margin-left: 30px;
     font-size: larger;
     font-weight: bold;
 }
+
 #table-container {
-    border-radius: 20px;
+    border-radius: 0;
     margin-top: 100px;
-    margin-right: 20px;
-    
+    width: 90%;
+
+
     align-self: center;
-    height: 50%;
-    width: 70%;
+    height: 100%;
 
     background-color: #f8f9fa;
     border: none;
 
-    margin-left: 20px;
     box-shadow: -3px 3px 9px rgba(0, 0, 0, 0.256);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.24);
 }
+
 #table-header:hover {
     background-color: #f8f9fa;
     scale: 1;
     cursor: default;
 }
+
 #table-view {
     align-self: center;
     overflow: scroll;
     height: 80%;
 }
+
 #card-view {
     display: flex;
     flex-wrap: wrap;
     margin-right: 20px;
     justify-content: center;
 }
-#title-total{
+
+#title-total {
     color: rgba(0, 0, 128, 0.400);
 }
+
 #title-month {
     color: rgba(0, 128, 0, 0.400);
 }
+
 #title-pending {
-    color:rgba(128, 0, 0, 0.400);
+    color: rgba(128, 0, 0, 0.400);
 }
+
 .card {
     width: 100%;
     height: 100%;
@@ -67,7 +76,7 @@
     max-width: 290px;
     min-height: 10px;
     max-height: 200px;
-    
+
     margin-top: 30px;
     margin-left: 20px;
     padding: 10px;
@@ -75,28 +84,33 @@
     border-style: solid;
     border-width: 5px;
     border-radius: 10px;
-    
+
     justify-content: center;
     text-align: center;
-    
+
     background-color: #f8f9fa;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.256);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.24);
 }
+
 .card#total {
     border-color: rgba(0, 0, 128, 0.400);
 }
+
 .card#month {
     border-color: rgba(0, 128, 0, 0.400);
 }
+
 .card {
     border-color: rgba(128, 0, 0, 0.400)
 }
+
 .card-title {
     font-size: 300%;
     margin-bottom: 0;
-    
+
 }
+
 .card-text {
     justify-self: center;
     display: flex;
@@ -112,9 +126,11 @@ td {
     border-width: 0;
     border-color: rgba(0, 0, 0, 0.397);
 }
+
 tr:hover {
     background-color: #e7e7e7;
 }
+
 table {
     border-collapse: collapse;
     overflow: hidden;

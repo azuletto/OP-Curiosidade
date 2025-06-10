@@ -5,18 +5,18 @@ users_list = JSON.parse(localStorage.getItem("users_list")) || [];
 let desableUsers = [];
 desableUsers = JSON.parse(localStorage.getItem("desable_users")) || [];
 
-if(localStorage.getItem("desable_users") === null) {
+if (localStorage.getItem("desable_users") === null) {
     localStorage.setItem("desable_users", JSON.stringify([]));
 }
 
 export function deleteUser(userId) {
-        backupDelete(userId);
+    backupDelete(userId);
 }
 
 function backupDelete(userId) {
     console.log("Deleting user with ID:", userId);
     let user = users_list.find(user => Number(user.id) === Number(userId));
-    console.log("User to be deleted:", user);    
+    console.log("User to be deleted:", user);
 
     if (user) {
         users_list.splice(users_list.indexOf(user), 1);

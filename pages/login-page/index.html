@@ -3,7 +3,7 @@
 
 <head>
     <script src="javascript/login-validation.js"></script>
-    <link rel="icon" href="assets/image/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/image/login-ico.ico" type="image/x-icon">
     <link rel="stylesheet" href="style/login-page.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,18 +23,24 @@
         <div class="login-form">
             <form class="form" action="" method="post">
                 <div class="input-group">
-                    <label class="input-label" for=""></label>
-                    <input class="input" id="email" type="email" placeholder="Seu email" name="email" required>
+                    <label class="input-label">
+                        <input autocomplete="email" class="input" id="email" type="email" placeholder="Seu email"
+                            name="email" required>
+                    </label>
+                    <p id="error-message"></p>
                 </div>
                 <div class="input-group">
-                    <label class="input-label" for=""></label>
-                    <input class="input" id="password" type="password" placeholder="Sua senha" name="password" required>
+                    <label class="input-label">
+                        <input autocomplete="current-password" class="input" id="password" type="password"
+                            placeholder="Sua senha" name="password" required>
+                    </label>
                 </div>
                 <button id="login-button" class="login-button" type="button">Entrar</button>
             </form>
         </div>
     </div>
-    
+
 </body>
-    <script src="javascript/login.js"></script>
+<script type="module" src="javascript/login.js"></script>
+
 </html>

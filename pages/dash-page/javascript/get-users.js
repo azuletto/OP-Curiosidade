@@ -12,7 +12,7 @@ let month_users_count = users_list.filter(user => {
     let user_timestamp = new Date(user.time_stamp);
     let current_date = new Date();
     return user_timestamp.getMonth() === current_date.getMonth() &&
-           user_timestamp.getFullYear() === current_date.getFullYear();
+        user_timestamp.getFullYear() === current_date.getFullYear();
 })
 title_month_users.innerHTML = month_users_count.length;
 title_total.innerHTML = users_list.length;
