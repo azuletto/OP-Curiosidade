@@ -28,12 +28,12 @@ nav {
     position: absolute;
     top: 0;
     left: 0;
-    width: 200px; /* ou o tamanho que desejar */
+    width: 200px;
     height: 100vh;
     display: none;
     background-color: white;
     cursor: default;
-    z-index: 1000; /* garantir que fique acima de outros elementos */
+    z-index: 1000;
 }
 #menu-hamburguer:hover > nav {
     display: block;

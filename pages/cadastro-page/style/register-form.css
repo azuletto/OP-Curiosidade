@@ -1,8 +1,11 @@
-/* Estilos para o diálogo */
 dialog {
     border-width: 0;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.389);
     border-radius: 10px;
+    max-height: 500px;
+    height: 100%;
+    max-width: 900px;
+    width: 100%;
 }
 
 #register-form {
@@ -12,6 +15,15 @@ dialog {
 
 #modal-header {
     position: relative;
+}
+
+#modal-title {
+    justify-self: center;
+    border: solid;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    
 }
 
 #exit-register-modal {
@@ -34,13 +46,22 @@ dialog {
     background-color: rgba(255, 0, 0, 0.364);
 }
 
-.modal-input-name {
-    margin-right: 10px;
-    margin-bottom: 0;
+#error-message {
+    display: flex;
     margin-top: 5px;
-    font-weight: bold;
+    align-self: flex-start;
+    font-size: small;
+    margin-left: 5px;
+    color: red;
 }
 
+.modal-input-name {
+    font-weight: bold;
+}
+#modal-container {
+    width: 100%;
+    max-width: 90vw;
+}
 .input-modal {
     justify-self: center;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.400);
@@ -49,27 +70,30 @@ dialog {
     height: 30px;
     border-width: 0px;
     margin-left: 5px;
-    margin-right: 10px;
     padding: 8px;
 }
 
 .input-modal:invalid {
-    outline-color: #ff6b6b;
+    outline-color: #ff6b6b;     
 }
 
 .date-input {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+#infos-area {
+    justify-content: center;
+}
+
 .info {
-    margin-top: 15px;
-    padding: 20px;
+    margin-top: 14px;
+    padding: 10px;
     width: 90%;
     border-radius: 10px;
     border-width: 0;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.400);
     min-height: 60px;
-    resize: vertical;
+    resize: none;
 }
 
 #submit-area {
@@ -83,25 +107,28 @@ dialog {
     display: inline-flex;
     align-items: center;
     margin-top: 20px;
-    margin-right: 20px;
     width: 20vw;
     border: 0;
     border-radius: 15px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.400);
-    padding: 10px 15px;
+    padding: 4px 8px;
     cursor: pointer;
+    width: 90px;
 }
 
 #submit-button:hover {
     background-color: rgba(4, 218, 75, 0.479);
 }
+
 #opitions-title {
     font-size: x-large;
 
 }
+
 #erase-button:hover {
     background-color: rgba(183, 0, 0, 0.507);
 }
+
 #register-button {
     display: flex;
     width: 100%;
@@ -120,10 +147,12 @@ dialog {
     border-radius: 0;
     background-color: #DFDFDF;
 }
+
 #register-button:hover {
     cursor: pointer;
     background-color: #b5b5b5;
 }
+
 #register-header {
     display: flex;
     gap: 70%;
@@ -134,26 +163,34 @@ dialog {
     margin-right: 70px;
 
 }
+
 #delete-button {
     background-color: #ffffff00;
     border: none;
 }
+
 #edit-button {
     background-color: #ffffff00;
     border: none;
 }
+
 #delete-button:hover {
     cursor: pointer;
 }
-#edit-button:hover{
+
+#edit-button:hover {
     cursor: pointer;
 }
+
 .button-icon {
-    width: 15%;
+    width: 30%;
     justify-self: center;
+}
+.button-icon#erase-icon {
+    width: 38%;
 }
 
 .button-text {
     justify-self: center;
-    margin-left: 10px;
+    margin-left: 4px;
 }

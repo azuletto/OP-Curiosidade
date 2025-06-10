@@ -1,6 +1,6 @@
 import { loadExampleUsers } from "../model/load-example-users.js";
 import { deleteUser } from "./delete-user.js";
-import { verifyEdit } from "./edit-user.js" 
+import { verifyEdit } from "./edit-user.js"
 
 if (!localStorage.getItem("users_list")) {
     localStorage.setItem("users_list", JSON.stringify([]));
@@ -14,13 +14,11 @@ if (table_data.length === 0 && localStorage.getItem("users_list") === "[]") {
     table_data = loadExampleUsers();
     localStorage.setItem("users_list", JSON.stringify(table_data));
 }
-console.log(`Table data loaded: ${table_data.length}`);
 
 let table = document.querySelector("table");
 
 table_data = JSON.parse(localStorage.getItem("users_list"));
 
-console.log(`Table data loaded: ${table_data.length}`);
 
 init_table()
 

@@ -1,4 +1,4 @@
-window.verifyEdit = verifyEdit; // Expose the function globally for testing
+window.verifyEdit = verifyEdit; 
 
 let user_edit;
 
@@ -33,7 +33,7 @@ function editUser(userId, edit) {
         console.log("Usuário encontrado:", user_edit);
 
         submitButton.addEventListener("click", function (e) {
-            e.preventDefault(); // Previne o comportamento padrão do botão
+            e.preventDefault(); 
             user_edit.name = document.getElementById("user_name").value;
             user_edit.age = document.getElementById("user_age").value;
             user_edit.email = document.getElementById("user_email").value;

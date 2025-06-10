@@ -1,17 +1,17 @@
-
+import { regexEmail } from "/global/src/javascripts/email-regex.js";
 
 let user = {
-    name:"",
-    age:"",
-    email:"",
-    adress:"",
-    info:"",
-    interess:"",
-    feelings:"",
-    valors:"",
-    id:"0",
-    time_stamp:"",
-    status:""
+    name: "",
+    age: "",
+    email: "",
+    adress: "",
+    info: "",
+    interess: "",
+    feelings: "",
+    valors: "",
+    id: "0",
+    time_stamp: "",
+    status: ""
 };
 
 if (!localStorage.getItem("users_list")) {
@@ -23,46 +23,50 @@ users_list = JSON.parse(localStorage.getItem("users_list")) || [];
 
 const submitButton = document.getElementById("submit-button");
 const exitButton = document.getElementById("exit-register-modal");
+let error_message = document.getElementById("error-message");
 
-exitButton.addEventListener("click", function(e)  {
+exitButton.addEventListener("click", function (e) {
     clearModal();
     e.preventDefault();
 });
-modal.addEventListener("close", function(e) {
+modal.addEventListener("close", function (e) {
     clearModal();
 });
 
 
 
 
-submitButton.addEventListener("click", function(e) {
+submitButton.addEventListener("click", function (e) {
+
+
+
     let editMode = JSON.parse(localStorage.getItem("edit_mode"));
-    
-    if(editMode === true) {
-    console.log("Usuário não cadastrado, modo de edição ativado");
-    e.preventDefault();
-    return;
-}   
 
-    if(editMode === false) {
-    user.name = document.getElementById("user_name").value;
-    user.age = document.getElementById("user_age").value;
-    user.email = document.getElementById("user_email").value;
-    user.adress = document.getElementById("user_adress").value;
-    user.info = document.getElementById("user_info").value;
-    user.interess = document.getElementById("user_interess").value;
-    user.feelings = document.getElementById("user_feelings").value;
-    user.valors = document.getElementById("user_valors").value;
-    user.status = document.getElementById("user_status").checked ? "active":"inactive";
-    user.time_stamp = new Date().toISOString();
-    verfifyUser(user);
-    verifyStorage();    
-    saveUser(user);
-    window.location.reload();
+    if (editMode === false) {
+        user.name = document.getElementById("user_name").value;
+        user.age = document.getElementById("user_age").value;
+        user.email = document.getElementById("user_email").value;
+        user.adress = document.getElementById("user_adress").value;
+        user.info = document.getElementById("user_info").value;
+        user.interess = document.getElementById("user_interess").value;
+        user.feelings = document.getElementById("user_feelings").value;
+        user.valors = document.getElementById("user_valors").value;
+        user.status = document.getElementById("user_status").checked ? "active" : "inactive";
+        user.time_stamp = new Date().toISOString();
+
+
+        if (!verfifyUser(user)) {
+            e.preventDefault();
+            return error_message;
+        }
+        verifyStorage();
+        saveUser(user);
+
     }
 });
 
 function clearModal() {
+
     document.getElementById("user_name").value = ""
     document.getElementById("user_age").value = ""
     document.getElementById("user_email").value = ""
@@ -72,20 +76,43 @@ function clearModal() {
     document.getElementById("user_feelings").value = ""
     document.getElementById("user_valors").value = ""
     document.getElementById("user_status").checked = false;
-    
+    document.getElementById("error-message").innerHTML = "";
+
 }
 
 function verfifyUser(user) {
-    if(user.email === users_list.find(u => u.email === user.email)?.email) {
-        console.error("Email already exists.");
-        return error("Email already exists.");
+
+    error_message.innerHTML = "";
+
+
+    if (String(user.email).trim() === "") {
+        error_message.innerHTML = "O campo de e-mail não pode estar vazio.";
+        return false;
     }
-    for (let key in user) {
-        if (user[key] === "" || user[key] === null || user[key] === undefined) {
-            console.error(`The ${key} field is empty.`);
-            return error(`The ${key} field is empty.`);
+
+
+    if (regexEmail(user.email) !== true) {
+        error_message.innerHTML = "Você inseriu um e-mail inválido. Tente novamente.";
+        return false;
+    }
+
+
+    if (users_list.some(u => u.email === user.email)) {
+        error_message.innerHTML = "E-mail já cadastrado.";
+        return false;
+    }
+
+
+    const requiredFields = ['name', 'age', 'adress', 'info', 'interess', 'feelings', 'valors'];
+    for (let key of requiredFields) {
+        if (!user[key] || String(user[key]).trim() === "") {
+            error_message.innerHTML = `O campo ${key} não pode estar vazio.`;
+            return false;
         }
     }
+
+
+    return true;
 }
 
 function saveUser(user) {
@@ -97,13 +124,11 @@ function saveUser(user) {
     }
     users_list.push(user);
     localStorage.setItem("users_list", JSON.stringify(users_list));
-
-    //users_list = JSON.parse(localStorage.getItem("users_list"));
-
+    window.location.reload();
 }
 
 function verifyStorage() {
-    if(!localStorage.getItem("users_list")) {
+    if (!localStorage.getItem("users_list")) {
         localStorage.setItem("users_list", JSON.stringify([]));
     } else {
         users_list = JSON.parse(localStorage.getItem("users_list"));

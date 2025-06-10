@@ -5,8 +5,7 @@ const user_name = JSON.parse(localStorage.getItem('logged_in_user')).username
 
 userNameElement.textContent = user_name;
 
-
-logOutButton.addEventListener('click', function() {
+logOutButton.addEventListener('click', function () {
     localStorage.removeItem('logged_in');
     window.location.href = '../login-page/index.html';
 })
