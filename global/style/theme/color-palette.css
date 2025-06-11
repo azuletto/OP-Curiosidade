@@ -1,0 +1,63 @@
+:root {
+    --nav-user-back-color: white;
+    --back-color: #f8f9fa;
+    --text-color: black;
+    --error-text-color: red;
+    --search-container-color: #ffffff;
+    --search-bar-border-color: #ccc;
+    --input-color: white;
+
+    --button-color: #DFDFDF;
+    --button-hover-color: #b5b5b5;
+    --nav-gradient-color: linear-gradient(to bottom,white,rgb(228, 228, 228));
+    --modal-invalid-outline-color: #ff6b6b;
+    --exit-button-hover: rgb(277, 227, 227);
+
+    --card-color-register: #7172a6;
+    --card-color-last-month: #72a673;
+    --card-color-pending: #a37273;
+
+    --toggle-theme-bg-color: #1C1439;
+    --login-back-color: rgb(231, 231, 231);
+    --login-logo-color: #515551;
+    --login-back-container-color: white;
+    --login-logo-color: #515551;
+    --login-button-color: #53c257;
+    --login-button-hover-color: #3f9145;
+    --login-text-color: white;
+    --linear-toggle-gradient: linear-gradient(white, rgb(197, 197, 197));
+}
+
+.dark-theme:root {
+    --input-text-color: rgb(166, 154, 205);
+    --input-color: #6B6875;
+    --nav-user-back-color: #3a3841;
+    --back-color: #1C1439;
+    --text-color: white;
+    --error-text-color: red;
+    --search-container-color: #3B364B;
+    --search-bar-border-color: #6B6875;
+
+    --button-color: #8077A0;
+    --button-hover-color: #b5b5b5;
+    --nav-gradient-color: linear-gradient(to bottom,#3a3841, #1C1439);
+    --modal-invalid-outline-color: #ff6b6b;
+    --exit-button-hover: rgb(277, 227, 227);
+    
+    --card-back-color: #3B364B;
+    --card-color-register: #5b5eff;
+    --card-color-last-month: #47ff4a;
+    --card-color-pending: #da2124;
+
+    --toggle-theme-bg-color: white;
+    --login-back-color: #1C1439;
+    --login-back-container-color: #3B364B;
+    --login-logo-color: #ffffff;
+    --login-button-color: #8077A0;
+    --login-button-hover-color: #8464F5;
+    --login-text-color: white;
+
+    --table-back-color: #3B364B;
+    --linear-toggle-gradient: linear-gradient(#1C1439, #8077A0);
+
+}

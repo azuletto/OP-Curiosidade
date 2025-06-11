@@ -3,11 +3,15 @@
 
 <head>
     <script src="../../global/src/javascripts/login-validation.js"></script>
+    <script src="../../global/src/javascripts/theme-toggler/theme-verify.js"></script>
     <meta charset="UTF-8">
     <link rel="icon" href="assets/image/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../global/style/header.css">
+    <link rel="stylesheet" href="../../global/style/main.css">
+
     <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="../../global/style/theme/color-palette.css">
     <title>Dashboard page</title>
 </head>
 
@@ -49,7 +53,12 @@
                 </form>
             </search>
         </div>
-
+        <div id="theme-toggle-container">
+            <input type="checkbox" id="theme-toggle">
+            <label id="theme-toggle-label" for="theme-toggle">
+            </label>
+            <p id="toggle-tittle">Tema</p>
+        </div>
     </header>
     <main id="main">
         <div id="card-view">
@@ -74,9 +83,9 @@
                 <table>
                     <thead>
                         <tr id="table-header">
+                            <th>Editar</th>
+                            <th>Excluir</th>
                             <th>Nome</th>
-                            <th>Email</th>
-                            <th>Status</th>
                         </tr>
                     </thead>
                 </table>
@@ -84,6 +93,7 @@
         </div>
     </main>
 
+    <script src="../../global/src/javascripts/theme-toggler/theme-toggler.js"></script>
     <script src="../../global/src/javascripts/table.js" type="module"></script>
     <script src="../../global/src/javascripts/login.js"></script>
     <script src="javascript/get-users.js"></script>

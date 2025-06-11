@@ -24,6 +24,7 @@ if (search_input) {
         let rows = table.querySelectorAll("tbody tr");
 
         rows.forEach(row => {
+            
             let nameCell = row.querySelector("td:nth-child(1)");
             let emailCell = row.querySelector("td:nth-child(2)");
             let statusCell = row.querySelector("td:nth-child(3)");

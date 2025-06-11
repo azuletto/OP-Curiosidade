@@ -6,6 +6,7 @@
 }
 
 #opitions-title {
+    color: var(--text-color);
     font-size: larger;
     align-self: center;
 }
@@ -21,7 +22,7 @@
 
 #press-button:hover {
     cursor: pointer;
-    background-color: #b5b5b5;
+    background-color: var(--button-hover-color);
 }
 
 #press-button {
@@ -29,18 +30,18 @@
     width: 100%;
     height: 100%;
 
-    max-width: 150px;
+    max-width: 200px;
     min-width: 90px;
-    max-height: 40px;
+    max-height: 35px;
     min-height: 25px;
 
     justify-content: center;
     align-items: center;
 
-    border-width: 2px;
-    border-color: black;
-    border-radius: 0;
-    background-color: #DFDFDF;
+    border-width: 1.5px;
+    border-color: var(--text-color);
+    border-radius: 4px;
+    background-color: var(--button-color);
 }
 
 #press-header {
@@ -73,4 +74,10 @@
     #table-view {
         overflow: hidden;
     }
+    td {
+        border: solid;
+        border-width: 1px;
+        border-color: rgb(139, 139, 139);
+    }
+    
 }
