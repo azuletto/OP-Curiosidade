@@ -4,10 +4,12 @@
 <head>
     <link rel="icon" href="assets/image/favicon.ico" type="image/x-icon">
     <script src="../../global/src/javascripts/login-validation.js"></script>
+    <script src="../../global/src/javascripts/theme-toggler/theme-verify.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../global/style/header.css">
     <link rel="stylesheet" href="../../global/style/main.css">
+    <link rel="stylesheet" href="../../global/style/theme/color-palette.css">
     <link rel="stylesheet" href="style/register-form.css">
 
     <title>Registrar ou editar usuário</title>
@@ -51,13 +53,19 @@
                 </form>
             </search>
         </div>
-
+        <div id="theme-toggle-container">
+            <input type="checkbox" id="theme-toggle">
+            <label id="theme-toggle-label" for="theme-toggle">
+            </label>
+            <p id="toggle-tittle">Tema</p>
+        </div>
+        
     </header>
     <main id="main">
         <div id="register-header">
             <p id="opitions-title">Editar</p>
             <button id="register-button">
-                <div id="button-text">Novo cadastro</div>
+                <div id="button-text"><p>Novo cadastro</p></div>
             </button>
         </div>
         <dialog>
@@ -158,6 +166,7 @@
     <script src="../../global/src/javascripts/login.js"></script>
     <script src="../../global/src/javascripts/table.js" type="module"></script>
     <script src="../../global/src/javascripts/create-user.js" type="module"> </script>
+    <script src="../../global/src/javascripts/theme-toggler/theme-toggler.js"></script>
 </body>
 
 

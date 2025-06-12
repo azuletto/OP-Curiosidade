@@ -1,53 +1,10 @@
 #main {
     display: flex;
     flex-direction: column;
-    justify-content: top;
+    gap: 15%;
     height: 100vh;
-    background-color: #f0f2f5;
+    background-color: var(--back-color);
     flex: 1;
-}
-
-#table-title-border {
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.236);
-    border-width: 1px;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-}
-
-#table-title {
-    margin-left: 30px;
-    font-size: larger;
-    font-weight: bold;
-}
-
-#table-container {
-    border-radius: 0;
-    margin-top: 100px;
-    width: 90%;
-
-
-    align-self: center;
-    height: 100%;
-
-    background-color: #f8f9fa;
-    border: none;
-
-    box-shadow: -3px 3px 9px rgba(0, 0, 0, 0.256);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-#table-header:hover {
-    background-color: #f8f9fa;
-    scale: 1;
-    cursor: default;
-}
-
-#table-view {
-    align-self: center;
-    overflow: scroll;
-    height: 80%;
 }
 
 #card-view {
@@ -58,15 +15,15 @@
 }
 
 #title-total {
-    color: rgba(0, 0, 128, 0.400);
+    color: var(--card-color-register)
 }
 
 #title-month {
-    color: rgba(0, 128, 0, 0.400);
+    color: var(--card-color-last-month)
 }
 
 #title-pending {
-    color: rgba(128, 0, 0, 0.400);
+    color: var(--card-color-pending)
 }
 
 .card {
@@ -88,21 +45,21 @@
     justify-content: center;
     text-align: center;
 
-    background-color: #f8f9fa;
+    background-color: var(--card-back-color);
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.256);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .card#total {
-    border-color: rgba(0, 0, 128, 0.400);
+    border-color: var(--card-color-register);
 }
 
 .card#month {
-    border-color: rgba(0, 128, 0, 0.400);
+    border-color: var(--card-color-last-month);
 }
 
 .card {
-    border-color: rgba(128, 0, 0, 0.400)
+    border-color: var(--card-color-pending)
 }
 
 .card-title {
@@ -118,21 +75,4 @@
     font-size: 130%;
     margin-top: 0;
     margin-bottom: 10%
-}
-
-td {
-    text-align: center;
-    border-style: solid;
-    border-width: 0;
-    border-color: rgba(0, 0, 0, 0.397);
-}
-
-tr:hover {
-    background-color: #e7e7e7;
-}
-
-table {
-    border-collapse: collapse;
-    overflow: hidden;
-    width: 100%;
 }
