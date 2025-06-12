@@ -42,6 +42,7 @@ dialog {
     background: none;
     font-size: 1.2em;
     cursor: pointer;
+    background-color: var(--button-color);
 }
 
 #exit-register-modal:hover {
@@ -195,4 +196,32 @@ dialog {
 .button-text {
     justify-self: center;
     margin-left: 4px;
+    color: var(--button-text-color);
+}
+
+#modal-title {
+    color: var(--text-color)
+}
+#modal-subtitle {
+    color: var(--text-color);
+}
+dialog {
+    background-color: var(--back-color);
+}
+p {
+    color: var(--text-color);
+}
+h3 {
+    color: var(--text-color);
+}
+.submit-buttons {
+    background-color: var(--button-color);
+}
+input {
+    background-color: var(--input-color);
+    color: var(--text-color);
+}
+textarea {
+    background-color: var(--input-color);
+    color: var(--text-color);
 }

@@ -6,6 +6,7 @@
     --search-container-color: #ffffff;
     --search-bar-border-color: #ccc;
     --input-color: white;
+    --menu-itens-color: brightness(0%);
 
     --button-color: #DFDFDF;
     --button-hover-color: #b5b5b5;
@@ -24,40 +25,42 @@
     --login-logo-color: #515551;
     --login-button-color: #53c257;
     --login-button-hover-color: #3f9145;
-    --login-text-color: white;
+    --login-text-color: rgb(223, 223, 223);
     --linear-toggle-gradient: linear-gradient(white, rgb(197, 197, 197));
 }
 
 .dark-theme:root {
     --input-text-color: rgb(166, 154, 205);
-    --input-color: #6B6875;
-    --nav-user-back-color: #3a3841;
-    --back-color: #1C1439;
-    --text-color: white;
+    --input-color: #888888;
+    --nav-user-back-color: #121212;
+    --back-color: #1d1d1d;
+    --text-color: #E0E0E0;
     --error-text-color: red;
-    --search-container-color: #3B364B;
+    --search-container-color: #444444;
     --search-bar-border-color: #6B6875;
+    --menu-itens-color: invert(100%);
 
-    --button-color: #8077A0;
+    --button-text-color: white;
+    --button-color: #888888;
     --button-hover-color: #b5b5b5;
-    --nav-gradient-color: linear-gradient(to bottom,#3a3841, #1C1439);
+    --nav-gradient-color: linear-gradient(to bottom,#121212, #131313);
     --modal-invalid-outline-color: #ff6b6b;
     --exit-button-hover: rgb(277, 227, 227);
     
-    --card-back-color: #3B364B;
-    --card-color-register: #5b5eff;
-    --card-color-last-month: #47ff4a;
-    --card-color-pending: #da2124;
+    --card-back-color: #444444;
+    --card-color-register: #9192b3;
+    --card-color-last-month: #72a173;
+    --card-color-pending: #885456;
 
-    --toggle-theme-bg-color: white;
-    --login-back-color: #1C1439;
-    --login-back-container-color: #3B364B;
-    --login-logo-color: #ffffff;
+    --toggle-theme-bg-color: #E0E0E0;
+    --login-back-color: #121212;
+    --login-back-container-color: #444444;
+    --login-logo-color: #E0E0E0;
     --login-button-color: #8077A0;
     --login-button-hover-color: #8464F5;
     --login-text-color: white;
 
-    --table-back-color: #3B364B;
-    --linear-toggle-gradient: linear-gradient(#1C1439, #8077A0);
+    --table-back-color: #444444;
+    --linear-toggle-gradient: linear-gradient(#000000, #595959);
 
 }

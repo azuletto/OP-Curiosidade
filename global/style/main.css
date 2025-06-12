@@ -54,7 +54,7 @@ td {
     color: var(--text-color);
 }
 tr:hover {
-    background-color: var(--button-hover-color);
+    background-color: var(--back-color);
 }
 table {
     border-collapse: collapse;
