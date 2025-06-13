@@ -112,6 +112,7 @@ nav {
 
 .area-search {
     width: 100vw;
+    height: 100%;
     margin: auto;
     margin-left: 20px;
     padding: 20px;
@@ -121,8 +122,9 @@ nav {
 }
 
 .search-bar {
+    display: flex;
     width: 100%;
-    padding: 10px;
+    height: 30px;
     border-radius: 5px;
     border: 1px solid var(--search-bar-border-color);
     background-color: var(--input-color);
@@ -133,21 +135,6 @@ nav {
 }
 .search-bar:focus {
     outline: none;
-}
-
-.search-button {
-    width: 35px;
-    height: 35px;
-    margin-left: 5px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--button-color);
-    cursor: pointer;
-
-}
-
-.search-button:hover {
-    background-color: var(--button-hover-color);
 }
 
 .nav-bar {

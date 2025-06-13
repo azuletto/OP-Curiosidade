@@ -7,7 +7,6 @@ if (localStorage.getItem('theme') === 'dark-theme') {
     
     toggle_button.classList.add('active');
 } else if (localStorage.getItem('theme') === null || localStorage.getItem('theme') === "" || localStorage.getItem('theme') === 'light-theme') {
-    console.log('Light theme is set');
     html.classList.remove('dark-theme');
     toggle_button.classList.remove('active');
 }

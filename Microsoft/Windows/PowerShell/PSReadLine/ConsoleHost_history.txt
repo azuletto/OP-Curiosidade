@@ -1,0 +1,3 @@
+git config --global user.email "andre.oliveira@forlogic.net"
+git
+cls
