@@ -141,11 +141,12 @@ nav {
     display: block;
     background-image: var(--nav-gradient-color);
     height: 100vh;
-    padding-bottom: 10px;
 }
 
 .nav-list {
     font-weight: 100;
+    display: flex;
+    margin-bottom: 12px;
 }
 
 .nav-list:hover {
@@ -153,8 +154,12 @@ nav {
 }
 
 .user-area {
-    margin-top: 30px;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+    margin-top: 34px;
+    justify-content: center;
+    align-items: center;
 }
 
 #theme-toggle {

@@ -25,7 +25,7 @@ function init_table() {
 
     let page_number;
 
-    if (!localStorage.getItem("page_number")) {
+    if (!localStorage.getItem("page_number") || window.location.pathname.includes("dash-page")) {
         let page_number = 0;
         localStorage.setItem("page_number", String(page_number));
     }
@@ -92,7 +92,9 @@ function init_table() {
 }
 
 function updateTable() {
-    if(window.location.pathname.includes("dash-page")) {
+    if (window.location.pathname.includes("dash-page")) {
+        let page_number = 0;
+        localStorage.setItem("page_number", String(page_number))
         return;
     }
 
@@ -121,10 +123,6 @@ function updateTable() {
             return;
         }
     })
-}
-function sort_by_time_stamp() {
-    table_data.sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp));
-    localStorage.setItem("users_list", JSON.stringify(table_data));
 }
 
 function loadTable() {
@@ -157,9 +155,50 @@ function loadTable() {
     return table_data;
 }
 
+window.pressLoad = pressLoad;
+
+export function pressLoad() {
+    
+    // Remove o corpo da tabela atual para poder renderizar a tabela com os usuários filtrados
+    let tbody = document.querySelector("tbody");
+    if (tbody) table.removeChild(tbody);
+
+    // Cria novo corpo da tabela com os resultados filtrados, seguindo a mesma lógica da criação da tabela anterior
+    let new_body = document.createElement("tbody");
+
+    let table_data = JSON.parse(localStorage.getItem("users_list"))
+
+    for (let i = 0; i < table_data.length; i++) {
+        let tr = document.createElement("tr");
+
+        let t_name = document.createElement("td");
+        let t_email = document.createElement("td");
+        let t_status = document.createElement("td");
+
+        t_name.textContent = table_data[i].name;
+        t_email.textContent = table_data[i].email;
+        t_status.textContent = table_data[i].status;
+
+        tr.appendChild(t_name);
+        tr.appendChild(t_email);
+        tr.appendChild(t_status);
+
+        new_body.appendChild(tr);
+    };
+
+    table.appendChild(new_body);
+
+    window.print();
+    if (new_body) table.removeChild(new_body);
+    init_table();
+    return;
+
+}
+
+
 function searchBar() {
 
-    // se tiver o searc h input ele cria um evento de escuta, criando um filter, com o valor atual do input
+    // se tiver o search input ele cria um evento de escuta, criando um filter, com o valor atual do input
     if (search_input) {
         search_input.addEventListener("keyup", function () {
 
