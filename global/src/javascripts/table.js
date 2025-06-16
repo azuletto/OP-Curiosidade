@@ -30,6 +30,8 @@ function init_table() {
         localStorage.setItem("page_number", String(page_number));
     }
 
+    
+
     page_number = Number(localStorage.getItem("page_number"))
 
     let users_list = JSON.parse(localStorage.getItem("users_list"))
@@ -64,6 +66,12 @@ function init_table() {
         t_email.innerHTML = `${table_data[page_number][i]?.email}`
         t_status.innerHTML = `${table_data[page_number][i]?.status}`
 
+
+        if (window.location.pathname.includes("dash-page")) {
+        let t_data_create = document.createElement("td")
+        t_data_create.innerHTML = `${table_data[page_number][i]?.time_stamp}`
+        tr.appendChild(t_data_create)
+        }
 
         if (window.location.pathname.includes("cadastro-page")) {
 
@@ -151,7 +159,7 @@ function loadTable() {
     for (let i = 0; i < Math.ceil(users_list.length / 10); i++) {
         table_data.push(users_list.slice((i * 10), (i * 10 + 10)));
     }
-
+    localStorage.setItem("table_data",String(table_data))
     return table_data;
 }
 
