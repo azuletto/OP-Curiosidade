@@ -54,30 +54,49 @@
     margin-right: 70px;
 
 }
+p {
+    color: var(--text-color);
+}
 
 @media print {
+    table {
+    page-break-inside: auto;
+    }
     header {
         display: none;
     }
-
+    button {
+        display: none;
+    }
+    
+    #number-page {
+        display: none;
+    }
     #press-header {
         display: none;
     }
-
+    td {
+        color: black;
+        border: solid;
+        border-width: 1px;
+        border-color: rgb(139, 139, 139);
+    }
+    th {
+        color: black;
+    }
+    #table-title {
+        color:black;
+    }
     #table-container {
         width: 100%;
         height: 100%;
         border-radius: 0;
         box-shadow: none;
+        overflow: visible;
     }
-
-    #table-view {
-        overflow: hidden;
+    #table-container > *{
+        width: 100%;
+        height: auto;
+        overflow: visible;
     }
-    td {
-        border: solid;
-        border-width: 1px;
-        border-color: rgb(139, 139, 139);
-    }
-    
 }

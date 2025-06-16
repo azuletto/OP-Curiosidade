@@ -14,13 +14,10 @@ export function deleteUser(userId) {
 }
 
 function backupDelete(userId) {
-    console.log("Deleting user with ID:", userId);
     let user = users_list.find(user => Number(user.id) === Number(userId));
-    console.log("User to be deleted:", user);
 
     if (user) {
         users_list.splice(users_list.indexOf(user), 1);
-        console.log(`Updated users_list:`, users_list);
         localStorage.setItem("users_list", JSON.stringify(users_list));
         desableUsers.push(user);
         localStorage.setItem("desable_users", JSON.stringify(desableUsers));

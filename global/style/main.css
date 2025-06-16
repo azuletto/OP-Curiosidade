@@ -20,7 +20,7 @@
     font-weight: bold;
 }
 #table-container {
-    border-radius: 0;
+    border-radius: 20px;
     width: 90%;
     
     align-self: center;
@@ -33,7 +33,7 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.24);
 }
 #table-header:hover {
-    background-color: var(--back-color);
+    background-color: var(--hover-table-color);
     cursor: default;
 }
 #table-view {
@@ -42,6 +42,19 @@
     height: 70%;
 }
 
+#pagination-buttons {
+    display: flex;
+    height: 20px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 8px;
+}
+
+.pagination-button:hover {
+    cursor: pointer;
+}
 th {
     color: var(--text-color);
 }
@@ -54,7 +67,7 @@ td {
     color: var(--text-color);
 }
 tr:hover {
-    background-color: var(--back-color);
+    background-color: var(--hover-table-color);
 }
 table {
     border-collapse: collapse;

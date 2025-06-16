@@ -10,7 +10,6 @@ export function verifyEdit(userId, edit) {
 
 function editUser(userId, edit) {
     localStorage.setItem("edit_mode", JSON.stringify(edit));
-    console.log("Edit mode set to:", localStorage.getItem("edit_mode"));
 
     let users = JSON.parse(localStorage.getItem("users_list")) || [];
 
@@ -30,7 +29,6 @@ function editUser(userId, edit) {
 
         modal.showModal();
 
-        console.log("Usuário encontrado:", user_edit);
 
         submitButton.addEventListener("click", function (e) {
             e.preventDefault(); 
