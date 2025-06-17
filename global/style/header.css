@@ -1,8 +1,17 @@
 body {
+    
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--back-color);
 }
 
+#geral-container {
+    display: flexbox;
+    margin-left: calc(12%);
+}
+#aside-container {
+    display: flex;
+    flex-direction: column;
+}
 ul {
     list-style: none;
 }
@@ -35,40 +44,31 @@ header {
     border-right: 0;
 
 }
+aside {
+    flex-direction: column;
 
+}
 nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 200px;
+    background-color: #e8e8e8;
     height: 100vh;
-    display: none;
-    background-color: var(--nav-user-back-color);
-    cursor: default;
+    width: 12%;
 }
 
 #logout-text {
     color: var(--text-color);
 }
 
-#menu-hamburguer:hover > nav {
-    display: block;
-    animation: fadeIn 0.3s ease-in-out forwards;
-}
+
 
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-#menu-hamburguer:hover>button#hamburguer-button {
-    display: none;
-    
-}
 
-#menu-hamburguer:hover {
-    cursor: pointer;
-}
+
+
 
 #exit-button:hover {
     cursor: pointer;
@@ -143,12 +143,12 @@ nav {
     outline: none;
 }
 
-.nav-bar {
-    display: block;
-    background-image: var(--nav-gradient-color);
-    height: 100vh;
-}
 
+.nav-bar {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: none;
+}
 .nav-list {
     font-weight: 100;
     display: flex;
