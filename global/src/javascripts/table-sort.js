@@ -6,18 +6,20 @@ if (!localStorage.getItem("set_sort")) {
     set_sort[1] = false
     set_sort[2] = false
     set_sort[3] = false
-    localStorage.setItem("set_sort", String(set_sort))
+    localStorage.setItem("set_sort", JSON.stringify(set_sort))
 }
 
 export function sort_by_name() {
-    let users_list = []
-    users_list = JSON.parse(localStorage.getItem("users_list"))
+    let users_list;
+    users_list = JSON.parse((localStorage.getItem("users_list")))
+
     users_list.sort((a, b) => a.name.localeCompare(b.name));
 
     let set_sort = JSON.parse(localStorage.getItem("set_sort"))
     if (set_sort[0] === true) {
         users_list = sort_by_name_d()
     }
+    console.log("Lista ordenada func: "+users_list)
     return users_list;
 }
 
@@ -46,7 +48,7 @@ export function sort_by_status() {
 export function sort_by_time_stamp() {
     let users_list = []
     users_list = JSON.parse(localStorage.getItem("users_list"))
-    users_list.sort((a, b) => new Date(a.time_stamp) - new Date(b.time_stamp));
+    users_list.sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp));
     let set_sort = JSON.parse(localStorage.getItem("set_sort"))
     if (set_sort[3] === true) {
         users_list = sort_by_time_stamp_d()
@@ -78,6 +80,6 @@ export function sort_by_status_d() {
 export function sort_by_time_stamp_d() {
     let users_list = []
     users_list = JSON.parse(localStorage.getItem("users_list"))
-    users_list.sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp));
+    users_list.sort((a, b) => new Date(a.time_stamp) - new Date(b.time_stamp));
     return users_list;
 }

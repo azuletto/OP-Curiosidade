@@ -17,15 +17,32 @@ let f_users_list;
 let table = document.querySelector("table");
 let search_input = document.querySelector(".search-bar");
 
-searchBar();
 let table_data = [];
-table_data = loadTable();
 
-if(!window.location.pathname.includes("dash-page")) {
+
+if (!window.location.pathname.includes("dash-page")) {
     sort_filter_event()
+    let get_set_sort = JSON.parse(localStorage.getItem("set_sort"))
+
+    if (get_set_sort[0]) { document.getElementById("sort-name").innerHTML = "Nome ^" } else { document.getElementById("sort-name").innerHTML = "Nome" }
+    if (get_set_sort[1]) { document.getElementById("sort-email").innerHTML = "Email ^" } else { document.getElementById("sort-email").innerHTML = "Email" }
+    if (get_set_sort[2]) { document.getElementById("sort-status").innerHTML = "Status ^" } else { document.getElementById("sort-status").innerHTML = "Status" }
+    if (get_set_sort[3]) { document.getElementById("sort-timestamp").innerHTML = "Criação ^" } else { document.getElementById("sort-timestamp").innerHTML = "Criação" }
+}
+if (window.location.pathname.includes("dash-page")) {
+    f_users_list = table_sort.sort_by_time_stamp()
+    localStorage.setItem("users_list", JSON.stringify(f_users_list))
+
+    let set_sort = [];
+    set_sort[0] = false
+    set_sort[1] = false
+    set_sort[2] = false
+    set_sort[3] = false
+    localStorage.setItem("set_sort", JSON.stringify(set_sort))
 }
 
-
+searchBar();
+loadTable();
 init_table();
 updateTable();
 
@@ -37,7 +54,7 @@ function init_table() {
 
     if (!localStorage.getItem("page_number") || window.location.pathname.includes("dash-page")) {
         let page_number = 0;
-        localStorage.setItem("page_number", String(page_number));
+        localStorage.setItem("page_number", JSON.stringify(page_number));
     }
 
 
@@ -50,7 +67,7 @@ function init_table() {
 
     if (page_number >= max_number_page) {
         page_number = max_number_page - 1;
-        localStorage.setItem("page_number", String(page_number))
+        localStorage.setItem("page_number", JSON.stringify(page_number))
     }
 
     if (!window.location.pathname.includes("dash-page")) {
@@ -108,7 +125,7 @@ function init_table() {
 function updateTable() {
     if (window.location.pathname.includes("dash-page")) {
         let page_number = 0;
-        localStorage.setItem("page_number", String(page_number))
+        localStorage.setItem("page_number", JSON.stringify(page_number))
         return;
     }
 
@@ -118,7 +135,7 @@ function updateTable() {
     nextButton.addEventListener("click", function () {
         if (page_number < Math.ceil(users_list.length / 10) - 1) {
             page_number++;
-            localStorage.setItem("page_number", String(page_number))
+            localStorage.setItem("page_number", JSON.stringify(page_number))
             let tbody = document.querySelector("tbody");
             table.removeChild(tbody)
             init_table()
@@ -129,7 +146,7 @@ function updateTable() {
     prevButton.addEventListener("click", function () {
         if (page_number > 0) {
             page_number--;
-            localStorage.setItem("page_number", String(page_number))
+            localStorage.setItem("page_number", JSON.stringify(page_number))
             let tbody = document.querySelector("tbody");
             table.removeChild(tbody)
             init_table()
@@ -151,6 +168,7 @@ function loadTable() {
     ///seta como default o modo de edição desativado
     localStorage.setItem("edit_mode", JSON.stringify(false));
 
+
     ///seta a variável local com o que tem no espaço de memória e se não tiver nada, carrega o model
     let users_list = JSON.parse(localStorage.getItem("users_list")) || [];
 
@@ -164,12 +182,13 @@ function loadTable() {
 
 
 
-    let table_data = [];
+    let l_table_data = [];
 
     for (let i = 0; i < Math.ceil(users_list.length / 10); i++) {
-        table_data.push(users_list.slice((i * 10), (i * 10 + 10)));
+        l_table_data.push(users_list.slice((i * 10), (i * 10 + 10)));
     }
-    return table_data;
+    table_data = l_table_data
+    return;
 }
 
 window.pressLoad = pressLoad;
@@ -191,14 +210,17 @@ export function pressLoad() {
         let t_name = document.createElement("td");
         let t_email = document.createElement("td");
         let t_status = document.createElement("td");
+        let t_time_stamp = document.createElement("td");
 
         t_name.textContent = table_data[i].name;
         t_email.textContent = table_data[i].email;
         t_status.textContent = table_data[i].status;
+        t_time_stamp.textContent = table_data[i].time_stamp
 
         tr.appendChild(t_name);
         tr.appendChild(t_email);
         tr.appendChild(t_status);
+        tr.appendChild(t_time_stamp)
 
         new_body.appendChild(tr);
     };
@@ -312,17 +334,68 @@ function searchBar() {
 function sort_filter_event() {
 
     sort_name_tr.addEventListener("click", () => {
+
         f_users_list = table_sort.sort_by_name()
-        localStorage.setItem("users_list",String(f_users_list))
+
+        let set_sort = [];
+        let get_set_sort = JSON.parse(localStorage.getItem("set_sort"))
+
+        if (get_set_sort[0]) { set_sort[0] = false } else { set_sort[0] = true }
+        set_sort[1] = false
+        set_sort[2] = false
+        set_sort[3] = false
+
+        localStorage.setItem("users_list", JSON.stringify(f_users_list))
+        localStorage.setItem("set_sort", JSON.stringify(set_sort))
+        window.location.reload()
+
     })
     sort_email_tr.addEventListener("click", () => {
         f_users_list = table_sort.sort_by_email()
+
+        let set_sort = [];
+        let get_set_sort = JSON.parse(localStorage.getItem("set_sort"))
+
+        set_sort[0] = false
+        if (get_set_sort[1]) { set_sort[1] = false } else { set_sort[1] = true }
+        set_sort[2] = false
+        set_sort[3] = false
+
+        localStorage.setItem("users_list", JSON.stringify(f_users_list))
+        localStorage.setItem("set_sort", JSON.stringify(set_sort))
+
+        window.location.reload()
     })
-    sort_email_tr.addEventListener("click", () => {
-        f_users_list = table_sort.sort_by_email()
+    sort_status_tr.addEventListener("click", () => {
+        f_users_list = table_sort.sort_by_status()
+
+        let set_sort = [];
+        let get_set_sort = JSON.parse(localStorage.getItem("set_sort"))
+
+        set_sort[0] = false
+        set_sort[1] = false
+        if (get_set_sort[2]) { set_sort[2] = false } else { set_sort[2] = true }
+        set_sort[3] = false
+        localStorage.setItem("users_list", JSON.stringify(f_users_list))
+        localStorage.setItem("set_sort", JSON.stringify(set_sort))
+        window.location.reload()
+
     })
     sort_timestamp.addEventListener("click", () => {
         f_users_list = table_sort.sort_by_time_stamp()
+
+        let set_sort = [];
+        let get_set_sort = JSON.parse(localStorage.getItem("set_sort"))
+
+        set_sort[0] = false
+        set_sort[1] = false
+        set_sort[2] = false
+        if (get_set_sort[3]) { set_sort[3] = false } else { set_sort[3] = true }
+
+        localStorage.setItem("users_list", JSON.stringify(f_users_list))
+        localStorage.setItem("set_sort", JSON.stringify(set_sort))
+
+        window.location.reload()
     })
 
 }
