@@ -62,7 +62,7 @@
                 <div id="button-text"><p>Novo cadastro</p></div>
             </button>
         </div>
-        <dialog>
+        <dialog id="register-modal">
             <form id="user-form" method="dialog">
                 <div id="modal-container">
                     <div id="modal-header">
@@ -135,6 +135,15 @@
                     </div>
                 </div>
             </form>
+        </dialog>
+        <dialog id="delete-confirm">
+            <div id="delete-container">
+                <p id="delete-message">Você realmente deseja deletar esse usuário?</p>
+                <div id="buttons-container">
+                    <button type="button" id="confirm-delete"><span>Excluir</span></button>
+                    <button type="button" id="cancel-delete"><span>Cancelar</span></button>
+                </div>
+            </div>
         </dialog>
         <div id="table-container">
             <p id="table-title">Últimos cadastros</p>
