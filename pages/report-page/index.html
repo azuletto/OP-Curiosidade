@@ -14,55 +14,67 @@
 </head>
 
 <body>
-    <header>
-        <div id="menu-hamburguer">
-            <button id="hamburguer-button">
-                <img src="assets/image/menu-icon-svg.svg" alt="Menu" style="width: 100%; height: 100%;">
-            </button>
-            <nav>
-                <div class="user-area">
-                    <img id="user-photo" src="assets/image/user-icon.svg" alt="">
-                    <p id="username">Nome do usuário</p>
+    <div id="aside-container">
+        <div id="geral-container">
+            <header>
+                <div id="menu-hamburguer">
+                    <button id="hamburguer-button">
+                        <img src="assets/image/menu-icon-svg.svg" alt="Menu" style="width: 100%; height: 100%;">
+                    </button>
+
                 </div>
+                <div class="area-search">
+                    <search class="search-bar-area">
+                        <input class="search-bar" type="text" placeholder="Pesquisa" name="search" required>
+                    </search>
+                </div>
+                <div id="theme-toggle-container">
+                    <input type="checkbox" id="theme-toggle">
+                    <label id="theme-toggle-label" for="theme-toggle">
+                    </label>
+                    <p id="toggle-tittle">Tema</p>
+                </div>
+            </header>
+            <main id="main">
+                <div id="container">
+                    <p id="opitions-title">Relatórios</p>
+                    <ul class="opitions-list">
+                        <li id="report-option"><a id="userlist-opition" href="report-page.html">Lista de usuários</a>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+        <nav id="nav">
+            <div class="user-area">
+                <img class="svg-icon" id="user-photo" src="assets/image/user-icon.svg" alt="">
+                <p id="username"></p>
                 <ul class="nav-bar">
-                    <li><a class="nav-list" href="../dash-page/index.html">Home</a></li>
-                    <li><a class="nav-list" href="../cadastro-page/index.html">Cadastro</a></li>
-                    <li><a class="nav-list" href="../report-page/index.html">Relatórios</a></li>
-                    <div style="display: flex; text-align: center;">
-                        <div onclick="window.location.href='../login-page/index.html' " id="logout-area">
-                            <span id="logout-text" style="text-align: center; font-size: 20px;">Sair</span>
-                            <button id="exit-button" href="../login-page/index.html" type="button"
-                                onclick="window.location.href='../login-page/index.html'">
-                                <img src="assets/image/exit-icon.svg" alt="Menu" style="width: 100%; height: 100%;">
-                            </button>
-                        </div>
+                    <div id="menu-opt">
+                        <li><a class="nav-list" href="../dash-page/index.html">Home</a></li>
+                        <li><a class="nav-list" href="../cadastro-page/index.html">Cadastro</a></li>
+                        <li><a class="nav-list" href="../report-page/index.html">Relatórios</a></li>
+                        <li>
+                            <div style="justify-self: left;" onclick="window.location.href='../login-page/index.html' "
+                                id="logout-area">
+                                <button id="exit-button" href="../login-page/index.html" type="button"
+                                    onclick="window.location.href='../login-page/index.html'">
+                                    <img class="svg-icon" src="assets/image/exit-icon.svg" alt="Menu"
+                                        style="width: 100%; height: 100%;">
+                                </button>
+                                <span id="logout-text" style="text-align: center; font-size: 20px;">Sair</span>
+                            </div>
+                        </li>
                     </div>
+
                 </ul>
-            </nav>
-        </div>
-        <div class="area-search">
-            <search class="search-bar-area">    
-                <input class="search-bar" type="text" placeholder="Pesquisa" name="search" required>
-            </search>
-        </div>
-        <div id="theme-toggle-container">
-            <input type="checkbox" id="theme-toggle">
-            <label id="theme-toggle-label" for="theme-toggle">
-            </label>
-            <p id="toggle-tittle">Tema</p>
-        </div>
-    </header>
-    <main id="main">
-        <div id="container">
-            <p id="opitions-title">Relatórios</p>
-            <ul class="opitions-list">
-                <li id="report-option"><a id="userlist-opition" href="report-page.html">Lista de usuários</a></li>
-            </ul>
-        </div>
-    </main>
+            </div>
+            <button id="hide-nav"><span>&lt;</span></button>
+        </nav>
     </div>
 </body>
 <script src="../../global/src/javascripts/theme-toggler/theme-toggler.js"></script>
 <script src="../../global/src/javascripts/login.js"></script>
+<script src="../../global/src/javascripts/nav.js"></script>
 
 </html>
