@@ -30,6 +30,7 @@ a {
 }
 
 header {
+    position: sticky;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -49,26 +50,53 @@ aside {
 
 }
 nav {
+    display: flex;
+    flex-direction: column;
     position: fixed;
-    background-color: #e8e8e8;
+    left: 0;
+    background-color: var(--header-color);
     height: 100vh;
     width: 12%;
+    z-index: 2000px;
+    border-style: solid;
+    border-top: 0;
+    border-left: 0;
+    border-width: 8px;
+    border-color:var(--header-border-color);
 }
+@media (max-width: 1100px) {
+  nav {
+    width: 15%; 
+  }
+  #geral-container {
+    margin-left: calc(15%);
+}
+
+}
+@media (max-width: 940px) {
+  nav {
+    width: 20%; 
+  }
+  #geral-container {
+    margin-left: calc(20%);
+}
+
+}
+
+    @media (max-width: 740px) {
+        nav {
+            width: 40%;
+        }
+
+        #geral-container {
+            margin-left: calc(20%);
+        }
+    }
+
 
 #logout-text {
     color: var(--text-color);
 }
-
-
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-
-
-
 
 #exit-button:hover {
     cursor: pointer;
@@ -86,7 +114,9 @@ nav {
 }
 
 #username {
+    font-size: large;
     color: var(--text-color);
+    margin-bottom: 30%;
 }
 
 #user-photo {
@@ -96,7 +126,6 @@ nav {
     border-radius: 100%;
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.199);
 }
-
 #hamburguer-button {
     background-color: var(--button-color);
     margin-left: 10%;
@@ -106,13 +135,15 @@ nav {
     border-color: #00000000;
     border-radius: 10px;
 }
-
+#hamburguer-button:hover {
+    background-color: var(--button-hover-color);
+}
 #exit-button {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-color: #00000000;
     border: none;
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 .area-search {
@@ -143,16 +174,21 @@ nav {
     outline: none;
 }
 
-
-.nav-bar {
+#menu-opt {
     display: flex;
     flex-wrap: wrap;
-    min-width: none;
+    text-wrap: initial;
+    width: 10px;
+}
+.nav-bar {
+    margin-right: 70%;
 }
 .nav-list {
     font-weight: 100;
     display: flex;
     margin-bottom: 12px;
+    font-size: x-large;
+
 }
 
 .nav-list:hover {
@@ -167,7 +203,27 @@ nav {
     justify-content: center;
     align-items: center;
 }
-
+#hide-nav {
+    display: flex;
+    width: 15px;
+    height: 40px;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: var(--text-color);
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    border-radius: 20%;
+    border: none;
+    box-shadow: -4px 2px 8px rgba(0, 0, 0, 0.400);
+    background-color: var(--button-color);
+    margin-left: 100%;
+}
+#hide-nav:hover{
+cursor: pointer;
+background-color: var(--button-hover-color);
+}
 #theme-toggle {
     visibility: hidden;
     width: 0;

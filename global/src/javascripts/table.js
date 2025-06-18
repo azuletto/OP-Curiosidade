@@ -93,7 +93,16 @@ function init_table() {
         t_name.innerHTML = `${table_data[page_number][i]?.name}`
         t_email.innerHTML = `${table_data[page_number][i]?.email}`
         t_status.innerHTML = `${table_data[page_number][i]?.status}`
-        t_data_create.innerHTML = `${table_data[page_number][i]?.time_stamp}`
+        t_data_create.innerHTML = new Date(table_data[page_number][i]?.time_stamp)
+            .toLocaleString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            })
+            .replace(',', ' -');
 
         if (window.location.pathname.includes("cadastro-page")) {
 
@@ -194,7 +203,7 @@ function loadTable() {
 window.pressLoad = pressLoad;
 
 export function pressLoad() {
-
+    
     // Remove o corpo da tabela atual para poder renderizar a tabela com os usuários filtrados
     let tbody = document.querySelector("tbody");
     if (tbody) table.removeChild(tbody);
@@ -215,7 +224,16 @@ export function pressLoad() {
         t_name.textContent = table_data[i].name;
         t_email.textContent = table_data[i].email;
         t_status.textContent = table_data[i].status;
-        t_time_stamp.textContent = table_data[i].time_stamp
+        t_time_stamp.textContent = new Date(table_data[i].time_stamp)
+                .toLocaleString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            })
+            .replace(',', ' -');
 
         tr.appendChild(t_name);
         tr.appendChild(t_email);

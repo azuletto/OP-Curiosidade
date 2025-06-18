@@ -3,7 +3,7 @@
     --header-color: rgb(233, 233, 233);
     --hover-table-color: #b5b5b5;
     --nav-user-back-color: white;
-    --back-color: #f8f9fa;
+    --back-color: #f4f4f4;
     --text-color: black
     --error-text-color: red;
     --search-container-color: #c6c4bb;
@@ -15,15 +15,19 @@
     --press-btn-collor:rgb(41, 17, 160);
     --press-btn-collor-hvr: rgb(26, 11, 98);
 
+
+    --table-back-color: rgb(255, 255, 255);
     --button-color: #c6c4bb;
     --button-hover-color: #b5b5b5;
     --nav-gradient-color: linear-gradient(to bottom, white, rgb(228, 228, 228));
     --modal-invalid-outline-color: #ff6b6b;
-    --exit-button-hover: rgb(277, 227, 227);
+    --exit-button-hover: rgb(152, 0, 0);
 
-    --card-color-register: #7172a6;
-    --card-color-last-month: #72a673;
-    --card-color-pending: #a37273;
+    --card-color-register: #0003aa;
+    --card-color-last-month: #008a02;
+    --card-color-pending: #c00003;
+    --card-back-color:rgb(255, 255, 255);
+
 
     --toggle-theme-bg-color: #1C1439;
     --login-back-color: rgb(231, 231, 231);
@@ -60,7 +64,7 @@
     --button-hover-color: #b5b5b5;
     --nav-gradient-color: linear-gradient(to bottom, #121212, #131313);
     --modal-invalid-outline-color: #ff6b6b;
-    --exit-button-hover: rgb(277, 227, 227);
+    --exit-button-hover: rgb(152, 0, 0);
 
     --card-back-color: #444444;
     --card-color-register: #9192b3;

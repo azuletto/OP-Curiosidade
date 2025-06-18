@@ -58,6 +58,10 @@ p {
 }
 
 @media print {
+    nav {display: none;}
+    #geral-container {
+        margin-left: 0;
+    }
     table {
     page-break-inside: auto;
     }

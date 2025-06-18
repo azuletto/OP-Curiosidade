@@ -16,85 +16,99 @@
 </head>
 
 <body>
-    <header>
-        <div id="menu-hamburguer">
-            <button id="hamburguer-button">
-                <img src="assets/image/menu-icon-svg.svg" alt="Menu" style="width: 100%; height: 100%;">
-            </button>
-            <nav>
-                <div class="user-area">
-                    <img id="user-photo" src="assets/image/user-icon.svg" alt="">
-                    <p id="username">Nome do usuário</p>
+    <div id="aside-container">
+        <div id="geral-container">
+            <header>
+                <div id="menu-hamburguer">
+                    <button id="hamburguer-button">
+                        <img src="assets/image/menu-icon-svg.svg" alt="Menu" style="width: 100%; height: 100%;">
+                    </button>
+
                 </div>
-                <ul class="nav-bar">
-                    <li><a class="nav-list" href="../dash-page/index.html">Home</a></li>
-                    <li><a class="nav-list" href="../cadastro-page/index.html">Cadastro</a></li>
-                    <li><a class="nav-list" href="../report-page/index.html">Relatórios</a></li>
-                    <div style="display: flex; text-align: center;">
-                        <div onclick="window.location.href='../login-page/index.html' " id="logout-area">
-                            <span id="logout-text" style="text-align: center; font-size: 20px;">Sair</span>
-                            <button id="exit-button" href="../login-page/index.html" type="button"
-                                onclick="window.location.href='../login-page/index.html'">
-                                <img src="assets/image/exit-icon.svg" alt="Menu" style="width: 100%; height: 100%;">
-                            </button>
+                <div class="area-search">
+                    <search class="search-bar-area">
+                        <input class="search-bar" type="text" placeholder="Pesquisa" name="search" required>
+                    </search>
+                </div>
+                <div id="theme-toggle-container">
+                    <input type="checkbox" id="theme-toggle">
+                    <label id="theme-toggle-label" for="theme-toggle">
+                    </label>
+                    <p id="toggle-tittle">Tema</p>
+                </div>
+            </header>
+            <main id="main">
+                <div id="press-header">
+                    <p id="opitions-title">Relatórios</p>
+                    <button id="press-button" onclick="pressLoad()">
+                        <div id="button-text">
+                            <p>Imprimir tabela</p>
                         </div>
-                    </div>
-                </ul>
-            </nav>
-        </div>
-        <div class="area-search">
-            <search class="search-bar-area">    
-                <input class="search-bar" type="text" placeholder="Pesquisa" name="search" required>
-            </search>
-        </div>
-        <div id="theme-toggle-container">
-            <input type="checkbox" id="theme-toggle">
-            <label id="theme-toggle-label" for="theme-toggle">
-            </label>
-            <p id="toggle-tittle">Tema</p>
-        </div>
-    </header>
-    <main id="main">
-        <div id="press-header">
-            <p id="opitions-title">Relatórios</p>
-            <button id="press-button" onclick="pressLoad()">
-                <div id="button-text"><p>Imprimir tabela</p></div>
-            </button>
-        </div>
-        <div id="table-container">
-
-            <p id="table-title">Últimos cadastros</p>
-
-            <div id="pagination-buttons">
-                <button id="previous-page" class="pagination-button">
-                    <span>&lt</span>
-                </button>
-                <p id="number-page">1/1</p>
-                <button id="next-page" class="pagination-button">
-                    <span>&gt</span>
-                </button>
-            </div>
-
-            <div id="table-view">
-                <div id="table-title-border">
+                    </button>
                 </div>
-                <table>
-                    <thead>
-                        <tr id="table-header">
-                            <th id="sort-name" class="sort-tr">Nome</th>
-                            <th id="sort-email" class="sort-tr">Email</th>
-                            <th id="sort-status" class="sort-tr">Status</th>
-                            <th id="sort-timestamp" class="sort-tr">Criação</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+                <div id="table-container">
+
+                    <p id="table-title">Últimos cadastros</p>
+
+                    <div id="pagination-buttons">
+                        <button id="previous-page" class="pagination-button">
+                            <span>&lt</span>
+                        </button>
+                        <p id="number-page">1/1</p>
+                        <button id="next-page" class="pagination-button">
+                            <span>&gt</span>
+                        </button>
+                    </div>
+
+                    <div id="table-view">
+                        <div id="table-title-border">
+                        </div>
+                        <table>
+                            <thead>
+                                <tr id="table-header">
+                                    <th id="sort-name" class="sort-tr">Nome</th>
+                                    <th id="sort-email" class="sort-tr">Email</th>
+                                    <th id="sort-status" class="sort-tr">Status</th>
+                                    <th id="sort-timestamp" class="sort-tr">Criação</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </main>
         </div>
-    </main>
+        <nav id="nav">
+            <div class="user-area">
+                <img class="svg-icon" id="user-photo" src="assets/image/user-icon.svg" alt="">
+                <p id="username"></p>
+                <ul class="nav-bar">
+                    <div id="menu-opt">
+                        <li><a class="nav-list" href="../dash-page/index.html">Home</a></li>
+                        <li><a class="nav-list" href="../cadastro-page/index.html">Cadastro</a></li>
+                        <li><a class="nav-list" href="../report-page/index.html">Relatórios</a></li>
+                        <li>
+                            <div style="justify-self: left;" onclick="window.location.href='../login-page/index.html' "
+                                id="logout-area">
+                                <button id="exit-button" href="../login-page/index.html" type="button"
+                                    onclick="window.location.href='../login-page/index.html'">
+                                    <img class="svg-icon" src="assets/image/exit-icon.svg" alt="Menu"
+                                        style="width: 100%; height: 100%;">
+                                </button>
+                                <span id="logout-text" style="text-align: center; font-size: 20px;">Sair</span>
+                            </div>
+                        </li>
+                    </div>
+
+                </ul>
+            </div>
+            <button id="hide-nav"><span>&lt;</span></button>
+        </nav>
     </div>
     <script src="../../global/src/javascripts/theme-toggler/theme-toggler.js"></script>
     <script src="../../global/src/javascripts/table.js" type="module"></script>
     <script src="../../global/src/javascripts/login.js"></script>
+    <script src="../../global/src/javascripts/nav.js"></script>
+
 
 </body>
 
