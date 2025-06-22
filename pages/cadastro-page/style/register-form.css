@@ -95,6 +95,7 @@ dialog {
 }
 
 .info {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 14px;
     padding: 10px;
     width: 98%;
@@ -103,6 +104,7 @@ dialog {
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.400);
     min-height: 60px;
     resize: none;
+    
 }
 
 #submit-area {
@@ -235,10 +237,10 @@ input {
     background-color: var(--input-color);
     color: var(--text-color);
 }
-
 textarea {
     background-color: var(--input-color);
     color: var(--text-color);
+    font-size: medium;
 }
 #user_adress {
     margin-bottom: 80px;
