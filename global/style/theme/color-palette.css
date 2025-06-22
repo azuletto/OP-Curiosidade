@@ -38,6 +38,9 @@
     --login-button-hover-color: #3f9145;
     --login-text-color: #ffffff;
     --linear-toggle-gradient: linear-gradient(white, rgb(197, 197, 197));
+    --hide-button-url: url(../../../pages/login-page/assets/image/hide_icon_light.svg);
+    --show-button-url: url(../../../pages/login-page/assets/image/show_icon_light.svg);
+
 }
 
 .dark-theme:root {
@@ -81,5 +84,8 @@
 
     --table-back-color: #444444;
     --linear-toggle-gradient: linear-gradient(#000000, #595959);
+
+    --hide-button-url: url(../../../pages/login-page/assets/image/hide_icon_dark.svg);
+    --show-button-url: url(../../../pages/login-page/assets/image/show_icon_dark.svg);
 
 }
