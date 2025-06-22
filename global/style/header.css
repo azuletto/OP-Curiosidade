@@ -31,6 +31,8 @@ a {
 
 header {
     position: sticky;
+    top: 0;
+    z-index: 2000px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -58,11 +60,7 @@ nav {
     height: 100vh;
     width: 12%;
     z-index: 2000px;
-    border-style: solid;
-    border-top: 0;
-    border-left: 0;
-    border-width: 8px;
-    border-color:var(--header-border-color);
+    border: none;
 }
 @media (max-width: 1100px) {
   nav {
@@ -205,20 +203,19 @@ nav {
 }
 #hide-nav {
     display: flex;
-    width: 15px;
+    width: 4px;
     height: 40px;
-    font-size: larger;
+    font-size: large;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
     color: var(--text-color);
     align-items: center;
     justify-content: center;
     align-self: center;
-    border-radius: 20%;
     border: none;
-    box-shadow: -4px 2px 8px rgba(0, 0, 0, 0.400);
+    border-radius: 2px;
     background-color: var(--button-color);
-    margin-left: 100%;
+    margin-left: 90%;
 }
 #hide-nav:hover{
 cursor: pointer;

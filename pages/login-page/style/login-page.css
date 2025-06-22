@@ -8,13 +8,12 @@
         height: 100vh;
     }
 
-    #error-message {
-        display: flex;
-        margin-top: 5px;
-        align-self: flex-start;
-        font-size: small;
+    #login-error-message {
+        text-align: center;
         color: var(--error-text-color);
     }
+
+
 
     .login-button {
         background-color: var(--login-button-color);

@@ -15,7 +15,7 @@
     --press-btn-collor:rgb(41, 17, 160);
     --press-btn-collor-hvr: rgb(26, 11, 98);
 
-
+    --error-text-color: rgb(255, 65, 65);
     --table-back-color: rgb(255, 255, 255);
     --button-color: #c6c4bb;
     --button-hover-color: #b5b5b5;
@@ -49,7 +49,7 @@
     --nav-user-back-color: #121212;
     --back-color: #1d1d1d;
     --text-color: #E0E0E0;
-    --error-text-color: red;
+    --error-text-color: rgb(255, 90, 90);
     --search-container-color: #444444;
     --search-bar-border-color: #6B6875;
     --menu-itens-color: invert(100%);

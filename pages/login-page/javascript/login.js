@@ -2,7 +2,12 @@ import { regexEmail } from "/global/src/javascripts/email-regex.js";
 
 const login_button = document.getElementById("login-button");
 const error_message = document.getElementById("error-message");
-
+const login_error_message = document.getElementById("login-error-message")
+const urlParams = new URLSearchParams(window.location.search);
+const errorParam = urlParams.get("error");
+if (errorParam === "not_logged") {
+    login_error_message.innerHTML = "Você <strong>não está logado</strong>, entre com um usuário para continuar.";
+}
 const user = {
     username: "admin",
     password: "opcuriosidade",
