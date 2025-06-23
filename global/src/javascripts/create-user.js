@@ -23,6 +23,7 @@ users_list = JSON.parse(localStorage.getItem("users_list")) || [];
 
 const submitButton = document.getElementById("submit-button");
 const exitButton = document.getElementById("exit-register-modal");
+const user_age = document.getElementById("user_age");
 let error_message = document.getElementById("error-message");
 
 exitButton.addEventListener("click", function (e) {
@@ -33,7 +34,16 @@ modal.addEventListener("close", function (e) {
     clearModal();
 });
 
-
+user_age.addEventListener("keyup", () => {
+    let user_age_input = user_age.value
+    const date = new Date().toISOString().split('T')[0];
+    if(user_age_input > date) {
+        console.log("Idade inválida")
+        user_age.value = date
+    }
+    console.log("Data do usuário: " + user_age_input)
+    console.log("Data de hoje e máxima: " + date)
+})
 
 
 submitButton.addEventListener("click", function (e) {

@@ -201,26 +201,36 @@ input {
     display: flex;
     flex-direction: column;
     margin-bottom: 8px;
-    margin-top: 34px;
-    
+    margin-top: 14px;
+    padding: 14px;
+    margin-left: 14px;
+    margin-right: 14px;
+    border-radius: 14px;
     justify-content: center;
     align-items: center;
 }
 #hide-nav {
     display: flex;
-    width: 4px;
-    height: 40px;
-    font-size: large;
+    box-shadow: -4px 1px 4px rgba(0, 0, 0, 0.3);
+    height: 30px;
+    font-size: medium;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
+    font-weight: bold;
     color: var(--text-color);
     align-items: center;
     justify-content: center;
     align-self: center;
     border: none;
-    border-radius: 2px;
+    border-radius: 8px;
     background-color: var(--button-color);
-    margin-left: 90%;
+    margin-left: 98%;
+}
+#logout-line {
+    position: absolute;
+    align-self: flex-end;
+    height: 1px;
+    width: 70%;
+    background-color: var(--text-color);
 }
 #hide-nav:hover{
 cursor: pointer;
@@ -276,6 +286,7 @@ background-color: var(--button-hover-color);
     color: var(--text-color);
     text-align: center;
     align-self: center;
+    margin-top: 0;
 }
 #theme-toggle:checked + #theme-toggle-label::after {
     left: 60px; /* Move para o lado direito */

@@ -24,7 +24,7 @@
     width: 90%;
     
     align-self: center;
-    height: 50%;
+    height: 65%;
 
     background-color: var(--table-back-color);
     border: none;
@@ -45,7 +45,16 @@
     overflow: scroll;
     height: 70%;
 }
-
+.pagination-button {
+    background-color: var(--button-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    border: none;
+    width: 40px;
+}
+.pagination-button:hover {
+    background-color: var(--button-hover-color);
+}
 #pagination-buttons {
     display: flex;
     height: 20px;
@@ -61,11 +70,13 @@
 }
 th {
     color: var(--text-color);
+    text-align: left;
 }
 
 td {
-    font-size: large;
-    text-align: center;
+    font-size: 1rem;
+    width: 100px; /* Largura fixa (necessária) */
+    text-align: left;
     border-style: solid;
     border-width: 0;
     border-color: rgba(0, 0, 0, 0.397);

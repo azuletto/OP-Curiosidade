@@ -19,6 +19,7 @@
 #userlist-opition:hover {
     font-weight: bold
 }
+
 .button-text {
     justify-self: center;
 }
@@ -53,43 +54,59 @@
     margin-right: 8%;
 
 }
+
 p {
     color: var(--text-color);
 }
 
+#table-view {
+    margin-left: 14px;
+}
+
 @media print {
-    nav {display: none;}
+    nav {
+        display: none;
+    }
+
     #geral-container {
         margin-left: 0;
     }
+
     table {
-    page-break-inside: auto;
+        page-break-inside: auto;
     }
+
     header {
         display: none;
     }
+
     button {
         display: none;
     }
-    
+
     #number-page {
         display: none;
     }
+
     #press-header {
         display: none;
     }
+
     td {
         color: black;
         border: solid;
         border-width: 1px;
         border-color: rgb(139, 139, 139);
     }
+
     th {
         color: black;
     }
+
     #table-title {
-        color:black;
+        color: black;
     }
+
     #table-container {
         width: 100%;
         height: 100%;
@@ -97,9 +114,14 @@ p {
         box-shadow: none;
         overflow: visible;
     }
-    #table-container > *{
+
+    #table-container>* {
         width: 100%;
         height: auto;
         overflow: visible;
+    }
+
+    #table-view {
+        margin-left: 0;
     }
 }

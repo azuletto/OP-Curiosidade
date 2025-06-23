@@ -42,7 +42,7 @@
                     <p id="opitions-title">Edição | Exclusão | Criação</p>
                     <button id="register-button">
                         <div id="button-text">
-                            <p>Novo cadastro</p>
+                            <p style="color: white">Novo cadastro</p>
                         </div>
                     </button>
                 </div>
@@ -76,7 +76,10 @@
                                         <label class="modal-input-name">
                                             <p>Idade</p>
                                             <input id="user_age" class="input-modal date-input" type="date" id="age"
-                                                name="age" required>
+                                                name="age" 
+                                                min="1940-01-01"
+                                                max="2025-01-01"
+                                                required>
                                         </label>
                                     </div>
 
@@ -151,8 +154,8 @@
                 <table>
                     <thead>
                         <tr id="table-header">
-                            <th>Editar</th>
-                            <th>Excluir</th>
+                            <th style="text-align: center;">Editar</th>
+                            <th style="text-align: center;">Excluir</th>
                             <th id="sort-name" class="sort-tr">Nome</th>
                             <th id="sort-email" class="sort-tr">Email</th>
                             <th id="sort-status" class="sort-tr">Status</th>
@@ -168,12 +171,16 @@
                 <div class="user-area">
                     <img class="svg-icon" id="user-photo" src="assets/image/user-icon.svg" alt="">
                     <p id="username"></p>
+                </div>
+                <div id="side-bar-area">
                     <ul class="nav-bar">
                         <div id="menu-opt">
                             <li><a class="nav-list" href="../dash-page/index.html">Home</a></li>
                             <li><a class="nav-list" href="../cadastro-page/index.html">Cadastro</a></li>
                             <li><a class="nav-list" href="../report-page/index.html">Relatórios</a></li>
                             <li>
+                                
+                                <div id="logout-line"></div>
                                 <div style="justify-self: left;"
                                     onclick="window.location.href='../login-page/index.html' " id="logout-area">
                                     <button id="exit-button" href="../login-page/index.html" type="button"
@@ -185,7 +192,7 @@
                                 </div>
                             </li>
                         </div>
-
+    
                     </ul>
                 </div>
                 <button id="hide-nav"><span>&lt;</span></button>

@@ -107,7 +107,9 @@ function init_table() {
         if (window.location.pathname.includes("cadastro-page")) {
 
             let t_edit = document.createElement("td")
+            t_edit.id = "td-edit"
             let t_delete = document.createElement("td")
+            t_delete.id = "td-delete"
             const edit = true;
 
             t_edit.innerHTML = `<button id="edit-button" onclick="verifyEdit(${table_data[page_number][i]?.id},${edit})"> 
