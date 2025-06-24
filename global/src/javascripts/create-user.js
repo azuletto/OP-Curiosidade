@@ -24,7 +24,14 @@ users_list = JSON.parse(localStorage.getItem("users_list")) || [];
 const submitButton = document.getElementById("submit-button");
 const exitButton = document.getElementById("exit-register-modal");
 const user_age = document.getElementById("user_age");
-let error_message = document.getElementById("error-message");
+let email_error = document.getElementById("email-error");
+let name_error = document.getElementById("name-error");
+let age_error = document.getElementById("age-error");
+let adress_error = document.getElementById("error-input");
+let user_info_error = document.getElementById("error-input-1");
+let user_interess_error = document.getElementById("error-input-2");
+let user_feelings_error = document.getElementById("error-input-3");
+let user_valors_error = document.getElementById("error-input-4");
 
 exitButton.addEventListener("click", function (e) {
     clearModal();
@@ -37,7 +44,7 @@ modal.addEventListener("close", function (e) {
 user_age.addEventListener("keyup", () => {
     let user_age_input = user_age.value
     const date = new Date().toISOString().split('T')[0];
-    if(user_age_input > date) {
+    if (user_age_input > date) {
         console.log("Idade inválida")
         user_age.value = date
     }
@@ -67,7 +74,7 @@ submitButton.addEventListener("click", function (e) {
 
         if (!verfifyUser(user)) {
             e.preventDefault();
-            return error_message;
+            return Error
         }
         verifyStorage();
         saveUser(user);
@@ -86,40 +93,121 @@ function clearModal() {
     document.getElementById("user_feelings").value = ""
     document.getElementById("user_valors").value = ""
     document.getElementById("user_status").checked = false;
-    document.getElementById("error-message").innerHTML = "";
-
+    document.getElementById("email-error").innerHTML = "";
+    document.getElementById("name-error").innerHTML = "";
+    document.getElementById("age-error").innerHTML = "";
+    document.getElementById("error-input").innerHTML = "";
+    document.getElementById("error-input-1").innerHTML = "";
+    document.getElementById("error-input-2").innerHTML = "";
+    document.getElementById("error-input-3").innerHTML = "";
+    document.getElementById("error-input-4").innerHTML = "";
 }
 
-function verfifyUser(user) {
+export function verfifyUser(user) {
 
-    error_message.innerHTML = "";
+    email_error.innerHTML = "";
+    name_error.innerHTML = "";
+    age_error.innerHTML = "";
+    adress_error.innerHTML = "";
+    user_info_error.innerHTML = "";
+    user_interess_error.innerHTML = "";
+    user_feelings_error.innerHTML = "";
+    user_valors_error.innerHTML = "";
 
+
+    console.log("O modo de edição está: "+JSON.parse(localStorage.getItem("edit_mode")))
+
+    if (String(user.name).trim() === "") {
+        name_error.innerHTML = "O campo de nome não pode estar vazio."
+        document.getElementById("user_name").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+        return false;
+    }
 
     if (String(user.email).trim() === "") {
-        error_message.innerHTML = "O campo de e-mail não pode estar vazio.";
+        document.getElementById("user_email").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+        email_error.innerHTML = "O campo de e-mail não pode estar vazio.";
         return false;
     }
 
 
     if (regexEmail(user.email) !== true) {
-        error_message.innerHTML = "Você inseriu um e-mail inválido. Tente novamente.";
+        document.getElementById("user_email").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+        email_error.innerHTML = "Você inseriu um e-mail inválido. Tente novamente.";
         return false;
     }
 
-
-    if (users_list.some(u => u.email === user.email)) {
-        error_message.innerHTML = "E-mail já cadastrado.";
-        return false;
-    }
-
-
-    const requiredFields = ['name', 'age', 'adress', 'info', 'interess', 'feelings', 'valors'];
-    for (let key of requiredFields) {
-        if (!user[key] || String(user[key]).trim() === "") {
-            error_message.innerHTML = `O campo ${key} não pode estar vazio.`;
+    let edit_mode = JSON.parse(localStorage.getItem("edit_mode"))
+    if (!edit_mode) {
+        if (users_list.some(u => u.email === user.email)) {
+            document.getElementById("user_email").scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+            email_error.innerHTML = "E-mail já cadastrado.";
             return false;
         }
     }
+
+
+    if(user_age.value < new Date("1920-01-01").toISOString().split('T')[0] ||
+       user_age.value > new Date().toISOString().split('T')[0]) {
+        document.getElementById("user_age").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+        age_error.innerHTML = "Data de nascimento inválida.";
+        return false;
+    }
+    if(String(user.adress).trim() === "") {
+        document.getElementById("user_adress").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+        adress_error.innerHTML = "O campo de endereço não pode estar vazio.";
+        return false;
+    }
+    if (String(user.info).trim() === "") {
+        document.getElementById("user_info").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+        user_info_error.innerHTML = "O campo de informações não pode estar vazio.";
+        return false;
+    }
+    if (String(user.interess).trim() === "") {
+        document.getElementById("user_interess").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+        user_interess_error.innerHTML = "O campo de interesses não pode estar vazio.";
+        return false;
+    }
+    if (String(user.feelings).trim() === "") {
+        document.getElementById("user_feelings").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+        user_feelings_error.innerHTML = "O campo de sentimentos não pode estar vazio.";
+        return false;
+    }
+    if (String(user.valors).trim() === "") {
+        document.getElementById("user_valors").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+        user_valors_error.innerHTML = "O campo de valores não pode estar vazio.";
+        return false;
+    }
+
 
 
     return true;

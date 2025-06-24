@@ -52,7 +52,7 @@ dialog {
     background-color: var(--exit-button-hover);
 }
 
-#error-message {
+.error-message {
     display: flex;
     margin-top: 5px;
     align-self: flex-start;
@@ -167,13 +167,14 @@ dialog {
     align-items: center;
     margin-left: 8%;
     margin-right: 8%;
-
+    margin-bottom: 5%;
     
 }
 
 #delete-button {
     background-color: #ffffff00;
     border: none;
+
 }
 #td-edit {
 text-align: center;
@@ -219,6 +220,11 @@ text-align: center;
     font-size: x-large;
     color: var(--text-color);
 }
+.error-message {
+    font-size: 1.1em;
+    font-weight: normal;
+}
+
 
 dialog {
     background-color: var(--back-color);
@@ -246,9 +252,7 @@ textarea {
     color: var(--text-color);
     font-size: medium;
 }
-#user_adress {
-    margin-bottom: 80px;
-}
+
 #cancel-span {
     color: var(--text-color);
 }

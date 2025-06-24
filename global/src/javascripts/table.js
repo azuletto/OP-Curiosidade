@@ -104,31 +104,31 @@ function init_table() {
             })
             .replace(',', ' -');
 
-        if (window.location.pathname.includes("cadastro-page")) {
-
-            let t_edit = document.createElement("td")
-            t_edit.id = "td-edit"
-            let t_delete = document.createElement("td")
-            t_delete.id = "td-delete"
-            const edit = true;
-
-            t_edit.innerHTML = `<button id="edit-button" onclick="verifyEdit(${table_data[page_number][i]?.id},${edit})"> 
-            <img src="../../../pages/cadastro-page/assets/image/edit-icon.svg" alt="Edit User" width="10px" height="10px">
-            </button>`
-            t_delete.innerHTML = `<button id="delete-button" onclick="deleteUser(${table_data[page_number][i]?.id})">
-            <img style="color:red;" src="../../../pages/cadastro-page/assets/image/delete-icon.svg" alt="Delete user" width="10px" height="10px">
-            </button>`
-
-            tr.appendChild(t_edit)
-            tr.appendChild(t_delete)
-        }
-
-        tr.appendChild(t_name)
-        tr.appendChild(t_email)
-        tr.appendChild(t_status)
-        tr.appendChild(t_data_create)
-
-        body.appendChild(tr)
+            
+            tr.appendChild(t_name)
+            tr.appendChild(t_email)
+            tr.appendChild(t_status)
+            tr.appendChild(t_data_create)
+            if (window.location.pathname.includes("cadastro-page")) {
+    
+                let t_edit = document.createElement("td")
+                t_edit.id = "td-edit"
+                let t_delete = document.createElement("td")
+                t_delete.id = "td-delete"
+                const edit = true;
+    
+                t_edit.innerHTML = `<button id="edit-button" onclick="verifyEdit(${table_data[page_number][i]?.id},${edit})"> 
+                <img src="../../../pages/cadastro-page/assets/image/edit-icon.svg" alt="Edit User" width="10px" height="10px">
+                </button>`
+                t_delete.innerHTML = `<button id="delete-button" onclick="deleteUser(${table_data[page_number][i]?.id})">
+                <img style="color:red;" src="../../../pages/cadastro-page/assets/image/delete-icon.svg" alt="Delete user" width="10px" height="10px">
+                </button>`
+    
+                tr.appendChild(t_edit)
+                tr.appendChild(t_delete)
+            }
+            
+            body.appendChild(tr)
     }
     table.appendChild(body);
 }
