@@ -6,7 +6,7 @@ body {
 
 #geral-container {
     display: flexbox;
-    margin-left: calc(12%);
+    margin-left: clamp(170px, 12vw, 12vw);
 }
 #aside-container {
     display: flex;
@@ -31,6 +31,8 @@ a {
 
 header {
     position: sticky;
+    top: 0;
+    z-index: 2000px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -53,46 +55,15 @@ nav {
     display: flex;
     flex-direction: column;
     position: fixed;
+    overflow-y: auto;
     left: 0;
     background-color: var(--header-color);
     height: 100vh;
-    width: 12%;
+    width: 12vw;
+    min-width: 170px;
     z-index: 2000px;
-    border-style: solid;
-    border-top: 0;
-    border-left: 0;
-    border-width: 8px;
-    border-color:var(--header-border-color);
+    border: none;
 }
-@media (max-width: 1100px) {
-  nav {
-    width: 15%; 
-  }
-  #geral-container {
-    margin-left: calc(15%);
-}
-
-}
-@media (max-width: 940px) {
-  nav {
-    width: 20%; 
-  }
-  #geral-container {
-    margin-left: calc(20%);
-}
-
-}
-
-    @media (max-width: 740px) {
-        nav {
-            width: 40%;
-        }
-
-        #geral-container {
-            margin-left: calc(20%);
-        }
-    }
-
 
 #logout-text {
     color: var(--text-color);
@@ -107,7 +78,9 @@ nav {
     justify-content: center;
     align-items: center;
 }
-
+#side-bar-area {
+    width: 3vw;
+}
 #logout-area:hover {
     font-weight: bolder;
     cursor: pointer;
@@ -124,7 +97,7 @@ nav {
     width: 50px;
     height: 50px;
     border-radius: 100%;
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.199);
+    border: solid;
 }
 #hamburguer-button {
     background-color: var(--button-color);
@@ -156,11 +129,15 @@ nav {
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+input {
+    font-size: medium;
+}
 
 .search-bar {
     display: flex;
     width: 100%;
     height: 30px;
+    font-size: medium;
     border-radius: 5px;
     border: 1px solid var(--search-bar-border-color);
     background-color: var(--input-color);
@@ -181,14 +158,14 @@ nav {
     width: 10px;
 }
 .nav-bar {
-    margin-right: 70%;
+    font-size: clamp(12px, 2vw, 20px); /* Mínimo 12px, ideal 2% da largura da tela, máximo 20px */
 }
 .nav-list {
     font-weight: 100;
     display: flex;
     margin-bottom: 12px;
-    font-size: x-large;
-
+    font-size: 1.2em;
+    white-space: nowrap;
 }
 
 .nav-list:hover {
@@ -199,26 +176,36 @@ nav {
     display: flex;
     flex-direction: column;
     margin-bottom: 8px;
-    margin-top: 34px;
+    margin-top: 14px;
+    padding: 14px;
+    margin-left: 14px;
+    margin-right: 14px;
+    border-radius: 14px;
     justify-content: center;
     align-items: center;
 }
 #hide-nav {
     display: flex;
-    width: 15px;
-    height: 40px;
-    font-size: larger;
+    box-shadow: -4px 1px 4px rgba(0, 0, 0, 0.3);
+    height: 30px;
+    font-size: medium;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
+    font-weight: bold;
     color: var(--text-color);
     align-items: center;
     justify-content: center;
     align-self: center;
-    border-radius: 20%;
     border: none;
-    box-shadow: -4px 2px 8px rgba(0, 0, 0, 0.400);
+    border-radius: 8px;
     background-color: var(--button-color);
-    margin-left: 100%;
+    margin-left: 90%;
+}
+#logout-line {
+    position: absolute;
+    align-self: flex-end;
+    height: 1px;
+    width: 70%;
+    background-color: var(--text-color);
 }
 #hide-nav:hover{
 cursor: pointer;
@@ -274,6 +261,7 @@ background-color: var(--button-hover-color);
     color: var(--text-color);
     text-align: center;
     align-self: center;
+    margin-top: 0;
 }
 #theme-toggle:checked + #theme-toggle-label::after {
     left: 60px; /* Move para o lado direito */

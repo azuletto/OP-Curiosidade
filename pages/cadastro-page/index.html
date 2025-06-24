@@ -42,7 +42,7 @@
                     <p id="opitions-title">Edição | Exclusão | Criação</p>
                     <button id="register-button">
                         <div id="button-text">
-                            <p>Novo cadastro</p>
+                            <p style="color: white">Novo cadastro</p>
                         </div>
                     </button>
                 </div>
@@ -60,6 +60,7 @@
                                         <label class="modal-input-name">
                                             <p>Nome</p>
                                             <input id="user_name" class="input-modal" type="text" name="name" required>
+                                            <p id="name-error" class="error-message"></p>
                                             <p class="status-container">Ativo: <input type="checkbox" id="user_status">
                                             </p>
                                         </label>
@@ -70,13 +71,14 @@
                                             <p>Email</p>
                                             <input id="user_email" class="input-modal" type="email" id="email"
                                                 name="email" formnovalidate>
-                                            <p id="error-message"></p>
+                                            <p id="email-error" class="error-message"></p>
                                         </label>
 
                                         <label class="modal-input-name">
                                             <p>Idade</p>
                                             <input id="user_age" class="input-modal date-input" type="date" id="age"
                                                 name="age" required>
+                                            <p id="age-error" class="error-message"></p>
                                         </label>
                                     </div>
 
@@ -85,23 +87,29 @@
                                             <p>Endereço</p>
                                             <input id="user_adress" class="input-modal" type="text" id="adress"
                                                 name="email" required>
+                                                <p id="error-input" class="error-message"></p>
                                         </label>
                                     </div>
                                 </div>
 
                                 <div id="infos-area">
+
                                     <label>
                                         <p>Outras informações</p>
                                         <textarea id="user_info" class="info" name="info" required></textarea>
+                                        <p id="error-input-1" class="error-message"></p>
                                     </label>
 
                                     <div id="others">
                                         <h3 class="modal-subtitle">Interesses</h3>
                                         <textarea id="user_interess" class="info" name="info" required></textarea>
+                                        <p id="error-input-2" class="error-message"></p>
                                         <h3 class="modal-subtitle">Sentimentos</h3>
                                         <textarea id="user_feelings" class="info" name="info" required></textarea>
+                                        <p id="error-input-3" class="error-message"></p>
                                         <h3 class="modal-subtitle">Valores</h3>
                                         <textarea id="user_valors" class="info" name="info" required></textarea>
+                                        <p id="error-input-4" class="error-message"></p>
                                     </div>
                                 </div>
 
@@ -151,12 +159,12 @@
                 <table>
                     <thead>
                         <tr id="table-header">
-                            <th>Editar</th>
-                            <th>Excluir</th>
                             <th id="sort-name" class="sort-tr">Nome</th>
                             <th id="sort-email" class="sort-tr">Email</th>
                             <th id="sort-status" class="sort-tr">Status</th>
                             <th id="sort-timestamp" class="sort-tr">Criação</th>
+                            <th style="text-align: center;">Editar</th>
+                            <th style="text-align: center;">Excluir</th>
                         </tr>
                     </thead>
                 </table>
@@ -168,12 +176,16 @@
                 <div class="user-area">
                     <img class="svg-icon" id="user-photo" src="assets/image/user-icon.svg" alt="">
                     <p id="username"></p>
+                </div>
+                <div id="side-bar-area">
                     <ul class="nav-bar">
                         <div id="menu-opt">
                             <li><a class="nav-list" href="../dash-page/index.html">Home</a></li>
                             <li><a class="nav-list" href="../cadastro-page/index.html">Cadastro</a></li>
                             <li><a class="nav-list" href="../report-page/index.html">Relatórios</a></li>
                             <li>
+                                
+                                <div id="logout-line"></div>
                                 <div style="justify-self: left;"
                                     onclick="window.location.href='../login-page/index.html' " id="logout-area">
                                     <button id="exit-button" href="../login-page/index.html" type="button"
@@ -185,7 +197,7 @@
                                 </div>
                             </li>
                         </div>
-
+    
                     </ul>
                 </div>
                 <button id="hide-nav"><span>&lt;</span></button>

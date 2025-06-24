@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/image/login-ico.ico" type="image/x-icon">
     <link rel="stylesheet" href="style/login-page.css">
     <link rel="stylesheet" href="../../global/style/theme/color-palette.css">
+    <link rel="stylesheet" href="../../global/style/error.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login page</title>
@@ -32,11 +33,14 @@
                     <p id="error-message"></p>
                 </div>
                 <div class="input-group">
+                    <button id="show-pass-button"></button>
                     <label class="input-label">
                         <input autocomplete="current-password" class="input" id="password" type="password"
                             placeholder="Sua senha" name="password" required>
+
                     </label>
                 </div>
+                <p id="login-error-message"></p>
                 <button id="login-button" class="login-button" type="button">Entrar</button>
             </form>
         </div>

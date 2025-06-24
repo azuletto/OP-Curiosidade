@@ -1,5 +1,5 @@
-window.verifyEdit = verifyEdit; 
-
+window.verifyEdit = verifyEdit;
+import { verfifyUser } from "./create-user.js";
 let user_edit;
 
 const submitButton = document.getElementById("submit-button");
@@ -31,7 +31,8 @@ function editUser(userId, edit) {
 
 
         submitButton.addEventListener("click", function (e) {
-            e.preventDefault(); 
+            e.preventDefault();
+
             user_edit.name = document.getElementById("user_name").value;
             user_edit.age = document.getElementById("user_age").value;
             user_edit.email = document.getElementById("user_email").value;
@@ -42,18 +43,22 @@ function editUser(userId, edit) {
             user_edit.valors = document.getElementById("user_valors").value;
             user_edit.status = document.getElementById("user_status").checked ? "active" : "inactive";
             let users_list = JSON.parse(localStorage.getItem("users_list"));
-            users_list.find(user => Number(user.id) === Number(userId)).name = user_edit.name;
-            users_list.find(user => Number(user.id) === Number(userId)).age = user_edit.age;
-            users_list.find(user => Number(user.id) === Number(userId)).email = user_edit.email;
-            users_list.find(user => Number(user.id) === Number(userId)).adress = user_edit.adress;
-            users_list.find(user => Number(user.id) === Number(userId)).info = user_edit.info;
-            users_list.find(user => Number(user.id) === Number(userId)).interess = user_edit.interess;
-            users_list.find(user => Number(user.id) === Number(userId)).feelings = user_edit.feelings;
-            users_list.find(user => Number(user.id) === Number(userId)).valors = user_edit.valors;
-            users_list.find(user => Number(user.id) === Number(userId)).status = user_edit.status;
-            localStorage.setItem("users_list", JSON.stringify(users_list));
-            localStorage.setItem("edit_mode", JSON.stringify(false));
-            window.location.reload();
+
+            if (verfifyUser(user_edit)) {
+                users_list.find(user => Number(user.id) === Number(userId)).name = user_edit.name;
+                users_list.find(user => Number(user.id) === Number(userId)).age = user_edit.age;
+                users_list.find(user => Number(user.id) === Number(userId)).email = user_edit.email;
+                users_list.find(user => Number(user.id) === Number(userId)).adress = user_edit.adress;
+                users_list.find(user => Number(user.id) === Number(userId)).info = user_edit.info;
+                users_list.find(user => Number(user.id) === Number(userId)).interess = user_edit.interess;
+                users_list.find(user => Number(user.id) === Number(userId)).feelings = user_edit.feelings;
+                users_list.find(user => Number(user.id) === Number(userId)).valors = user_edit.valors;
+                users_list.find(user => Number(user.id) === Number(userId)).status = user_edit.status;
+                localStorage.setItem("users_list", JSON.stringify(users_list));
+                localStorage.setItem("edit_mode", JSON.stringify(false));
+                window.location.reload();
+            }
+
         });
 
     }

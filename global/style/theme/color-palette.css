@@ -4,9 +4,9 @@
     --hover-table-color: #b5b5b5;
     --nav-user-back-color: white;
     --back-color: #f4f4f4;
-    --text-color: black
+    --text-color: black;
     --error-text-color: red;
-    --search-container-color: #c6c4bb;
+    --search-container-color: #dcdcdc;
     --search-bar-border-color: #aeadad;
     --input-color: white;
     --menu-itens-color: brightness(0%);
@@ -15,7 +15,7 @@
     --press-btn-collor:rgb(41, 17, 160);
     --press-btn-collor-hvr: rgb(26, 11, 98);
 
-
+    --error-text-color: rgb(255, 65, 65);
     --table-back-color: rgb(255, 255, 255);
     --button-color: #c6c4bb;
     --button-hover-color: #b5b5b5;
@@ -38,6 +38,9 @@
     --login-button-hover-color: #3f9145;
     --login-text-color: #ffffff;
     --linear-toggle-gradient: linear-gradient(white, rgb(197, 197, 197));
+    --hide-button-url: url(../../../pages/login-page/assets/image/hide_icon_light.svg);
+    --show-button-url: url(../../../pages/login-page/assets/image/show_icon_light.svg);
+
 }
 
 .dark-theme:root {
@@ -49,7 +52,7 @@
     --nav-user-back-color: #121212;
     --back-color: #1d1d1d;
     --text-color: #E0E0E0;
-    --error-text-color: red;
+    --error-text-color: rgb(255, 90, 90);
     --search-container-color: #444444;
     --search-bar-border-color: #6B6875;
     --menu-itens-color: invert(100%);
@@ -81,5 +84,8 @@
 
     --table-back-color: #444444;
     --linear-toggle-gradient: linear-gradient(#000000, #595959);
+
+    --hide-button-url: url(../../../pages/login-page/assets/image/hide_icon_dark.svg);
+    --show-button-url: url(../../../pages/login-page/assets/image/show_icon_dark.svg);
 
 }

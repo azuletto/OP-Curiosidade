@@ -8,13 +8,12 @@
         height: 100vh;
     }
 
-    #error-message {
-        display: flex;
-        margin-top: 5px;
-        align-self: flex-start;
-        font-size: small;
+    #login-error-message {
+        text-align: center;
         color: var(--error-text-color);
     }
+
+
 
     .login-button {
         background-color: var(--login-button-color);
@@ -77,7 +76,18 @@
     .login-text {
         text-align: center;
     }
-
+    #show-pass-button {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        align-self: flex-end;
+        margin-top: 9px;
+        margin-right: 9px;
+        border: none;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0);
+        background: var(--hide-button-url);
+    }
     .login-title {
         text-align: center;
         color: var(--login-logo-color);
