@@ -169,18 +169,18 @@ function updateTable() {
 
 function loadTable() {
 
-    ///verifica se o localStorage já tem a lista de usuários, se não tiver, cria uma lista vazia
+    
     if (!localStorage.getItem("users_list")) {
         localStorage.setItem("users_list", JSON.stringify([]));
     }
 
 
 
-    ///seta como default o modo de edição desativado
+    
     localStorage.setItem("edit_mode", JSON.stringify(false));
 
 
-    ///seta a variável local com o que tem no espaço de memória e se não tiver nada, carrega o model
+    
     let users_list = JSON.parse(localStorage.getItem("users_list")) || [];
 
     if (users_list.length === 0 && localStorage.getItem("users_list") === "[]") {
@@ -188,7 +188,7 @@ function loadTable() {
         localStorage.setItem("users_list", JSON.stringify(users_list));
     }
 
-    ///aqui eu tenho que carregar uma lista de listas
+    
     users_list = JSON.parse(localStorage.getItem("users_list"));
 
 
@@ -206,11 +206,11 @@ window.pressLoad = pressLoad;
 
 export function pressLoad() {
     
-    // Remove o corpo da tabela atual para poder renderizar a tabela com os usuários filtrados
+    
     let tbody = document.querySelector("tbody");
     if (tbody) table.removeChild(tbody);
 
-    // Cria novo corpo da tabela com os resultados filtrados, seguindo a mesma lógica da criação da tabela anterior
+    
     let new_body = document.createElement("tbody");
 
     let table_data = JSON.parse(localStorage.getItem("users_list"))
@@ -257,7 +257,7 @@ export function pressLoad() {
 
 function searchBar() {
 
-    // se tiver o search input ele cria um evento de escuta, criando um filter, com o valor atual do input
+    
     if (search_input) {
         search_input.addEventListener("keyup", function () {
 
@@ -280,8 +280,8 @@ function searchBar() {
                 users_list = table_data[0]
             }
 
-            // Se a busca estiver vazia, ele pega e tira o body que pode ter sido criado pela busca
-            // limpando assim a tabela e pedindo para renderizar normalmente.
+            
+            
             if (filter === "") {
                 let tbody = document.querySelector("tbody");
                 if (tbody) table.removeChild(tbody);
@@ -289,20 +289,20 @@ function searchBar() {
                 return;
             }
 
-            // cria uma variável que vai conter todos os usuários com o filtro que o input está
-            // ou seja, ele retorna só os usuários que em filter, user.arg.toLowerCase().includes(input)
-            // para todo usuário que inclue algo do filtro, ele é retornado.
+            
+            
+            
             let filtered_users = users_list.filter(user => {
                 return user.name.toLowerCase().includes(filter) ||
                     user.email.toLowerCase().includes(filter) ||
                     user.status.toLowerCase().includes(filter);
             });
 
-            // Remove o corpo da tabela atual para poder renderizar a tabela com os usuários filtrados
+            
             let tbody = document.querySelector("tbody");
             if (tbody) table.removeChild(tbody);
 
-            // Cria novo corpo da tabela com os resultados filtrados, seguindo a mesma lógica da criação da tabela anterior
+            
             let new_body = document.createElement("tbody");
 
             filtered_users.forEach(user => {
@@ -341,13 +341,12 @@ function searchBar() {
 
             table.appendChild(new_body);
 
-            // Atualiza o número da página para mostrar "Filtrado" em vez da paginação normal
+            
             if (!window.location.pathname.includes("dash-page")) {
                 number_page.innerHTML = `Filtrado (${filtered_users.length} resultados)`;
             }
         });
     } else {
-        console.warn("Elemento 'search-bar' não encontrado");
     }
 }
 

@@ -82,15 +82,15 @@ th {
     color: var(--text-color);
     text-align: left;
     font-size: clamp(20px, 1vw, 30px);
-    /* Mínimo 12px, ideal 2% da largura da tela, máximo 20px */
+   
 
 }
 
 td {
     font-size: clamp(16px, 1vw, 30px);
-    /* Mínimo 12px, ideal 2% da largura da tela, máximo 20px */
+   
     width: 100px;
-    /* Largura fixa (necessária) */
+   
     text-align: left;
     border-style: solid;
     border-width: 0;

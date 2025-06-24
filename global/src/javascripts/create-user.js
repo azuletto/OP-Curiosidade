@@ -33,54 +33,52 @@ let user_interess_error = document.getElementById("error-input-2");
 let user_feelings_error = document.getElementById("error-input-3");
 let user_valors_error = document.getElementById("error-input-4");
 
-exitButton.addEventListener("click", function (e) {
-    clearModal();
-    e.preventDefault();
-});
-modal.addEventListener("close", function (e) {
-    clearModal();
-});
 
-user_age.addEventListener("keyup", () => {
-    let user_age_input = user_age.value
-    const date = new Date().toISOString().split('T')[0];
-    if (user_age_input > date) {
-        console.log("Idade inválida")
-        user_age.value = date
-    }
-    console.log("Data do usuário: " + user_age_input)
-    console.log("Data de hoje e máxima: " + date)
-})
-
-
-submitButton.addEventListener("click", function (e) {
-
-
-
-    let editMode = JSON.parse(localStorage.getItem("edit_mode"));
-
-    if (editMode === false) {
-        user.name = document.getElementById("user_name").value;
-        user.age = document.getElementById("user_age").value;
-        user.email = document.getElementById("user_email").value;
-        user.adress = document.getElementById("user_adress").value;
-        user.info = document.getElementById("user_info").value;
-        user.interess = document.getElementById("user_interess").value;
-        user.feelings = document.getElementById("user_feelings").value;
-        user.valors = document.getElementById("user_valors").value;
-        user.status = document.getElementById("user_status").checked ? "active" : "inactive";
-        user.time_stamp = new Date().toISOString();
-
-
-        if (!verfifyUser(user)) {
-            e.preventDefault();
-            return Error
+if(window.location.pathname.includes("cadastro-page")) {
+    exitButton.addEventListener("click", function (e) {
+        clearModal();
+        e.preventDefault();
+    });
+    modal.addEventListener("close", function (e) {
+        clearModal();
+    });
+    user_age.addEventListener("keyup", () => {
+        let user_age_input = user_age.value
+        const date = new Date().toISOString().split('T')[0];
+        if (user_age_input > date) {
+            user_age.value = date
         }
-        verifyStorage();
-        saveUser(user);
+    })
+    submitButton.addEventListener("click", function (e) {
+    
+    
+    
+        let editMode = JSON.parse(localStorage.getItem("edit_mode"));
+    
+        if (editMode === false) {
+            user.name = document.getElementById("user_name").value;
+            user.age = document.getElementById("user_age").value;
+            user.email = document.getElementById("user_email").value;
+            user.adress = document.getElementById("user_adress").value;
+            user.info = document.getElementById("user_info").value;
+            user.interess = document.getElementById("user_interess").value;
+            user.feelings = document.getElementById("user_feelings").value;
+            user.valors = document.getElementById("user_valors").value;
+            user.status = document.getElementById("user_status").checked ? "active" : "inactive";
+            user.time_stamp = new Date().toISOString();
+    
+    
+            if (!verfifyUser(user)) {
+                e.preventDefault();
+                return Error
+            }
+            verifyStorage();
+            saveUser(user);
+    
+        }
+    });
+}
 
-    }
-});
 
 function clearModal() {
 
@@ -115,7 +113,6 @@ export function verfifyUser(user) {
     user_valors_error.innerHTML = "";
 
 
-    console.log("O modo de edição está: "+JSON.parse(localStorage.getItem("edit_mode")))
 
     if (String(user.name).trim() === "") {
         name_error.innerHTML = "O campo de nome não pode estar vazio."

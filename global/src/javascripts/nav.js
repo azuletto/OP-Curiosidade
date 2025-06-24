@@ -3,9 +3,26 @@ const hideNav = document.getElementById("hide-nav")
 const geralContent = document.getElementById("geral-container")
 const nav = document.getElementById("nav")
 
-const homeOpt = document.getElementById("")
-const dashOpt = document.getElementById("")
-const reportOpt = document.getElementById("")
+const itensMenu = document.querySelectorAll('.nav-list');
+
+
+if (window.location.pathname.includes("dash-page")) {
+    itensMenu[0].style.backgroundColor = "var(--hover-table-color)";
+    itensMenu[0].style.width = '100vw';
+}
+if (window.location.pathname.includes("cadastro-page")) {
+    itensMenu[1].style.backgroundColor = "var(--hover-table-color)";
+    itensMenu[1].style.width = '100vw';
+}
+if (window.location.pathname.includes("report-page")) {
+    itensMenu[2].style.backgroundColor = "var(--hover-table-color)";
+    itensMenu[2].style.width = '100vw';
+}
+
+
+const itemRelatorios = [...itensMenu].find(item => 
+  item.textContent.includes('Relatórios')
+);
 
 
 if(window.innerWidth <= 740) {nav.style.display = "none"

@@ -79,7 +79,8 @@ nav {
     align-items: center;
 }
 #side-bar-area {
-    width: 3vw;
+    width: 100vw;
+    display: block;
 }
 #logout-area:hover {
     font-weight: bolder;
@@ -158,11 +159,15 @@ input {
     width: 10px;
 }
 .nav-bar {
-    font-size: clamp(12px, 2vw, 20px); /* Mínimo 12px, ideal 2% da largura da tela, máximo 20px */
+    font-size: clamp(12px, 2vw, 20px);
+    padding: 0;
+    margin: 0;
+    
 }
 .nav-list {
     font-weight: 100;
-    display: flex;
+    width: 100%;
+    display: block;
     margin-bottom: 12px;
     font-size: 1.2em;
     white-space: nowrap;
@@ -264,7 +269,7 @@ background-color: var(--button-hover-color);
     margin-top: 0;
 }
 #theme-toggle:checked + #theme-toggle-label::after {
-    left: 60px; /* Move para o lado direito */
+    left: 60px;
     transform: translateX(-100%);
     background: var(--linear-toggle-gradient);
 
@@ -275,4 +280,11 @@ background-color: var(--button-hover-color);
 
 img {
   filter: var(--menu-itens-color);
+}
+
+@media (max-width: 700px) {
+  .nav-bar {
+    font-size: 1em;
+    
+}
 }

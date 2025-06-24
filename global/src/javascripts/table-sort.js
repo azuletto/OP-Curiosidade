@@ -19,7 +19,6 @@ export function sort_by_name() {
     if (set_sort[0] === true) {
         users_list = sort_by_name_d()
     }
-    console.log("Lista ordenada func: "+users_list)
     return users_list;
 }
 
