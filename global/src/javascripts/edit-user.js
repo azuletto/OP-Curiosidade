@@ -25,7 +25,7 @@ function editUser(userId, edit) {
         document.getElementById("user_interess").value = user_edit.interess;
         document.getElementById("user_feelings").value = user_edit.feelings;
         document.getElementById("user_valors").value = user_edit.valors;
-        document.getElementById("user_status").checked = user_edit.status === "active";
+        document.getElementById("user_status").checked = user_edit.status === "Ativo";
 
         modal.showModal();
 
@@ -41,7 +41,7 @@ function editUser(userId, edit) {
             user_edit.interess = document.getElementById("user_interess").value;
             user_edit.feelings = document.getElementById("user_feelings").value;
             user_edit.valors = document.getElementById("user_valors").value;
-            user_edit.status = document.getElementById("user_status").checked ? "active" : "inactive";
+            user_edit.status = document.getElementById("user_status").checked ? "Ativo" : "Inativo";
             let users_list = JSON.parse(localStorage.getItem("users_list"));
 
             if (verfifyUser(user_edit)) {

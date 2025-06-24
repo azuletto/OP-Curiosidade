@@ -10,7 +10,7 @@ let example_users_list = [
     valors: "Liberdade, Aprendizado",
     id: "1",
     time_stamp: "2023-01-10T12:34:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Renato Lopes",
@@ -23,7 +23,7 @@ let example_users_list = [
     valors: "Ética, Família",
     id: "2",
     time_stamp: "2023-01-11T08:12:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Tatiane Melo",
@@ -36,7 +36,7 @@ let example_users_list = [
     valors: "Organização, Eficiência",
     id: "3",
     time_stamp: "2023-01-12T14:45:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Alfredo Carvalho",
@@ -49,7 +49,7 @@ let example_users_list = [
     valors: "Inovação, Ética",
     id: "4",
     time_stamp: "2023-01-13T10:05:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "João Santos",
@@ -62,7 +62,7 @@ let example_users_list = [
     valors: "Cuidado, Família",
     id: "5",
     time_stamp: "2023-01-14T09:30:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Milena Nogueira",
@@ -75,7 +75,7 @@ let example_users_list = [
     valors: "Saúde, Crescimento",
     id: "6",
     time_stamp: "2023-01-15T22:10:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Caio Oliveira",
@@ -88,7 +88,7 @@ let example_users_list = [
     valors: "Igualdade, Ética",
     id: "7",
     time_stamp: "2023-01-16T11:55:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Lorena Fernandes",
@@ -101,7 +101,7 @@ let example_users_list = [
     valors: "Diversão, Aprendizado",
     id: "8",
     time_stamp: "2023-01-17T16:40:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Bruno Pereira",
@@ -114,7 +114,7 @@ let example_users_list = [
     valors: "Inovação, Eficiência",
     id: "9",
     time_stamp: "2023-01-18T07:20:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Carla Souza",
@@ -127,7 +127,7 @@ let example_users_list = [
     valors: "Sucesso, Família",
     id: "10",
     time_stamp: "2023-01-19T19:50:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Débora Lima",
@@ -140,7 +140,7 @@ let example_users_list = [
     valors: "Saúde, Equilíbrio",
     id: "11",
     time_stamp: "2023-01-20T13:22:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Fábio Melo",
@@ -153,7 +153,7 @@ let example_users_list = [
     valors: "Eficiência, Resultados",
     id: "12",
     time_stamp: "2023-01-21T21:10:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Helena Carvalho",
@@ -166,7 +166,7 @@ let example_users_list = [
     valors: "Expressão, Beleza",
     id: "13",
     time_stamp: "2023-01-22T10:05:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Igor Santos",
@@ -179,7 +179,7 @@ let example_users_list = [
     valors: "Diversão, Aprendizado",
     id: "14",
     time_stamp: "2023-01-23T17:45:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Joana Rocha",
@@ -192,7 +192,7 @@ let example_users_list = [
     valors: "Inovação, Trabalho em equipe",
     id: "15",
     time_stamp: "2023-01-24T06:30:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Carlos Silva",
@@ -205,7 +205,7 @@ let example_users_list = [
     valors: "Cuidado, Responsabilidade",
     id: "16",
     time_stamp: "2023-01-25T15:25:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Amanda Duarte",
@@ -218,7 +218,7 @@ let example_users_list = [
     valors: "Criatividade, Comunicação",
     id: "17",
     time_stamp: "2023-01-26T10:15:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Fernando Gomes",
@@ -231,7 +231,7 @@ let example_users_list = [
     valors: "Pontualidade, Segurança",
     id: "18",
     time_stamp: "2023-01-27T13:42:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Nathalia Ribeiro",
@@ -244,7 +244,7 @@ let example_users_list = [
     valors: "Cuidado, Saúde",
     id: "19",
     time_stamp: "2023-01-28T09:55:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Lucas Ferreira",
@@ -257,7 +257,7 @@ let example_users_list = [
     valors: "Criatividade, Tradição",
     id: "20",
     time_stamp: "2023-01-29T18:10:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Paula Martins",
@@ -270,7 +270,7 @@ let example_users_list = [
     valors: "Imaginação, Dedicação",
     id: "21",
     time_stamp: "2023-01-30T07:00:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Rodrigo Teixeira",
@@ -283,7 +283,7 @@ let example_users_list = [
     valors: "Estética, Funcionalidade",
     id: "22",
     time_stamp: "2023-01-31T14:30:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Juliana Souza",
@@ -296,7 +296,7 @@ let example_users_list = [
     valors: "Precisão, Inovação",
     id: "23",
     time_stamp: "2023-02-01T11:40:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Marcelo Pinto",
@@ -309,7 +309,7 @@ let example_users_list = [
     valors: "Estabilidade, Prudência",
     id: "24",
     time_stamp: "2023-02-02T16:15:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Isabela Barros",
@@ -322,7 +322,7 @@ let example_users_list = [
     valors: "Liberdade, Criatividade",
     id: "25",
     time_stamp: "2023-02-03T20:05:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Thiago Reis",
@@ -335,7 +335,7 @@ let example_users_list = [
     valors: "Conhecimento, Justiça",
     id: "26",
     time_stamp: "2023-02-04T10:25:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Camila Andrade",
@@ -348,7 +348,7 @@ let example_users_list = [
     valors: "Cuidado, Confiança",
     id: "27",
     time_stamp: "2023-02-05T13:10:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Diego Monteiro",
@@ -361,7 +361,7 @@ let example_users_list = [
     valors: "Imaginação, Dedicação",
     id: "28",
     time_stamp: "2023-02-06T15:45:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
     name: "Patrícia Ramos",
@@ -374,7 +374,7 @@ let example_users_list = [
     valors: "Descoberta, Liberdade",
     id: "29",
     time_stamp: "2023-02-07T09:05:00Z",
-    status: "active"
+    status: "Ativo"
   },
   {
     name: "Gustavo Nunes",
@@ -387,7 +387,7 @@ let example_users_list = [
     valors: "Sustentabilidade, Responsabilidade",
     id: "30",
     time_stamp: "2023-02-08T11:50:00Z",
-    status: "inactive"
+    status: "Inativo"
   },
   {
   name: "Luciana Bastos",
@@ -400,7 +400,7 @@ let example_users_list = [
   valors: "Planejamento, Progresso",
   id: "31",
   time_stamp: "2023-02-09T10:00:00Z",
-  status: "active"
+  status: "Ativo"
 },
 {
   name: "Rafael Brito",
@@ -413,7 +413,7 @@ let example_users_list = [
   valors: "Resolução, Praticidade",
   id: "32",
   time_stamp: "2023-02-10T15:42:00Z",
-  status: "inactive"
+  status: "Inativo"
 },
 {
   name: "Elaine Figueira",
@@ -426,7 +426,7 @@ let example_users_list = [
   valors: "Estabilidade, Clareza",
   id: "33",
   time_stamp: "2023-02-11T12:10:00Z",
-  status: "active"
+  status: "Ativo"
 },
 {
   name: "Douglas Vieira",
@@ -439,7 +439,7 @@ let example_users_list = [
   valors: "Qualidade, Sabor",
   id: "34",
   time_stamp: "2023-02-12T19:30:00Z",
-  status: "inactive"
+  status: "Inativo"
 },
 {
   name: "Jéssica Moraes",
@@ -452,7 +452,7 @@ let example_users_list = [
   valors: "Estilo, Expressão",
   id: "35",
   time_stamp: "2023-02-13T08:20:00Z",
-  status: "active"
+  status: "Ativo"
 },
 {
   name: "André Santana",
@@ -465,7 +465,7 @@ let example_users_list = [
   valors: "Agilidade, Confiança",
   id: "36",
   time_stamp: "2023-02-14T17:00:00Z",
-  status: "inactive"
+  status: "Inativo"
 },
 {
   name: "Beatriz Lima",
@@ -478,7 +478,7 @@ let example_users_list = [
   valors: "Conhecimento, Cuidado",
   id: "37",
   time_stamp: "2023-02-15T11:25:00Z",
-  status: "active"
+  status: "Ativo"
 },
 {
   name: "Mateus Rocha",
@@ -491,7 +491,7 @@ let example_users_list = [
   valors: "Beleza, Inspiração",
   id: "38",
   time_stamp: "2023-02-16T13:40:00Z",
-  status: "inactive"
+  status: "Inativo"
 },
 {
   name: "Daniele Campos",
@@ -504,7 +504,7 @@ let example_users_list = [
   valors: "Empatia, Organização",
   id: "39",
   time_stamp: "2023-02-17T10:10:00Z",
-  status: "active"
+  status: "Ativo"
 },
 {
   name: "Victor Mendes",
@@ -517,7 +517,7 @@ let example_users_list = [
   valors: "Força, Segurança",
   id: "40",
   time_stamp: "2023-02-18T09:30:00Z",
-  status: "inactive"
+  status: "Inativo"
 },
 {
   name: "Letícia Farias",
@@ -530,7 +530,7 @@ let example_users_list = [
   valors: "Verdade, Comunicação",
   id: "41",
   time_stamp: "2023-02-19T13:10:00Z",
-  status: "active"
+  status: "Ativo"
 },
 {
   name: "Eduardo Ramos",
@@ -543,7 +543,7 @@ let example_users_list = [
   valors: "Natureza, Produção",
   id: "42",
   time_stamp: "2023-02-20T16:22:00Z",
-  status: "inactive"
+  status: "Inativo"
 },
 {
   name: "Viviane Cardoso",
@@ -556,7 +556,7 @@ let example_users_list = [
   valors: "Educação, Paciência",
   id: "43",
   time_stamp: "2023-02-21T08:30:00Z",
-  status: "active"
+  status: "Ativo"
 }
 ];
 

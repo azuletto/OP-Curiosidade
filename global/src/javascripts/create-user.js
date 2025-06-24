@@ -64,7 +64,7 @@ if(window.location.pathname.includes("cadastro-page")) {
             user.interess = document.getElementById("user_interess").value;
             user.feelings = document.getElementById("user_feelings").value;
             user.valors = document.getElementById("user_valors").value;
-            user.status = document.getElementById("user_status").checked ? "active" : "inactive";
+            user.status = document.getElementById("user_status").checked ? "Ativo" : "Inativo";
             user.time_stamp = new Date().toISOString();
     
     

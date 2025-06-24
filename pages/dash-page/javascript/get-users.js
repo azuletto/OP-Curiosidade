@@ -4,7 +4,7 @@ let users_list = JSON.parse(localStorage.getItem('users_list'));
 let title_total = document.getElementById("title-total");
 
 let pending_users = document.getElementById("title-pending");
-let pending_users_count = users_list.filter(user => user.status === 'inactive').length;
+let pending_users_count = users_list.filter(user => user.status === 'Inativo').length;
 
 let title_month_users = document.getElementById("title-month");
 
