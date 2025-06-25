@@ -165,8 +165,9 @@ input {
     
 }
 .nav-list {
-    font-weight: 100;
+    font-weight: 300;
     width: 100%;
+    padding: 10px;
     display: block;
     margin-bottom: 12px;
     font-size: 1.2em;
@@ -174,7 +175,7 @@ input {
 }
 
 .nav-list:hover {
-    font-weight: bold;
+    font-weight: 400;
 }
 
 .user-area {
