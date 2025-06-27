@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../../global/style/header.css">
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="../../global/style/theme/color-palette.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
     <title>Relatórios</title>
 </head>
 
@@ -27,12 +29,26 @@
                     <search class="search-bar-area">
                         <input class="search-bar" type="text" placeholder="Pesquisa" name="search" required>
                     </search>
-                </div>
-                <div id="theme-toggle-container">
-                    <input type="checkbox" id="theme-toggle">
-                    <label id="theme-toggle-label" for="theme-toggle">
-                    </label>
-                    <p id="toggle-tittle">Tema</p>
+                    <div id="user-container">
+                        <div class="user-area">
+                            <span id="user-photo" class="material-symbols-outlined">person</span>
+                        </div>
+                        <p id="username"></p>
+                        <div id="header-line"></div>
+                        <div style="justify-self: left;" onclick="window.location.href='../login-page/index.html' "
+                            id="logout-area">
+                            <button id="exit-button" href="../login-page/index.html" type="button"
+                                onclick="window.location.href='../login-page/index.html'">
+                                <span class="material-symbols-outlined">logout</span>
+                            </button>
+                            <span id="logout-text">Sair</span>
+                        </div>
+                        <div id="theme-toggle-container">
+                            <input type="checkbox" id="theme-toggle">
+                            <label id="theme-toggle-label" for="theme-toggle">
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </header>
             <main id="main">
@@ -40,43 +56,42 @@
                     <div id="opt-containter">
                         <p id="opitions-title">Relatórios</p>
                         <ul class="opitions-list">
-                            <li id="report-option"><a id="userlist-opition" href="report-page.html">Lista de usuários</a>
+                            <li id="report-option"><a id="userlist-opition" href="report-page.html">Lista de
+                                    usuários</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </main>
         </div>
-            <nav id="nav">
-                <div class="user-area">
-                    <img class="svg-icon" id="user-photo" src="assets/image/user-icon.svg" alt="">
-                    <p id="username"></p>
+        <nav id="nav">
+            <ul class="nav-bar">
+                <div id="opcuriosidade-header">
+                    <p id="logo">OC</p>
+                    <p id="logo-text">Opereção curiosidade</p>
                 </div>
-                <div id="side-bar-area">
-                    <ul class="nav-bar">
-                        <div id="menu-opt">
-                            <li><a class="nav-list" href="../dash-page/index.html">Home</a></li>
-                            <li><a class="nav-list" href="../cadastro-page/index.html">Cadastro</a></li>
-                            <li><a class="nav-list" href="../report-page/index.html">Relatórios</a></li>
-                            <li>
-                                
-                                <div id="logout-line"></div>
-                                <div style="justify-self: left;"
-                                    onclick="window.location.href='../login-page/index.html' " id="logout-area">
-                                    <button id="exit-button" href="../login-page/index.html" type="button"
-                                        onclick="window.location.href='../login-page/index.html'">
-                                        <img class="svg-icon" src="assets/image/exit-icon.svg" alt="Menu"
-                                            style="width: 100%; height: 100%;">
-                                    </button>
-                                    <span id="logout-text" style="text-align: center; font-size: 20px;">Sair</span>
-                                </div>
-                            </li>
-                        </div>
-    
-                    </ul>
+                <div id="hide-menu">
                 </div>
-                <button id="hide-nav"><span>&lt;</span></button>
-            </nav>
+                <div id="menu-opt">
+                    <li>
+                        <a class="nav-list" href="../dash-page/index.html">
+                            <p class="nav-opt"><span class="material-symbols-outlined">home</span>
+                                Home</p>
+                        </a>
+                    </li>
+                    <li><a class="nav-list" href="../cadastro-page/index.html">
+                            <p class="nav-opt"><span class="material-symbols-outlined">person_add</span>
+                                Cadastro</p>
+                        </a></li>
+                    <li><a class="nav-list" href="../report-page/index.html">
+                            <p class="nav-opt">
+                                <span class="material-symbols-outlined">article_person</span>
+                                Relatórios
+                            </p>
+                        </a></li>
+                </div>
+            </ul>
+        </nav>
     </div>
 </body>
 <script src="../../global/src/javascripts/theme-toggler/theme-toggler.js"></script>

@@ -14,7 +14,7 @@ if (errorParam === "not_logged") {
     login_error_message.innerHTML = "Você <strong>não está logado</strong>, entre com um usuário para continuar.";
 }
 const user = {
-    username: "admin",
+    username: "Administrador",
     password: "opcuriosidade",
     email: "admin@curiosidade.com"
 }

@@ -88,14 +88,23 @@ function init_table() {
         let t_name = document.createElement("td")
         let t_email = document.createElement("td")
         let t_status = document.createElement("td")
+        let t_status_bk = document.createElement("p")
+        t_status_bk.className = "status-bk"
         let t_data_create = document.createElement("td")
 
         t_name.innerHTML = `${table_data[page_number][i]?.name}`
         t_email.innerHTML = `${table_data[page_number][i]?.email}`
-        t_status.innerHTML = `${table_data[page_number][i]?.status}`
-        if (table_data[page_number][i].status === "Ativo") { t_status.style.color = "lime" } else if (
-            table_data[page_number][i].status === "Inativo") {t_status.style.color = "red"}           
-        
+        t_status_bk.innerHTML = `${table_data[page_number][i]?.status}`
+
+        if (table_data[page_number][i].status === "Ativo") {
+            t_status_bk.style.color = "var(--status-color-a)"
+            t_status_bk.id = "status-a"
+            
+        } else if (table_data[page_number][i].status === "Inativo") {
+            t_status_bk.style.color = "var(--status-color-i)"
+            t_status_bk.id = "status-i"
+        }
+
         t_data_create.innerHTML = new Date(table_data[page_number][i]?.time_stamp)
             .toLocaleString('pt-BR', {
                 day: '2-digit',
@@ -107,7 +116,7 @@ function init_table() {
             })
             .replace(',', ' -');
 
-
+        t_status.appendChild(t_status_bk)
         tr.appendChild(t_name)
         tr.appendChild(t_email)
         tr.appendChild(t_status)
@@ -247,7 +256,7 @@ export function pressLoad() {
         tr.appendChild(t_time_stamp)
 
 
-        
+
         new_body.appendChild(tr);
     };
 
@@ -317,13 +326,17 @@ function searchBar() {
                 let t_name = document.createElement("td");
                 let t_email = document.createElement("td");
                 let t_status = document.createElement("td");
-                 if (user.status === "Ativo") { t_status.style.color = "lime" } else if (
-                     user.status === "Inativo") {t_status.style.color = "red"}    
+                let t_status_bk = document.createElement("p");
+
+                if (user.status === "Ativo") {
+                    t_status_bk.style.color = "var(--status-color-a)"
+                } else if (
+                    user.status === "Inativo") { t_status_bk.style.color = "red" }
                 let t_time_stamp = document.createElement("td");
 
                 t_name.textContent = user.name;
                 t_email.textContent = user.email;
-                t_status.textContent = user.status;
+                t_status_bk.textContent = user.status;
                 t_time_stamp.textContent = new Date(user.time_stamp)
                     .toLocaleString('pt-BR', {
                         day: '2-digit',
@@ -334,30 +347,31 @@ function searchBar() {
                         hour12: false
                     })
                     .replace(',', ' -');
+                t_status.appendChild(t_status_bk);
                 tr.appendChild(t_name);
                 tr.appendChild(t_email);
                 tr.appendChild(t_status);
                 tr.appendChild(t_time_stamp);
 
 
-                 if (window.location.pathname.includes("cadastro-page")) {
+                if (window.location.pathname.includes("cadastro-page")) {
 
-            let t_edit = document.createElement("td")
-            t_edit.id = "td-edit"
-            let t_delete = document.createElement("td")
-            t_delete.id = "td-delete"
-            const edit = true;
+                    let t_edit = document.createElement("td")
+                    t_edit.id = "td-edit"
+                    let t_delete = document.createElement("td")
+                    t_delete.id = "td-delete"
+                    const edit = true;
 
-            t_edit.innerHTML = `<button id="edit-button" onclick="verifyEdit(${user.id},${edit})"> 
+                    t_edit.innerHTML = `<button id="edit-button" onclick="verifyEdit(${user.id},${edit})"> 
                 <img src="../../../pages/cadastro-page/assets/image/edit-icon.svg" alt="Edit User" width="10px" height="10px">
                 </button>`
-            t_delete.innerHTML = `<button id="delete-button" onclick="deleteUser(${user.id})">
+                    t_delete.innerHTML = `<button id="delete-button" onclick="deleteUser(${user.id})">
                 <img style="color:red;" src="../../../pages/cadastro-page/assets/image/delete-icon.svg" alt="Delete user" width="10px" height="10px">
                 </button>`
 
-            tr.appendChild(t_edit)
-            tr.appendChild(t_delete)
-        }
+                    tr.appendChild(t_edit)
+                    tr.appendChild(t_delete)
+                }
 
 
                 new_body.appendChild(tr);

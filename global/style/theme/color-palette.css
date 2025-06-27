@@ -1,7 +1,7 @@
 :root {
     --header-border-color: rgb(215, 215, 215);
     --header-color: rgb(233, 233, 233);
-    --hover-table-color: #b5b5b5;
+    --hover-table-color: var(--principal-color);
     --nav-user-back-color: white;
     --back-color: #f4f4f4;
     --text-color: black;
@@ -14,12 +14,17 @@
     --register-btn-collor-hvr: rgb(0, 119, 0);
     --press-btn-collor:rgb(41, 17, 160);
     --press-btn-collor-hvr: rgb(26, 11, 98);
+    --status-color-a: rgb(0, 201, 10);
+    --status-color-i: rgb(201, 9, 9);
+    --principal-color: linear-gradient(to left, #a6bcea, rgb(113, 152, 177));
+    --status-bk-color-a : rgb(153, 255, 153);
+    --status-bk-color-i : rgb(255, 153, 153);
 
     --error-text-color: rgb(255, 65, 65);
     --table-back-color: rgb(255, 255, 255);
     --button-color: #c6c4bb;
     --button-hover-color: #b5b5b5;
-    --nav-gradient-color: linear-gradient(to bottom, white, rgb(228, 228, 228));
+    --nav-gradient-color: linear-gradient(to left, white, rgb(228, 228, 228));
     --modal-invalid-outline-color: #ff6b6b;
     --exit-button-hover: rgb(152, 0, 0);
 
@@ -46,7 +51,7 @@
 .dark-theme:root {
     --header-border-color: rgb(41, 41, 41);
     --header-color: rgb(52, 52, 52);
-    --hover-table-color: #1d1d1d;
+    --hover-table-color: var(--principal-color);
     --input-text-color: rgb(166, 154, 205);
     --input-color: #888888;
     --nav-user-back-color: #121212;
@@ -56,12 +61,15 @@
     --search-container-color: #444444;
     --search-bar-border-color: #6B6875;
     --menu-itens-color: invert(100%);
-
-    --register-btn-collor:rgb(41, 99, 41);
+    --status-color-a: lime;
+    --status-color-i: red;
+    --status-bk-color-a : rgb(153, 255, 153);
+    --status-bk-color-i : rgb(255, 153, 153);
     --register-btn-collor-hvr: rgb(26, 63, 26);
     --press-btn-collor:rgb(41, 41, 99);
     --press-btn-collor-hvr: rgb(26, 26, 63);
-   
+    --principal-color: linear-gradient(to left, #a6bcea, rgb(113, 152, 177));
+
     --button-text-color: white;
     --button-color: #888888;
     --button-hover-color: #b5b5b5;

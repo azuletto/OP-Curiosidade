@@ -9,6 +9,7 @@ export function verifyEdit(userId, edit) {
 }
 
 function editUser(userId, edit) {
+    
     localStorage.setItem("edit_mode", JSON.stringify(edit));
 
     let users = JSON.parse(localStorage.getItem("users_list")) || [];

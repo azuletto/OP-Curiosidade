@@ -1,7 +1,6 @@
 dialog {
     border-width: 0;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.400);
-    border-radius: 10px;
     max-height: 500px;
     height: 100%;
     max-width: 900px;
@@ -38,16 +37,22 @@ dialog {
     height: 25px;
     width: 25px;
     border-width: 0;
-    border-radius: 3px;
+    border-radius: 4px;
     font-family: sans-serif;
     font-weight: bolder;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.300);
     background: none;
-    font-size: 1.2em;
+    font-size: medium;
     cursor: pointer;
     background-color: rgb(255, 42, 42);
 }
-
+.button-text {
+    justify-self: center;   
+}
+#button-text > p {
+    color: white;
+    font-size: larger;
+}
 #exit-register-modal:hover {
     background-color: var(--exit-button-hover);
 }
@@ -56,7 +61,6 @@ dialog {
     display: flex;
     margin-top: 5px;
     align-self: flex-start;
-    font-size: small;
     margin-left: 5px;
     color: var(--error-text-color);
 }
@@ -73,7 +77,7 @@ dialog {
 .input-modal {
     justify-self: center;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.400);
-    border-radius: 10px;
+    
     width: 98%;
     height: 30px;
     border-width: 0px;
@@ -99,7 +103,6 @@ dialog {
     margin-top: 14px;
     padding: 10px;
     width: 98%;
-    border-radius: 10px;
     border-width: 0;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.400);
     min-height: 60px;
@@ -167,7 +170,6 @@ dialog {
     align-items: center;
     margin-left: 8%;
     margin-right: 8%;
-    margin-bottom: 5%;
     
 }
 
@@ -208,20 +210,17 @@ text-align: center;
     width: 38%;
 }
 
-.button-text {
-    justify-self: center;
-}
 
 #modal-title {
     color: var(--text-color)
 }
 
 #modal-subtitle {
-    font-size: x-large;
+    font-size: large;
     color: var(--text-color);
 }
 .error-message {
-    font-size: 1.1em;
+    font-size: medium;
     font-weight: normal;
 }
 
@@ -231,7 +230,6 @@ dialog {
 }
 
 p {
-    font-size: large;
     color: var(--text-color);
 }
 
@@ -271,7 +269,6 @@ cursor: pointer;
     gap: 8px;
     display: flex;
     align-items: center;
-    margin-bottom: 80px;
 }
 #user_status:hover {
     cursor: pointer;

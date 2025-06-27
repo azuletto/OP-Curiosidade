@@ -18,12 +18,12 @@
 #table-title {
     color: var(--text-color);
     margin-left: 30px;
-    font-size: larger;
+    font-size: large;
     font-weight: bold;
 }
 
 #table-container {
-    border-radius: 20px;
+    border-radius: 8px;
     width: 90%;
 
     align-self: center;
@@ -46,14 +46,24 @@
 }
 
 #table-view {
-     margin-left: 14px;
+    margin-left: 14px;
+    margin-right: 14px;
     align-self: center;
     overflow: auto;
     height: 70%;
 }
-
+#status-a { 
+    background: var(--status-bk-color-a);
+}
+.status-bk {
+    border: none;
+    border-radius: 8px;
+    padding: 2px;
+    width: 50px;
+    text-align: center;
+}
 .pagination-button {
-    background-color: var(--button-color);
+    background-color: rgba(255, 0, 0, 0);
     color: var(--text-color);
     border-radius: 8px;
     border: none;
@@ -63,6 +73,7 @@
 .pagination-button:hover {
     background-color: var(--button-hover-color);
 }
+
 
 #pagination-buttons {
     display: flex;
@@ -81,16 +92,13 @@
 th {
     color: var(--text-color);
     text-align: left;
-    font-size: clamp(20px, 1vw, 30px);
-   
-
+    font-size: large;
 }
 
 td {
-    font-size: clamp(16px, 1vw, 30px);
-   
+    font-size: medium;
     width: 100px;
-   
+    height: 30px;
     text-align: left;
     border-style: solid;
     border-width: 0;
@@ -99,17 +107,20 @@ td {
 }
 
 tr {
+
     font-size: large;
 }
-
-p {
-    font-size: large;
+/*to all child of table tr when even, change color*/ 
+tr:nth-child(even) {
+    background-color: color-mix(in srgb, var(--table-back-color), rgba(0, 0, 0, 0.200));
 }
 
 tr:hover {
-    background-color: var(--hover-table-color);
+    background: var(--hover-table-color);
 }
-
+#status-active-bk {
+    background-color: var(--status-color-a);
+}
 table {
     border-collapse: collapse;
     overflow: hidden;
