@@ -7,16 +7,16 @@ const itensMenu = document.querySelectorAll('.nav-list');
 
 
 if (window.location.pathname.includes("dash-page")) {
-    itensMenu[0].style.backgroundColor = "var(--hover-table-color)";
-    itensMenu[0].style.width = '100vw';
+    itensMenu[0].style.background = "var(--principal-color)";
+    itensMenu[0].style.width = '90%';
 }
 if (window.location.pathname.includes("cadastro-page")) {
-    itensMenu[1].style.backgroundColor = "var(--hover-table-color)";
-    itensMenu[1].style.width = '100vw';
+    itensMenu[1].style.background = "var(--principal-color)";
+    itensMenu[1].style.width = '90%';
 }
 if (window.location.pathname.includes("report-page")) {
-    itensMenu[2].style.backgroundColor = "var(--hover-table-color)";
-    itensMenu[2].style.width = '100vw';
+    itensMenu[2].style.background = "var(--principal-color)";
+    itensMenu[2].style.width = '90%';
 }
 
 
@@ -50,9 +50,7 @@ let screenWidth = window.innerWidth;
             fill: "forwards"
         }
     )
-    if(screenWidth <= 740) {
-        nav.style.width = "50%"
-    } else {nav.style.width = "12%"}
+
 
     geralContent.style.marginLeft = "12%"
     nav.style.display = "flex"

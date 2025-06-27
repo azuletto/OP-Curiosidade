@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../../global/style/main.css">
     <link rel="stylesheet" href="../../global/style/theme/color-palette.css">
     <link rel="stylesheet" href="style/register-form.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 
     <title>Registrar ou editar usuário</title>
 </head>
@@ -28,21 +30,36 @@
                     <search class="search-bar-area">
                         <input class="search-bar" type="text" placeholder="Pesquisa" name="search" required>
                     </search>
+                    <div id="user-container">
+                        <div class="user-area">
+                            <span id="user-photo" class="material-symbols-outlined">person</span>
+                        </div>
+                        <p id="username"></p>
+                        <div id="header-line"></div>
+                        <div style="justify-self: left;" onclick="window.location.href='../login-page/index.html' "
+                            id="logout-area">
+                            <button id="exit-button" href="../login-page/index.html" type="button"
+                                onclick="window.location.href='../login-page/index.html'">
+                                <span class="material-symbols-outlined">logout</span>
+                            </button>
+                            <span id="logout-text">Sair</span>
+                        </div>
+                        <div id="theme-toggle-container">
+                            <input type="checkbox" id="theme-toggle">
+                            <label id="theme-toggle-label" for="theme-toggle">
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <div id="theme-toggle-container">
-                    <input type="checkbox" id="theme-toggle">
-                    <label id="theme-toggle-label" for="theme-toggle">
-                    </label>
-                    <p id="toggle-tittle">Tema</p>
-                </div>
+
 
             </header>
             <main id="main">
                 <div id="register-header">
-                    <p id="opitions-title">Edição | Exclusão | Criação</p>
+                    <p id="opitions-title">Criação</p>
                     <button id="register-button">
                         <div id="button-text">
-                            <p style="color: white">Novo cadastro</p>
+                            <p>Novo cadastro</p>
                         </div>
                     </button>
                 </div>
@@ -87,7 +104,7 @@
                                             <p>Endereço</p>
                                             <input id="user_adress" class="input-modal" type="text" id="adress"
                                                 name="email" required>
-                                                <p id="error-input" class="error-message"></p>
+                                            <p id="error-input" class="error-message"></p>
                                         </label>
                                     </div>
                                 </div>
@@ -125,7 +142,8 @@
                                             alt="limpar">
                                         <p class="button-text">Limpar</p>
                                     </button>
-                                    <span id="cancel-span" style="justify-self: center; align-self: center; text-align: center; margin-top: 20px; margin-left: 20px; font-size: large;">Cancelar</span>
+                                    <span id="cancel-span"
+                                        style="justify-self: center; align-self: center; text-align: center; margin-top: 20px; margin-left: 20px; font-size: large;">Cancelar</span>
                                 </div>
                             </div>
                         </div>
@@ -140,68 +158,66 @@
                         </div>
                     </div>
                 </dialog>
-        <div id="table-container">
-            <p id="table-title">Últimos cadastros</p>
-            
-            <div id="pagination-buttons">
-                <button id="previous-page" class="pagination-button">
-                    <span>&lt</span>
-                </button>
-                <p id="number-page">1/1</p>
-                <button id="next-page" class="pagination-button">
-                    <span>&gt</span>
-                </button>
-            </div>
+                <div id="table-container">
+                    <p id="table-title">Últimos cadastros</p>
 
-            <div id="table-view">
-                <div id="table-title-border">
+                    <div id="pagination-buttons">
+                        <button id="previous-page" class="pagination-button">
+                            <span>&lt</span>
+                        </button>
+                        <p id="number-page">1/1</p>
+                        <button id="next-page" class="pagination-button">
+                            <span>&gt</span>
+                        </button>
+                    </div>
+
+                    <div id="table-view">
+                        <div id="table-title-border">
+                        </div>
+                        <table>
+                            <thead>
+                                <tr id="table-header">
+                                    <th id="sort-name" class="sort-tr">Nome</th>
+                                    <th id="sort-email" class="sort-tr">Email</th>
+                                    <th id="sort-status" class="sort-tr">Status</th>
+                                    <th id="sort-timestamp" class="sort-tr">Criação</th>
+                                    <th style="text-align: center;">Editar</th>
+                                    <th style="text-align: center;">Excluir</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
-                <table>
-                    <thead>
-                        <tr id="table-header">
-                            <th id="sort-name" class="sort-tr">Nome</th>
-                            <th id="sort-email" class="sort-tr">Email</th>
-                            <th id="sort-status" class="sort-tr">Status</th>
-                            <th id="sort-timestamp" class="sort-tr">Criação</th>
-                            <th style="text-align: center;">Editar</th>
-                            <th style="text-align: center;">Excluir</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
             </main>
         </div>
-            <nav id="nav">
-                <div class="user-area">
-                    <img class="svg-icon" id="user-photo" src="assets/image/user-icon.svg" alt="">
-                    <p id="username"></p>
+        <nav id="nav">
+            <ul class="nav-bar">
+                <div id="opcuriosidade-header">
+                    <p id="logo">OC</p>
+                    <p id="logo-text">Opereção curiosidade</p>
                 </div>
-                <div id="side-bar-area">
-                    <ul class="nav-bar">
-                        <div id="menu-opt">
-                            <li><a class="nav-list" href="../dash-page/index.html">Home</a></li>
-                            <li><a class="nav-list" href="../cadastro-page/index.html">Cadastro</a></li>
-                            <li><a class="nav-list" href="../report-page/index.html">Relatórios</a></li>
-                            <li>
-                                
-                                <div id="logout-line"></div>
-                                <div style="justify-self: left;"
-                                    onclick="window.location.href='../login-page/index.html' " id="logout-area">
-                                    <button id="exit-button" href="../login-page/index.html" type="button"
-                                        onclick="window.location.href='../login-page/index.html'">
-                                        <img class="svg-icon" src="assets/image/exit-icon.svg" alt="Menu"
-                                            style="width: 100%; height: 100%;">
-                                    </button>
-                                    <span id="logout-text" style="text-align: center; font-size: 20px;">Sair</span>
-                                </div>
-                            </li>
-                        </div>
-    
-                    </ul>
+                <div id="hide-menu">
                 </div>
-                <button id="hide-nav"><span>&lt;</span></button>
-            </nav>
+                <div id="menu-opt">
+                    <li>
+                        <a class="nav-list" href="../dash-page/index.html">
+                            <p class="nav-opt"><span class="material-symbols-outlined">home</span>
+                                Home</p>
+                        </a>
+                    </li>
+                    <li><a class="nav-list" href="../cadastro-page/index.html">
+                            <p class="nav-opt"><span class="material-symbols-outlined">person_add</span>
+                                Cadastro</p>
+                        </a></li>
+                    <li><a class="nav-list" href="../report-page/index.html">
+                            <p class="nav-opt">
+                                <span class="material-symbols-outlined">article_person</span>
+                                Relatórios
+                            </p>
+                        </a></li>
+                </div>
+            </ul>
+        </nav>
     </div>
 
     <script src="javascript/modal.js"></script>
