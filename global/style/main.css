@@ -17,7 +17,7 @@
 
 #table-title {
     color: var(--text-color);
-    margin-left: 30px;
+    margin-left: 14px;
     font-size: large;
     font-weight: bold;
 }
@@ -50,17 +50,19 @@
     margin-right: 14px;
     align-self: center;
     overflow: auto;
-    height: 70%;
+    height: 80%;
 }
 #status-a { 
     background: var(--status-bk-color-a);
 }
 .status-bk {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     border-radius: 8px;
-    padding: 2px;
+    padding: 4px;
     width: 50px;
-    text-align: center;
 }
 .pagination-button {
     background-color: rgba(255, 0, 0, 0);
@@ -93,7 +95,9 @@ th {
     color: var(--text-color);
     text-align: left;
     font-size: large;
+    background-color: color-mix(in srgb, var(--table-back-color), rgba(0, 0, 0, 0.200));
 }
+
 
 td {
     font-size: medium;

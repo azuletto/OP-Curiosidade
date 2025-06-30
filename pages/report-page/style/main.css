@@ -1,12 +1,13 @@
-
 #container {
     display: flex;
     flex-direction: column;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.400);
 }
+
 #opt-containter {
     margin-left: 24px;
 }
+
 #opitions-title {
     margin-inline-end: auto;
     color: var(--text-color);
@@ -23,12 +24,14 @@
 }
 
 #button-text {
-    justify-self: center;   
+    justify-self: center;
 }
-#button-text > p {
+
+#button-text>p {
     color: white;
     font-size: larger;
 }
+
 #press-button {
     display: flex;
     margin-inline-start: auto;
@@ -62,9 +65,7 @@ p {
     color: var(--text-color);
 }
 
-#table-view {
-    margin-left: 14px;
-}
+
 
 @media print {
     nav {
@@ -104,6 +105,10 @@ p {
 
     th {
         color: black;
+        border: solid;
+        border-width: 1px;
+        border-color: rgb(139, 139, 139);
+
     }
 
     #table-title {

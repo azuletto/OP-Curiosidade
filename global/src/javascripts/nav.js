@@ -33,7 +33,7 @@ if(window.innerWidth <= 740) {nav.style.display = "none"
 }
 
 menuHamburguer.addEventListener("click", () => { open_nav() })
-hideNav.addEventListener("click", () => { close_nav() })
+//hideNav.addEventListener("click", () => { close_nav() })
 
 
 function open_nav() {

@@ -98,10 +98,12 @@ function init_table() {
 
         if (table_data[page_number][i].status === "Ativo") {
             t_status_bk.style.color = "var(--status-color-a)"
+            t_status_bk.style.backgroundColor = "var(--status-bk-color-a)"
             t_status_bk.id = "status-a"
-            
+
         } else if (table_data[page_number][i].status === "Inativo") {
             t_status_bk.style.color = "var(--status-color-i)"
+            t_status_bk.style.backgroundColor = "var(--status-bk-color-i)"
             t_status_bk.id = "status-i"
         }
 
@@ -327,11 +329,19 @@ function searchBar() {
                 let t_email = document.createElement("td");
                 let t_status = document.createElement("td");
                 let t_status_bk = document.createElement("p");
+                t_status_bk.className = "status-bk";
 
                 if (user.status === "Ativo") {
                     t_status_bk.style.color = "var(--status-color-a)"
-                } else if (
-                    user.status === "Inativo") { t_status_bk.style.color = "red" }
+                    t_status_bk.style.backgroundColor = "var(--status-bk-color-a)"
+                    t_status_bk.id = "status-a"
+
+                } else if (user.status === "Inativo") {
+                    t_status_bk.style.color = "var(--status-color-i)"
+                    t_status_bk.style.backgroundColor = "var(--status-bk-color-i)"
+                    t_status_bk.id = "status-i"
+                }
+
                 let t_time_stamp = document.createElement("td");
 
                 t_name.textContent = user.name;

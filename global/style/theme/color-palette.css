@@ -4,7 +4,7 @@
     --hover-table-color: var(--principal-color);
     --nav-user-back-color: white;
     --back-color: #f4f4f4;
-    --text-color: black;
+    --text-color: rgb(14, 14, 14);
     --error-text-color: red;
     --search-container-color: #dcdcdc;
     --search-bar-border-color: #aeadad;
@@ -14,7 +14,7 @@
     --register-btn-collor-hvr: rgb(0, 119, 0);
     --press-btn-collor:rgb(41, 17, 160);
     --press-btn-collor-hvr: rgb(26, 11, 98);
-    --status-color-a: rgb(0, 201, 10);
+    --status-color-a: rgb(0, 157, 8);
     --status-color-i: rgb(201, 9, 9);
     --principal-color: linear-gradient(to left, #a6bcea, rgb(113, 152, 177));
     --status-bk-color-a : rgb(153, 255, 153);
@@ -62,9 +62,9 @@
     --search-bar-border-color: #6B6875;
     --menu-itens-color: invert(100%);
     --status-color-a: lime;
-    --status-color-i: red;
-    --status-bk-color-a : rgb(153, 255, 153);
-    --status-bk-color-i : rgb(255, 153, 153);
+    --status-color-i: rgb(255, 102, 102);
+    --status-bk-color-a : rgb(84, 153, 84);
+    --status-bk-color-i : rgb(153, 84, 84);
     --register-btn-collor-hvr: rgb(26, 63, 26);
     --press-btn-collor:rgb(41, 41, 99);
     --press-btn-collor-hvr: rgb(26, 26, 63);
