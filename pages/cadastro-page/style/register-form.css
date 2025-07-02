@@ -1,11 +1,32 @@
 dialog {
-    border-width: 0;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.400);
+    border: none;
     max-height: 500px;
     height: 100%;
-    max-width: 900px;
+    max-width: 800px;
     width: 100%;
+    overflow-x: hidden;
+    clip-path: inset(0 0 0 0 round 8px);
+
 }
+dialog[open] {
+    animation: modalFadeIn 0.3s;
+}
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1px);
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 
 #register-form {
     display: flex;
@@ -17,11 +38,8 @@ dialog {
 }
 
 #modal-title {
+    font-size: xx-large;
     justify-self: center;
-    border: solid;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
 
 }
 
@@ -31,30 +49,17 @@ dialog {
 }
 
 #exit-register-modal {
-    
-    margin-left: 95%;
+    margin-left: 97.5%;
+    scale: 1.2;
+    border: none;
     color: var(--text-color);
-    height: 25px;
-    width: 25px;
-    border-width: 0;
-    border-radius: 4px;
     font-family: sans-serif;
     font-weight: bolder;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.300);
     background: none;
-    font-size: medium;
-    cursor: pointer;
-    background-color: rgb(255, 42, 42);
-}
-.button-text {
-    justify-self: center;   
-}
-#button-text > p {
-    color: white;
-    font-size: larger;
 }
 #exit-register-modal:hover {
-    background-color: var(--exit-button-hover);
+    cursor: pointer;
+    scale: 1.4;
 }
 
 .error-message {
@@ -64,8 +69,20 @@ dialog {
     margin-left: 5px;
     color: var(--error-text-color);
 }
-
+#name-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 24px;
+}
+.input-group {
+    display: flex;
+    width: 100%;
+}
 .modal-input-name {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
     font-weight: bold;
 }
 
@@ -75,15 +92,13 @@ dialog {
 }
 
 .input-modal {
-    justify-self: center;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.400);
-    
-    width: 98%;
-    height: 30px;
-    border-width: 0px;
-    margin-left: 5px;
-    
+    justify-self: left;
+    display: flex;
+    flex-direction: row;
+    height: 25px;
+    border: none;
     padding: 8px;
+    border-bottom: solid 1px;
 }
 
 .input-modal:invalid {
@@ -91,7 +106,11 @@ dialog {
 }
 
 .date-input {
+    display: flex;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: center;
+    align-self: center;
+    width: fit-content;
 }
 
 #infos-area {
@@ -103,8 +122,9 @@ dialog {
     margin-top: 14px;
     padding: 10px;
     width: 98%;
-    border-width: 0;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.400);
+    border: 1px solid var(--text-color);
+    border-top: none;
+    border-right: none;
     min-height: 60px;
     resize: none;
     
@@ -121,14 +141,18 @@ dialog {
     display: inline-flex;
     align-items: center;
     margin-top: 20px;
-    border: 0;
+    border: none;
     border-radius: 4px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.400);
     cursor: pointer;
-    max-width: 100px;
+    width: fit-content;
+    max-width: 200px;
     max-height: 40px;
+    color: var(--text-color);
 }
-
+#submit-button {
+    background-color: var(--button-color);
+}
 #submit-button:hover {
     background-color: var(--button-hover-color);
 }
@@ -138,7 +162,7 @@ dialog {
 
 }
 
-#erase-button:hover {
+#cancel-span:hover {
     background-color: var(--button-hover-color);
 }
 
@@ -163,13 +187,20 @@ dialog {
     cursor: pointer;
     background-color: var(--register-btn-collor-hvr);
 }
+#submit-button>p {
+    font-size: large;
+}
+#cancel-span>p {
 
+    font-size: large;
+}
 #register-header {
+    margin-top: 9.5vh;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 8%;
-    margin-right: 8%;
+    margin-left: 2.1%;
+    margin-right: 2.3%;
     
 }
 
@@ -214,7 +245,10 @@ text-align: center;
 #modal-title {
     color: var(--text-color)
 }
-
+.modal-subtitle {
+    font-weight: normal;
+    font-size: medium;
+}
 #modal-subtitle {
     font-size: large;
     color: var(--text-color);
@@ -231,22 +265,32 @@ dialog {
 
 p {
     color: var(--text-color);
+    
 }
 
 h3 {
     color: var(--text-color);
 }
-
+#adress-area {
+    width: 100%;
+}
+#button-text {
+    font-size: large;
+    font-weight: bold;
+}
+#button-text>p {
+    color: white;
+}
 .submit-buttons {
     background-color: var(--button-color);
 }
 
 input {
-    background-color: var(--input-color);
+    background-color: var(--back-color);
     color: var(--text-color);
 }
 textarea {
-    background-color: var(--input-color);
+    background-color: var(--back-color);
     color: var(--text-color);
     font-size: medium;
 }
@@ -255,11 +299,15 @@ textarea {
     color: var(--text-color);
 }
 #cancel-span:hover {
-border-style: solid;
-border-top: 0;
-border-left: 0;
-border-right: 0;
 cursor: pointer;
+}
+#user_name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 70vw;
+    max-width: 584px;
 }
 #user_status {
     width: 20px;
@@ -274,6 +322,7 @@ cursor: pointer;
     cursor: pointer;
 }
 #delete-confirm {
+    border-radius: 4px;
     justify-content: center;
     align-items: center;
     max-width: fit-content;
@@ -281,7 +330,10 @@ cursor: pointer;
     max-height: fit-content;
     min-height: min-content;
 }
-
+#delete-confirm::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(1px);
+}
 #buttons-container {
     display: flex;
     justify-content: center;

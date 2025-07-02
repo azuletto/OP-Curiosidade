@@ -4,6 +4,13 @@
 <head>
     <script src="javascript/login-validation.js"></script>
     <script src="../../global/src/javascripts/theme-toggler/theme-verify.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Monoton&family=Savate:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="icon" href="assets/image/login-ico.ico" type="image/x-icon">
     <link rel="stylesheet" href="style/login-page.css">
     <link rel="stylesheet" href="../../global/style/theme/color-palette.css">
@@ -27,16 +34,22 @@
             <form class="form" action="" method="post">
                 <div class="input-group">
                     <label class="input-label">
-                        <input autocomplete="email" class="input" id="email" type="email" placeholder="Seu email"
+                        <input autocomplete="email" class="input" id="email" type="email" placeholder="Digite seu email"
                             name="email" required>
                     </label>
                     <p id="error-message"></p>
                 </div>
                 <div class="input-group">
-                    <button id="show-pass-button"></button>
+                    <button id="show-pass-button">
+                        <div id="show-pass-icon">
+                            <span class="material-symbols-outlined">
+                                visibility_off
+                            </span>
+                        </div>
+                    </button>
                     <label class="input-label">
                         <input autocomplete="current-password" class="input" id="password" type="password"
-                            placeholder="Sua senha" name="password" required>
+                            placeholder="Digite sua senha" name="password" required>
 
                     </label>
                 </div>

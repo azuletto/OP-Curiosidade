@@ -15,7 +15,6 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Dashboard page</title>
 </head>
-
 <body>
     <div id="aside-container">
         <div id="geral-container">
@@ -28,7 +27,7 @@
                 </div>
                 <div class="area-search">
                     <search class="search-bar-area">
-                        <input class="search-bar" type="text" placeholder="Pesquisa" name="search" required>
+                        <input class="search-bar" type="text" placeholder="Pesquisar por nome ou email" name="search" required>
                     </search>
                     <div id="user-container">
                         <div class="user-area">
@@ -37,7 +36,6 @@
                         <p id="username"></p>
                         <div id="theme-toggle-container">
                             <input type="checkbox" id="theme-toggle">
-                            
                             <label id="theme-toggle-label" for="theme-toggle"></label>
                             <span class="material-symbols-outlined" id="theme-toggle-icon-light">
                                 light_mode
@@ -47,9 +45,7 @@
                             </span>
                             <div id="logout-line"></div>
                         </div>
-
-                        <div onclick="window.location.href='../login-page/index.html' "
-                            id="logout-area">
+                        <div onclick="window.location.href='../login-page/index.html' " id="logout-area">
                             <button id="exit-button" href="../login-page/index.html" type="button"
                                 onclick="window.location.href='../login-page/index.html'">
                                 <span class="material-symbols-outlined">logout</span>
@@ -58,9 +54,6 @@
                         </div>
                     </div>
                 </div>
-
-            </header>
-            <header id="background-header">
             </header>
             <main id="main">
                 <div id="card-view">
@@ -74,7 +67,7 @@
                     </div>
                     <div class="card" id="pending">
                         <h3 class="card-title" id="title-pending">0</h3>
-                        <p class="card-text">Cadastros com pendência de revisão</p>
+                        <p class="card-text">Cadastros com pendência</p>
                     </div>
                 </div>
                 <div id="table-container">
@@ -85,10 +78,10 @@
                         <table>
                             <thead>
                                 <tr id="table-header">
-                                    <th>Nome</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
-                                    <th>Criação</th>
+                                    <th>NOME</th>
+                                    <th>EMAIL</th>
+                                    <th>STATUS</th>
+                                    <th>CRIAÇÃO</th>
                                 </tr>
                             </thead>
                         </table>

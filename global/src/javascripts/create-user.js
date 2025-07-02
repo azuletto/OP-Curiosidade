@@ -122,7 +122,6 @@ export function verfifyUser(user) {
         });
         return false;
     }
-
     if (String(user.email).trim() === "") {
         document.getElementById("user_email").scrollIntoView({
             behavior: 'smooth',
@@ -131,8 +130,6 @@ export function verfifyUser(user) {
         email_error.innerHTML = "O campo de e-mail não pode estar vazio.";
         return false;
     }
-
-
     if (regexEmail(user.email) !== true) {
         document.getElementById("user_email").scrollIntoView({
             behavior: 'smooth',
@@ -141,7 +138,6 @@ export function verfifyUser(user) {
         email_error.innerHTML = "Você inseriu um e-mail inválido. Tente novamente.";
         return false;
     }
-
     let edit_mode = JSON.parse(localStorage.getItem("edit_mode"))
     if (!edit_mode) {
         if (users_list.some(u => u.email === user.email)) {
@@ -153,8 +149,6 @@ export function verfifyUser(user) {
             return false;
         }
     }
-
-
     if(user_age.value < new Date("1920-01-01").toISOString().split('T')[0] ||
        user_age.value > new Date().toISOString().split('T')[0]) {
         document.getElementById("user_age").scrollIntoView({
@@ -172,41 +166,6 @@ export function verfifyUser(user) {
         adress_error.innerHTML = "O campo de endereço não pode estar vazio.";
         return false;
     }
-    if (String(user.info).trim() === "") {
-        document.getElementById("user_info").scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
-        user_info_error.innerHTML = "O campo de informações não pode estar vazio.";
-        return false;
-    }
-    if (String(user.interess).trim() === "") {
-        document.getElementById("user_interess").scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
-        user_interess_error.innerHTML = "O campo de interesses não pode estar vazio.";
-        return false;
-    }
-    if (String(user.feelings).trim() === "") {
-        document.getElementById("user_feelings").scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
-        user_feelings_error.innerHTML = "O campo de sentimentos não pode estar vazio.";
-        return false;
-    }
-    if (String(user.valors).trim() === "") {
-        document.getElementById("user_valors").scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
-        user_valors_error.innerHTML = "O campo de valores não pode estar vazio.";
-        return false;
-    }
-
-
-
     return true;
 }
 

@@ -24,10 +24,10 @@ if (!window.location.pathname.includes("dash-page")) {
     sort_filter_event()
     let get_set_sort = JSON.parse(localStorage.getItem("set_sort"))
 
-    if (get_set_sort[0]) { document.getElementById("sort-name").innerHTML = "Nome ^" } else { document.getElementById("sort-name").innerHTML = "Nome" }
-    if (get_set_sort[1]) { document.getElementById("sort-email").innerHTML = "Email ^" } else { document.getElementById("sort-email").innerHTML = "Email" }
-    if (get_set_sort[2]) { document.getElementById("sort-status").innerHTML = "Status ^" } else { document.getElementById("sort-status").innerHTML = "Status" }
-    if (get_set_sort[3]) { document.getElementById("sort-timestamp").innerHTML = "Criação ^" } else { document.getElementById("sort-timestamp").innerHTML = "Criação" }
+    if (get_set_sort[0]) { document.getElementById("sort-name").innerHTML = `NOME <span class="material-symbols-outlined">keyboard_arrow_up</span>` } else { document.getElementById("sort-name").innerHTML = "NOME" }
+    if (get_set_sort[1]) { document.getElementById("sort-email").innerHTML = `EMAIL <span class="material-symbols-outlined">keyboard_arrow_up</span>` } else { document.getElementById("sort-email").innerHTML = "EMAIL" }
+    if (get_set_sort[2]) { document.getElementById("sort-status").innerHTML = `STATUS <span class="material-symbols-outlined">keyboard_arrow_up</span>` } else { document.getElementById("sort-status").innerHTML = "STATUS" }
+    if (get_set_sort[3]) { document.getElementById("sort-timestamp").innerHTML = `CRIAÇÃO <span class="material-symbols-outlined">keyboard_arrow_up</span>` } else { document.getElementById("sort-timestamp").innerHTML = "CRIAÇÃO" }
 }
 if (window.location.pathname.includes("dash-page")) {
     f_users_list = table_sort.sort_by_time_stamp()
@@ -71,7 +71,7 @@ function init_table() {
     }
 
     if (!window.location.pathname.includes("dash-page")) {
-        number_page.innerHTML = (page_number + 1) + "/" + max_number_page;
+        number_page.innerHTML = (page_number + 1) + " / " + max_number_page;
     }
 
 
@@ -99,11 +99,13 @@ function init_table() {
         if (table_data[page_number][i].status === "Ativo") {
             t_status_bk.style.color = "var(--status-color-a)"
             t_status_bk.style.backgroundColor = "var(--status-bk-color-a)"
+            t_status_bk.style.border = "1px solid var(--status-color-a)"
             t_status_bk.id = "status-a"
 
         } else if (table_data[page_number][i].status === "Inativo") {
             t_status_bk.style.color = "var(--status-color-i)"
             t_status_bk.style.backgroundColor = "var(--status-bk-color-i)"
+            t_status_bk.style.border = "1px solid var(--status-color-i)"
             t_status_bk.id = "status-i"
         }
 
@@ -128,18 +130,16 @@ function init_table() {
             let t_edit = document.createElement("td")
             t_edit.id = "td-edit"
             let t_delete = document.createElement("td")
-            t_delete.id = "td-delete"
             const edit = true;
 
             t_edit.innerHTML = `<button id="edit-button" onclick="verifyEdit(${table_data[page_number][i]?.id},${edit})"> 
-                <img src="../../../pages/cadastro-page/assets/image/edit-icon.svg" alt="Edit User" width="10px" height="10px">
-                </button>`
-            t_delete.innerHTML = `<button id="delete-button" onclick="deleteUser(${table_data[page_number][i]?.id})">
-                <img style="color:red;" src="../../../pages/cadastro-page/assets/image/delete-icon.svg" alt="Delete user" width="10px" height="10px">
+                <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button id="delete-button" onclick="deleteUser(${table_data[page_number][i]?.id})">
+                <span class="material-symbols-outlined">delete</span>
                 </button>`
 
             tr.appendChild(t_edit)
-            tr.appendChild(t_delete)
         }
 
         body.appendChild(tr)
@@ -334,11 +334,13 @@ function searchBar() {
                 if (user.status === "Ativo") {
                     t_status_bk.style.color = "var(--status-color-a)"
                     t_status_bk.style.backgroundColor = "var(--status-bk-color-a)"
+                    t_status_bk.style.border = "1px solid var(--status-color-a)"
                     t_status_bk.id = "status-a"
 
                 } else if (user.status === "Inativo") {
                     t_status_bk.style.color = "var(--status-color-i)"
                     t_status_bk.style.backgroundColor = "var(--status-bk-color-i)"
+                    t_status_bk.style.border = "1px solid var(--status-color-i)"
                     t_status_bk.id = "status-i"
                 }
 
@@ -373,14 +375,13 @@ function searchBar() {
                     const edit = true;
 
                     t_edit.innerHTML = `<button id="edit-button" onclick="verifyEdit(${user.id},${edit})"> 
-                <img src="../../../pages/cadastro-page/assets/image/edit-icon.svg" alt="Edit User" width="10px" height="10px">
-                </button>`
-                    t_delete.innerHTML = `<button id="delete-button" onclick="deleteUser(${user.id})">
-                <img style="color:red;" src="../../../pages/cadastro-page/assets/image/delete-icon.svg" alt="Delete user" width="10px" height="10px">
+                <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button id="delete-button" onclick="deleteUser(${user.id})">
+                <span class="material-symbols-outlined">delete</span>
                 </button>`
 
                     tr.appendChild(t_edit)
-                    tr.appendChild(t_delete)
                 }
 
 

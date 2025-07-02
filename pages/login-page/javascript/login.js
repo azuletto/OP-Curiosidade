@@ -44,10 +44,10 @@ show_pass_btn.addEventListener("click",()=> {
     event.preventDefault()
     if(!showPass){showPass = true
         pass_input.type = "text"
-        show_pass_btn.style.background = "var(--show-button-url)"
+        document.getElementById("show-pass-icon").innerHTML = `<span class="material-symbols-outlined">visibility</span>`
     }else if(showPass){showPass=false
         pass_input.type = "password"
-        show_pass_btn.style.background = "var(--hide-button-url)"
+        document.getElementById("show-pass-icon").innerHTML = `<span class="material-symbols-outlined">visibility_off</span>`
     }
 })
 

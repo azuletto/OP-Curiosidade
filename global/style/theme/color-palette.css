@@ -1,14 +1,15 @@
 :root {
-    --header-border-color: rgb(215, 215, 215);
-    --header-color: rgb(233, 233, 233);
+    --header-border-color: rgb(255, 255, 255);
+    --header-color: rgb(255, 255, 255);
     --hover-table-color: var(--principal-color);
     --nav-user-back-color: white;
     --back-color: #f4f4f4;
     --text-color: rgb(14, 14, 14);
+    --text-color-placeholder: rgba(14, 14, 14, 0.500);
     --error-text-color: red;
     --search-container-color: #dcdcdc;
     --search-bar-border-color: #aeadad;
-    --input-color: white;
+    --input-color: rgb(230, 230, 230);
     --menu-itens-color: brightness(0%);
     --register-btn-collor:rgb(0, 199, 0);
     --register-btn-collor-hvr: rgb(0, 119, 0);
@@ -16,15 +17,16 @@
     --press-btn-collor-hvr: rgb(26, 11, 98);
     --status-color-a: rgb(0, 157, 8);
     --status-color-i: rgb(201, 9, 9);
-    --principal-color: linear-gradient(to left, #a6bcea, rgb(113, 152, 177));
-    --status-bk-color-a : rgb(153, 255, 153);
-    --status-bk-color-i : rgb(255, 153, 153);
+    --principal-color: linear-gradient(to left, #91c2f75c, #063e7a5b);
+    --status-bk-color-a : rgba(0, 255, 0, 0.254);
+    --status-bk-color-i : rgba(255, 0, 0, 0.254);
 
+    --input-text-color: rgb(200, 200, 200);
     --error-text-color: rgb(255, 65, 65);
     --table-back-color: rgb(255, 255, 255);
     --button-color: #c6c4bb;
     --button-hover-color: #b5b5b5;
-    --nav-gradient-color: linear-gradient(to left, white, rgb(228, 228, 228));
+    --nav-gradient-color: linear-gradient(to left, white, rgb(222, 222, 222));
     --modal-invalid-outline-color: #ff6b6b;
     --exit-button-hover: rgb(152, 0, 0);
 
@@ -32,11 +34,11 @@
     --card-color-last-month: #008a02;
     --card-color-pending: #c00003;
     --card-back-color:rgb(255, 255, 255);
-
+    --tag-title-bg-color: rgba(128, 128, 128, 0.100);
 
     --toggle-theme-bg-color: #1C1439;
     --login-back-color: rgb(231, 231, 231);
-    --login-logo-color: #515551;
+    --login-logo-color: #515551;    
     --login-back-container-color: white;
     --login-logo-color: #515551;
     --login-button-color: #53c257;
@@ -49,26 +51,27 @@
 }
 
 .dark-theme:root {
-    --header-border-color: rgb(41, 41, 41);
-    --header-color: rgb(52, 52, 52);
+    --header-border-color: #444444;
+    --header-color: #444444;
     --hover-table-color: var(--principal-color);
-    --input-text-color: rgb(166, 154, 205);
+    --input-text-color: rgb(205, 205, 205);
     --input-color: #888888;
     --nav-user-back-color: #121212;
     --back-color: #1d1d1d;
     --text-color: #E0E0E0;
+    --text-color-placeholder: #e0e0e0d0;
     --error-text-color: rgb(255, 90, 90);
     --search-container-color: #444444;
     --search-bar-border-color: #6B6875;
     --menu-itens-color: invert(100%);
-    --status-color-a: lime;
-    --status-color-i: rgb(255, 102, 102);
-    --status-bk-color-a : rgb(84, 153, 84);
-    --status-bk-color-i : rgb(153, 84, 84);
+    --status-color-a: rgb(0, 247, 12);
+    --status-color-i: #ff8080;
+    --status-bk-color-a : rgba(0, 255, 0, 0.254);
+    --status-bk-color-i : rgba(255, 52, 52, 0.254);
     --register-btn-collor-hvr: rgb(26, 63, 26);
     --press-btn-collor:rgb(41, 41, 99);
     --press-btn-collor-hvr: rgb(26, 26, 63);
-    --principal-color: linear-gradient(to left, #a6bcea, rgb(113, 152, 177));
+    --principal-color: linear-gradient(to left, #6f82a97d, rgba(32, 59, 75, 0.475));
 
     --button-text-color: white;
     --button-color: #888888;
