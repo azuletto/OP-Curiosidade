@@ -33,8 +33,7 @@ let user_interess_error = document.getElementById("error-input-2");
 let user_feelings_error = document.getElementById("error-input-3");
 let user_valors_error = document.getElementById("error-input-4");
 
-
-if(window.location.pathname.includes("cadastro-page")) {
+if (window.location.pathname.includes("cadastro-page")) {
     exitButton.addEventListener("click", function (e) {
         clearModal();
         e.preventDefault();
@@ -49,13 +48,45 @@ if(window.location.pathname.includes("cadastro-page")) {
             user_age.value = date
         }
     })
+
+    let allInputs = document.querySelectorAll(".input-modal");
+    allInputs[0].addEventListener("keyup", () => {
+        let nameVer = verifyName(document.getElementById("user_name").value);
+        if (nameVer) {
+            document.getElementById("user_name").classList.remove("invalid-input");
+            name_error.innerHTML = "";
+        }
+    })
+    allInputs[1].addEventListener("keyup", () => {
+        let ageVer = verifyAge(document.getElementById("user_age").value);
+        if (ageVer) {
+            document.getElementById("user_age").classList.remove("invalid-input");
+            age_error.innerHTML = "";
+        }
+    })
+    allInputs[2].addEventListener("keyup", () => {
+        let blankUser = {
+            email: document.getElementById("user_email").value
+        };
+        let isEvent = true;
+        let emailVer = verifyEmail(blankUser, isEvent);
+        if (emailVer) {
+            document.getElementById("user_email").classList.remove("invalid-input");
+            email_error.innerHTML = "";
+        }
+    })
+    allInputs[3].addEventListener("keyup", () => {
+        let adressVer = verifyAdress(document.getElementById("user_adress").value);
+        if (adressVer) {
+            document.getElementById("user_adress").classList.remove("invalid-input");
+            adress_error.innerHTML = "";
+        }
+    })
+
     submitButton.addEventListener("click", function (e) {
-    
-    
-    
         let editMode = JSON.parse(localStorage.getItem("edit_mode"));
-    
-        if (editMode === false) {
+
+        if (!editMode) {
             user.name = document.getElementById("user_name").value;
             user.age = document.getElementById("user_age").value;
             user.email = document.getElementById("user_email").value;
@@ -66,22 +97,17 @@ if(window.location.pathname.includes("cadastro-page")) {
             user.valors = document.getElementById("user_valors").value;
             user.status = document.getElementById("user_status").checked ? "Ativo" : "Inativo";
             user.time_stamp = new Date().toISOString();
-    
-    
             if (!verfifyUser(user)) {
                 e.preventDefault();
                 return Error
             }
             verifyStorage();
             saveUser(user);
-    
         }
     });
 }
 
-
 function clearModal() {
-
     document.getElementById("user_name").value = ""
     document.getElementById("user_age").value = ""
     document.getElementById("user_email").value = ""
@@ -95,10 +121,10 @@ function clearModal() {
     document.getElementById("name-error").innerHTML = "";
     document.getElementById("age-error").innerHTML = "";
     document.getElementById("error-input").innerHTML = "";
-    document.getElementById("error-input-1").innerHTML = "";
-    document.getElementById("error-input-2").innerHTML = "";
-    document.getElementById("error-input-3").innerHTML = "";
-    document.getElementById("error-input-4").innerHTML = "";
+    document.getElementById("user_name").classList.remove("invalid-input");
+    document.getElementById("user_age").classList.remove("invalid-input");
+    document.getElementById("user_email").classList.remove("invalid-input");
+    document.getElementById("user_adress").classList.remove("invalid-input");
 }
 
 export function verfifyUser(user) {
@@ -111,62 +137,75 @@ export function verfifyUser(user) {
     user_interess_error.innerHTML = "";
     user_feelings_error.innerHTML = "";
     user_valors_error.innerHTML = "";
+    document.getElementById("user_name").classList.remove("invalid-input");
+    document.getElementById("user_age").classList.remove("invalid-input");
+    document.getElementById("user_email").classList.remove("invalid-input");
+    document.getElementById("user_adress").classList.remove("invalid-input");
 
+    const isNameValid = verifyName(user.name);
+    const isEmailValid = verifyEmail(user);
+    const isAgeValid = verifyAge(user.age);
+    const isAddressValid = verifyAdress(user.adress);
 
+    if (!isNameValid || !isEmailValid || !isAgeValid || !isAddressValid) {
+        document.getElementById("modal-header").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+        return false;
+    } else {
+        return true;
+    }
+}
 
-    if (String(user.name).trim() === "") {
-        name_error.innerHTML = "O campo de nome não pode estar vazio."
-        document.getElementById("user_name").scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
-        return false;
-    }
-    if (String(user.email).trim() === "") {
-        document.getElementById("user_email").scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
-        email_error.innerHTML = "O campo de e-mail não pode estar vazio.";
-        return false;
-    }
-    if (regexEmail(user.email) !== true) {
-        document.getElementById("user_email").scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
-        email_error.innerHTML = "Você inseriu um e-mail inválido. Tente novamente.";
-        return false;
-    }
-    let edit_mode = JSON.parse(localStorage.getItem("edit_mode"))
-    if (!edit_mode) {
-        if (users_list.some(u => u.email === user.email)) {
-            document.getElementById("user_email").scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-            });
-            email_error.innerHTML = "E-mail já cadastrado.";
-            return false;
-        }
-    }
-    if(user_age.value < new Date("1920-01-01").toISOString().split('T')[0] ||
-       user_age.value > new Date().toISOString().split('T')[0]) {
-        document.getElementById("user_age").scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
-        age_error.innerHTML = "Data de nascimento inválida.";
-        return false;
-    }
-    if(String(user.adress).trim() === "") {
-        document.getElementById("user_adress").scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
+function verifyAdress(adress) {
+    if (String(adress).trim() === "") {
+        document.getElementById("user_adress").classList.add("invalid-input");
         adress_error.innerHTML = "O campo de endereço não pode estar vazio.";
         return false;
+    } else return true;
+}
+
+function verifyAge(age) {
+    if (age < new Date("1920-01-01").toISOString().split('T')[0] ||
+        age > new Date().toISOString().split('T')[0] || !age) {
+        document.getElementById("user_age").classList.add("invalid-input");
+        age_error.innerHTML = "Data de nascimento inválida.";
+        return false;
+    } else return true;
+}
+
+function verifyEmail(user, isevent = false) {
+
+    let editMode = JSON.parse(localStorage.getItem("edit_mode"));
+
+    if (editMode && isevent) {
+        if (!regexEmail(user.email)) {
+            document.getElementById("user_email").classList.add("invalid-input");
+            email_error.innerHTML = "E-mail inválido, tente novamente.";
+            return false
+        } return true
+    } else if (editMode) {
+        if(!regexEmail(user.email) || users_list.find(u => u.email === user.email && u.id !== user.id)) {
+            document.getElementById("user_email").classList.add("invalid-input");
+            email_error.innerHTML = "E-mail inválido ou já cadastrado.";
+            return false;
+        } else return true;
+    } else if (!editdMode) {
+        if (!regexEmail(user.email) || users_list.find(u => u.email === user.email)) {
+            document.getElementById("user_email").classList.add("invalid-input");
+            email_error.innerHTML = "E-mail inválido ou já cadastrado.";
+            return false;
+        } else return true;
     }
-    return true;
+}
+
+function verifyName(name) {
+    if (String(name).trim() === "") {
+        document.getElementById("user_name").classList.add("invalid-input");
+        name_error.innerHTML = "O campo de nome não pode estar vazio."
+        return false;
+    } else return true;
 }
 
 function saveUser(user) {

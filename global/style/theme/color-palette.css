@@ -45,8 +45,6 @@
     --login-button-hover-color: #3f9145;
     --login-text-color: #ffffff;
     --linear-toggle-gradient: linear-gradient(white, rgb(197, 197, 197));
-    --hide-button-url: url(../../../pages/login-page/assets/image/hide_icon_light.svg);
-    --show-button-url: url(../../../pages/login-page/assets/image/show_icon_light.svg);
 
 }
 
@@ -72,6 +70,7 @@
     --press-btn-collor:rgb(41, 41, 99);
     --press-btn-collor-hvr: rgb(26, 26, 63);
     --principal-color: linear-gradient(to left, #6f82a97d, rgba(32, 59, 75, 0.475));
+    --calendar-icon-filter: invert(1) saturate(1000%);
 
     --button-text-color: white;
     --button-color: #888888;
@@ -95,8 +94,5 @@
 
     --table-back-color: #444444;
     --linear-toggle-gradient: linear-gradient(#000000, #595959);
-
-    --hide-button-url: url(../../../pages/login-page/assets/image/hide_icon_dark.svg);
-    --show-button-url: url(../../../pages/login-page/assets/image/show_icon_dark.svg);
 
 }

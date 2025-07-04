@@ -98,13 +98,19 @@ dialog::backdrop {
     height: 25px;
     border: none;
     padding: 8px;
-    border-bottom: solid 1px;
+    border-bottom: solid 2px var(--text-color);
+    
 }
 
 .input-modal:invalid {
-    outline-color: var(--modal-invalid-outline-color);
+    border-bottom: 2px solid var(--error-text-color);
 }
-
+.invalid-input {
+    border-bottom: 2px solid var(--error-text-color);
+}
+.input-modal:focus {
+    outline: none;
+}
 .date-input {
     display: flex;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -122,12 +128,18 @@ dialog::backdrop {
     margin-top: 14px;
     padding: 10px;
     width: 98%;
-    border: 1px solid var(--text-color);
+    border: 2px solid var(--text-color);
     border-top: none;
     border-right: none;
     min-height: 60px;
     resize: none;
     
+}
+.info:focus {
+    outline: none;
+    border-color: var(--text-color);
+    border: solid;
+    border-width: 2px;
 }
 
 #submit-area {
@@ -292,9 +304,12 @@ input {
 textarea {
     background-color: var(--back-color);
     color: var(--text-color);
+    
     font-size: medium;
 }
-
+.input-modal.date-input::-webkit-calendar-picker-indicator {
+    filter: var(--calendar-icon-filter);
+}
 #cancel-span {
     color: var(--text-color);
 }

@@ -20,12 +20,6 @@
     <div id="aside-container">
         <div id="geral-container">
             <header>
-                <div id="menu-hamburguer">
-                    <button id="hamburguer-button">
-                        <img class="svg-icon" src="assets/image/menu-icon-svg.svg" alt="Menu"
-                            style="width: 100%; height: 100%;">
-                    </button>
-                </div>
                 <div class="area-search">
                     <search class="search-bar-area">
                         <input class="search-bar" type="text" placeholder="Pesquisar por nome ou email" name="search"
@@ -85,7 +79,7 @@
                                             <label class="modal-input-name">
                                                 <p>Nome *</p>
                                                 <input id="user_name" class="input-modal" type="text" name="name"
-                                                    required>
+                                                    formnovalidate>
                                             </label>
                                             <p id="name-error" class="error-message"></p>
                                         </div>
@@ -93,7 +87,7 @@
                                             <label class="modal-input-name">
                                                 <p>Nascimento *</p>
                                                 <input id="user_age" class="input-modal date-input" type="date" id="age"
-                                                    name="age" required>
+                                                    name="age" formnovalidate>
                                             </label>
                                             <p id="age-error" class="error-message"></p>
                                         </div>
@@ -110,7 +104,7 @@
                                         <label class="modal-input-name">
                                             <p>Endereço *</p>
                                             <input id="user_adress" class="input-modal" type="text" id="adress"
-                                                name="email" required>
+                                                name="email" formnovalidate>
                                             <p id="error-input" class="error-message"></p>
                                         </label>
                                     </div>
@@ -118,18 +112,18 @@
                                 <div id="infos-area">
                                     <label>
                                         <p>Outras informações</p>
-                                        <textarea id="user_info" class="info" name="info" required></textarea>
+                                        <textarea id="user_info" class="info" name="info"></textarea>
                                         <p id="error-input-1" class="error-message"></p>
                                     </label>
                                     <div id="others">
                                         <h3 class="modal-subtitle">Interesses</h3>
-                                        <textarea id="user_interess" class="info" name="info" required></textarea>
+                                        <textarea id="user_interess" class="info" name="info"></textarea>
                                         <p id="error-input-2" class="error-message"></p>
                                         <h3 class="modal-subtitle">Sentimentos</h3>
-                                        <textarea id="user_feelings" class="info" name="info" required></textarea>
+                                        <textarea id="user_feelings" class="info" name="info"></textarea>
                                         <p id="error-input-3" class="error-message"></p>
                                         <h3 class="modal-subtitle">Valores</h3>
-                                        <textarea id="user_valors" class="info" name="info" required></textarea>
+                                        <textarea id="user_valors" class="info" name="info"></textarea>
                                         <p id="error-input-4" class="error-message"></p>
                                     </div>
                                 </div>
@@ -198,8 +192,6 @@
                 <div id="opcuriosidade-header">
                     <p id="logo">OC</p>
                     <p id="logo-text">Opereção curiosidade</p>
-                </div>
-                <div id="hide-menu">
                 </div>
                 <div id="menu-opt">
                     <li>
