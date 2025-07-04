@@ -1,121 +1,146 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <script src="../../global/src/javascripts/login-validation.js"></script>
     <script src="../../global/src/javascripts/theme-toggler/theme-verify.js"></script>
-    <meta charset="UTF-8">
-    <link rel="icon" href="assets/image/favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../global/style/header.css">
-    <link rel="stylesheet" href="../../global/style/main.css">
-    <link rel="stylesheet" href="style/main.css">
-    <link rel="stylesheet" href="../../global/style/theme/color-palette.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <meta charset="UTF-8" />
+    <link rel="icon" href="assets/image/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../global/style/header.css" />
+    <link rel="stylesheet" href="../../global/style/main.css" />
+    <link rel="stylesheet" href="style/main.css" />
+    <link rel="stylesheet" href="../../global/style/theme/color-palette.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <title>Dashboard page</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="aside-container">
-        <div id="geral-container">
-            <header>
-                <div class="area-search">
-                    <search class="search-bar-area">
-                        <input class="search-bar" type="text" placeholder="Pesquisar por nome ou email" name="search" required>
-                    </search>
-                    <div id="user-container">
-                        <div class="user-area">
-                            <span id="user-photo" class="material-symbols-outlined">person</span>
-                        </div>
-                        <p id="username"></p>
-                        <div id="theme-toggle-container">
-                            <input type="checkbox" id="theme-toggle">
-                            <label id="theme-toggle-label" for="theme-toggle"></label>
-                            <span class="material-symbols-outlined" id="theme-toggle-icon-light">
-                                light_mode
-                            </span>
-                            <span class="material-symbols-outlined" id="theme-toggle-icon-dark">
-                                bedtime
-                            </span>
-                            <div id="logout-line"></div>
-                        </div>
-                        <div onclick="window.location.href='../login-page/index.html' " id="logout-area">
-                            <button id="exit-button" href="../login-page/index.html" type="button"
-                                onclick="window.location.href='../login-page/index.html'">
-                                <span class="material-symbols-outlined">logout</span>
-                            </button>
-                            <span id="logout-text">Sair</span>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <main id="main">
-                <div id="card-view">
-                    <div class="card" id="total">
-                        <h3 class="card-title" id="title-total">0</h3>
-                        <p class="card-text">Total de cadastros</p>
-                    </div>
-                    <div class="card" id="month">
-                        <h3 class="card-title" id="title-month">0</h3>
-                        <p class="card-text">Cadastrados no último mês</p>
-                    </div>
-                    <div class="card" id="pending">
-                        <h3 class="card-title" id="title-pending">0</h3>
-                        <p class="card-text">Cadastros com pendência</p>
-                    </div>
-                </div>
-                <div id="table-container">
-                    <p id="table-title">Últimos cadastros</p>
-                    <div id="table-view">
-                        
-                        <table>
-                            <thead>
-                                <tr id="table-header">
-                                    <th>NOME</th>
-                                    <th>EMAIL</th>
-                                    <th>STATUS</th>
-                                    <th>CRIAÇÃO</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-            </main>
-        </div>
-        <nav id="nav">
-            <ul class="nav-bar">
-                <div id="opcuriosidade-header">
-                    <p id="logo">OC</p>
-                    <p id="logo-text">Opereção curiosidade</p>
-                </div>
-                <div id="menu-opt">
-                    <li>
-                        <a class="nav-list" href="../dash-page/index.html">
-                            <p class="nav-opt"><span class="material-symbols-outlined">home</span>
-                                Home</p>
-                        </a>
-                    </li>
-                    <li><a class="nav-list" href="../cadastro-page/index.html">
-                            <p class="nav-opt"><span class="material-symbols-outlined">person_add</span>
-                                Cadastro</p>
-                        </a></li>
-                    <li><a class="nav-list" href="../report-page/index.html">
-                            <p class="nav-opt">
-                                <span class="material-symbols-outlined">article_person</span>
-                                Relatórios
-                            </p>
-                        </a></li>
-                </div>
-            </ul>
-        </nav>
+      <div id="geral-container">
+        <header>
+          <div class="area-search">
+            <search class="search-bar-area">
+              <input
+                class="search-bar"
+                type="text"
+                placeholder="Pesquisar por nome ou email"
+                name="search"
+                required
+              />
+            </search>
+            <div id="user-container">
+              <div class="user-area">
+                <span id="user-photo" class="material-symbols-outlined"
+                  >person</span
+                >
+              </div>
+              <p id="username"></p>
+              <div id="theme-toggle-container">
+                <input type="checkbox" id="theme-toggle" />
+                <label id="theme-toggle-label" for="theme-toggle"></label>
+                <span
+                  class="material-symbols-outlined"
+                  id="theme-toggle-icon-light"
+                >
+                  light_mode
+                </span>
+                <span
+                  class="material-symbols-outlined"
+                  id="theme-toggle-icon-dark"
+                >
+                  bedtime
+                </span>
+                <div id="logout-line"></div>
+              </div>
+              <div
+                onclick="window.location.href='../login-page/index.html' "
+                id="logout-area"
+              >
+                <button
+                  id="exit-button"
+                  href="../login-page/index.html"
+                  type="button"
+                  onclick="window.location.href='../login-page/index.html'"
+                >
+                  <span class="material-symbols-outlined">logout</span>
+                </button>
+                <span id="logout-text">Sair</span>
+              </div>
+            </div>
+          </div>
+        </header>
+        <main id="main">
+          <div id="card-view">
+            <div class="card" id="total">
+              <h3 class="card-title" id="title-total">0</h3>
+              <p class="card-text">Total de cadastros</p>
+            </div>
+            <div class="card" id="month">
+              <h3 class="card-title" id="title-month">0</h3>
+              <p class="card-text">Cadastrados no último mês</p>
+            </div>
+            <div class="card" id="pending">
+              <h3 class="card-title" id="title-pending">0</h3>
+              <p class="card-text">Cadastros com pendência</p>
+            </div>
+          </div>
+          <div id="table-container">
+            <p id="table-title">Últimos cadastros</p>
+            <div id="table-view">
+              <table>
+                <thead>
+                  <tr id="table-header">
+                    <th>NOME</th>
+                    <th>EMAIL</th>
+                    <th>STATUS</th>
+                    <th>CRIAÇÃO</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+      <nav id="nav">
+        <ul class="nav-bar">
+          <div id="opcuriosidade-header">
+            <p id="logo">OC</p>
+            <p id="logo-text">Opereção curiosidade</p>
+          </div>
+          <div id="menu-opt">
+            <li>
+              <a class="nav-list" href="../dash-page/index.html">
+                <p class="nav-opt">
+                  <span class="material-symbols-outlined">home</span> Home
+                </p>
+              </a>
+            </li>
+            <li>
+              <a class="nav-list" href="../cadastro-page/index.html">
+                <p class="nav-opt">
+                  <span class="material-symbols-outlined">person_add</span>
+                  Cadastro
+                </p>
+              </a>
+            </li>
+            <li>
+              <a class="nav-list" href="../report-page/index.html">
+                <p class="nav-opt">
+                  <span class="material-symbols-outlined">article_person</span>
+                  Relatórios
+                </p>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </nav>
     </div>
-
-
     <script src="../../global/src/javascripts/theme-toggler/theme-toggler.js"></script>
     <script src="../../global/src/javascripts/table.js" type="module"></script>
     <script src="../../global/src/javascripts/login.js"></script>
     <script src="javascript/get-users.js"></script>
     <script src="../../global/src/javascripts/nav.js"></script>
-</body>
-
+  </body>
 </html>

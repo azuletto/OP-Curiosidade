@@ -1,225 +1,303 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <script src="../../global/src/javascripts/login-validation.js"></script>
-    <link rel="icon" href="assets/image/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/image/favicon.ico" type="image/x-icon" />
     <script src="../../global/src/javascripts/theme-toggler/theme-verify.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../global/style/header.css">
-    <link rel="stylesheet" href="../../global/style/main.css">
-    <link rel="stylesheet" href="../../global/style/theme/color-palette.css">
-    <link rel="stylesheet" href="style/register-form.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../global/style/header.css" />
+    <link rel="stylesheet" href="../../global/style/main.css" />
+    <link rel="stylesheet" href="../../global/style/theme/color-palette.css" />
+    <link rel="stylesheet" href="style/register-form.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <title>Registrar ou editar usuário</title>
-</head>
-
-<body>
+  </head>
+  <body>
     <div id="aside-container">
-        <div id="geral-container">
-            <header>
-                <div class="area-search">
-                    <search class="search-bar-area">
-                        <input class="search-bar" type="text" placeholder="Pesquisar por nome ou email" name="search"
-                            required>
-                    </search>
-                    <div id="user-container">
-                        <div class="user-area">
-                            <span id="user-photo" class="material-symbols-outlined">person</span>
-                        </div>
-                        <p id="username"></p>
-                        <div id="theme-toggle-container">
-                            <input type="checkbox" id="theme-toggle">
-
-                            <label id="theme-toggle-label" for="theme-toggle"></label>
-                            <span class="material-symbols-outlined" id="theme-toggle-icon-light">
-                                light_mode
-                            </span>
-                            <span class="material-symbols-outlined" id="theme-toggle-icon-dark">
-                                bedtime
-                            </span>
-                            <div id="logout-line"></div>
-                        </div>
-                        <div onclick="window.location.href='../login-page/index.html' " id="logout-area">
-                            <button id="exit-button" href="../login-page/index.html" type="button"
-                                onclick="window.location.href='../login-page/index.html'">
-                                <span class="material-symbols-outlined">logout</span>
-                            </button>
-                            <span id="logout-text">Sair</span>
-                        </div>
-                    </div>
+      <div id="geral-container">
+        <header>
+          <div class="area-search">
+            <search class="search-bar-area">
+              <input
+                class="search-bar"
+                type="text"
+                placeholder="Pesquisar por nome ou email"
+                name="search"
+                required
+              />
+            </search>
+            <div id="user-container">
+              <div class="user-area">
+                <span id="user-photo" class="material-symbols-outlined"
+                  >person</span
+                >
+              </div>
+              <p id="username"></p>
+              <div id="theme-toggle-container">
+                <input type="checkbox" id="theme-toggle" />
+                <label id="theme-toggle-label" for="theme-toggle"></label>
+                <span
+                  class="material-symbols-outlined"
+                  id="theme-toggle-icon-light"
+                >
+                  light_mode
+                </span>
+                <span
+                  class="material-symbols-outlined"
+                  id="theme-toggle-icon-dark"
+                >
+                  bedtime
+                </span>
+                <div id="logout-line"></div>
+              </div>
+              <div
+                onclick="window.location.href='../login-page/index.html' "
+                id="logout-area"
+              >
+                <button
+                  id="exit-button"
+                  href="../login-page/index.html"
+                  type="button"
+                  onclick="window.location.href='../login-page/index.html'"
+                >
+                  <span class="material-symbols-outlined">logout</span>
+                </button>
+                <span id="logout-text">Sair</span>
+              </div>
+            </div>
+          </div>
+        </header>
+        <main id="main">
+          <div id="register-header">
+            <p id="opitions-title">Criação</p>
+            <button id="register-button">
+              <div id="button-text"><p>Novo cadastro</p></div>
+            </button>
+          </div>
+          <dialog id="register-modal">
+            <form id="user-form" method="dialog">
+              <div id="modal-container">
+                <button id="exit-register-modal">
+                  <span class="material-symbols-outlined"> close </span>
+                </button>
+                <div id="modal-header">
+                  <h3 id="modal-subtitle">Fatos e Dados</h3>
+                  <p class="status-container">
+                    Ativo: <input type="checkbox" id="user_status" />
+                  </p>
                 </div>
-            </header>
-            <main id="main">
-                <div id="register-header">
-                    <p id="opitions-title">Criação</p>
-                    <button id="register-button">
-                        <div id="button-text">
-                            <p>Novo cadastro</p>
-                        </div>
+                <div id="register-form">
+                  <div id="register-area">
+                    <div class="input-group">
+                      <div id="name-group">
+                        <label class="modal-input-name">
+                          <p>Nome *</p>
+                          <input
+                            id="user_name"
+                            class="input-modal"
+                            type="text"
+                            name="name"
+                            formnovalidate
+                          />
+                        </label>
+                        <p id="name-error" class="error-message"></p>
+                      </div>
+                      <div id="age-group">
+                        <label class="modal-input-name">
+                          <p>Nascimento *</p>
+                          <input
+                            id="user_age"
+                            class="input-modal date-input"
+                            type="date"
+                            id="age"
+                            name="age"
+                            formnovalidate
+                          />
+                        </label>
+                        <p id="age-error" class="error-message"></p>
+                      </div>
+                    </div>
+                    <div id="email-area">
+                      <label class="modal-input-name">
+                        <p>Email *</p>
+                        <input
+                          id="user_email"
+                          class="input-modal"
+                          type="email"
+                          id="email"
+                          name="email"
+                          formnovalidate
+                        />
+                        <p id="email-error" class="error-message"></p>
+                      </label>
+                    </div>
+                    <div class="adress-area">
+                      <label class="modal-input-name">
+                        <p>Endereço *</p>
+                        <input
+                          id="user_adress"
+                          class="input-modal"
+                          type="text"
+                          id="adress"
+                          name="email"
+                          formnovalidate
+                        />
+                        <p id="error-input" class="error-message"></p>
+                      </label>
+                    </div>
+                  </div>
+                  <div id="infos-area">
+                    <label>
+                      <p>Outras informações</p>
+                      <textarea
+                        id="user_info"
+                        class="info"
+                        name="info"
+                      ></textarea>
+                      <p id="error-input-1" class="error-message"></p>
+                    </label>
+                    <div id="others">
+                      <h3 class="modal-subtitle">Interesses</h3>
+                      <textarea
+                        id="user_interess"
+                        class="info"
+                        name="info"
+                      ></textarea>
+                      <p id="error-input-2" class="error-message"></p>
+                      <h3 class="modal-subtitle">Sentimentos</h3>
+                      <textarea
+                        id="user_feelings"
+                        class="info"
+                        name="info"
+                      ></textarea>
+                      <p id="error-input-3" class="error-message"></p>
+                      <h3 class="modal-subtitle">Valores</h3>
+                      <textarea
+                        id="user_valors"
+                        class="info"
+                        name="info"
+                      ></textarea>
+                      <p id="error-input-4" class="error-message"></p>
+                    </div>
+                  </div>
+                  <div id="submit-area">
+                    <button
+                      id="submit-button"
+                      class="submit-buttons"
+                      type="submit"
+                    >
+                      <span class="material-symbols-outlined">
+                        check_small
+                      </span>
+                      <p class="button-text">Salvar</p>
                     </button>
+                    <button
+                      id="cancel-span"
+                      class="submit-buttons"
+                      type="reset"
+                    >
+                      <span class="material-symbols-outlined">
+                        close_small
+                      </span>
+                      <p class="button-text">Cancelar</p>
+                    </button>
+                  </div>
                 </div>
-                <dialog id="register-modal">
-                    <form id="user-form" method="dialog">
-                        <div id="modal-container">
-                            <button id="exit-register-modal"><span class="material-symbols-outlined">
-                                    close
-                                </span>
-                            </button>
-                            <div id="modal-header">
-                                <h3 id="modal-subtitle">Fatos e Dados</h3>
-                                <p class="status-container">Ativo: <input type="checkbox" id="user_status"></p>
-                            </div>
-                            <div id="register-form">
-                                <div id="register-area">
-                                    <div class="input-group">
-                                        <div id="name-group">
-                                            <label class="modal-input-name">
-                                                <p>Nome *</p>
-                                                <input id="user_name" class="input-modal" type="text" name="name"
-                                                    formnovalidate>
-                                            </label>
-                                            <p id="name-error" class="error-message"></p>
-                                        </div>
-                                        <div id="age-group">
-                                            <label class="modal-input-name">
-                                                <p>Nascimento *</p>
-                                                <input id="user_age" class="input-modal date-input" type="date" id="age"
-                                                    name="age" formnovalidate>
-                                            </label>
-                                            <p id="age-error" class="error-message"></p>
-                                        </div>
-                                    </div>
-                                    <div id="email-area">
-                                        <label class="modal-input-name">
-                                            <p>Email *</p>
-                                            <input id="user_email" class="input-modal" type="email" id="email"
-                                                name="email" formnovalidate>
-                                            <p id="email-error" class="error-message"></p>
-                                        </label>
-                                    </div>
-                                    <div class="adress-area">
-                                        <label class="modal-input-name">
-                                            <p>Endereço *</p>
-                                            <input id="user_adress" class="input-modal" type="text" id="adress"
-                                                name="email" formnovalidate>
-                                            <p id="error-input" class="error-message"></p>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div id="infos-area">
-                                    <label>
-                                        <p>Outras informações</p>
-                                        <textarea id="user_info" class="info" name="info"></textarea>
-                                        <p id="error-input-1" class="error-message"></p>
-                                    </label>
-                                    <div id="others">
-                                        <h3 class="modal-subtitle">Interesses</h3>
-                                        <textarea id="user_interess" class="info" name="info"></textarea>
-                                        <p id="error-input-2" class="error-message"></p>
-                                        <h3 class="modal-subtitle">Sentimentos</h3>
-                                        <textarea id="user_feelings" class="info" name="info"></textarea>
-                                        <p id="error-input-3" class="error-message"></p>
-                                        <h3 class="modal-subtitle">Valores</h3>
-                                        <textarea id="user_valors" class="info" name="info"></textarea>
-                                        <p id="error-input-4" class="error-message"></p>
-                                    </div>
-                                </div>
-                                <div id="submit-area">
-                                    <button id="submit-button" class="submit-buttons" type="submit">
-                                        <span class="material-symbols-outlined">
-                                            check_small
-                                        </span>
-                                        <p class="button-text">Salvar</p>
-                                    </button>
-                                    <button id="cancel-span" class="submit-buttons" type="reset">
-                                        <span class="material-symbols-outlined">
-                                            close_small
-                                        </span>
-                                        <p class="button-text">Cancelar</p>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </dialog>
-                <dialog id="delete-confirm">
-                    <div id="delete-container">
-                        <p id="delete-message">Você realmente deseja deletar esse usuário?</p>
-                        <div id="buttons-container">
-                            <button type="button" id="confirm-delete"><span>Excluir</span></button>
-                            <button type="button" id="cancel-delete"><span>Cancelar</span></button>
-                        </div>
-                    </div>
-                </dialog>
-                <div id="table-container">
-                    <p id="table-title">Todos os cadastros</p>
-                    <div id="table-view">
-                        
-                        <table>
-                            <thead>
-                                <tr id="table-header">
-                                    <th id="sort-name" class="sort-tr">NOME</th>
-                                    <th id="sort-email" class="sort-tr">EMAIL</th>
-                                    <th id="sort-status" class="sort-tr">STATUS</th>
-                                    <th id="sort-timestamp" class="sort-tr">CRIAÇÃO</th>
-                                    <th style="text-align: center;"></th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div id="pagination-buttons">
-                        <button id="previous-page" class="pagination-button">
-                            <span class="material-symbols-outlined">
-                                arrow_left
-                            </span>
-                        </button>
-                        <p id="number-page">1/1</p>
-                        <button id="next-page" class="pagination-button">
-                            <span class="material-symbols-outlined">
-                                arrow_right
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </main>
-        </div>
-        <nav id="nav">
-            <ul class="nav-bar">
-                <div id="opcuriosidade-header">
-                    <p id="logo">OC</p>
-                    <p id="logo-text">Opereção curiosidade</p>
-                </div>
-                <div id="menu-opt">
-                    <li>
-                        <a class="nav-list" href="../dash-page/index.html">
-                            <p class="nav-opt"><span class="material-symbols-outlined">home</span>
-                                Home</p>
-                        </a>
-                    </li>
-                    <li><a class="nav-list" href="../cadastro-page/index.html">
-                            <p class="nav-opt"><span class="material-symbols-outlined">person_add</span>
-                                Cadastro</p>
-                        </a></li>
-                    <li><a class="nav-list" href="../report-page/index.html">
-                            <p class="nav-opt">
-                                <span class="material-symbols-outlined">article_person</span>
-                                Relatórios
-                            </p>
-                        </a></li>
-                </div>
-            </ul>
-        </nav>
+              </div>
+            </form>
+          </dialog>
+          <dialog id="delete-confirm">
+            <div id="delete-container">
+              <p id="delete-message">
+                Você realmente deseja deletar esse usuário?
+              </p>
+              <div id="buttons-container">
+                <button type="button" id="confirm-delete">
+                  <span>Excluir</span>
+                </button>
+                <button type="button" id="cancel-delete">
+                  <span>Cancelar</span>
+                </button>
+              </div>
+            </div>
+          </dialog>
+          <div id="table-container">
+            <p id="table-title">Todos os cadastros</p>
+            <div id="table-view">
+              <table>
+                <thead>
+                  <tr id="table-header">
+                    <th id="sort-name" class="sort-tr">NOME</th>
+                    <th id="sort-email" class="sort-tr">EMAIL</th>
+                    <th id="sort-status" class="sort-tr">STATUS</th>
+                    <th id="sort-timestamp" class="sort-tr">CRIAÇÃO</th>
+                    <th style="text-align: center"></th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div id="pagination-buttons">
+              <button id="previous-page" class="pagination-button">
+                <span class="material-symbols-outlined"> arrow_left </span>
+              </button>
+              <p id="number-page">1/1</p>
+              <button id="next-page" class="pagination-button">
+                <span class="material-symbols-outlined"> arrow_right </span>
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+      <nav id="nav">
+        <ul class="nav-bar">
+          <div id="opcuriosidade-header">
+            <p id="logo">OC</p>
+            <p id="logo-text">Opereção curiosidade</p>
+          </div>
+          <div id="menu-opt">
+            <li>
+              <a class="nav-list" href="../dash-page/index.html">
+                <p class="nav-opt">
+                  <span class="material-symbols-outlined">home</span> Home
+                </p>
+              </a>
+            </li>
+            <li>
+              <a class="nav-list" href="../cadastro-page/index.html">
+                <p class="nav-opt">
+                  <span class="material-symbols-outlined">person_add</span>
+                  Cadastro
+                </p>
+              </a>
+            </li>
+            <li>
+              <a class="nav-list" href="../report-page/index.html">
+                <p class="nav-opt">
+                  <span class="material-symbols-outlined">article_person</span>
+                  Relatórios
+                </p>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </nav>
     </div>
     <script src="javascript/modal.js"></script>
     <script src="../../global/src/javascripts/nav.js"></script>
-    <script src="../../global/src/javascripts/table-sort.js" type="module"></script>
+    <script
+      src="../../global/src/javascripts/table-sort.js"
+      type="module"
+    ></script>
     <script src="../../global/src/javascripts/login.js"></script>
     <script src="../../global/src/javascripts/table.js" type="module"></script>
-    <script src="../../global/src/javascripts/create-user.js" type="module"> </script>
+    <script
+      src="../../global/src/javascripts/create-user.js"
+      type="module"
+    ></script>
     <script src="../../global/src/javascripts/theme-toggler/theme-toggler.js"></script>
-</body>
-
+  </body>
 </html>
