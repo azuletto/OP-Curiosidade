@@ -6,7 +6,6 @@
     background-color: var(--back-color);
     flex: 1;
 }
-
 #table-title-border {
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.200);
@@ -15,28 +14,22 @@
     border-left: 0;
     border-right: 0;
 }
-
 #table-title {
     color: var(--text-color);
     margin-left: 14px;
     font-size: larger;
     font-weight: bold;
 }
-
 #table-container {
     border-radius: 8px;
     width: 95.5%;
-
     align-self: center;
     height: 80%;
-
     background-color: var(--table-back-color);
     border: none;
-
     box-shadow: -3px 3px 9px rgba(0, 0, 0, 0.256);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.24);
 }
-
 .sort-tr:hover {
     cursor: pointer;
 }
@@ -97,8 +90,6 @@
     /* background: var(--principal-color); */
     scale: 1.1;
 }
-
-
 #pagination-buttons {
     display: flex;
     height: 20px;
@@ -109,7 +100,6 @@
     margin-bottom: 8px;
     margin-top: 8px;
 }
-
 .pagination-button:hover {
     cursor: pointer;
 }
@@ -123,8 +113,6 @@ th {
     background-color: color-mix(in srgb, var(--table-back-color), rgba(0, 0, 0, 0.200));
     height: 30px;
 }
-
-
 td {
     font-size: medium;
     width: 100px;
@@ -135,16 +123,12 @@ td {
     border-color: rgba(0, 0, 0, 0.397);
     color: var(--text-color);
 }
-
 tr {
-
     font-size: large;
 }
-/*to all child of table tr when even, change color*/ 
 tr:nth-child(even) {
     background-color: color-mix(in srgb, var(--table-back-color), rgba(0, 0, 0, 0.200));
 }
-
 tr:hover {
     background: var(--hover-table-color);
 }
