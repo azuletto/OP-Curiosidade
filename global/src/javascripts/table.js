@@ -13,8 +13,8 @@ let f_users_list;
 let table = document.querySelector("table");
 let search_input = document.querySelector(".search-bar");
 let table_data = [];
+
 if (!window.location.pathname.includes("dash-page")) {
-  sort_filter_event();
   let get_set_sort = JSON.parse(localStorage.getItem("set_sort"));
   if (get_set_sort[0]) {
     document.getElementById(
@@ -322,69 +322,69 @@ function searchBar() {
     });
   }
 }
-function sort_filter_event() {
-  sort_name_tr.addEventListener("click", () => {
-    f_users_list = table_sort.sort_by_name();
-    let set_sort = [];
-    let get_set_sort = JSON.parse(localStorage.getItem("set_sort"));
-    if (get_set_sort[0]) {
-      set_sort[0] = false;
-    } else {
-      set_sort[0] = true;
-    }
-    set_sort[1] = false;
-    set_sort[2] = false;
-    set_sort[3] = false;
-    localStorage.setItem("users_list", JSON.stringify(f_users_list));
-    localStorage.setItem("set_sort", JSON.stringify(set_sort));
-    window.location.reload();
-  });
-  sort_email_tr.addEventListener("click", () => {
-    f_users_list = table_sort.sort_by_email();
-    let set_sort = [];
-    let get_set_sort = JSON.parse(localStorage.getItem("set_sort"));
-    set_sort[0] = false;
-    if (get_set_sort[1]) {
-      set_sort[1] = false;
-    } else {
-      set_sort[1] = true;
-    }
-    set_sort[2] = false;
-    set_sort[3] = false;
-    localStorage.setItem("users_list", JSON.stringify(f_users_list));
-    localStorage.setItem("set_sort", JSON.stringify(set_sort));
-    window.location.reload();
-  });
-  sort_status_tr.addEventListener("click", () => {
-    f_users_list = table_sort.sort_by_status();
-    let set_sort = [];
-    let get_set_sort = JSON.parse(localStorage.getItem("set_sort"));
-    set_sort[0] = false;
-    set_sort[1] = false;
-    if (get_set_sort[2]) {
-      set_sort[2] = false;
-    } else {
-      set_sort[2] = true;
-    }
-    set_sort[3] = false;
-    localStorage.setItem("users_list", JSON.stringify(f_users_list));
-    localStorage.setItem("set_sort", JSON.stringify(set_sort));
-    window.location.reload();
-  });
-  sort_timestamp.addEventListener("click", () => {
-    f_users_list = table_sort.sort_by_time_stamp();
-    let set_sort = [];
-    let get_set_sort = JSON.parse(localStorage.getItem("set_sort"));
-    set_sort[0] = false;
-    set_sort[1] = false;
-    set_sort[2] = false;
-    if (get_set_sort[3]) {
-      set_sort[3] = false;
-    } else {
-      set_sort[3] = true;
-    }
-    localStorage.setItem("users_list", JSON.stringify(f_users_list));
-    localStorage.setItem("set_sort", JSON.stringify(set_sort));
-    window.location.reload();
-  });
-}
+
+table.addEventListener("click", (e) => {
+  const target = e.target.closest("th.sort-tr");
+
+  if (!target) return;
+
+  const id = target.id;
+  let set_sort = JSON.parse(localStorage.getItem("set_sort")) || [
+    false,
+    false,
+    false,
+    false,
+  ];
+  let newState;
+
+  switch (id) {
+    case "sort-name":
+      newState = !set_sort[0];
+      set_sort = [newState, false, false, false];
+      f_users_list = table_sort.sort_by_name();
+      break;
+
+    case "sort-email":
+      newState = !set_sort[1];
+      set_sort = [false, newState, false, false];
+      f_users_list = table_sort.sort_by_email();
+      break;
+
+    case "sort-status":
+      newState = !set_sort[2];
+      set_sort = [false, false, newState, false];
+      f_users_list = table_sort.sort_by_status();
+      break;
+
+    case "sort-timestamp":
+      newState = !set_sort[3];
+      set_sort = [false, false, false, newState];
+      f_users_list = table_sort.sort_by_time_stamp();
+      break;
+
+    default:
+      return;
+  }
+
+  document.getElementById("sort-name").innerHTML = set_sort[0]
+    ? `NOME <span class="material-symbols-outlined">keyboard_arrow_up</span>`
+    : "NOME";
+
+  document.getElementById("sort-email").innerHTML = set_sort[1]
+    ? `EMAIL <span class="material-symbols-outlined">keyboard_arrow_up</span>`
+    : "EMAIL";
+
+  document.getElementById("sort-status").innerHTML = set_sort[2]
+    ? `STATUS <span class="material-symbols-outlined">keyboard_arrow_up</span>`
+    : "STATUS";
+
+  document.getElementById("sort-timestamp").innerHTML = set_sort[3]
+    ? `CRIAÇÃO <span class="material-symbols-outlined">keyboard_arrow_up</span>`
+    : "CRIAÇÃO";
+
+  localStorage.setItem("set_sort", JSON.stringify(set_sort));
+  localStorage.setItem("users_list", JSON.stringify(f_users_list));
+  clearTable();
+  loadTable();
+  init_table();
+});

@@ -12,13 +12,15 @@ if (localStorage.getItem("desable_users") === null) {
 }
 const confirmButton = document.getElementById("confirm-delete");
 const cancelButton = document.getElementById("cancel-delete");
-confirmButton.addEventListener("click", () => {
-  backupDelete(userIdtoDelete);
-  confirmModal.close();
-});
-cancelButton.addEventListener("click", () => {
-  confirmModal.close();
-});
+if (window.location.pathname.includes("cadastro-page")) {
+  confirmButton.addEventListener("click", () => {
+    backupDelete(userIdtoDelete);
+    confirmModal.close();
+  });
+  cancelButton.addEventListener("click", () => {
+    confirmModal.close();
+  });
+}
 export function deleteUser(userId) {
   userIdtoDelete = userId;
   confirmModal.showModal();

@@ -55,7 +55,7 @@ if (!window.location.pathname.includes("login-page")) {
 function animateIcon(icon) {
   if (!icon) return;
   icon.style.transition = "transform 0.3s ease-in-out";
-  icon.style.transform = "rotate(0deg)"; // reset inicial
-  void icon.offsetWidth; // força reflow (necessário pra reiniciar animação)
+  icon.style.transform = "rotate(0deg)";
+  void icon.offsetWidth;
   icon.style.transform = "rotate(360deg)";
 }

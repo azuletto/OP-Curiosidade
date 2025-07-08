@@ -19,7 +19,6 @@ function toggleSetter() {
     let toggle = document.getElementById("theme-toggle");
     let toggle_label = document.getElementById("theme-toggle-label");
     if (theme === "dark-theme") {
-      //set the toggle transition to none when verifying the theme
       toggle_label.classList.add("no-transition");
       setTimeout(() => {
         toggle_label.classList.remove("no-transition");

@@ -1,5 +1,7 @@
 dialog {
-  border: none;
+  border: solid;
+  border-radius: 8px;
+  border-color: var(--dialog-border-color);
   max-height: 500px;
   height: 100%;
   max-width: 800px;
@@ -144,10 +146,10 @@ dialog::backdrop {
   color: var(--text-color);
 }
 #submit-button {
-  background-color: var(--button-color);
+  background-color: var(--confirm-button-color);
 }
 #submit-button:hover {
-  background-color: var(--button-hover-color);
+  background-color: var(--confirm-button-hover-color-register);
 }
 #opitions-title {
   font-size: x-large;
@@ -176,9 +178,19 @@ dialog::backdrop {
 }
 #submit-button > p {
   font-size: large;
+  color: white;
+}
+#submit-button > span {
+  font-size: large;
+  color: white;
 }
 #cancel-span > p {
   font-size: large;
+  color: white;
+}
+#cancel-span > span {
+  font-size: large;
+  color: white;
 }
 #register-header {
   margin-top: 9.5vh;
@@ -268,10 +280,12 @@ textarea {
   filter: var(--calendar-icon-filter);
 }
 #cancel-span {
+  background-color: var(--delete-button-color);
   color: var(--text-color);
 }
 #cancel-span:hover {
   cursor: pointer;
+  background-color: var(--delete-button-hover-color);
 }
 #user_name {
   display: flex;
@@ -325,7 +339,7 @@ textarea {
   min-width: 25px;
   width: 100%;
   height: 100%;
-  background-color: red;
+  background-color: var(--delete-button-color);
   border: none;
   border-radius: 4px;
 }
@@ -339,8 +353,9 @@ textarea {
   min-width: 25px;
   width: 100%;
   height: 100%;
-  background-color: green;
-  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  border: solid;
+  border-color: var(--confirm-button-color);
   border-radius: 4px;
 }
 #confirm-delete > span {
@@ -349,13 +364,13 @@ textarea {
 }
 #cancel-delete > span {
   font-size: medium;
-  color: white;
+  color: var(--text-color);
 }
 #confirm-delete:hover {
   cursor: pointer;
-  background-color: rgb(147, 0, 0);
+  background-color: var(--delete-button-hover-color);
 }
 #cancel-delete:hover {
   cursor: pointer;
-  background-color: rgb(0, 69, 0);
+  background-color: var(--confirm-button-hover-color);
 }

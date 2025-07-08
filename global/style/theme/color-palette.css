@@ -17,6 +17,8 @@
   --press-btn-collor-hvr: rgb(26, 11, 98);
   --status-color-a: rgb(0, 157, 8);
   --status-color-i: rgb(201, 9, 9);
+  --dialog-border-color: rgb(245, 245, 245);
+  --dialog-border-color: #b1b1b1;
   --principal-color: linear-gradient(to left, #91c2f75c, #063e7a5b);
   --status-bk-color-a: rgba(0, 255, 0, 0.254);
   --status-bk-color-i: rgba(255, 0, 0, 0.254);
@@ -42,6 +44,11 @@
   --login-button-hover-color: #3f9145;
   --login-text-color: #ffffff;
   --linear-toggle-gradient: linear-gradient(white, rgb(197, 197, 197));
+  --confirm-button-color: green;
+  --delete-button-color: red;
+  --delete-button-hover-color: rgb(147, 0, 0);
+  --confirm-button-hover-color: rgb(167, 226, 167);
+  --confirm-button-hover-color-register: rgb(5, 80, 5);
 }
 .dark-theme:root {
   --header-border-color: #444444;

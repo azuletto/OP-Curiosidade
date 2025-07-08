@@ -62,7 +62,7 @@ header {
   display: flex;
   padding: 20px;
   max-width: 100vw;
-  height: 40px; /* Adiciona os 8px ao height */
+  height: 40px;
   background-color: var(--back-color);
   border: none;
 }
@@ -107,8 +107,8 @@ nav {
   align-items: center;
   justify-items: center;
   justify-content: flex-end;
-  flex-shrink: 1; /* Pode encolher */
-  min-width: 20px; /* Largura mínima (ajuste conforme necessário) */
+  flex-shrink: 1;
+  min-width: 20px;
   min-height: 10px;
   white-space: nowrap;
 }
