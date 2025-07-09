@@ -7,7 +7,7 @@ if (window.location.pathname.includes("dash-page")) {
   itensMenu[0].style.width = "85.9% ";
   textsMenu[0].style.fontWeight = "bold";
 }
-if (window.location.pathname.includes("cadastro-page")) {
+if (window.location.pathname.includes("register-page")) {
   itensMenu[1].style.background = "var(--principal-color)";
   itensMenu[1].style.width = "85.9%";
   textsMenu[1].style.fontWeight = "bold";

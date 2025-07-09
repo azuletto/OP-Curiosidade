@@ -127,7 +127,7 @@ export function init_table() {
     tr.appendChild(t_email);
     tr.appendChild(t_status);
     tr.appendChild(t_data_create);
-    if (window.location.pathname.includes("cadastro-page")) {
+    if (window.location.pathname.includes("register-page")) {
       let t_edit = document.createElement("td");
       t_edit.id = "td-edit";
       let t_delete = document.createElement("td");
@@ -153,7 +153,7 @@ function updateTable() {
   }
   let users_list = JSON.parse(localStorage.getItem("users_list"));
   let page_number = JSON.parse(localStorage.getItem("page_number"));
-  
+
   lastButton.addEventListener("click", function () {
     if (page_number < Math.ceil(users_list.length / 10) - 1) {
       page_number = Math.ceil(users_list.length / 10) - 1;
@@ -164,7 +164,7 @@ function updateTable() {
     } else {
       return;
     }
-  })
+  });
   nextButton.addEventListener("click", function () {
     if (page_number < Math.ceil(users_list.length / 10) - 1) {
       page_number++;
@@ -321,7 +321,7 @@ function searchBar() {
         tr.appendChild(t_email);
         tr.appendChild(t_status);
         tr.appendChild(t_time_stamp);
-        if (window.location.pathname.includes("cadastro-page")) {
+        if (window.location.pathname.includes("register-page")) {
           let t_edit = document.createElement("td");
           t_edit.id = "td-edit";
           let t_delete = document.createElement("td");
