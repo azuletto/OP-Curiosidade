@@ -6,7 +6,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url("../assets/image/background.svg");
+  background-image: url("../assets/image/background.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
