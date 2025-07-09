@@ -1,80 +1,82 @@
-
 #main {
-    display: flex;
-    flex-direction: column;
-    gap: 5%;
-    height: 100vh;
-    background-color: var(--back-color);
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--back-color);
+  flex: 1;
+  gap: 24px;
 }
-
 #card-view {
-    gap: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: 20px;
-    justify-content: center;
+  margin-top: 10vh;
+  gap: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
 #title-total {
-    color: var(--card-color-register)
+  color: var(--card-color-register);
 }
 #title-month {
-    color: var(--card-color-last-month)
+  color: var(--card-color-last-month);
 }
-
 #title-pending {
-    color: var(--card-color-pending)
+  color: var(--card-color-pending);
 }
-
 .card {
-    width: 100%;
-    height: 70%;
-    min-width: 100px;
-    max-width: 290px;
-    min-height: 10px;
-    max-height: 200px;
-
-    margin-top: 30px;
-    margin-left: 20px;
-    padding: 10px;
-
-    border: solid;
-    border-width: 4px;
-    border-radius: 8px;
-    
-    justify-content: center;
-    text-align: center;
-
-    background-color: var(--card-back-color);
-    box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.256);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.24);
+  width: 100%;
+  height: 100%;
+  min-width: 100px;
+  max-width: 347px;
+  min-height: 10px;
+  max-height: 200px;
+  margin-top: 18px;
+  border: solid;
+  border-width: 3px;
+  border-radius: 8px;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--card-back-color);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.24);
 }
-
 .card#total {
-    border-color: var(--card-color-register);
+  border-color: var(--card-color-register);
 }
-
 .card#month {
-    border-color: var(--card-color-last-month);
+  border-color: var(--card-color-last-month);
 }
-
 .card {
-    border-color: var(--card-color-pending)
+  border-color: var(--card-color-pending);
+  align-items: center;
 }
-
 .card-title {
-    font-size: 300%;
-    margin-bottom: 0;
-
+  font-size: 300%;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 0;
+  margin-top: 12%;
 }
-
+.tag-title {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  background: var(--principal-color);
+  width: 40%;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
+  height: 20px;
+  margin-top: 0;
+  margin-left: 47%;
+  border-radius: 12px;
+  padding: 20px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+#table-container {
+  margin-top: 2%;
+}
 .card-text {
-    display: flex;
-    text-wrap: wrap;
-    justify-content: center;
-    text-align: right;
-    font-size: large;
-    margin-left: 40%;
-    margin-top: 24px;
+  font-size: large;
+  max-width: 100%;
+  text-align: center;
+  text-wrap: wrap;
 }

@@ -1,54 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <script src="javascript/login-validation.js"></script>
     <script src="../../global/src/javascripts/theme-toggler/theme-verify.js"></script>
-    <link rel="icon" href="assets/image/login-ico.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style/login-page.css">
-    <link rel="stylesheet" href="../../global/style/theme/color-palette.css">
-    <link rel="stylesheet" href="../../global/style/error.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&family=Savate:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="icon" href="assets/image/login-ico.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style/login-page.css" />
+    <link rel="stylesheet" href="../../global/style/theme/color-palette.css" />
+    <link rel="stylesheet" href="../../global/style/error.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login page</title>
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="login-container">
-        <div class="login-logo-area">
-            <div class="login-circle-logo">
-                <h1 class="login-title">OC</h1>
-            </div>
-            <div class="login-header">
-                <h1 class="login-subtitle">Operação Curiosidade</h1>
-            </div>
+      <div class="login-logo-area">
+        <div class="login-circle-logo"><h1 class="login-title">OC</h1></div>
+        <div class="login-header">
+          <h1 class="login-subtitle">Operação Curiosidade</h1>
         </div>
-        <div class="login-form">
-            <form class="form" action="" method="post">
-                <div class="input-group">
-                    <label class="input-label">
-                        <input autocomplete="email" class="input" id="email" type="email" placeholder="Seu email"
-                            name="email" required>
-                    </label>
-                    <p id="error-message"></p>
-                </div>
-                <div class="input-group">
-                    <button id="show-pass-button"></button>
-                    <label class="input-label">
-                        <input autocomplete="current-password" class="input" id="password" type="password"
-                            placeholder="Sua senha" name="password" required>
-
-                    </label>
-                </div>
-                <p id="login-error-message"></p>
-                <button id="login-button" class="login-button" type="button">Entrar</button>
-            </form>
-        </div>
+      </div>
+      <div class="login-form">
+        <form class="form" action="" method="post">
+          <div class="input-group">
+            <label class="input-label">
+              <input
+                autocomplete="email"
+                class="input"
+                id="email"
+                type="email"
+                placeholder="Digite seu email"
+                name="email"
+                required
+              />
+              <p class="error-message"></p>
+            </label>
+          </div>
+          <div class="input-group">
+            <button id="show-pass-button">
+              <div id="show-pass-icon">
+                <span class="material-symbols-outlined"> visibility_off </span>
+              </div>
+            </button>
+            <label class="input-label">
+              <input
+                autocomplete="current-password"
+                class="input"
+                id="password"
+                type="password"
+                placeholder="Digite sua senha"
+                name="password"
+                required
+              />
+              <p class="error-message"></p>
+            </label>
+          </div>
+          <p id="login-error-message"></p>
+          <button id="login-button" class="login-button" type="button">
+            Entrar
+          </button>
+        </form>
+      </div>
     </div>
-
-</body>
-
-<script src="../../global/src/javascripts/theme-toggler/theme-toggler.js"></script>
-<script type="module" src="javascript/login.js"></script>
-
+  </body>
+  <script src="../../global/src/javascripts/theme-toggler/theme-toggler.js"></script>
+  <script type="module" src="javascript/login.js"></script>
 </html>

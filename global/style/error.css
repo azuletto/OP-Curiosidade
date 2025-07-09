@@ -1,7 +1,8 @@
-    #error-message {
-        display: flex;
-        margin-top: 5px;
-        align-self: flex-start;
-        font-size: medium;
-        color: var(--error-text-color);
-    }
+.error-message {
+  display: flex;
+  margin-top: 8px;
+  align-self: flex-start;
+  font-size: medium;
+  margin: auto;
+  color: var(--error-text-color);
+}
