@@ -2,7 +2,6 @@
   --header-border-color: rgb(255, 255, 255);
   --header-color: rgb(255, 255, 255);
   --hover-table-color: var(--principal-color);
-  --nav-user-back-color: white;
   --back-color: #f4f4f4;
   --text-color: rgb(14, 14, 14);
   --text-color-placeholder: rgba(14, 14, 14, 0.5);
@@ -19,7 +18,7 @@
   --status-color-i: rgb(201, 9, 9);
   --dialog-border-color: rgb(245, 245, 245);
   --dialog-border-color: #b1b1b1;
-  --principal-color: linear-gradient(to left, #91c2f75c, #063e7a5b);
+  --principal-color: linear-gradient(to left, #bdd9f75c, #004ab85b);
   --status-bk-color-a: rgba(0, 255, 0, 0.254);
   --status-bk-color-i: rgba(255, 0, 0, 0.254);
   --input-text-color: rgb(200, 200, 200);
@@ -68,7 +67,7 @@
   --status-color-i: #ff8080;
   --status-bk-color-a: rgba(0, 255, 0, 0.254);
   --status-bk-color-i: rgba(255, 52, 52, 0.254);
-  --register-btn-collor-hvr: rgb(26, 63, 26);
+  --register-btn-collor-hvr: rgb(13, 124, 13);
   --press-btn-collor: rgb(41, 41, 99);
   --press-btn-collor-hvr: rgb(26, 26, 63);
   --principal-color: linear-gradient(
@@ -76,10 +75,11 @@
     #6f82a97d,
     rgba(32, 59, 75, 0.475)
   );
+  --confirm-button-hover-color: rgba(27, 117, 27, 0.274);
   --calendar-icon-filter: invert(1) saturate(1000%);
   --button-text-color: white;
   --button-color: #888888;
-  --button-hover-color: #b5b5b5;
+  --button-hover-color: #b5b5b538;
   --nav-gradient-color: linear-gradient(to bottom, #121212, #131313);
   --modal-invalid-outline-color: #ff6b6b;
   --exit-button-hover: rgb(152, 0, 0);

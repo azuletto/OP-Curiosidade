@@ -10,9 +10,6 @@ function editUser(userId, edit) {
   localStorage.setItem("edit_mode", JSON.stringify(edit));
   let users = JSON.parse(localStorage.getItem("users_list")) || [];
   user_edit = users.find((user) => String(user.id) === String(userId));
-  console.log("Editing user with ID:", userId);
-  console.log("Edit mode:", edit);
-  console.log("User", user_edit);
   if (user_edit) {
     document.getElementById("user_name").value = user_edit.name;
     document.getElementById("user_age").value = user_edit.age;

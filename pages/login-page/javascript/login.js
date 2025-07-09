@@ -1,6 +1,6 @@
 import { regexEmail } from "/global/src/javascripts/email-regex.js";
 const login_button = document.getElementById("login-button");
-const error_message = document.getElementById("error-message");
+const error_message = document.querySelectorAll(".error-message");
 const login_error_message = document.getElementById("login-error-message");
 const show_pass_btn = document.getElementById("show-pass-button");
 const pass_input = document.getElementById("password");
@@ -17,19 +17,24 @@ const user = {
   email: "admin@curiosidade.com",
 };
 login_button.addEventListener("click", function () {
+  if (login_error_message) {
+    login_error_message.innerHTML = "";
+  }
+  console.log(error_message);
   const password = document.getElementById("password").value;
   const email = document.getElementById("email").value;
   if (regexEmail(email) === true) {
-    error_message.innerHTML = "";
+    error_message[0].innerHTML = "";
     if (email === user.email && password === user.password) {
       localStorage.setItem("logged_in", "true");
       localStorage.setItem("logged_in_user", JSON.stringify(user));
       window.location.href = "../dash-page/index.html";
-    } else {
-      error_message.innerHTML = "E-mail ou senha não encontrados.";
+    } else if (email === user.email && password !== user.password) {
+      error_message[1].innerHTML = "";
+      error_message[1].innerHTML = "Senha incorreta. Tente novamente.";
     }
   } else {
-    error_message.innerHTML =
+    error_message[0].innerHTML =
       "Você inseriu um e-mail inválido. Tente novamente.";
   }
 });

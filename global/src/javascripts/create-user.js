@@ -215,7 +215,6 @@ function verifyName(name) {
   } else return true;
 }
 function saveUser(user) {
-  console.log("Saving user:", user);
   let userUUID = crypto.randomUUID();
   user.id = userUUID;
   users_list.push(user);

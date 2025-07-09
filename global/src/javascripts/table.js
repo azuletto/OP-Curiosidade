@@ -3,7 +3,9 @@ import * as table_sort from "../javascripts/table-sort.js";
 import { deleteUser } from "./delete-user.js";
 import { verifyEdit } from "./edit-user.js";
 const nextButton = document.getElementById("next-page");
+const lastButton = document.getElementById("last-page");
 const prevButton = document.getElementById("previous-page");
+const firstButton = document.getElementById("first-page");
 const sort_name_tr = document.getElementById("sort-name");
 const sort_email_tr = document.getElementById("sort-email");
 const sort_status_tr = document.getElementById("sort-status");
@@ -151,6 +153,18 @@ function updateTable() {
   }
   let users_list = JSON.parse(localStorage.getItem("users_list"));
   let page_number = JSON.parse(localStorage.getItem("page_number"));
+  
+  lastButton.addEventListener("click", function () {
+    if (page_number < Math.ceil(users_list.length / 10) - 1) {
+      page_number = Math.ceil(users_list.length / 10) - 1;
+      localStorage.setItem("page_number", JSON.stringify(page_number));
+      let tbody = document.querySelector("tbody");
+      table.removeChild(tbody);
+      init_table();
+    } else {
+      return;
+    }
+  })
   nextButton.addEventListener("click", function () {
     if (page_number < Math.ceil(users_list.length / 10) - 1) {
       page_number++;
@@ -165,6 +179,17 @@ function updateTable() {
   prevButton.addEventListener("click", function () {
     if (page_number > 0) {
       page_number--;
+      localStorage.setItem("page_number", JSON.stringify(page_number));
+      let tbody = document.querySelector("tbody");
+      table.removeChild(tbody);
+      init_table();
+    } else {
+      return;
+    }
+  });
+  firstButton.addEventListener("click", function () {
+    if (page_number > 0) {
+      page_number = 0;
       localStorage.setItem("page_number", JSON.stringify(page_number));
       let tbody = document.querySelector("tbody");
       table.removeChild(tbody);
@@ -253,8 +278,7 @@ function searchBar() {
       let filtered_users = users_list.filter((user) => {
         return (
           user.name.toLowerCase().includes(filter) ||
-          user.email.toLowerCase().includes(filter) ||
-          user.status.toLowerCase().includes(filter)
+          user.email.toLowerCase().includes(filter)
         );
       });
       let tbody = document.querySelector("tbody");

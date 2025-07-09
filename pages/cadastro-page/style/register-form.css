@@ -308,7 +308,8 @@ textarea {
   cursor: pointer;
 }
 #delete-confirm {
-  border-radius: 4px;
+  border-radius: 8px;
+  border-width: 2px;
   justify-content: center;
   align-items: center;
   max-width: fit-content;
@@ -328,6 +329,11 @@ textarea {
 #delete-message {
   font-size: large;
   text-align: center;
+}
+#trash-icon {
+  margin-right: 4px;
+  margin-top: 0;
+  margin-bottom: 0px;  
 }
 #confirm-delete {
   display: flex;
@@ -355,7 +361,8 @@ textarea {
   height: 100%;
   background-color: rgba(0, 0, 0, 0);
   border: solid;
-  border-color: var(--confirm-button-color);
+  border-width: 2px;
+  border-color: var(--text-color);
   border-radius: 4px;
 }
 #confirm-delete > span {
@@ -372,5 +379,5 @@ textarea {
 }
 #cancel-delete:hover {
   cursor: pointer;
-  background-color: var(--confirm-button-hover-color);
+  background-color: var(--button-hover-color);
 }
