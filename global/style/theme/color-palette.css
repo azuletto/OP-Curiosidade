@@ -1,7 +1,7 @@
 :root {
   --header-border-color: rgb(255, 255, 255);
   --header-color: rgb(255, 255, 255);
-  --hover-table-color: var(--principal-color);
+  --hover-table-color: #84b4eb9c;
   --back-color: #f4f4f4;
   --text-color: rgb(14, 14, 14);
   --text-color-placeholder: rgba(14, 14, 14, 0.5);
@@ -48,7 +48,7 @@
   --header-border-color: #444444;
   --dialog-border-color: #b1b1b1;
   --header-color: #444444;
-  --hover-table-color: var(--principal-color);
+  --hover-table-color: #55637e8b;
   --input-text-color: rgb(205, 205, 205);
   --input-color: #888888;
   --back-color: #1d1d1d;
