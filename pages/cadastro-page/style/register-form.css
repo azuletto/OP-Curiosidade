@@ -264,9 +264,6 @@ h3 {
 #button-text > p {
   color: white;
 }
-.submit-buttons {
-  background-color: var(--button-color);
-}
 input {
   background-color: var(--back-color);
   color: var(--text-color);

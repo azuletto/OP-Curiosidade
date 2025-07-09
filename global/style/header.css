@@ -301,9 +301,6 @@ input {
 .card-text {
   color: var(--text-color);
 }
-img {
-  filter: var(--menu-itens-color);
-}
 span {
   color: var(--text-color);
 }
