@@ -25,7 +25,7 @@ try {
       "inline-block";
   }
 } catch (e) {}
-if (!window.location.pathname.includes("login-page")) {
+if (!window.location.pathname.includes("login")) {
   toggle_button.addEventListener("click", function () {
     document.querySelectorAll("*").forEach((element) => {
       element.style.transition = "all 0.3s linear";

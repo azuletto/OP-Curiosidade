@@ -77,7 +77,7 @@
   border: none;
   width: 40px;
 }
-#number-page {
+#number {
   color: var(--text-color);
   font-size: medium;
   font-weight: bold;
@@ -86,7 +86,6 @@
   margin-bottom: 8px;
 }
 .pagination-button:hover {
- 
   scale: 1.1;
 }
 #pagination-buttons {

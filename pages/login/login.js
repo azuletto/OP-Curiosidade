@@ -28,7 +28,7 @@ login_button.addEventListener("click", function () {
     if (email === user.email && password === user.password) {
       localStorage.setItem("logged_in", "true");
       localStorage.setItem("logged_in_user", JSON.stringify(user));
-      window.location.href = "../dash-page/index.html";
+      window.location.href = "../dash/index.html";
     } else if (email === user.email && password !== user.password) {
       error_message[1].innerHTML = "";
       error_message[1].innerHTML = "Senha incorreta. Tente novamente.";
