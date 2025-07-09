@@ -17,8 +17,7 @@
   --status-color-a: rgb(0, 157, 8);
   --status-color-i: rgb(201, 9, 9);
   --dialog-border-color: rgb(245, 245, 245);
-  --dialog-border-color: #b1b1b1;
-  --principal-color: linear-gradient(to left, #bdd9f75c, #004ab85b);
+  --principal-color: linear-gradient(to left, #a9cef7, #85a0cb);
   --status-bk-color-a: rgba(0, 255, 0, 0.254);
   --status-bk-color-i: rgba(255, 0, 0, 0.254);
   --input-text-color: rgb(200, 200, 200);
@@ -26,7 +25,6 @@
   --table-back-color: rgb(255, 255, 255);
   --button-color: #c6c4bb;
   --button-hover-color: #b5b5b5;
-  --nav-gradient-color: linear-gradient(to left, white, rgb(222, 222, 222));
   --modal-invalid-outline-color: #ff6b6b;
   --exit-button-hover: rgb(152, 0, 0);
   --card-color-register: #0003aa;
@@ -51,6 +49,7 @@
 }
 .dark-theme:root {
   --header-border-color: #444444;
+  --dialog-border-color: #b1b1b1;
   --header-color: #444444;
   --hover-table-color: var(--principal-color);
   --input-text-color: rgb(205, 205, 205);
@@ -70,11 +69,7 @@
   --register-btn-collor-hvr: rgb(13, 124, 13);
   --press-btn-collor: rgb(41, 41, 99);
   --press-btn-collor-hvr: rgb(26, 26, 63);
-  --principal-color: linear-gradient(
-    to left,
-    #6f82a97d,
-    rgba(32, 59, 75, 0.475)
-  );
+  --principal-color: linear-gradient(to left, #55637e, rgb(34, 69, 89));
   --confirm-button-hover-color: rgba(27, 117, 27, 0.274);
   --calendar-icon-filter: invert(1) saturate(1000%);
   --button-text-color: white;
