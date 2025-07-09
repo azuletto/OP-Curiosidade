@@ -2,21 +2,21 @@ import { loadExampleUsers } from "../model/load-example-users.js";
 import * as table_sort from "../javascripts/table-sort.js";
 import { deleteUser } from "./delete-user.js";
 import { verifyEdit } from "./edit-user.js";
-const nextButton = document.getElementById("next-page");
-const lastButton = document.getElementById("last-page");
-const prevButton = document.getElementById("previous-page");
-const firstButton = document.getElementById("first-page");
+const nextButton = document.getElementById("next");
+const lastButton = document.getElementById("last");
+const prevButton = document.getElementById("previous");
+const firstButton = document.getElementById("first");
 const sort_name_tr = document.getElementById("sort-name");
 const sort_email_tr = document.getElementById("sort-email");
 const sort_status_tr = document.getElementById("sort-status");
 const sort_timestamp = document.getElementById("sort-timestamp");
-let number_page = document.getElementById("number-page");
+let number_page = document.getElementById("number");
 let f_users_list;
 let table = document.querySelector("table");
 let search_input = document.querySelector(".search-bar");
 let table_data = [];
 
-if (!window.location.pathname.includes("dash-page")) {
+if (!window.location.pathname.includes("dash")) {
   let get_set_sort = JSON.parse(localStorage.getItem("set_sort"));
   if (get_set_sort[0]) {
     document.getElementById(
@@ -47,7 +47,7 @@ if (!window.location.pathname.includes("dash-page")) {
     document.getElementById("sort-timestamp").innerHTML = "CRIAÇÃO";
   }
 }
-if (window.location.pathname.includes("dash-page")) {
+if (window.location.pathname.includes("dash")) {
   f_users_list = table_sort.sort_by_time_stamp();
   localStorage.setItem("users_list", JSON.stringify(f_users_list));
   let set_sort = [];
@@ -72,7 +72,7 @@ export function init_table() {
   let page_number;
   if (
     !localStorage.getItem("page_number") ||
-    window.location.pathname.includes("dash-page")
+    window.location.pathname.includes("dash")
   ) {
     let page_number = 0;
     localStorage.setItem("page_number", JSON.stringify(page_number));
@@ -85,7 +85,7 @@ export function init_table() {
     page_number = max_number_page - 1;
     localStorage.setItem("page_number", JSON.stringify(page_number));
   }
-  if (!window.location.pathname.includes("dash-page")) {
+  if (!window.location.pathname.includes("dash")) {
     number_page.innerHTML = page_number + 1 + " / " + max_number_page;
   }
   let body = document.createElement("tbody");
@@ -127,7 +127,7 @@ export function init_table() {
     tr.appendChild(t_email);
     tr.appendChild(t_status);
     tr.appendChild(t_data_create);
-    if (window.location.pathname.includes("cadastro-page")) {
+    if (window.location.pathname.includes("register")) {
       let t_edit = document.createElement("td");
       t_edit.id = "td-edit";
       let t_delete = document.createElement("td");
@@ -146,14 +146,14 @@ export function init_table() {
   table.appendChild(body);
 }
 function updateTable() {
-  if (window.location.pathname.includes("dash-page")) {
+  if (window.location.pathname.includes("dash")) {
     let page_number = 0;
     localStorage.setItem("page_number", JSON.stringify(page_number));
     return;
   }
   let users_list = JSON.parse(localStorage.getItem("users_list"));
   let page_number = JSON.parse(localStorage.getItem("page_number"));
-  
+
   lastButton.addEventListener("click", function () {
     if (page_number < Math.ceil(users_list.length / 10) - 1) {
       page_number = Math.ceil(users_list.length / 10) - 1;
@@ -164,7 +164,7 @@ function updateTable() {
     } else {
       return;
     }
-  })
+  });
   nextButton.addEventListener("click", function () {
     if (page_number < Math.ceil(users_list.length / 10) - 1) {
       page_number++;
@@ -262,7 +262,7 @@ function searchBar() {
       }
       let filter = search_input.value.toLowerCase();
       let users_list = JSON.parse(localStorage.getItem("users_list"));
-      if (window.location.pathname.includes("dash-page")) {
+      if (window.location.pathname.includes("dash")) {
         let table_data = [];
         for (let i = 0; i < Math.ceil(users_list.length / 10); i++) {
           table_data.push(users_list.slice(i * 10, i * 10 + 10));
@@ -321,7 +321,7 @@ function searchBar() {
         tr.appendChild(t_email);
         tr.appendChild(t_status);
         tr.appendChild(t_time_stamp);
-        if (window.location.pathname.includes("cadastro-page")) {
+        if (window.location.pathname.includes("register")) {
           let t_edit = document.createElement("td");
           t_edit.id = "td-edit";
           let t_delete = document.createElement("td");
@@ -340,7 +340,7 @@ function searchBar() {
         new_body.appendChild(tr);
       });
       table.appendChild(new_body);
-      if (!window.location.pathname.includes("dash-page")) {
+      if (!window.location.pathname.includes("dash")) {
         number_page.innerHTML = `Filtrado (${filtered_users.length} resultados)`;
       }
     });

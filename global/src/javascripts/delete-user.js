@@ -12,7 +12,7 @@ if (localStorage.getItem("desable_users") === null) {
 }
 const confirmButton = document.getElementById("confirm-delete");
 const cancelButton = document.getElementById("cancel-delete");
-if (window.location.pathname.includes("cadastro-page")) {
+if (window.location.pathname.includes("register")) {
   confirmButton.addEventListener("click", () => {
     backupDelete(userIdtoDelete);
     confirmModal.close();

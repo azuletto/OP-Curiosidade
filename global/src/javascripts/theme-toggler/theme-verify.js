@@ -1,5 +1,5 @@
 verifyTheme();
-if (!window.location.pathname.includes("login-page")) {
+if (!window.location.pathname.includes("login")) {
   toggleSetter();
 }
 function verifyTheme() {

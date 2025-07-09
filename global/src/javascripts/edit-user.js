@@ -24,7 +24,7 @@ function editUser(userId, edit) {
     modal.showModal();
   }
 }
-if (window.location.pathname.includes("cadastro-page")) {
+if (window.location.pathname.includes("register")) {
   submitButton.addEventListener("click", function (e) {
     e.preventDefault();
     user_edit.name = document.getElementById("user_name").value;

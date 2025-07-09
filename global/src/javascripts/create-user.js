@@ -29,7 +29,7 @@ let user_info_error = document.getElementById("error-input-1");
 let user_interess_error = document.getElementById("error-input-2");
 let user_feelings_error = document.getElementById("error-input-3");
 let user_valors_error = document.getElementById("error-input-4");
-if (window.location.pathname.includes("cadastro-page")) {
+if (window.location.pathname.includes("register")) {
   exitButton.addEventListener("click", function (e) {
     clearModal();
     e.preventDefault();
