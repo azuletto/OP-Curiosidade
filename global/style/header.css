@@ -17,9 +17,10 @@ body {
   color: var(--text-color);
 }
 #logo {
+  font-family: Monoton;
   font-size: xx-large;
   margin-left: 10px;
-  font-weight: bolder;
+  font-weight: lighter;
   color: var(--text-color);
 }
 #opcuriosidade-header {
