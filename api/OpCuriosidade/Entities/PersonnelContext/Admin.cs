@@ -18,8 +18,11 @@ namespace OpCuriosidade.Entities.PersonnelContext
 
         public override bool Validation()
         {
-            var contracts = new ContractValidations<Admin>();
-            return true;
+            var contracts = new ContractValidations<Admin>()
+                .IsValidName(name: Name, message: "O nome é inválido", propertyName: "name")
+                .isValidEmail(email: Email, message: "O email é inválido", propertyName: "email")
+                .IsValidPassword(password: Password, message: "A senha é inválida", propertyName: "password");
+            return contracts.isValid();
         }
     }
 }

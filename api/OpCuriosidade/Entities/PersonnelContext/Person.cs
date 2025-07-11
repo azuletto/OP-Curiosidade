@@ -29,8 +29,12 @@ namespace OpCuriosidade.Entities.PersonnelContext
         public OtherInfos ? OtherInfos { get; set; }
         public override bool Validation()
         {
-            var constracts = new ContractValidations<Person>();
-            return true;
+            var contracts = new ContractValidations<Person>()
+                .IsValidName(name: Name, message: "O nome é inválido", propertyName: "name")
+                .isValidEmail(email: Email, message: "O email é inválido", propertyName: "email")
+                .IsValidBirthDate(birthDate: BirthDate, message: "A data de nascimento é inválida", propertyName: "birthDate")
+                .IsValidAdress(addres: Addres, message: "O endereço é inválido", propertyName: "addres");
+            return contracts.isValid();
         }
     }
 }

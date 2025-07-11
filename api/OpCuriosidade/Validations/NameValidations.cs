@@ -10,7 +10,7 @@ public partial class ContractValidations<T>
             AddNotification(new Notification(message, propertyName));
             return this;
         }
-        if (name.Length < 3 || name.Length > 50)
+        if (name.Length < 2 || name.Length > 50)
         {
             AddNotification(new Notification(message, propertyName));
             return this;
