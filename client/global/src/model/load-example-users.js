@@ -1,16 +1,9 @@
 let example_users_list = [
   {
-    name: "Bruna Pereira",
-    age: "2006-12-03",
-    email: "bruna.pereira@example.com",
-    adress: "Rua dos Pinheiros, 427, Curitiba",
-    info: "Designer",
-    interess: "Arte, Viagens",
+      
     feelings: "Tranquilo",
     valors: "Liberdade, Aprendizado",
-    id: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
     time_stamp: "2023-01-10T12:34:00Z",
-    status: "Inativo",
   },
   {
     name: "Renato Lopes",

@@ -1,0 +1,6 @@
+@OpCuriosidade_HostAddress = http://localhost:5218
+
+GET {{OpCuriosidade_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
