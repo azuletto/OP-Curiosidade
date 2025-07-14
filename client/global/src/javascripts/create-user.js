@@ -4,7 +4,7 @@ let user = {
   name: "",
   age: "",
   email: "",
-  adress: "",
+  address: "",
   info: "",
   interess: "",
   feelings: "",
@@ -24,7 +24,7 @@ let user_age = document.getElementById("user_age");
 let email_error = document.getElementById("email-error");
 let name_error = document.getElementById("name-error");
 let age_error = document.getElementById("age-error");
-let adress_error = document.getElementById("error-input");
+let address_error = document.getElementById("error-input");
 let user_info_error = document.getElementById("error-input-1");
 let user_interess_error = document.getElementById("error-input-2");
 let user_feelings_error = document.getElementById("error-input-3");
@@ -69,10 +69,10 @@ if (window.location.pathname.includes("register")) {
     }
   });
   allInputs[3].addEventListener("keyup", () => {
-    let adressVer = verifyAdress(document.getElementById("user_adress").value);
+    let addressVer = verifyAdress(document.getElementById("user_adress").value);
     if (adressVer) {
       document.getElementById("user_adress").classList.remove("invalid-input");
-      adress_error.innerHTML = "";
+      address_error.innerHTML = "";
     }
   });
   submitButton.addEventListener("click", function (e) {
@@ -137,7 +137,7 @@ export function verfifyUser(user) {
   email_error.innerHTML = "";
   name_error.innerHTML = "";
   age_error.innerHTML = "";
-  adress_error.innerHTML = "";
+  address_error.innerHTML = "";
   user_info_error.innerHTML = "";
   user_interess_error.innerHTML = "";
   user_feelings_error.innerHTML = "";
@@ -162,7 +162,7 @@ export function verfifyUser(user) {
 function verifyAdress(adress) {
   if (String(adress).trim() === "") {
     document.getElementById("user_adress").classList.add("invalid-input");
-    adress_error.innerHTML = "O campo de endereço não pode estar vazio.";
+    address_error.innerHTML = "O campo de endereço não pode estar vazio.";
     return false;
   } else return true;
 }

@@ -13,19 +13,19 @@ namespace OpCuriosidade.Entities.PersonnelContext
             bool isDeleted,
             DateOnly birthDate,
             bool status,
-            string addres,
+            string address,
             OtherInfos ? otherInfos = null
             )
             : base(name, email, isDeleted)
         {
             BirthDate = birthDate;
             Status = status;
-            Addres = addres;
+            Address = address;
             OtherInfos = otherInfos;
         }
         public DateOnly BirthDate { get; set; }
         public bool Status { get; set; }
-        public string Addres { get; set; }
+        public string Address { get; set; }
         public OtherInfos ? OtherInfos { get; set; }
         public override bool Validation()
         {
@@ -33,7 +33,8 @@ namespace OpCuriosidade.Entities.PersonnelContext
                 .IsValidName(name: Name, message: "O nome é inválido", propertyName: "name")
                 .isValidEmail(email: Email, message: "O email é inválido", propertyName: "email")
                 .IsValidBirthDate(birthDate: BirthDate, message: "A data de nascimento é inválida", propertyName: "birthDate")
-                .IsValidAdress(addres: Addres, message: "O endereço é inválido", propertyName: "addres");
+                .IsValidAdress(address: Address, message: "O endereço é inválido", propertyName: "addres")
+                .IsValidOtherInfos(OtherInfos, propertyName: "otherInfos");
             return contracts.isValid();
         }
     }
