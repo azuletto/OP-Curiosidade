@@ -1,6 +1,6 @@
-﻿using OpCuriosidade.Validations;
+﻿using OpCuriosidade.Entities.PersonnelContext.ValueObjects;
+using OpCuriosidade.Validations;
 using OpCuriosidade.Validations.Interfaces;
-using OpCuriosidade.ValueObjects;
 
 namespace OpCuriosidade.Entities.PersonnelContext
 {

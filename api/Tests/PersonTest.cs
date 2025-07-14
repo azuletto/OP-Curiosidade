@@ -1,5 +1,5 @@
 ﻿using OpCuriosidade.Entities.PersonnelContext;
-using OpCuriosidade.ValueObjects;
+using OpCuriosidade.Entities.PersonnelContext.ValueObjects;
 
 namespace Tests;
 
