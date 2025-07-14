@@ -24,7 +24,7 @@ public partial class ContractValidations<T>
         if (string.IsNullOrEmpty(value))
             return this;
 
-        var dangerousCharsPattern = new Regex(@"[;'\""\\-\-<>/*%&|^~`{}]");
+        var dangerousCharsPattern = new Regex(@"[\;'""><%&|^~`{}]");
 
         if (dangerousCharsPattern.IsMatch(value))
         {
