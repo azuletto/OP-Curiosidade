@@ -8,18 +8,21 @@ namespace OpCuriosidade.Validations
         {
             if (email == null)
             {
+                Console.WriteLine("Email is null");
                 AddNotification(new Notification(message, propertyName));
                 return this;
             }
             if (email.Length == 0)
             {
+                Console.WriteLine("Email is empty");
                 AddNotification(new Notification(message, propertyName));
                 return this;
             }
-            string emailPattern = @"/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;";
+            string emailPattern = @"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
             Regex regex = new Regex(emailPattern);
             if (!regex.IsMatch(email))
             {
+                Console.WriteLine("Email does not match the pattern");
                 AddNotification(new Notification(message, propertyName));
                 return this;
             }

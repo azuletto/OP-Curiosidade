@@ -18,7 +18,7 @@ namespace OpCuriosidade.Validations
         }
         public bool isValid()
         {
-            return _notifications.Any();
+            return _notifications.Count == 0 ? true: false;
         }
     }
 }

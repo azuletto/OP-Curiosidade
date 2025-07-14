@@ -3,14 +3,15 @@ namespace OpCuriosidade.Validations;
 
 public partial class ContractValidations<T>
 {
-    public ContractValidations<T> IsValidAdress(string addres, string message, string propertyName)
+    public ContractValidations<T> IsValidAdress(string address, string message, string propertyName)
     {
-        if (string.IsNullOrEmpty(addres))
+        if (string.IsNullOrEmpty(address) || address == "")
         {
+            Console.WriteLine("Address is null or empty");
             AddNotification(new Notification(message, propertyName));
             return this;
         }
-        if (addres.Length < 5 || addres.Length > 100)
+        if (address.Length < 5 || address.Length > 100)
         {
             AddNotification(new Notification(message, propertyName));
             return this;
