@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Output.Results.Interfaces
+namespace Application.Input.Commands.Interfaces
 {
-    public interface IResultBase
+    public interface ICommandBase
     {
 
     }

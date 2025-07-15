@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Output.Results.Interfaces
+namespace Application.Output.Request.Interfaces
 {
-    public interface IResultBase
+    public interface IRequestBase
     {
-
     }
 }

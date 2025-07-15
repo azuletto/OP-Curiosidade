@@ -1,0 +1,22 @@
+﻿using Application.Output.DTO;
+using Application.Output.Results.Interfaces;
+using OpCuriosidade.Entities.PersonnelContext;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Application.Repositories.AdminContext
+{
+    public interface IAdminRepository
+    {
+        void InsertAdmin(Admin admin);
+        Task<IResultBase> InsertAdminAsync(AdminDTO admin);
+        Task<AdminDTO> GetAdminByIdAsync(Guid id);
+        Task<AdminDTO> GetAdminByEmailAsync(string email);
+        Task<AdminDTO> GetAdminByNameAsync(string name);
+        IResultBase DeleteAdminByIdAsync(Guid id);
+
+    }
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpCuriosidade.Entities.PersonnelContext.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,9 @@ namespace Application.Output.DTO
         public string Email { get; private set; }
         public bool IsDeleted { get; private set; }
         public DateTime TimeStamp { get; private set; }
-        public string Password { get; private set; }
+        public DateOnly BirthDate { get; set; }
+        public bool Status { get; set; }
+        public string Address { get; set; }
+        public OtherInfos? OtherInfos { get; set; }
     }
 }
