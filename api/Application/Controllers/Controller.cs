@@ -1,48 +1,37 @@
 ﻿using Application.Input.Commands.AdminContext;
+using Application.Input.Handlers.AdminContext;
 using Application.Output.Results;
-using Application.Repositories.AdminContext;
 using Microsoft.AspNetCore.Mvc;
-using OpCuriosidade.Entities.PersonnelContext;
-using OpCuriosidade.Notifications;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Application.Controllers { 
+namespace Application.Controllers
+{
     [ApiController]
     [Route("[controller]")]
+    [Produces("application/json")]
     public class AdminController : ControllerBase
     {
-        private readonly IAdminRepository _repository;
+        private readonly InsertAdminHandler _handler;
 
-        public AdminController(IAdminRepository repository)
+        public AdminController(InsertAdminHandler handler)
         {
-            _repository = repository;
+            _handler = handler;
         }
 
+        [HttpGet]
+        [ProducesResponseType(typeof(string), 200)]
+        public IActionResult HealthCheck() => Ok("Admin API is running!");
+
         [HttpPost]
-        public ActionResult<Result> CreateAdmin([FromBody] InsertAdminCommand command)
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 400)]
+        [ProducesResponseType(typeof(Result), 500)]
+        public IActionResult CreateAdmin([FromBody] InsertAdminCommand command)
         {
-            var admin = new Admin(command.Name, command.Email, command.IsDeleted, command.Password);
+            var result = _handler.Handle(command);
 
-            if (!admin.Validation())
-            {
-                var result = new Result(400, "Admin inválido", false);
-                result.SetNotifications((List<Notification>)admin.Notifications);
-                return BadRequest(result);
-            }
-
-            try
-            {
-                _repository.InsertAdmin(admin);
-                return Ok(new Result(200, "Admin inserido com sucesso", true));
-            }
-            catch (System.Exception ex)
-            {
-                return StatusCode(500, new Result(500, $"Erro ao inserir admin: {ex.Message}", false));
-            }
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
         }
     }
 }

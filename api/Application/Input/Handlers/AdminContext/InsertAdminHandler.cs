@@ -15,8 +15,8 @@ namespace Application.Input.Handlers.AdminContext
 {
     public class InsertAdminHandler : IHandlerBase<InsertAdminCommand>
     {
-        private readonly IAdminRepository _repository;
-        public InsertAdminHandler(IAdminRepository repository)
+        private readonly AdminRepository _repository;
+        public InsertAdminHandler(AdminRepository repository)
         {
             _repository = repository;
         }

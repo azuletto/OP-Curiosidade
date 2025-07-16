@@ -12,7 +12,6 @@ namespace Application.Repositories.AdminContext
     public interface IAdminRepository
     {
         void InsertAdmin(Admin admin);
-        Task<IResultBase> InsertAdminAsync(AdminDTO admin);
         Task<AdminDTO> GetAdminByIdAsync(Guid id);
         Task<AdminDTO> GetAdminByEmailAsync(string email);
         Task<AdminDTO> GetAdminByNameAsync(string name);

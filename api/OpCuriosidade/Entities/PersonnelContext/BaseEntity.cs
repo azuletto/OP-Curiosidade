@@ -13,10 +13,10 @@ namespace OpCuriosidade.Entities.PersonnelContext
             IsDeleted = isDeleted;
             TimeStamp = DateTime.UtcNow;
         }
-        public Guid Id { get; private set; }
-        public string Name { get; private set; }
-        public string Email { get; private set; }
-        public bool IsDeleted { get; private set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public bool IsDeleted { get; set; }
         public DateTime TimeStamp { get; private set; }
         public IReadOnlyCollection<Notification> Notifications => _notifications;
         protected void SetNotificationsList(List<Notification> notifications)

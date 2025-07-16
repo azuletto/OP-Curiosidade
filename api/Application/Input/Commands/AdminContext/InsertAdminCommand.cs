@@ -1,4 +1,5 @@
 ﻿using Application.Input.Commands.Interfaces;
+using OpCuriosidade.Entities.PersonnelContext.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,5 @@ namespace Application.Input.Commands.AdminContext
         public required string Email { get; set; }
         public required string Password { get; set; }
         public bool IsDeleted { get; set; } = false;
-        
     }
 }
