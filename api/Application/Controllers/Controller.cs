@@ -13,12 +13,19 @@ namespace Application.Controllers
         private readonly InsertAdminHandler _insertHandler;
         private readonly DeleteAdminHandler _deleteHandler;
         private readonly GetAdminHandler _getHandler;
+        private readonly UpdateAdminHandler _updateHandler;
 
-        public AdminController(InsertAdminHandler insertHandler, DeleteAdminHandler deleteHandler, GetAdminHandler getHandler)
+        public AdminController(
+            InsertAdminHandler insertHandler,
+            DeleteAdminHandler deleteHandler,
+            GetAdminHandler getHandler,
+            UpdateAdminHandler updateHandler
+            )
         {
             _insertHandler = insertHandler;
             _deleteHandler = deleteHandler;
             _getHandler = getHandler;
+            _updateHandler = updateHandler;
         }
 
         [HttpPost]
@@ -50,6 +57,16 @@ namespace Application.Controllers
         public IActionResult GetAdmin([FromQuery] GetAdminCommand command)
         {
             var result = _getHandler.Handle(command);
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+        [HttpPut]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 400)]
+        public IActionResult UpdateAdmin([FromBody] UpdateAdminCommand command)
+        {
+            var result = _updateHandler.Handle(command);
             return result.IsOk
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);

@@ -8,6 +8,7 @@ using OpCuriosidade.Entities.PersonnelContext;
 using OpCuriosidade.Notifications;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,12 @@ namespace Application.Input.Handlers.AdminContext
             {
                 Id = command.Id
             };
+            if (deleteAdminDTO.IsDeleted == true)
+            {
+                result = new Result(400, "Admin já está deletado", false);
+                
+                return result;
+            }
             try
             {
                 result = (Result)_repository.DeleteAdminByIdAsync(deleteAdminDTO.Id.Value);
