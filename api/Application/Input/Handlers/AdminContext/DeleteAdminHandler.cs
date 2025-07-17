@@ -26,8 +26,7 @@ namespace Application.Input.Handlers.AdminContext
             Result result;
             AdminDTO deleteAdminDTO = new()
             {
-                Id = command.Id,
-                IsDeleted = command.IsDeleted
+                Id = command.Id
             };
             try
             {

@@ -12,16 +12,14 @@ namespace Application.Controllers
     {
         private readonly InsertAdminHandler _insertHandler;
         private readonly DeleteAdminHandler _deleteHandler;
+        private readonly GetAdminHandler _getHandler;
 
-        public AdminController(InsertAdminHandler insertHandler, DeleteAdminHandler deleteHandler)
+        public AdminController(InsertAdminHandler insertHandler, DeleteAdminHandler deleteHandler, GetAdminHandler getHandler)
         {
             _insertHandler = insertHandler;
             _deleteHandler = deleteHandler;
+            _getHandler = getHandler;
         }
-
-        [HttpGet]
-        [ProducesResponseType(typeof(string), 200)]
-        public IActionResult HealthCheck() => Ok("Admin API is running!");
 
         [HttpPost]
         [ProducesResponseType(typeof(Result), 200)]
@@ -42,6 +40,16 @@ namespace Application.Controllers
         {
             var result = _deleteHandler.Handle(command);
 
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+        [HttpGet]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 404)]
+        public IActionResult GetAdmin([FromQuery] GetAdminCommand command)
+        {
+            var result = _getHandler.Handle(command);
             return result.IsOk
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);

@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Application.Input.Commands.AdminContext
 {
-    public class DeleteAdminCommand : ICommandBase
+    public class GetAdminCommand : ICommandBase
     {
-        public required Guid Id { get; set; }
+        public string? Name { get; set; }
+        public string? Email { get; set; }
+        public Guid? Id { get; set; }
     }
 }

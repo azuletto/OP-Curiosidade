@@ -16,10 +16,13 @@ namespace Application.Repositories.AdminContext
         private readonly AdminMapper adminMapper = new();
         public IResultBase DeleteAdminByIdAsync(Guid id)
         {
+            Result result;
             var admin = adminDB.Find(admin => admin.Id == id) ??
                 throw new KeyNotFoundException("Admin not found");
             admin.IsDeleted = true;
-            return new Result(resultCode: 200, message: "Admin deleted successfully",isOk: true);
+            result = new Result(resultCode: 200, message: "Admin deleted successfully",isOk: true);
+            result.SetData(adminMapper.MapToDTO(admin));
+            return result;
         }
 
         public async Task<AdminDTO> GetAdminByEmailAsync(string email)
