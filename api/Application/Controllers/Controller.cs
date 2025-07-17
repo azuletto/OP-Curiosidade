@@ -10,11 +10,13 @@ namespace Application.Controllers
     [Produces("application/json")]
     public class AdminController : ControllerBase
     {
-        private readonly InsertAdminHandler _handler;
+        private readonly InsertAdminHandler _insertHandler;
+        private readonly DeleteAdminHandler _deleteHandler;
 
-        public AdminController(InsertAdminHandler handler)
+        public AdminController(InsertAdminHandler insertHandler, DeleteAdminHandler deleteHandler)
         {
-            _handler = handler;
+            _insertHandler = insertHandler;
+            _deleteHandler = deleteHandler;
         }
 
         [HttpGet]
@@ -27,7 +29,18 @@ namespace Application.Controllers
         [ProducesResponseType(typeof(Result), 500)]
         public IActionResult CreateAdmin([FromBody] InsertAdminCommand command)
         {
-            var result = _handler.Handle(command);
+            var result = _insertHandler.Handle(command);
+
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+        [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 500)]
+        public IActionResult DeleteAdmin([FromBody] DeleteAdminCommand command)
+        {
+            var result = _deleteHandler.Handle(command);
 
             return result.IsOk
                 ? Ok(result)

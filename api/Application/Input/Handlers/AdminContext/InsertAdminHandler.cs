@@ -15,8 +15,8 @@ namespace Application.Input.Handlers.AdminContext
 {
     public class InsertAdminHandler : IHandlerBase<InsertAdminCommand>
     {
-        private readonly AdminRepository _repository;
-        public InsertAdminHandler(AdminRepository repository)
+        private readonly IAdminRepository _repository;
+        public InsertAdminHandler(IAdminRepository repository)
         {
             _repository = repository;
         }
@@ -35,6 +35,8 @@ namespace Application.Input.Handlers.AdminContext
                 catch (Exception ex)
                 {
                     result = new Result(500, $"Erro ao inserir admin: {ex.Message}",false);
+                    result.SetNotifications((List<Notification>)admin.Notifications);
+                    return result;
                 }
             }
             result = new Result(400, "Admin inválido", false);
