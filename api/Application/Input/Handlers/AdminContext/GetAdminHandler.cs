@@ -1,5 +1,7 @@
 ﻿using Application.Input.Commands.AdminContext;
 using Application.Input.Handlers.Interfaces;
+using Application.Mapper;
+using Application.Output.DTO;
 using Application.Output.Results;
 using Application.Output.Results.Interfaces;
 using Application.Repositories.AdminContext;
@@ -14,6 +16,7 @@ namespace Application.Input.Handlers.AdminContext
 {
     public class GetAdminHandler : IHandlerBase<GetAdminCommand>
     {
+        private readonly AdminMapper adminMapper = new();
         private readonly IAdminRepository _repository;
         public GetAdminHandler(IAdminRepository repository)
         {
@@ -40,7 +43,8 @@ namespace Application.Input.Handlers.AdminContext
                 {
                     var admin = _repository.GetAdminByNameAsync(command.Name);
                     result = new Result(200, "Admin encontrado com sucesso", true);
-                    result.SetData(admin);
+                    AdminDTO adminDTO = adminMapper.MapToDTO(admin);    
+                    result.SetData(adminDTO);
                     return result;
                 }
                 catch (Exception ex)

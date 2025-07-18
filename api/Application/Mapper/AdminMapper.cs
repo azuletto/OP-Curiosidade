@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Mapper
 {
-    public class AdminMapper: IMapperBase
+    public class AdminMapper : IMapperBase
     {
         public AdminDTO MapToDTO(Admin admin)
         {
@@ -17,6 +17,25 @@ namespace Application.Mapper
             {
                 throw new ArgumentNullException(nameof(admin), "Admin cannot be null");
             }
+            return new AdminDTO
+            {
+                Id = admin.Id,
+                Name = admin.Name,
+                Email = admin.Email,
+                IsDeleted = admin.IsDeleted,
+                TimeStamp = admin.TimeStamp
+            };
+        }
+        public AdminDTO MapToDTO(Task<AdminDTO> adminTask)
+        {
+            if (adminTask == null)
+            {
+                throw new ArgumentNullException(nameof(adminTask), "Task não pode ser nula");
+            }
+
+            // Obtém o resultado sincronamente (só use em casos específicos!)
+            AdminDTO admin = adminTask.GetAwaiter().GetResult();
+
             return new AdminDTO
             {
                 Id = admin.Id,

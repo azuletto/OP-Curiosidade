@@ -7,7 +7,6 @@ public partial class ContractValidations<T>
     {
         if (string.IsNullOrEmpty(address) || address == "")
         {
-            Console.WriteLine("Address is null or empty");
             AddNotification(new Notification(message, propertyName));
             return this;
         }

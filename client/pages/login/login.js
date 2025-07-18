@@ -1,4 +1,4 @@
-import { regexEmail } from "/global/src/javascripts/email-regex.js";
+import { regexEmail } from "../../global/src/javascripts/email-regex.js";
 const login_button = document.getElementById("login-button");
 const error_message = document.querySelectorAll(".error-message");
 const login_error_message = document.getElementById("login-error-message");
@@ -24,18 +24,25 @@ login_button.addEventListener("click", function () {
   const password = document.getElementById("password").value;
   const email = document.getElementById("email").value;
   if (regexEmail(email) === true) {
-    error_message[0].innerHTML = "";
-    if (email === user.email && password === user.password) {
-      localStorage.setItem("logged_in", "true");
-      localStorage.setItem("logged_in_user", JSON.stringify(user));
-      window.location.href = "../dash/index.html";
-    } else if (email === user.email && password !== user.password) {
-      error_message[1].innerHTML = "";
-      error_message[1].innerHTML = "Senha incorreta. Tente novamente.";
+    if (window.location.pathname.includes("login")) {
+      error_message[0].innerHTML = "";
+      if (email === user.email && password === user.password) {
+        localStorage.setItem("logged_in", "true");
+        localStorage.setItem("logged_in_user", JSON.stringify(user));
+        window.location.href = "../dash/index.html";
+      } else if (email === user.email && password !== user.password) {
+        error_message[1].innerHTML = "";
+        error_message[1].innerHTML = "Senha incorreta. Tente novamente.";
+      }
     }
   } else {
-    error_message[0].innerHTML =
-      "Você inseriu um e-mail inválido. Tente novamente.";
+    if (location.pathname.includes("register-admin")) {
+      error_message[1].innerHTML =
+        "Você inseriu um e-mail inválido. Tente novamente.";
+    } else {
+      error_message[0].innerHTML =
+        "Você inseriu um e-mail inválido. Tente novamente.";
+    }
   }
 });
 show_pass_btn.addEventListener("click", () => {
