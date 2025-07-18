@@ -30,7 +30,8 @@ namespace Application.Input.Handlers.AdminContext
                 {
                     var admin = _repository.GetAdminByIdAsync(command.Id.Value);
                     result = new Result(200, "Admin encontrado com sucesso", true);
-                    result.SetData(admin);
+                    AdminDTO adminDTO = adminMapper.MapToDTO(admin);
+                    result.SetData(adminDTO);
                     return result;
                 }
                 catch (Exception ex)
@@ -57,7 +58,8 @@ namespace Application.Input.Handlers.AdminContext
                 {
                     var admin = _repository.GetAdminByEmailAsync(command.Email);
                     result = new Result(200, "Admin encontrado com sucesso", true);
-                    result.SetData(admin);
+                    AdminDTO adminDTO = adminMapper.MapToDTO(admin);
+                    result.SetData(adminDTO);
                     return result;
                 }
                 catch (Exception ex)
