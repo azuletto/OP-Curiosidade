@@ -2,7 +2,7 @@ const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const passwordConfirmInput = document.getElementById("password-confirm");
-const loginErrorMessage = document.getElementById("login-error-message");
+const errorsParagraphs = document.querySelectorAll(".error-message");
 const loginButton = document.getElementById("login-button");
 import { API_URL as host } from "../config.js";
 
@@ -16,7 +16,7 @@ loginButton.addEventListener("click", async (event) => {
   const passwordConfirm = passwordConfirmInput.value.trim();
 
   if (password !== passwordConfirm) {
-    loginErrorMessage.textContent = "Passwords do not match.";
+    errorsParagraphs[3].textContent = "As senhas não coincidem.";
     return;
   }
 
@@ -32,9 +32,32 @@ loginButton.addEventListener("click", async (event) => {
     if (!response.ok) {
       const errorData = await response.json();
       console.log("Error response:", errorData);
-      loginErrorMessage.textContent =
-        errorData.message || "Registration failed.";
-      return;
+      let errorName;
+      let errorEmail;
+      let errorPassword;
+
+      if (
+        (errorName = errorData.notifications.find(
+          (notification) => notification.property === "name"
+        ))
+      ) {
+        errorsParagraphs[0].textContent = errorName.message;
+      }
+      if (
+        (errorEmail = errorData.notifications.find(
+          (notification) => notification.property === "email"
+        ))
+      ) {
+        errorsParagraphs[1].textContent = errorEmail.message;
+      }
+      if (
+        (errorPassword = errorData.notifications.find(
+          (notification) => notification.property === "password"
+        ))
+      ) {
+        errorsParagraphs[2].textContent = errorPassword.message;
+        errorsParagraphs[3].textContent = errorPassword.message ;
+      }
     }
   } catch (error) {
     console.error("Error during registration:", error);

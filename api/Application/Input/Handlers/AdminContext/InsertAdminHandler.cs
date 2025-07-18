@@ -35,12 +35,12 @@ namespace Application.Input.Handlers.AdminContext
                 catch (Exception ex)
                 {
                     result = new Result(500, $"Erro ao inserir admin: {ex.Message}",false);
-                    result.SetNotifications((List<Notification>)admin.Notifications);
                     return result;
                 }
             }
-            result = new Result(400, "Admin inválido", false);
-            result.SetNotifications((List<Notification>)admin.Notifications);
+            result = new Result(400,"", false);
+            var contracts = admin.Validation(true);
+            result.SetNotifications(contracts.GetNotifications());
             return result;
         }
     }

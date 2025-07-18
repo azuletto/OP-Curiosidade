@@ -46,7 +46,7 @@
   --confirm-button-hover-color-register: rgb(5, 80, 5);
 }
 .dark-theme:root {
-    --hover-text-color: rgb(162, 162, 162);
+  --hover-text-color: rgb(162, 162, 162);
   --header-border-color: #444444;
   --dialog-border-color: #b1b1b1;
   --header-color: #444444;
@@ -55,7 +55,8 @@
   --input-color: #888888;
   --back-color: #1d1d1d;
   --text-color: #e0e0e0;
-  --text-color-placeholder: #e0e0e0d0;
+  --text-login-color: #767676;
+  --text-color-placeholder: rgba(57, 18, 18, 0.5);
   --error-text-color: rgb(255, 90, 90);
   --search-bar-border-color: #6b6875;
   --status-color-a: rgb(0, 247, 12);
