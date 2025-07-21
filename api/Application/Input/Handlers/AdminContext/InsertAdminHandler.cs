@@ -28,9 +28,8 @@ namespace Application.Input.Handlers.AdminContext
             {
                 try
                 {
-                _repository.InsertAdmin(admin);
-                result = new Result(200, "Admin inserido com sucesso",true);
-                return result;
+                    result = (Result)_repository.InsertAdmin(admin);
+                    return result;
                 }
                 catch (Exception ex)
                 {

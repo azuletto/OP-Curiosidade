@@ -45,7 +45,9 @@ loginButton.addEventListener("click", async (event) => {
       }
       if (
         (errorEmail = errorData.notifications.find(
-          (notification) => notification.property === "email"
+          (notification) =>
+            notification.property === "email" ||
+            notification.property === "alreadyDb"
         ))
       ) {
         errorsParagraphs[1].textContent = errorEmail.message;
