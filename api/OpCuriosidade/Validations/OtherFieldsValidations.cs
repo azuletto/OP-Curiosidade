@@ -1,5 +1,5 @@
-﻿using OpCuriosidade.Notifications;
-using OpCuriosidade.ValueObjects;
+﻿using OpCuriosidade.Entities.PersonnelContext.ValueObjects;
+using OpCuriosidade.Notifications;
 using System.Text.RegularExpressions;
 
 namespace OpCuriosidade.Validations;

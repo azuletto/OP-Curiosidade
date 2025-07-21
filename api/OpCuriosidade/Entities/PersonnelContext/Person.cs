@@ -1,6 +1,6 @@
-﻿using OpCuriosidade.Validations;
+﻿using OpCuriosidade.Entities.PersonnelContext.ValueObjects;
+using OpCuriosidade.Validations;
 using OpCuriosidade.Validations.Interfaces;
-using OpCuriosidade.ValueObjects;
 
 namespace OpCuriosidade.Entities.PersonnelContext
 {
@@ -14,7 +14,7 @@ namespace OpCuriosidade.Entities.PersonnelContext
             DateOnly birthDate,
             bool status,
             string address,
-            OtherInfos ? otherInfos = null
+            OtherInfos? otherInfos = null
             )
             : base(name, email, isDeleted)
         {
@@ -26,7 +26,7 @@ namespace OpCuriosidade.Entities.PersonnelContext
         public DateOnly BirthDate { get; set; }
         public bool Status { get; set; }
         public string Address { get; set; }
-        public OtherInfos ? OtherInfos { get; set; }
+        public OtherInfos? OtherInfos { get; set; }
         public override bool Validation()
         {
             var contracts = new ContractValidations<Person>()

@@ -1,4 +1,4 @@
-﻿namespace OpCuriosidade.ValueObjects
+﻿namespace OpCuriosidade.Entities.PersonnelContext.ValueObjects
 {
     public class OtherInfos
     {
