@@ -44,6 +44,7 @@
   --delete-button-hover-color: rgb(147, 0, 0);
   --confirm-button-hover-color: rgb(167, 226, 167);
   --confirm-button-hover-color-register: rgb(5, 80, 5);
+  --success-color: rgb(26, 159, 30);
 }
 .dark-theme:root {
   --hover-text-color: rgb(162, 162, 162);
@@ -86,4 +87,5 @@
   --login-text-color: white;
   --table-back-color: #444444;
   --linear-toggle-gradient: linear-gradient(#000000, #353535);
+  --success-color: rgb(97, 233, 102);
 }

@@ -56,8 +56,10 @@ loginButton.addEventListener("click", async (event) => {
         ))
       ) {
         errorsParagraphs[2].textContent = errorPassword.message;
-        errorsParagraphs[3].textContent = errorPassword.message ;
+        errorsParagraphs[3].textContent = errorPassword.message;
       }
+    } else if (response.ok) {
+      window.location.href = "../login/index.html?success=registered";
     }
   } catch (error) {
     console.error("Error during registration:", error);

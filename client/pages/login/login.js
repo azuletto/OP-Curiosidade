@@ -6,10 +6,16 @@ const show_pass_btn = document.getElementById("show-pass-button");
 const pass_input = document.getElementById("password");
 const urlParams = new URLSearchParams(window.location.search);
 const errorParam = urlParams.get("error");
+const registeredParam = urlParams.get("success");
 let showPass;
 if (errorParam === "not_logged") {
   login_error_message.innerHTML =
     "Você <strong>não está logado</strong>, entre com um usuário para continuar.";
+}
+if (registeredParam === "registered") {
+  login_error_message.style.color = "var(--success-color)";
+  login_error_message.innerHTML =
+    "Você se registrou com sucesso, agora faça o login.";
 }
 const user = {
   username: "Administrador",
