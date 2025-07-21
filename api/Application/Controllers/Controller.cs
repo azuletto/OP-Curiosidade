@@ -14,18 +14,21 @@ namespace Application.Controllers
         private readonly DeleteAdminHandler _deleteHandler;
         private readonly GetAdminHandler _getHandler;
         private readonly UpdateAdminHandler _updateHandler;
+        private readonly LoginAdminHandler _loginHandler;
 
         public AdminController(
             InsertAdminHandler insertHandler,
             DeleteAdminHandler deleteHandler,
             GetAdminHandler getHandler,
-            UpdateAdminHandler updateHandler
+            UpdateAdminHandler updateHandler,
+            LoginAdminHandler loginHandler
             )
         {
             _insertHandler = insertHandler;
             _deleteHandler = deleteHandler;
             _getHandler = getHandler;
             _updateHandler = updateHandler;
+            _loginHandler = loginHandler;
         }
 
         [HttpPost]
@@ -67,6 +70,17 @@ namespace Application.Controllers
         public IActionResult UpdateAdmin([FromBody] UpdateAdminCommand command)
         {
             var result = _updateHandler.Handle(command);
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+        [HttpPost("login")]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 401)]
+        [ProducesResponseType(typeof(Result), 404)]
+        public IActionResult LoginAdmin([FromBody] LoginAdminCommand command)
+        {
+            var result = _loginHandler.Handle(command);
             return result.IsOk
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);

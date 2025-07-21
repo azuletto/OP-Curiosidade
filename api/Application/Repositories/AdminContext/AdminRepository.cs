@@ -90,5 +90,29 @@ namespace Application.Repositories.AdminContext
                 return result;
             }
         }
+        public IResultBase CheckPasswordAsync(AdminDTO admin, string password)
+        {
+            Result result;
+            if (password == null)
+            {
+                result = new Result(resultCode: 400, message: "Senha não pode ser vazia", isOk: false);
+                return result;
+            }
+            else if (admin.Password == password)
+            {
+                result = new Result(resultCode: 200, message: "Senha correta", isOk: true);
+                return result;
+            }
+            else
+            {
+                Console.WriteLine("Senha digitada: " + password);
+                Console.WriteLine("Senha do admin: " + admin.Password);
+
+                result = new Result(resultCode: 400, message: "Senha incorreta", isOk: false);
+                Notification notification = new Notification("Senha incorreta. Tente novamente.", "password");
+                result.SetNotifications(new List<Notification> { notification });
+                return result;
+            }
+        }
     }
 }

@@ -23,7 +23,8 @@ namespace Application.Mapper
                 Name = admin.Name,
                 Email = admin.Email,
                 IsDeleted = admin.IsDeleted,
-                TimeStamp = admin.TimeStamp
+                TimeStamp = admin.TimeStamp,
+                Password = admin.Password
             };
         }
         public AdminDTO MapToDTO(Task<AdminDTO> adminTask)
@@ -42,7 +43,8 @@ namespace Application.Mapper
                 Name = admin.Name,
                 Email = admin.Email,
                 IsDeleted = admin.IsDeleted,
-                TimeStamp = admin.TimeStamp
+                TimeStamp = admin.TimeStamp,
+                Password = admin.Password
             };
         }
     }

@@ -17,6 +17,7 @@ namespace Application.Repositories.AdminContext
         Task<AdminDTO> GetAdminByNameAsync(string name);
         IResultBase DeleteAdminByIdAsync(Guid id);
         IResultBase UpdateAdminAsync(AdminDTO adminDTO);
+        IResultBase CheckPasswordAsync(AdminDTO adminDTO, string password);
 
     }
 }
