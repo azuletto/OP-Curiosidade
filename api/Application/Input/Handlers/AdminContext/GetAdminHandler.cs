@@ -25,7 +25,8 @@ namespace Application.Input.Handlers.AdminContext
         public IResultBase Handle(GetAdminCommand command)
         {
             Result result;
-            if (command.Id != null) {
+            if (command.Id != null)
+            {
                 try
                 {
                     var admin = _repository.GetAdminByIdAsync(command.Id.Value);
@@ -39,12 +40,13 @@ namespace Application.Input.Handlers.AdminContext
                     return new Result(404, $"Erro ao buscar admin: {ex.Message}", false);
                 }
             }
-            if (command.Name != null) {
+            if (command.Name != null)
+            {
                 try
                 {
                     var admin = _repository.GetAdminByNameAsync(command.Name);
                     result = new Result(200, "Admin encontrado com sucesso", true);
-                    AdminDTO adminDTO = adminMapper.MapToDTO(admin);    
+                    AdminDTO adminDTO = adminMapper.MapToDTO(admin);
                     result.SetData(adminDTO);
                     return result;
                 }
@@ -53,7 +55,8 @@ namespace Application.Input.Handlers.AdminContext
                     return new Result(404, $"Erro ao buscar admin: {ex.Message}", false);
                 }
             }
-            if (command.Email != null) {
+            if (command.Email != null)
+            {
                 try
                 {
                     var admin = _repository.GetAdminByEmailAsync(command.Email);

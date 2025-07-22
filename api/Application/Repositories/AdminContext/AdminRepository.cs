@@ -21,42 +21,51 @@ namespace Application.Repositories.AdminContext
         public IResultBase DeleteAdminByIdAsync(Guid id)
         {
             Result result;
-            var admin = adminDB.Find(admin => admin.Id == id) ??
-                throw new KeyNotFoundException("Admin not found");
+            var admin = adminDB.Find(admin => admin.Id == id);
+            if (admin == null)
+            {
+                result = new Result(resultCode: 404, message: "Admin not found", isOk: false);
+                Notification notification = new Notification("Admin não encontrado.", "notFound");
+                result.SetNotifications(new List<Notification> { notification });
+                return result;
+            }
             admin.IsDeleted = true;
-            result = new Result(resultCode: 200, message: "Admin deleted successfully",isOk: true);
+            result = new Result(resultCode: 200, message: "Admin deleted successfully", isOk: true);
             result.SetData(adminMapper.MapToDTO(admin));
             return result;
         }
 
         public async Task<AdminDTO> GetAdminByEmailAsync(string email)
         {
-            var admin = adminDB.Find(admin => admin.Email.Equals(email, StringComparison.OrdinalIgnoreCase)) ??
-                throw new KeyNotFoundException("Admin not found");
+            var admin = adminDB.Find(admin => admin.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
             Admin adminE = await Task.FromResult(admin);
             return adminMapper.MapToDTO(adminE);
         }
 
         public async Task<AdminDTO> GetAdminByIdAsync(Guid id)
         {
-            var admin = adminDB.Find(admin => admin.Id == id) ??
-                throw new KeyNotFoundException("Admin not found");
+            var admin = adminDB.Find(admin => admin.Id == id);
             Admin adminE = await Task.FromResult(admin);
             return adminMapper.MapToDTO(adminE);
         }
 
         public async Task<AdminDTO> GetAdminByNameAsync(string name)
         {
-            var admin = adminDB.Find(admin => admin.Name.Equals(name, StringComparison.OrdinalIgnoreCase)) ??
-                throw new KeyNotFoundException("Admin not found");
+            var admin = adminDB.Find(admin => admin.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             Admin adminE = await Task.FromResult(admin);
             return adminMapper.MapToDTO(adminE);
         }
         public IResultBase UpdateAdminAsync(AdminDTO adminDTO)
         {
             Result result;
-            var adminToEdit = adminDB.Find(adminToEdit => adminToEdit.Id == adminDTO.Id) ??
-                throw new KeyNotFoundException("Admin not found");
+            var adminToEdit = adminDB.Find(adminToEdit => adminToEdit.Id == adminDTO.Id);
+            if (adminToEdit == null)
+            {
+                result = new Result(resultCode: 404, message: "Admin not found", isOk: false);
+                Notification notification = new Notification("Admin não encontrado.", "notFound");
+                result.SetNotifications(new List<Notification> { notification });
+                return result;
+            }
             adminToEdit.Name = adminDTO.Name;
             adminToEdit.Email = adminDTO.Email;
             adminToEdit.SetPassword(adminDTO.Password);

@@ -15,23 +15,39 @@ namespace Application.Mapper
         {
             if (admin == null)
             {
-                throw new ArgumentNullException(nameof(admin), "Admin cannot be null");
+                return new AdminDTO
+                {
+                    Id = null,
+                    Name = null,
+                    Email = null,
+                    IsDeleted = false,
+                    TimeStamp = null,
+                    Password = null
+                };
             }
             return new AdminDTO
             {
-                Id = admin.Id,
-                Name = admin.Name,
-                Email = admin.Email,
-                IsDeleted = admin.IsDeleted,
-                TimeStamp = admin.TimeStamp,
-                Password = admin.Password
+                Id = null,
+                Name = null,
+                Email = null,
+                IsDeleted = null,
+                TimeStamp = null,
+                Password = null
             };
         }
         public AdminDTO MapToDTO(Task<AdminDTO> adminTask)
         {
             if (adminTask == null)
             {
-                throw new ArgumentNullException(nameof(adminTask), "Task não pode ser nula");
+                return new AdminDTO
+                {
+                    Id = null,
+                    Name = null,
+                    Email = null,
+                    IsDeleted = null,
+                    TimeStamp = null,
+                    Password = null
+                };
             }
 
             // Obtém o resultado sincronamente (só use em casos específicos!)

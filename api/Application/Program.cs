@@ -10,7 +10,7 @@ using OpCuriosidade.Entities.PersonnelContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ConfiguraÁ„o essencial
+// Configura√ß√£o essencial
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -29,20 +29,20 @@ builder.Services.AddSwaggerGen(c =>
     c.MapType<InsertAdminCommand>(() => new OpenApiSchema
     {
         Description = "Comando para cadastrar um administrador",
-        Required = new HashSet<string> { "Name", "Email", "Password" }, // Campos obrigatÛrios
+        Required = new HashSet<string> { "Name", "Email", "Password" }, // Campos obrigat√≥rios
         Properties = new Dictionary<string, OpenApiSchema>
         {
             ["Name"] = new()
             {
                 Type = "string",
-                Description = "Nome completo (mÌnimo 3 caracteres)",
-                Example = new OpenApiString("Jo„o Silva")
+                Description = "Nome completo (m√≠nimo 3 caracteres)",
+                Example = new OpenApiString("Jo√£o Silva")
             },
             ["Email"] = new()
             {
                 Type = "string",
                 Format = "email",
-                Description = "E-mail v·lido",
+                Description = "E-mail v√°lido",
                 Example = new OpenApiString("admin@exemplo.com")
             },
             ["Password"] = new()
@@ -55,7 +55,7 @@ builder.Services.AddSwaggerGen(c =>
             ["IsDeleted"] = new()
             {
                 Type = "boolean",
-                Description = "Padr„o: false (n„o excluÌdo)",
+                Description = "Padr√£o: false (n√£o exclu√≠do)",
                 Default = new OpenApiBoolean(false)
             }
         }
@@ -69,18 +69,18 @@ builder.Services.AddScoped<UpdateAdminHandler>();
 builder.Services.AddScoped<GetAdminHandler>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 
-// ConfiguraÁ„o explÌcita das portas
+// Configura√ß√£o expl√≠cita das portas
 builder.WebHost.UseUrls("http://localhost:5000", "https://localhost:5001");
 
 var app = builder.Build();
 
 // Middleware pipeline
-app.UseCors("AllowAll"); // Usando a polÌtica "AllowAll"
+app.UseCors("AllowAll"); // Usando a pol√≠tica "AllowAll"
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-    c.RoutePrefix = string.Empty; // Torna o Swagger acessÌvel na raiz
+    c.RoutePrefix = string.Empty; // Torna o Swagger acess√≠vel na raiz
 });
 app.UseHttpsRedirection();
 app.UseAuthorization();
