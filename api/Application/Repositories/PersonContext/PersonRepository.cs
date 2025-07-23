@@ -1,4 +1,5 @@
-﻿using Application.Output.DTO;
+﻿using Application.Input.Commands.PersonContext;
+using Application.Output.DTO;
 using Application.Output.Request.TableRequests;
 using Application.Output.Results;
 using Application.Output.Results.Interfaces;
@@ -19,9 +20,14 @@ namespace Application.Repositories.PersonContext
             throw new NotImplementedException();
         }
 
-        public Task<AdminRequest> GetAllPersonsAsync(AdminRequest adminRequest)
+        public Task<AdminRequest> GetAllPersonsAsync()
         {
             Result result;
+                AdminRequest adminRequest = new AdminRequest
+            {
+                Result = null,
+                Persons = null
+            };
             if (!personsDB.Any())
             {
                 LoadPersons.Load(personsDB);
@@ -33,8 +39,6 @@ namespace Application.Repositories.PersonContext
                 .Where(person => !person.IsDeleted)
                 .Select(person => new PersonDTO
             {
-                Address = person.Address,
-                BirthDate = person.BirthDate,
                 Email = person.Email,
                 Id = person.Id,
                 IsDeleted = person.IsDeleted,
@@ -47,6 +51,7 @@ namespace Application.Repositories.PersonContext
             result = new Result(resultCode: 200, message: "Pessoas encontradas com sucesso", isOk: true);
             adminRequest.Result = result;
             adminRequest.Persons = personsDTO;
+            result.SetData(adminRequest.Persons);
             return Task.FromResult(adminRequest);
         }
 

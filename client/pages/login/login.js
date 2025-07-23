@@ -1,5 +1,5 @@
-import { regexEmail } from "../../global/src/javascripts/email-regex.js";
-import { API_URL } from "../config.js";
+import { regexEmail } from "../../global/src/javascripts/Validations/email-regex.js";
+import { API_URL } from "../../config.js";
 const inputs = document.querySelectorAll("input");
 const errorMessages = document.querySelectorAll(".error-message");
 const login_button = document.getElementById("login-button");

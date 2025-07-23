@@ -1,4 +1,4 @@
-import { init_table, clearTable, loadTable } from "./table.js";
+import { init_table, clearTable, loadTable } from "../Table/table.js";
 window.deleteUser = deleteUser;
 let users_list = [];
 let desableUsers = [];

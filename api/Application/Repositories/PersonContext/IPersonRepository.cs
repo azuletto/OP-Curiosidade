@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace Application.Repositories.PersonContext
 {
-    internal interface IPersonRepository
+    public interface IPersonRepository
     {
         void InsertPerson(PersonDTO person);
         Task<PersonDTO> GetPersonByIdAsync(Guid id);
         Task<PersonDTO> GetPersonByEmailAsync(string email);
         Task<PersonDTO> GetPersonByNameAsync(string name);
-        Task<AdminRequest> GetAllPersonsAsync(AdminRequest adminRequest);
+        Task<AdminRequest> GetAllPersonsAsync();
         IResultBase DeletePersonByIdAsync(Guid id);
     }
 }

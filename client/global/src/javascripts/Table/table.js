@@ -1,4 +1,4 @@
-import { loadExampleUsers } from "../model/load-example-users.js";
+import { loadExampleUsers } from "../../model/load-example-users.js";
 import * as table_sort from "../javascripts/table-sort.js";
 import { deleteUser } from "./delete-user.js";
 import { verifyEdit } from "./edit-user.js";
@@ -151,7 +151,7 @@ function updateTable() {
     localStorage.setItem("page_number", JSON.stringify(page_number));
     return;
   }
-  let users_list = JSON.parse(localStorage.getItem("users_list"));
+  let users_list = getUsersList();
   let page_number = JSON.parse(localStorage.getItem("page_number"));
 
   lastButton.addEventListener("click", function () {

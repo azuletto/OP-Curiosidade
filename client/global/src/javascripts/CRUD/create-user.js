@@ -1,5 +1,5 @@
-import { regexEmail } from "/global/src/javascripts/email-regex.js";
-import { init_table, clearTable, loadTable } from "./table.js";
+import { regexEmail } from "../Validations/regex.js";
+import { init_table, clearTable, loadTable } from "../Table/table.js";
 let user = {
   name: "",
   age: "",

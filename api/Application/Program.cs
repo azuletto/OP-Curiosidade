@@ -1,6 +1,8 @@
 using Application.Input.Commands.AdminContext;
 using Application.Input.Handlers.AdminContext;
+using Application.Input.Handlers.PersonContext;
 using Application.Repositories.AdminContext;
+using Application.Repositories.PersonContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -91,6 +93,8 @@ builder.Services.AddScoped<DeleteAdminHandler>();
 builder.Services.AddScoped<UpdateAdminHandler>();
 builder.Services.AddScoped<GetAdminHandler>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<GetAllPersonsHandler>();
 
 // Configuração explícita das portas
 builder.WebHost.UseUrls("http://localhost:5000", "https://localhost:5001");

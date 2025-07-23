@@ -4,7 +4,7 @@ const passwordInput = document.getElementById("password");
 const passwordConfirmInput = document.getElementById("password-confirm");
 const errorsParagraphs = document.querySelectorAll(".error-message");
 const loginButton = document.getElementById("login-button");
-import { API_URL as host } from "../config.js";
+import { API_URL as host } from "../../config.js";
 
 loginButton.addEventListener("click", async (event) => {
   event.preventDefault();

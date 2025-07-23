@@ -1,6 +1,6 @@
 window.verifyEdit = verifyEdit;
 import { verfifyUser } from "./create-user.js";
-import { clearTable, loadTable, init_table } from "./table.js";
+import { clearTable, loadTable, init_table } from "../table.js";
 let user_edit;
 const submitButton = document.getElementById("submit-button");
 export function verifyEdit(userId, edit) {

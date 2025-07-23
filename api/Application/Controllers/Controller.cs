@@ -1,5 +1,7 @@
 ﻿using Application.Input.Commands.AdminContext;
+using Application.Input.Commands.PersonContext;
 using Application.Input.Handlers.AdminContext;
+using Application.Input.Handlers.PersonContext;
 using Application.Output.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +11,7 @@ namespace Application.Controllers
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]
-    [Authorize]
+    //[Authorize]
     public class AdminController : ControllerBase
     {
         private readonly InsertAdminHandler _insertHandler;
@@ -17,13 +19,14 @@ namespace Application.Controllers
         private readonly GetAdminHandler _getHandler;
         private readonly UpdateAdminHandler _updateHandler;
         private readonly LoginAdminHandler _loginHandler;
-
+        private readonly GetAllPersonsHandler _getAllPersonsHandler;
         public AdminController(
             InsertAdminHandler insertHandler,
             DeleteAdminHandler deleteHandler,
             GetAdminHandler getHandler,
             UpdateAdminHandler updateHandler,
-            LoginAdminHandler loginHandler
+            LoginAdminHandler loginHandler,
+            GetAllPersonsHandler getAllPersonsHandler
             )
         {
             _insertHandler = insertHandler;
@@ -31,6 +34,7 @@ namespace Application.Controllers
             _getHandler = getHandler;
             _updateHandler = updateHandler;
             _loginHandler = loginHandler;
+            _getAllPersonsHandler = getAllPersonsHandler;
         }
 
         [HttpPost]
@@ -85,6 +89,16 @@ namespace Application.Controllers
         public IActionResult LoginAdmin([FromBody] LoginAdminCommand command)
         {
             var result = _loginHandler.Handle(command);
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+        [HttpGet("table")]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 404)]
+        public IActionResult GetAllPersons([FromQuery] GetAllPersonsCommand command)
+        {
+            var result = _getAllPersonsHandler.Handle(command);
             return result.IsOk
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);
