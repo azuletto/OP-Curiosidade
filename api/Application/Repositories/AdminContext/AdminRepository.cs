@@ -101,6 +101,9 @@ namespace Application.Repositories.AdminContext
         }
         public IResultBase CheckPasswordAsync(AdminDTO admin, string password)
         {
+            Console.WriteLine("Checking password for admin: " + admin.Name);
+            Console.WriteLine("Provided password: " + password);
+            Console.WriteLine("Admin password: " + admin.Password);
             Result result;
             if (password == null)
             {
@@ -114,9 +117,6 @@ namespace Application.Repositories.AdminContext
             }
             else
             {
-                Console.WriteLine("Senha digitada: " + password);
-                Console.WriteLine("Senha do admin: " + admin.Password);
-
                 result = new Result(resultCode: 400, message: "Senha incorreta", isOk: false);
                 Notification notification = new Notification("Senha incorreta. Tente novamente.", "password");
                 result.SetNotifications(new List<Notification> { notification });

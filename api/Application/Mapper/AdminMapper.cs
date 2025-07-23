@@ -27,12 +27,12 @@ namespace Application.Mapper
             }
             return new AdminDTO
             {
-                Id = null,
-                Name = null,
-                Email = null,
-                IsDeleted = null,
-                TimeStamp = null,
-                Password = null
+                Id = admin.Id,
+                Name = admin.Name,
+                Email = admin.Email,
+                IsDeleted = admin.IsDeleted,
+                TimeStamp = admin.TimeStamp,
+                Password = admin.Password
             };
         }
         public AdminDTO MapToDTO(Task<AdminDTO> adminTask)
@@ -49,8 +49,6 @@ namespace Application.Mapper
                     Password = null
                 };
             }
-
-            // Obtém o resultado sincronamente (só use em casos específicos!)
             AdminDTO admin = adminTask.GetAwaiter().GetResult();
 
             return new AdminDTO

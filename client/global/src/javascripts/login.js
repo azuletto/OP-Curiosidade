@@ -3,6 +3,6 @@ const userNameElement = document.getElementById("username");
 const user_name = JSON.parse(localStorage.getItem("logged_in_user")).username;
 userNameElement.textContent = user_name;
 logOutButton.addEventListener("click", function () {
-  localStorage.removeItem("logged_in");
+  localStorage.removeItem("token");
   window.location.href = "../login/index.html";
 });

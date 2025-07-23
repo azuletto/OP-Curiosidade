@@ -60,8 +60,31 @@ builder.Services.AddSwaggerGen(c =>
             }
         }
     });
+    c.MapType<LoginAdminCommand>(() => new OpenApiSchema
+    {
+        Description = "Comando para logar um administrador",
+        Required = new HashSet<string> { "Email", "Password" }, // Campos obrigatórios
+        Properties = new Dictionary<string, OpenApiSchema>
+        {
+            ["Email"] = new()
+            {
+                Type = "string",
+                Format = "email",
+                Description = "E-mail válido",
+                Example = new OpenApiString("admin@exemplo.com")
+            },
+            ["Password"] = new()
+            {
+                Type = "string",
+                Format = "password",
+                Description = "Senha com pelo menos 8 caracteres",
+                Example = new OpenApiString("Senha@123")
+            }
+        }
+    });
 });
 builder.Services.AddSingleton(new List<Admin>());
+builder.Services.AddSingleton(new List<Person>());
 builder.Services.AddScoped<LoginAdminHandler>();
 builder.Services.AddScoped<InsertAdminHandler>();
 builder.Services.AddScoped<DeleteAdminHandler>();

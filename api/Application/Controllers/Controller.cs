@@ -1,6 +1,7 @@
 ﻿using Application.Input.Commands.AdminContext;
 using Application.Input.Handlers.AdminContext;
 using Application.Output.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Controllers
@@ -8,6 +9,7 @@ namespace Application.Controllers
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]
+    [Authorize]
     public class AdminController : ControllerBase
     {
         private readonly InsertAdminHandler _insertHandler;
@@ -32,6 +34,7 @@ namespace Application.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(Result), 200)]
         [ProducesResponseType(typeof(Result), 400)]
         [ProducesResponseType(typeof(Result), 500)]
@@ -75,6 +78,7 @@ namespace Application.Controllers
                 : StatusCode(result.ResultCode, result);
         }
         [HttpPost("login")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(Result), 200)]
         [ProducesResponseType(typeof(Result), 401)]
         [ProducesResponseType(typeof(Result), 404)]

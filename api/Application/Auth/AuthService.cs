@@ -41,5 +41,26 @@ namespace Application.Auth
             }
             return ci;
         }
+        public static bool isValidToken(string token)
+        {
+            var key = Encoding.UTF8.GetBytes(Config.PrivateKey);
+            var handler = new JwtSecurityTokenHandler();
+            try
+            {
+                handler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

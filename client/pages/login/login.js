@@ -45,13 +45,14 @@ login_button.addEventListener("click", async function () {
     });
 
     const data = await response.json();
-    console.log("Login response:", data);
 
     if (!response.ok) {
       login_error_message.innerHTML = data.message || "Erro ao fazer login.";
       return;
     } else {
+      localStorage.setItem("logged_in_user", JSON.stringify(data.data.admin));
       localStorage.setItem("token", data.data.token);
+      window.location.href = "../dash/index.html";
     }
   } catch (error) {
     console.error("Erro na requisição:", error);

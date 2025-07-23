@@ -15,7 +15,7 @@ namespace Application.Repositories.PersonContext
         Task<PersonDTO> GetPersonByIdAsync(Guid id);
         Task<PersonDTO> GetPersonByEmailAsync(string email);
         Task<PersonDTO> GetPersonByNameAsync(string name);
-        Task<AdminRequest> GetAllPersonsAsync();
+        Task<AdminRequest> GetAllPersonsAsync(AdminRequest adminRequest);
         IResultBase DeletePersonByIdAsync(Guid id);
     }
 }

@@ -32,15 +32,16 @@ namespace Application.Input.Handlers.AdminContext
                 var adminDTO = adminMapper.MapToDTO(admin);
                 var isValidPassword = _repository.CheckPasswordAsync(adminDTO, command.Password);
                 if (isValidPassword.IsOk)
-                {   
-                    var token = _authService.GenerateToken(adminDTO );
+                {
+                    var token = _authService.GenerateToken(adminDTO);
                     result = new Result(200, "Login realizado com sucesso", true);
                     var data = new
                     {
                         Token = token,
-                        Admin = adminDTO
+                        Admin = adminDTO.Name
                     };
-                    result.SetData(adminDTO);
+
+                    result.SetData(data);
                     return result;
                 }
                 else

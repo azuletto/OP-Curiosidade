@@ -8,13 +8,11 @@ public partial class ContractValidations<T>
         if (string.IsNullOrEmpty(name))
         {
             AddNotification(new Notification(message, propertyName));
-            Console.WriteLine(message);
             return this;
         }
         if (name.Length < 2 || name.Length > 50)
         {
             AddNotification(new Notification(message, propertyName));
-            Console.WriteLine(message);
             return this;
         }
         foreach (char c in name)
@@ -22,7 +20,6 @@ public partial class ContractValidations<T>
             if (!char.IsLetter(c) && !char.IsWhiteSpace(c) && c != '-' && c != '\'')
             {
                 AddNotification(new Notification(message, propertyName));
-                Console.WriteLine(message);
                 return this;
             }
         }
