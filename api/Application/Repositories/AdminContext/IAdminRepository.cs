@@ -1,4 +1,4 @@
-﻿using Application.Output.DTO;
+﻿    using Application.Output.DTO;
 using Application.Output.Results.Interfaces;
 using OpCuriosidade.Entities.PersonnelContext;
 using System;

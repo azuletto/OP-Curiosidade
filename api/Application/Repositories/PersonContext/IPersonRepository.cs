@@ -1,4 +1,6 @@
-﻿using Application.Output.DTO;
+﻿using Application.Input.Commands.PersonContext;
+using Application.Input.Commands.PersonContext.ValueObjects;
+using Application.Output.DTO;
 using Application.Output.Request.TableRequests;
 using Application.Output.Results.Interfaces;
 using System;
@@ -13,6 +15,7 @@ namespace Application.Repositories.PersonContext
     {
         void InsertPerson(PersonDTO person);
         Task<PersonDTO> GetPersonByIdAsync(Guid id);
+        Task<IResultBase> GetFilteredAsync(FilterType filterType, bool inDashboard);
         Task<PersonDTO> GetPersonByEmailAsync(string email);
         Task<PersonDTO> GetPersonByNameAsync(string name);
         Task<AdminRequest> GetAllPersonsAsync();
