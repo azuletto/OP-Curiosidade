@@ -1,6 +1,11 @@
 window.verifyEdit = verifyEdit;
 import { verfifyUser } from "./create-user.js";
-import { clearTable, loadTable, init_table } from "../table.js";
+import {
+  clearTable,
+  loadTable,
+  init_table,
+} from "../../javascripts/Table/table.js";
+import { getUsersList } from "../tableHandler.js";
 let user_edit;
 const submitButton = document.getElementById("submit-button");
 export function verifyEdit(userId, edit) {
@@ -38,7 +43,7 @@ if (window.location.pathname.includes("register")) {
     user_edit.status = document.getElementById("user_status").checked
       ? "Ativo"
       : "Inativo";
-    let users_list = JSON.parse(localStorage.getItem("users_list"));
+    let users_list = getUsersList() || [];
     if (verfifyUser(user_edit)) {
       users_list.find((user) => String(user.id) === String(user_edit.id)).name =
         user_edit.name;
@@ -64,7 +69,6 @@ if (window.location.pathname.includes("register")) {
       users_list.find(
         (user) => String(user.id) === String(user_edit.id)
       ).status = user_edit.status;
-      localStorage.setItem("users_list", JSON.stringify(users_list));
       localStorage.setItem("edit_mode", JSON.stringify(false));
       clearTable();
       loadTable();

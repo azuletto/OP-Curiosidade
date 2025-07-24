@@ -2,7 +2,7 @@
 const token = localStorage.getItem("token");
 import { API_URL } from "../../../../client/config.js";
 // Fazer a chamada à API
-async function getUsersList() {
+export async function getUsersList() {
   try {
     const response = await fetch(`${API_URL}/Admin/table`, {
       method: "GET",
@@ -20,7 +20,7 @@ async function getUsersList() {
       getUsersList();
       const users_list = await response.json();
     }
-    return users_list;
+    return users_list.data;
   } catch (error) {
     console.error("Erro ao buscar lista de usuários:", error);
     return null;

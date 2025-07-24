@@ -1,17 +1,15 @@
-let html = document.querySelector("html");
-
-let toggle_button = document.querySelector("#theme-toggle");
-let toggle_label = document.querySelector("#theme-toggle-label");
-let dark_icon = document.getElementById("theme-toggle-icon-light");
-let light_icon = document.getElementById("theme-toggle-icon-dark");
+const toggle_button = document.getElementById("theme-toggle");
+const toggle_label = document.getElementById("theme-toggle-label");
+const dark_icon = document.getElementById("theme-toggle-icon-light");
+const light_icon = document.getElementById("theme-toggle-icon-dark");
 if (localStorage.getItem("theme") === "dark-theme") {
-  html.classList.add("dark-theme");
+  document.documentElement.classList.add("dark-theme");
 } else if (
   localStorage.getItem("theme") === null ||
   localStorage.getItem("theme") === "" ||
   localStorage.getItem("theme") === "light-theme"
 ) {
-  html.classList.remove("dark-theme");
+  document.documentElement.classList.remove("dark-theme");
 }
 try {
   const theme = localStorage.getItem("theme") || "light-theme";
@@ -33,15 +31,15 @@ if (
     document.querySelectorAll("*").forEach((element) => {
       element.style.transition = "all 0.3s linear";
     });
-    if (html.classList.contains("dark-theme")) {
-      html.classList.remove("dark-theme");
+    if (document.documentElement.classList.contains("dark-theme")) {
+      document.documentElement.classList.remove("dark-theme");
       localStorage.setItem("theme", "light-theme");
       document.getElementById("theme-toggle-icon-light").style.display =
         "inline-block";
       document.getElementById("theme-toggle-icon-dark").style.display = "none";
       animateIcon(dark_icon);
     } else {
-      html.classList.add("dark-theme");
+      document.documentElement.classList.add("dark-theme");
       localStorage.setItem("theme", "dark-theme");
       document.getElementById("theme-toggle-icon-dark").style.display =
         "inline-block";

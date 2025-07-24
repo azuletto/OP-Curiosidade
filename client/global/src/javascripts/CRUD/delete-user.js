@@ -1,10 +1,11 @@
 import { init_table, clearTable, loadTable } from "../Table/table.js";
+import { getUsersList } from "../tableHandler.js";
 window.deleteUser = deleteUser;
 let users_list = [];
 let desableUsers = [];
 let userIdtoDelete = "";
 const confirmModal = document.getElementById("delete-confirm");
-users_list = JSON.parse(localStorage.getItem("users_list")) || [];
+users_list = getUsersList() || [];
 desableUsers = JSON.parse(localStorage.getItem("desable_users")) || [];
 
 if (localStorage.getItem("desable_users") === null) {
@@ -28,10 +29,6 @@ export function deleteUser(userId) {
 function backupDelete(userId) {
   let user = users_list.find((user) => String(user.id) === String(userId));
   if (user) {
-    users_list.splice(users_list.indexOf(user), 1);
-    localStorage.setItem("users_list", JSON.stringify(users_list));
-    desableUsers.push(user);
-    localStorage.setItem("desable_users", JSON.stringify(desableUsers));
     clearTable();
     loadTable();
     init_table();

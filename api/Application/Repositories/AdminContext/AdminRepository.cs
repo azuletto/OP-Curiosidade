@@ -101,9 +101,6 @@ namespace Application.Repositories.AdminContext
         }
         public IResultBase CheckPasswordAsync(AdminDTO admin, string password)
         {
-            Console.WriteLine("Checking password for admin: " + admin.Name);
-            Console.WriteLine("Provided password: " + password);
-            Console.WriteLine("Admin password: " + admin.Password);
             Result result;
             if (password == null)
             {

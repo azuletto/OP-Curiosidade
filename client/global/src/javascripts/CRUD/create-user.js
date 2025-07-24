@@ -1,5 +1,6 @@
-import { regexEmail } from "../Validations/regex.js";
+import { regexEmail } from "../Validations/email-regex.js";
 import { init_table, clearTable, loadTable } from "../Table/table.js";
+import { getUsersList } from "../tableHandler.js";
 let user = {
   name: "",
   age: "",
@@ -13,11 +14,8 @@ let user = {
   time_stamp: "",
   status: "",
 };
-if (!localStorage.getItem("users_list")) {
-  localStorage.setItem("users_list", JSON.stringify([]));
-}
 let users_list = [];
-users_list = JSON.parse(localStorage.getItem("users_list")) || [];
+users_list = getUsersList() || [];
 const submitButton = document.getElementById("submit-button");
 const exitButton = document.getElementById("exit-register-modal");
 let user_age = document.getElementById("user_age");
@@ -178,7 +176,7 @@ function verifyAge(age) {
   } else return true;
 }
 function verifyEmail(user, isevent = false) {
-  let users_list = JSON.parse(localStorage.getItem("users_list")) || [];
+  let users_list = getUsersList() || [];
   let editMode = JSON.parse(localStorage.getItem("edit_mode"));
   if (editMode && isevent) {
     if (!regexEmail(user.email)) {
@@ -218,17 +216,9 @@ function saveUser(user) {
   let userUUID = crypto.randomUUID();
   user.id = userUUID;
   users_list.push(user);
-  localStorage.setItem("users_list", JSON.stringify(users_list));
   clearTable();
   loadTable();
   init_table();
   clearModal();
   modal.close();
-}
-function verifyStorage() {
-  if (!localStorage.getItem("users_list")) {
-    localStorage.setItem("users_list", JSON.stringify([]));
-  } else {
-    users_list = JSON.parse(localStorage.getItem("users_list"));
-  }
 }
