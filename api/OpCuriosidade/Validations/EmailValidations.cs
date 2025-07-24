@@ -8,13 +8,11 @@ namespace OpCuriosidade.Validations
         {
             if (email == null)
             {
-                Console.WriteLine("Email is null");
                 AddNotification(new Notification(message, propertyName));
                 return this;
             }
             if (email.Length == 0)
             {
-                Console.WriteLine("Email is empty");
                 AddNotification(new Notification(message, propertyName));
                 return this;
             }
@@ -22,7 +20,6 @@ namespace OpCuriosidade.Validations
             Regex regex = new Regex(emailPattern);
             if (!regex.IsMatch(email))
             {
-                Console.WriteLine("Email does not match the pattern");
                 AddNotification(new Notification(message, propertyName));
                 return this;
             }

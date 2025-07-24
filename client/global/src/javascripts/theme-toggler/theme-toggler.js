@@ -25,7 +25,10 @@ try {
       "inline-block";
   }
 } catch (e) {}
-if (!window.location.pathname.includes("login")) {
+if (
+  !window.location.pathname.includes("login") &&
+  !window.location.pathname.includes("register-admin")
+) {
   toggle_button.addEventListener("click", function () {
     document.querySelectorAll("*").forEach((element) => {
       element.style.transition = "all 0.3s linear";

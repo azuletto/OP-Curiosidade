@@ -1,48 +1,75 @@
 ﻿using Application.Input.Commands.AdminContext;
+using Application.Input.Handlers.AdminContext;
 using Application.Output.Results;
-using Application.Repositories.AdminContext;
 using Microsoft.AspNetCore.Mvc;
-using OpCuriosidade.Entities.PersonnelContext;
-using OpCuriosidade.Notifications;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Application.Controllers { 
+namespace Application.Controllers
+{
     [ApiController]
     [Route("[controller]")]
+    [Produces("application/json")]
     public class AdminController : ControllerBase
     {
-        private readonly IAdminRepository _repository;
+        private readonly InsertAdminHandler _insertHandler;
+        private readonly DeleteAdminHandler _deleteHandler;
+        private readonly GetAdminHandler _getHandler;
+        private readonly UpdateAdminHandler _updateHandler;
 
-        public AdminController(IAdminRepository repository)
+        public AdminController(
+            InsertAdminHandler insertHandler,
+            DeleteAdminHandler deleteHandler,
+            GetAdminHandler getHandler,
+            UpdateAdminHandler updateHandler
+            )
         {
-            _repository = repository;
+            _insertHandler = insertHandler;
+            _deleteHandler = deleteHandler;
+            _getHandler = getHandler;
+            _updateHandler = updateHandler;
         }
 
         [HttpPost]
-        public ActionResult<Result> CreateAdmin([FromBody] InsertAdminCommand command)
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 400)]
+        [ProducesResponseType(typeof(Result), 500)]
+        public IActionResult CreateAdmin([FromBody] InsertAdminCommand command)
         {
-            var admin = new Admin(command.Name, command.Email, command.IsDeleted, command.Password);
+            var result = _insertHandler.Handle(command);
 
-            if (!admin.Validation())
-            {
-                var result = new Result(400, "Admin inválido", false);
-                result.SetNotifications((List<Notification>)admin.Notifications);
-                return BadRequest(result);
-            }
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+        [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 500)]
+        public IActionResult DeleteAdmin([FromBody] DeleteAdminCommand command)
+        {
+            var result = _deleteHandler.Handle(command);
 
-            try
-            {
-                _repository.InsertAdmin(admin);
-                return Ok(new Result(200, "Admin inserido com sucesso", true));
-            }
-            catch (System.Exception ex)
-            {
-                return StatusCode(500, new Result(500, $"Erro ao inserir admin: {ex.Message}", false));
-            }
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+        [HttpGet]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 404)]
+        public IActionResult GetAdmin([FromQuery] GetAdminCommand command)
+        {
+            var result = _getHandler.Handle(command);
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+        [HttpPut]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 400)]
+        public IActionResult UpdateAdmin([FromBody] UpdateAdminCommand command)
+        {
+            var result = _updateHandler.Handle(command);
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
         }
     }
 }

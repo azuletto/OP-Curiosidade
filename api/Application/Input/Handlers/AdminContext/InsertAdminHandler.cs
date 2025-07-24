@@ -28,17 +28,18 @@ namespace Application.Input.Handlers.AdminContext
             {
                 try
                 {
-                _repository.InsertAdmin(admin);
-                result = new Result(200, "Admin inserido com sucesso",true);
-                return result;
+                    result = (Result)_repository.InsertAdmin(admin);
+                    return result;
                 }
                 catch (Exception ex)
                 {
                     result = new Result(500, $"Erro ao inserir admin: {ex.Message}",false);
+                    return result;
                 }
             }
-            result = new Result(400, "Admin inválido", false);
-            result.SetNotifications((List<Notification>)admin.Notifications);
+            result = new Result(400,"", false);
+            var contracts = admin.Validation(true);
+            result.SetNotifications(contracts.GetNotifications());
             return result;
         }
     }
