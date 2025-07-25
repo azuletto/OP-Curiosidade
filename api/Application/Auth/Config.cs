@@ -8,6 +8,6 @@ namespace Application.Auth
 {
     public class Config
     {
-        public static string PrivateKey { get; set; } = "UYT^^^~G{[hi8;76%$%¨&I=jh++§§03_bt5$%-¨&*OP`^çlk";
+        public static string PrivateKey { get; set; } = "iuhnmlkjhmiUHJKOIUJK45678765rTGHBGFRTsadasdawqwdasd32484RFGBVCDFRTGHG";
     }
 }

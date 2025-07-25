@@ -1,6 +1,5 @@
 import { loadExampleUsers } from "../../model/load-example-users.js";
 
-// Elemento da tabela
 const table = document.querySelector("table");
 
 init();

@@ -19,27 +19,36 @@ namespace Application.Auth
             var key = Encoding.UTF8.GetBytes(Config.PrivateKey);
             var handler = new JwtSecurityTokenHandler();
             var credentials = new SigningCredentials(
-                new SymmetricSecurityKey(key), 
+                new SymmetricSecurityKey(key),
                 SecurityAlgorithms.HmacSha256Signature);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = GenerateClaimsIdentity(adminDTO),
                 SigningCredentials = credentials,
-                Expires = DateTime.UtcNow.AddHours(8),
+                Expires = DateTime.UtcNow.AddHours(8)
             };
 
             var token = handler.CreateToken(tokenDescriptor);
             return handler.WriteToken(token);
         }
+
         private static ClaimsIdentity GenerateClaimsIdentity(AdminDTO adminDTO)
         {
-            var ci = new ClaimsIdentity();
+            var claims = new List<Claim>();
+
             if (!string.IsNullOrEmpty(adminDTO.Name))
+                claims.Add(new Claim(ClaimTypes.Name, adminDTO.Name));
+
+            if (!string.IsNullOrEmpty(adminDTO.Email))
             {
-                ci.AddClaim(new Claim(ClaimTypes.Name, adminDTO.Name));
+                claims.Add(new Claim(ClaimTypes.NameIdentifier, adminDTO.Email));
+                claims.Add(new Claim("sub", adminDTO.Email));
             }
-            return ci;
+
+            claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+
+            return new ClaimsIdentity(claims);
         }
         public static bool isValidToken(string token)
         {
@@ -47,10 +56,11 @@ namespace Application.Auth
             var handler = new JwtSecurityTokenHandler();
             try
             {
+                Console.WriteLine("Verificando token: " + token);
                 handler.ValidateToken(token, new TokenValidationParameters
                 {
-                    ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuerSigningKey = true,
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ClockSkew = TimeSpan.Zero

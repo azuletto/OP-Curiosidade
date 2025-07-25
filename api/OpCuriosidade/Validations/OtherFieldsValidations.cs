@@ -9,7 +9,7 @@ public partial class ContractValidations<T>
     public ContractValidations<T> IsValidOtherInfos(OtherInfos? otherInfos, string propertyName)
     {
         if (otherInfos == null)
-            return this; // Opcional: considere AddNotification se null for inválido
+            return this;
 
         IsSafeString(otherInfos.Valors, "Valors contém caracteres perigosos", $"{propertyName}.Valors");
         IsSafeString(otherInfos.Feelings, "Feelings contém caracteres perigosos", $"{propertyName}.Feelings");

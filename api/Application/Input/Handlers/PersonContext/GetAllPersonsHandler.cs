@@ -12,19 +12,15 @@ using System.Threading.Tasks;
 
 namespace Application.Input.Handlers.PersonContext
 {
-    public class GetAllPersonsHandler : IHandlerBase<GetAllPersonsCommand>
+    public class GetAllPersonsHandler
     {
         private readonly IPersonRepository _repository;
         public GetAllPersonsHandler(IPersonRepository repository)
         {
             _repository = repository;
         }
-        public IResultBase Handle(GetAllPersonsCommand command)
+        public IResultBase Handle()
         {
-            if (command == null)
-            {
-                return new Result(400, "Comando inválido", false);
-            }
             try
             {
                 var adminRequest = _repository.GetAllPersonsAsync().Result;
