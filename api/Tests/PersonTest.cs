@@ -10,7 +10,7 @@ public sealed class PersonTest
     public void Person_Name_Not_Valid_By_Widht()
     {
         Person person = new Person(
-            name: "J", // Nome válido
+            name: "J",
             email: "person@email.com",
             isDeleted: false,
             birthDate: new DateOnly(1990, 1, 1),
@@ -111,7 +111,7 @@ public sealed class PersonTest
             name: "Ricardo Gonçalves Filho",
             email: "person@email.com",
             isDeleted: false,
-            birthDate: DateOnly.FromDateTime(DateTime.Now.AddDays(1)), // Data futura
+            birthDate: DateOnly.FromDateTime(DateTime.Now.AddDays(1)),
             status: true,
             address: "Av. Paulista, 1000"
         );
@@ -141,7 +141,7 @@ public sealed class PersonTest
             isDeleted: false,
             birthDate: new DateOnly(1990, 1, 1),
             status: true,
-            address: "" // Endereço vazio
+            address: ""
         );
         Assert.AreEqual(true, person.Validation());
     }
@@ -219,7 +219,7 @@ public sealed class PersonTest
             address: "Av. Paulista, 1000",
             otherInfos: new OtherInfos(
                 valors: "1234567890",
-                feelings: null, // Campo feelings é nulo
+                feelings: null,
                 info: "Some info",
                 interess: "Some interests"
             )

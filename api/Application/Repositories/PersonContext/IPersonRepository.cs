@@ -15,7 +15,7 @@ namespace Application.Repositories.PersonContext
     {
         void InsertPerson(PersonDTO person);
         Task<PersonDTO> GetPersonByIdAsync(Guid id);
-        Task<IResultBase> GetFilteredAsync(FilterType filterType, bool inDashboard);
+        Task<IResultBase> GetFilteredAsync(FilterType filterType, bool inDashboard, int filterStatus);
         Task<PersonDTO> GetPersonByEmailAsync(string email);
         Task<PersonDTO> GetPersonByNameAsync(string name);
         Task<AdminRequest> GetAllPersonsAsync();

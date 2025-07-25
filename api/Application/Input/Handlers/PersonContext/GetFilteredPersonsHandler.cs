@@ -20,26 +20,7 @@ namespace Application.Input.Handlers.PersonContext
         }
         public IResultBase Handle(GetFilteredPersonsCommand command)
         {
-            switch (command)
-            {
-                case null:
-                    return null;
-                case { filterType.filterByTimeStamp : true }:
-                    // Handle filtering by age
-                    return null;
-                case { filterType.filterByEmail : true }:
-                    // Handle filtering by email
-                    return null;
-                case { filterType.filterByName : true }:
-                    // Handle filtering by name
-                    return null;
-                case { filterType.filterByStatus : true }:
-                    // Handle filtering by status
-                    return null;
-                case { inDashboard: true }:
-                    // Handle filtering in dashboard
-                    return null;
-            }
+            
 
             throw new NotImplementedException();
         }

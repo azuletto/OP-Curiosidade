@@ -12,5 +12,7 @@ namespace Application.Input.Commands.PersonContext
     {
         public required FilterType filterType { get; set; }
         public bool inDashboard { get; set; } = false;
+
+        public int filterStatus { get; set; } = 0;
     }
 }

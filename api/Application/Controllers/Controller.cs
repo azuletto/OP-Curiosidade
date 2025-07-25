@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]
-    //[Authorize]
     public class AdminController : ControllerBase
     {
         private readonly InsertAdminHandler _insertHandler;
@@ -96,9 +96,9 @@ namespace Application.Controllers
         [HttpGet("table")]
         [ProducesResponseType(typeof(Result), 200)]
         [ProducesResponseType(typeof(Result), 404)]
-        public IActionResult GetAllPersons([FromQuery] GetAllPersonsCommand command)
+        public IActionResult GetAllPersons()
         {
-            var result = _getAllPersonsHandler.Handle(command);
+            var result = _getAllPersonsHandler.Handle();
             return result.IsOk
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);
