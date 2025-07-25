@@ -18,6 +18,9 @@ namespace Application.Repositories.PersonContext
         Task<IResultBase> GetFilteredAsync(FilterType filterType, bool inDashboard, int filterStatus);
         Task<PersonDTO> GetPersonByEmailAsync(string email);
         Task<PersonDTO> GetPersonByNameAsync(string name);
+        Task<int> GetNumberOfPersonsAsync();
+        Task<int> GetNumberOfPendingPersonsAsync();
+        Task<int> GetNumberOfLastMonthPersonsAsync();
         Task<AdminRequest> GetAllPersonsAsync();
         IResultBase DeletePersonByIdAsync(Guid id);
     }

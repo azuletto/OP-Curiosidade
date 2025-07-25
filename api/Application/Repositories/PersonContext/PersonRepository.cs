@@ -106,6 +106,28 @@ namespace Application.Repositories.PersonContext
             return Task.FromResult<IResultBase>(result);
         }
 
+        public Task<int> GetNumberOfLastMonthPersonsAsync()
+        {
+            var thisMonth = DateTime.Now.Month;
+            int count = personsDB
+                .Count(person => person.TimeStamp.Month == thisMonth && !person.IsDeleted);
+            return Task.FromResult(count);
+        }
+
+        public Task<int> GetNumberOfPendingPersonsAsync()
+        {
+            var count = personsDB
+                .Count(person => person.Status == false && !person.IsDeleted);
+            return Task.FromResult(count);
+        }
+
+        public Task<int> GetNumberOfPersonsAsync()
+        {
+            var count = personsDB
+                .Count(person => !person.IsDeleted);
+            return Task.FromResult(count);
+        }
+
         public Task<PersonDTO> GetPersonByEmailAsync(string email)
         {
             throw new NotImplementedException();
