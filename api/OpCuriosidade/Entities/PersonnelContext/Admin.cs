@@ -33,5 +33,9 @@ namespace OpCuriosidade.Entities.PersonnelContext
                 .IsValidPassword(password: Password, message: "A senha é inválida", propertyName: "password");
             return contracts;
         }
+        public bool IsPasswordValid(string password)
+        {
+            return Password.Equals(password, StringComparison.Ordinal);
+        }
     }
 }

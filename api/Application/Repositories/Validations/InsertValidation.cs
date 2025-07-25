@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Application.Repositories.Validations
 {
     public class InsertValidation(List<Admin> adminDB) : IValidation
-    {
+    {   
         public bool IsAdminAlreadyRegistered(string email)
         {
             if (adminDB.Any(admin => admin.Email.Equals(email, StringComparison.OrdinalIgnoreCase)))

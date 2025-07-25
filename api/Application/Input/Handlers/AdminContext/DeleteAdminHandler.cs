@@ -32,7 +32,7 @@ namespace Application.Input.Handlers.AdminContext
             if (deleteAdminDTO.IsDeleted == true)
             {
                 result = new Result(400, "Admin já está deletado", false);
-                
+
                 return result;
             }
             try

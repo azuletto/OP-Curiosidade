@@ -1,4 +1,6 @@
-﻿using Application.Output.DTO;
+﻿using Application.Input.Commands.PersonContext;
+using Application.Input.Commands.PersonContext.ValueObjects;
+using Application.Output.DTO;
 using Application.Output.Request.TableRequests;
 using Application.Output.Results.Interfaces;
 using System;
@@ -9,10 +11,11 @@ using System.Threading.Tasks;
 
 namespace Application.Repositories.PersonContext
 {
-    internal interface IPersonRepository
+    public interface IPersonRepository
     {
         void InsertPerson(PersonDTO person);
         Task<PersonDTO> GetPersonByIdAsync(Guid id);
+        Task<IResultBase> GetFilteredAsync(FilterType filterType, bool inDashboard, int filterStatus);
         Task<PersonDTO> GetPersonByEmailAsync(string email);
         Task<PersonDTO> GetPersonByNameAsync(string name);
         Task<AdminRequest> GetAllPersonsAsync();

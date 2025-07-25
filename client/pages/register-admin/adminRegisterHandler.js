@@ -4,10 +4,9 @@ const passwordInput = document.getElementById("password");
 const passwordConfirmInput = document.getElementById("password-confirm");
 const errorsParagraphs = document.querySelectorAll(".error-message");
 const loginButton = document.getElementById("login-button");
-import { API_URL as host } from "../config.js";
+import { API_URL as host } from "../../config.js";
 
 loginButton.addEventListener("click", async (event) => {
-  console.log("Register button clicked");
   event.preventDefault();
 
   const name = nameInput.value.trim();
@@ -31,7 +30,6 @@ loginButton.addEventListener("click", async (event) => {
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.log("Error response:", errorData);
       let errorName;
       let errorEmail;
       let errorPassword;

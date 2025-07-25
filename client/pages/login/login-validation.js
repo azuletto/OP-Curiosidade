@@ -1,3 +1,3 @@
-if (localStorage.getItem("logged_in") === "true") {
+if (localStorage.getItem("token")) {
   window.location.href = "../dash/index.html";
 }

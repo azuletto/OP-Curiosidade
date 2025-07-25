@@ -1,4 +1,6 @@
-let users_list = JSON.parse(localStorage.getItem("users_list"));
+import { loadExampleUsers } from "../../global/src/model/load-example-users.js";
+
+let users_list = await loadExampleUsers();
 let title_total = document.getElementById("title-total");
 let pending_users = document.getElementById("title-pending");
 let pending_users_count = users_list.filter(
