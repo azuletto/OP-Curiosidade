@@ -23,6 +23,7 @@ namespace Application.Controllers
         private readonly GetNumberOfLastMonthPersonsHandler _getNumberOfLastMonthPersonsHandler;
         private readonly GetNumberOfPendingPersonsHandler _getNumberOfPendingPersonsHandler;
         private readonly GetNumberOfPersonsHandler _getNumberOfPersonsHandler;
+        private readonly GetPreviewDataToDashHandler _getPreviewDataToDashHandler;
         public PersonalController(
             InsertAdminHandler insertHandler,
             DeleteAdminHandler deleteHandler,
@@ -32,7 +33,8 @@ namespace Application.Controllers
             GetAllPersonsHandler getAllPersonsHandler,
             GetNumberOfLastMonthPersonsHandler getNumberOfLastMonthPersonsHandler,
             GetNumberOfPendingPersonsHandler getNumberOfPendingPersonsHandler,
-            GetNumberOfPersonsHandler getNumberOfPersonsHandler
+            GetNumberOfPersonsHandler getNumberOfPersonsHandler,
+            GetPreviewDataToDashHandler getPreviewDataToDashHandler
             )
         {
             _insertHandler = insertHandler;
@@ -44,6 +46,7 @@ namespace Application.Controllers
             _getNumberOfLastMonthPersonsHandler = getNumberOfLastMonthPersonsHandler;
             _getNumberOfPendingPersonsHandler = getNumberOfPendingPersonsHandler;
             _getNumberOfPersonsHandler = getNumberOfPersonsHandler;
+            _getPreviewDataToDashHandler = getPreviewDataToDashHandler;
         }
 
         [HttpPost("admin")]
@@ -59,6 +62,17 @@ namespace Application.Controllers
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);
         }
+        [HttpGet("table/preview")]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 404)]
+        public IActionResult GetPreviewDataToDash()
+        {
+            var result = _getPreviewDataToDashHandler.Handle();
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+
         [HttpDelete("admin"+"/"+"{id}")]
         [ProducesResponseType(typeof(Result), 200)]
         [ProducesResponseType(typeof(Result), 500)]
