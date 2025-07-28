@@ -17,6 +17,27 @@ namespace OpCuriosidade.Entities.PersonnelContext
             OtherInfos? otherInfos = null
             )
             : base(name, email, isDeleted)
+
+        {
+            BirthDate = birthDate;
+            Status = status;
+            Address = address;
+            OtherInfos = otherInfos;
+
+        }
+        public Person
+            (
+            string name,
+            string email,
+            bool isDeleted,
+            DateOnly birthDate,
+            bool status,
+            string address,
+            DateTime timeStamp,
+            OtherInfos? otherInfos = null
+            )
+            : base(name, email, isDeleted, timeStamp)
+
         {
             BirthDate = birthDate;
             Status = status;

@@ -12,7 +12,7 @@ namespace Application.Controllers
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]
-    public class AdminController : ControllerBase
+    public class PersonalController : ControllerBase
     {
         private readonly InsertAdminHandler _insertHandler;
         private readonly DeleteAdminHandler _deleteHandler;
@@ -20,13 +20,21 @@ namespace Application.Controllers
         private readonly UpdateAdminHandler _updateHandler;
         private readonly LoginAdminHandler _loginHandler;
         private readonly GetAllPersonsHandler _getAllPersonsHandler;
-        public AdminController(
+        private readonly GetNumberOfLastMonthPersonsHandler _getNumberOfLastMonthPersonsHandler;
+        private readonly GetNumberOfPendingPersonsHandler _getNumberOfPendingPersonsHandler;
+        private readonly GetNumberOfPersonsHandler _getNumberOfPersonsHandler;
+        private readonly GetPreviewDataToDashHandler _getPreviewDataToDashHandler;
+        public PersonalController(
             InsertAdminHandler insertHandler,
             DeleteAdminHandler deleteHandler,
             GetAdminHandler getHandler,
             UpdateAdminHandler updateHandler,
             LoginAdminHandler loginHandler,
-            GetAllPersonsHandler getAllPersonsHandler
+            GetAllPersonsHandler getAllPersonsHandler,
+            GetNumberOfLastMonthPersonsHandler getNumberOfLastMonthPersonsHandler,
+            GetNumberOfPendingPersonsHandler getNumberOfPendingPersonsHandler,
+            GetNumberOfPersonsHandler getNumberOfPersonsHandler,
+            GetPreviewDataToDashHandler getPreviewDataToDashHandler
             )
         {
             _insertHandler = insertHandler;
@@ -35,9 +43,13 @@ namespace Application.Controllers
             _updateHandler = updateHandler;
             _loginHandler = loginHandler;
             _getAllPersonsHandler = getAllPersonsHandler;
+            _getNumberOfLastMonthPersonsHandler = getNumberOfLastMonthPersonsHandler;
+            _getNumberOfPendingPersonsHandler = getNumberOfPendingPersonsHandler;
+            _getNumberOfPersonsHandler = getNumberOfPersonsHandler;
+            _getPreviewDataToDashHandler = getPreviewDataToDashHandler;
         }
 
-        [HttpPost]
+        [HttpPost("admin")]
         [AllowAnonymous]
         [ProducesResponseType(typeof(Result), 200)]
         [ProducesResponseType(typeof(Result), 400)]
@@ -50,7 +62,18 @@ namespace Application.Controllers
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);
         }
-        [HttpDelete("{id}")]
+        [HttpGet("table/preview")]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 404)]
+        public IActionResult GetPreviewDataToDash()
+        {
+            var result = _getPreviewDataToDashHandler.Handle();
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+
+        [HttpDelete("admin"+"/"+"{id}")]
         [ProducesResponseType(typeof(Result), 200)]
         [ProducesResponseType(typeof(Result), 500)]
         public IActionResult DeleteAdmin([FromBody] DeleteAdminCommand command)
@@ -61,7 +84,31 @@ namespace Application.Controllers
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);
         }
-        [HttpGet]
+        [HttpGet("persons/pending")]
+        public IActionResult GetNumberOfPendingPersons()
+        {
+            var result = _getNumberOfPendingPersonsHandler.Handle();
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+        [HttpGet("persons/lastMonth")]
+        public IActionResult GetNumberOfLastMonthPersons()
+        {
+            var result = _getNumberOfLastMonthPersonsHandler.Handle();
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+        [HttpGet("persons/total")]
+        public IActionResult GetNumberOfPersons()
+        {
+            var result = _getNumberOfPersonsHandler.Handle();
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+        [HttpGet("admin")]
         [ProducesResponseType(typeof(Result), 200)]
         [ProducesResponseType(typeof(Result), 404)]
         public IActionResult GetAdmin([FromQuery] GetAdminCommand command)
@@ -71,7 +118,7 @@ namespace Application.Controllers
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);
         }
-        [HttpPut]
+        [HttpPut("admin")]
         [ProducesResponseType(typeof(Result), 200)]
         [ProducesResponseType(typeof(Result), 400)]
         public IActionResult UpdateAdmin([FromBody] UpdateAdminCommand command)
@@ -81,7 +128,7 @@ namespace Application.Controllers
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);
         }
-        [HttpPost("login")]
+        [HttpPost("admin/login")]
         [AllowAnonymous]
         [ProducesResponseType(typeof(Result), 200)]
         [ProducesResponseType(typeof(Result), 401)]

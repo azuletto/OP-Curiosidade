@@ -33,9 +33,6 @@ namespace Application.Repositories.PersonContext
             if (!personsDB.Any())
             {
                 LoadPersons.Load(personsDB);
-                result = new Result(resultCode: 200, message: "Pessoas carregadas com sucesso", isOk: true);
-                adminRequest.Result = result;
-                return Task.FromResult(adminRequest);
             }
             List<PersonDTO> personsDTO = personsDB
                 .Where(person => !person.IsDeleted)
@@ -56,11 +53,46 @@ namespace Application.Repositories.PersonContext
             result.SetData(adminRequest.Persons);
             return Task.FromResult(adminRequest);
         }
+        public Task<List<Person>> GetPersonsByFilter(FilterType filterType, int filterStatus)
+        {
+            List<Person> filteredList = new();
+            filteredList = personsDB;
 
-        public Task<IResultBase> GetFilteredAsync(FilterType filterType, bool inDashboard, int filterStatus)
+            if (filterType.filterByName == true && (filterStatus == 0)) { filteredList = personsDB.OrderByDescending(p => p.Name).ToList(); }
+                else if (filterType.filterByName == true && (filterStatus == 1)) { filteredList = personsDB.OrderBy(p => p.Name).ToList(); }
+                    else if (filterType.filterByName == true && (filterStatus == 2)) { filteredList = personsDB; }
+           
+            if (filterType.filterByEmail == true && (filterStatus == 0 || filterStatus == 2)) { filteredList = personsDB.OrderByDescending(p => p.Email).ToList(); }
+                else if (filterType.filterByName == true && (filterStatus == 1)) { filteredList = personsDB.OrderBy(p => p.Email).ToList(); }
+                    else if (filterType.filterByName == true && (filterStatus == 2)) { filteredList = personsDB; }
+
+            if (filterType.filterByStatus == true && (filterStatus == 0 || filterStatus == 2)) { filteredList = personsDB.OrderByDescending(p => p.Status).ToList(); }
+                else if (filterType.filterByName == true && (filterStatus == 1)) { filteredList = personsDB.OrderBy(p => p.Status).ToList(); }
+                    else if (filterType.filterByName == true && (filterStatus == 2)) { filteredList = personsDB; }
+
+            if (filterType.filterByTimeStamp == true && (filterStatus == 0 || filterStatus == 2)) { filteredList = personsDB.OrderByDescending(p => p.TimeStamp).ToList(); }
+                else if (filterType.filterByName == true && (filterStatus == 1)) { filteredList = personsDB.OrderBy(p => p.TimeStamp).ToList(); }
+                    else if (filterType.filterByName == true && (filterStatus == 2)) { filteredList = personsDB; }
+
+            return Task.FromResult(filteredList);
+        }
+        public async Task<AdminRequest> GetPreviewDataToDashAsync()
         {
             Result result;
-            var users = personsDB
+            AdminRequest adminRequest = new AdminRequest
+            {
+                Result = null,
+                Persons = null
+            };
+            if (!personsDB.Any())
+            {
+                LoadPersons.Load(personsDB);
+            }
+            FilterType filterType = new() { filterByTimeStamp = true };
+
+            var persons = await GetPersonsByFilter(filterType, filterStatus: 0);
+
+            List<PersonDTO> personsDTO = persons
                 .Where(person => !person.IsDeleted)
                 .Select(person => new PersonDTO
                 {
@@ -72,38 +104,35 @@ namespace Application.Repositories.PersonContext
                     Status = person.Status,
                     TimeStamp = person.TimeStamp
                 })
+                .Take(10)
                 .ToList();
 
-            if (filterType.filterByTimeStamp == true && inDashboard == true)
-            {
-                var orderedUsers = users.OrderByDescending(user => user.TimeStamp).ToList();
-                result = new Result(resultCode: 200, message: "Pessoas filtradas por timestamp com sucesso", isOk: true);
-                result.SetData(users);
-                return Task.FromResult<IResultBase>(result);
-            }
-            if (filterType.filterByEmail == true)
-            {
-                var orderedUsers = users.OrderByDescending(user => user.Email).ToList();
-                result = new Result(resultCode: 200, message: "Pessoas filtradas por email com sucesso", isOk: true);
-                result.SetData(users);
-                return Task.FromResult<IResultBase>(result);
-            }
-            if (filterType.filterByName == true)
-            {
-                var orderedUsers = users.OrderByDescending(user => user.Name).ToList();
-                result = new Result(resultCode: 200, message: "Pessoas filtradas por nome com sucesso", isOk: true);
-                result.SetData(users);
-                return Task.FromResult<IResultBase>(result);
-            }
-            if (filterType.filterByStatus == true)
-            {
-                var orderedUsers = users.OrderByDescending(user => user.Status).ToList();
-                result = new Result(resultCode: 200, message: "Pessoas filtradas por status com sucesso", isOk: true);
-                result.SetData(users);
-                return Task.FromResult<IResultBase>(result);
-            }
-            result = new Result(resultCode: 400, message: "Filtro inválido", isOk: false);
-            return Task.FromResult<IResultBase>(result);
+            result = new Result(resultCode: 200, message: "Pessoas encontradas com sucesso", isOk: true);
+            adminRequest.Result = result;
+            adminRequest.Persons = personsDTO;
+            result.SetData(adminRequest.Persons);
+            return adminRequest;
+        }
+        public Task<int> GetNumberOfLastMonthPersonsAsync()
+        {
+            var thisMonth = DateTime.Now.Month;
+            int count = personsDB
+                .Count(person => person.TimeStamp.Month == thisMonth && !person.IsDeleted);
+            return Task.FromResult(count);
+        }
+
+        public Task<int> GetNumberOfPendingPersonsAsync()
+        {
+            var count = personsDB
+                .Count(person => person.Status == false && !person.IsDeleted);
+            return Task.FromResult(count);
+        }
+
+        public Task<int> GetNumberOfPersonsAsync()
+        {
+            var count = personsDB
+                .Count(person => !person.IsDeleted);
+            return Task.FromResult(count);
         }
 
         public Task<PersonDTO> GetPersonByEmailAsync(string email)

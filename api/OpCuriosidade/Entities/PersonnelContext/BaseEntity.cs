@@ -13,6 +13,14 @@ namespace OpCuriosidade.Entities.PersonnelContext
             IsDeleted = isDeleted;
             TimeStamp = DateTime.UtcNow;
         }
+        protected BaseEntity(string name, string email, bool isDeleted, DateTime timeStamp)
+        {
+            Id = Guid.NewGuid();
+            Name = name;
+            Email = email;
+            IsDeleted = isDeleted;
+            TimeStamp = timeStamp;
+        }
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
