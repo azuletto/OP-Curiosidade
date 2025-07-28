@@ -9,7 +9,7 @@ export async function getUsersList() {
   }
 
   try {
-    const response = await fetch(`${API_URL}/Personal/table`, {
+    const response = await fetch(`${API_URL}/Personal/table/preview`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,6 @@ export async function getUsersList() {
     });
 
     if (response.status === 401) {
-      console.error("Token inválido/expirado ou falta de permissão");
       return null;
     }
 
@@ -28,7 +27,7 @@ export async function getUsersList() {
     }
 
     const { data } = await response.json();
-    return data;
+    return data.persons;
   } catch (err) {
     console.error("Falha na requisição:", err);
     return null;

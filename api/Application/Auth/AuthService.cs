@@ -56,7 +56,6 @@ namespace Application.Auth
             var handler = new JwtSecurityTokenHandler();
             try
             {
-                Console.WriteLine("Verificando token: " + token);
                 handler.ValidateToken(token, new TokenValidationParameters
                 {
                     IssuerSigningKey = new SymmetricSecurityKey(key),
