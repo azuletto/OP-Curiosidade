@@ -1,5 +1,5 @@
 import { regexEmail } from "../Validations/email-regex.js";
-import { init_table, clearTable, loadTable } from "../Table/table.js";
+import { init_table, clearTable /*, loadTable */} from "../Table/table.js";
 import { getUsersList } from "../tableHandler.js";
 let user = {
   name: "",
@@ -217,7 +217,7 @@ function saveUser(user) {
   user.id = userUUID;
   users_list.push(user);
   clearTable();
-  loadTable();
+  //loadTable();
   init_table();
   clearModal();
   modal.close();

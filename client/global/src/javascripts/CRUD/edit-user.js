@@ -2,7 +2,7 @@ window.verifyEdit = verifyEdit;
 import { verfifyUser } from "./create-user.js";
 import {
   clearTable,
-  loadTable,
+  //loadTable,
   init_table,
 } from "../../javascripts/Table/table.js";
 import { getUsersList } from "../tableHandler.js";
@@ -71,7 +71,7 @@ if (window.location.pathname.includes("register")) {
       ).status = user_edit.status;
       localStorage.setItem("edit_mode", JSON.stringify(false));
       clearTable();
-      loadTable();
+      //loadTable();
       init_table();
       modal.close();
     }

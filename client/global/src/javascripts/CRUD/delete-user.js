@@ -30,7 +30,7 @@ function backupDelete(userId) {
   let user = users_list.find((user) => String(user.id) === String(userId));
   if (user) {
     clearTable();
-    loadTable();
+   //loadTable();
     init_table();
   }
 }
