@@ -3,7 +3,7 @@ import { verfifyUser } from "./create-user.js";
 import {
   clearTable,
   //loadTable,
-  init_table,
+  initTable,
 } from "../../javascripts/Table/table.js";
 import { getUsersList } from "../tableHandler.js";
 let user_edit;
@@ -72,7 +72,7 @@ if (window.location.pathname.includes("register")) {
       localStorage.setItem("edit_mode", JSON.stringify(false));
       clearTable();
       //loadTable();
-      init_table();
+      initTable();
       modal.close();
     }
   });

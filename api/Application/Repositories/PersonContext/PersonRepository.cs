@@ -1,10 +1,13 @@
 ﻿using Application.Input.Commands.PersonContext;
 using Application.Input.Commands.PersonContext.ValueObjects;
+using Application.Mapper;
 using Application.Output.DTO;
 using Application.Output.Request.TableRequests;
 using Application.Output.Results;
 using Application.Output.Results.Interfaces;
 using Application.Repositories.Migrations;
+using Application.Repositories.Validations;
+using Application.Repositories.Validations;
 using OpCuriosidade.Entities.PersonnelContext;
 using OpCuriosidade.Notifications;
 using System;
@@ -17,9 +20,24 @@ namespace Application.Repositories.PersonContext
 {
     public class PersonRepository(List<Person> personsDB) : IPersonRepository
     {
+        public InsertValidationPerson InsertValidation { get; } = new(personsDB);
+        public PersonMapper personMapper { get; } = new PersonMapper();
+
         public IResultBase DeletePersonByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            Result result;
+            var person = personsDB.Find(person => person.Id == id);
+            if (person == null)
+            {
+                result = new Result(resultCode: 404, message: "Person not found", isOk: false);
+                Notification notification = new Notification("Pessoa não encontrada.", "notFound");
+                result.SetNotifications(new List<Notification> { notification });
+                return result;
+            }
+            person.IsDeleted = true;
+            result = new Result(resultCode: 200, message: "Person deleted successfully", isOk: true);
+            result.SetData(personMapper.MapToDTO(person));
+            return result;
         }
 
         public Task<AdminRequest> GetAllPersonsAsync()
@@ -58,21 +76,22 @@ namespace Application.Repositories.PersonContext
             List<Person> filteredList = new();
             filteredList = personsDB;
 
-            if (filterType.filterByName == true && (filterStatus == 0)) { filteredList = personsDB.OrderByDescending(p => p.Name).ToList(); }
-                else if (filterType.filterByName == true && (filterStatus == 1)) { filteredList = personsDB.OrderBy(p => p.Name).ToList(); }
-                    else if (filterType.filterByName == true && (filterStatus == 2)) { filteredList = personsDB; }
-           
-            if (filterType.filterByEmail == true && (filterStatus == 0 || filterStatus == 2)) { filteredList = personsDB.OrderByDescending(p => p.Email).ToList(); }
-                else if (filterType.filterByName == true && (filterStatus == 1)) { filteredList = personsDB.OrderBy(p => p.Email).ToList(); }
-                    else if (filterType.filterByName == true && (filterStatus == 2)) { filteredList = personsDB; }
+            Func<Person, object>? selector = filterType switch
+            {
+                { filterByName: true } => p => p.Name,
+                { filterByStatus: true } => p => p.Status,
+                { filterByEmail: true } => p => p.Email,
+                { filterByTimeStamp: true } => p => p.TimeStamp,
+                _ => null
+            };
 
-            if (filterType.filterByStatus == true && (filterStatus == 0 || filterStatus == 2)) { filteredList = personsDB.OrderByDescending(p => p.Status).ToList(); }
-                else if (filterType.filterByName == true && (filterStatus == 1)) { filteredList = personsDB.OrderBy(p => p.Status).ToList(); }
-                    else if (filterType.filterByName == true && (filterStatus == 2)) { filteredList = personsDB; }
-
-            if (filterType.filterByTimeStamp == true && (filterStatus == 0 || filterStatus == 2)) { filteredList = personsDB.OrderByDescending(p => p.TimeStamp).ToList(); }
-                else if (filterType.filterByName == true && (filterStatus == 1)) { filteredList = personsDB.OrderBy(p => p.TimeStamp).ToList(); }
-                    else if (filterType.filterByName == true && (filterStatus == 2)) { filteredList = personsDB; }
+            filteredList = (selector, filterStatus) switch
+            {
+                (not null, 0) => personsDB.OrderByDescending(selector).ToList(),
+                (not null, 1) => personsDB.OrderBy(selector).ToList(),
+                (not null, 2) => personsDB,
+                _ => personsDB
+            };
 
             return Task.FromResult(filteredList);
         }
@@ -150,9 +169,23 @@ namespace Application.Repositories.PersonContext
             throw new NotImplementedException();
         }
 
-        public void InsertPerson(PersonDTO person)
+        public IResultBase InsertPerson(Person person)
         {
-            throw new NotImplementedException();
+            Result result;
+            if (InsertValidation.IsPersonAlreadyRegistered(person.Email) == false)
+            {
+                result = new Result(resultCode: 201, message: "Pessoa criada com sucesso.", isOk: true);
+                personsDB.Add(person);
+                result.SetData(personMapper.MapToDTO(person));
+                return result;
+            }
+            else
+            {
+                result = new Result(resultCode: 400, message: "Pessoa já existente", isOk: false);
+                Notification notification = new Notification("O email já está sendo utilizado. Tente novamente.", "alreadyDb");
+                result.SetNotifications(new List<Notification> { notification });
+                return result;
+            }
         }
     }
 }

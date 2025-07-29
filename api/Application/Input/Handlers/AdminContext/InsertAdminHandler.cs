@@ -22,7 +22,7 @@ namespace Application.Input.Handlers.AdminContext
         }
         public IResultBase Handle(InsertAdminCommand command)
         {
-            var admin = new Admin(command.Name,command.Email,command.IsDeleted,command.Password);
+            var admin = new Admin(command.Name,command.Email,command.Password);
             Result result;
             if (admin.Validation())
             {

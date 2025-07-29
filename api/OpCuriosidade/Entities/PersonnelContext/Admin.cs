@@ -6,8 +6,8 @@ namespace OpCuriosidade.Entities.PersonnelContext
 {
     public class Admin : BaseEntity, IContract
     {
-        public Admin(string name, string email, bool isDeleted, string password)
-            : base(name, email, isDeleted)
+        public Admin(string name, string email, string password)
+            : base(name, email)
         {
             Password = password;
         }

@@ -125,6 +125,8 @@ builder.Services.AddScoped<GetNumberOfLastMonthPersonsHandler>();
 builder.Services.AddScoped<GetNumberOfPendingPersonsHandler>();
 builder.Services.AddScoped<GetNumberOfPersonsHandler>();
 builder.Services.AddScoped<GetPreviewDataToDashHandler>();
+builder.Services.AddScoped<InsertPersonHandler>();
+builder.Services.AddScoped<DeletePersonHandler>();
 
 builder.WebHost.UseUrls("http://localhost:5000", "https://localhost:5001");
 

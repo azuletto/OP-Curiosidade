@@ -15,15 +15,7 @@ namespace Application.Mapper
         {
             if (admin == null)
             {
-                return new AdminDTO
-                {
-                    Id = null,
-                    Name = null,
-                    Email = null,
-                    IsDeleted = false,
-                    TimeStamp = null,
-                    Password = null
-                };
+                return new AdminDTO();
             }
             return new AdminDTO
             {

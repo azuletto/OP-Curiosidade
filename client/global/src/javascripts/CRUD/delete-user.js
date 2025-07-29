@@ -1,4 +1,4 @@
-import { init_table, clearTable, loadTable } from "../Table/table.js";
+import { initTable, clearTable, loadTable } from "../Table/table.js";
 import { getUsersList } from "../tableHandler.js";
 window.deleteUser = deleteUser;
 let users_list = [];
@@ -31,6 +31,6 @@ function backupDelete(userId) {
   if (user) {
     clearTable();
    //loadTable();
-    init_table();
+    initTable();
   }
 }

@@ -20,4 +20,15 @@ namespace Application.Repositories.Validations
             return false;
         }
     }
+    public class InsertValidationPerson(List<Person> personDB) : IValidation
+    {
+        public bool IsPersonAlreadyRegistered(string email)
+        {
+            if (personDB.Any(admin => admin.Email.Equals(email, StringComparison.OrdinalIgnoreCase)))
+            {
+                return true;
+            }
+            return false;
+        }
+    }
 }
