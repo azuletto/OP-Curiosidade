@@ -9,7 +9,7 @@ export async function getTotalUsersCount() {
   }
 
   try {
-    const response = await fetch(`${API_URL}/Personal/persons/total`, {
+    const response = await fetch(`${API_URL}/total`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export async function getMonthUsersCount() {
   }
 
   try {
-    const response = await fetch(`${API_URL}/Personal/persons/lastMonth`, {
+    const response = await fetch(`${API_URL}/lastMonth`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +77,7 @@ export async function getPendingUsersCount() {
   }
 
   try {
-    const response = await fetch(`${API_URL}/Personal/persons/pending`, {
+    const response = await fetch(`${API_URL}/pending`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

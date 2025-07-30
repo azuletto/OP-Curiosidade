@@ -187,5 +187,35 @@ namespace Application.Repositories.PersonContext
                 return result;
             }
         }
+        public IResultBase UpdatePersonAsync(PersonDTO personDTO)
+        {
+            Result result;
+            var personToEdit = personsDB.Find(personToEdit => personToEdit.Id == personDTO.Id);
+            if (personToEdit == null)
+            {
+                result = new Result(resultCode: 404, message: "Person not found", isOk: false);
+                Notification notification = new Notification("Registro não encontrado.", "notFound");
+                result.SetNotifications(new List<Notification> { notification });
+                return result;
+            }
+            personToEdit.Name = personDTO.Name;
+            personToEdit.Email = personDTO.Email;
+            personToEdit.BirthDate = personDTO.BirthDate;
+            personToEdit.Status = personDTO.Status;
+            personToEdit.Address = personDTO.Address;
+            personToEdit.OtherInfos = personDTO.OtherInfos;
+
+            if (personToEdit.Validation() == false)
+            {
+                result = new Result(resultCode: 400, message: "Erro na criação do registro", isOk: false);
+                return result;
+            }
+
+            personsDB[personsDB.IndexOf(personToEdit)] = personToEdit;
+            result = new Result(resultCode: 200, message: "Dados do admin atualizados com sucesso.", isOk: true);
+            result.SetData(personMapper.MapToDTO(personToEdit));
+            return result;
+        }
+
     }
 }

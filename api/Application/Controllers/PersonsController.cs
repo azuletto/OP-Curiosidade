@@ -21,6 +21,7 @@ namespace Application.Controllers
         private readonly GetPreviewDataToDashHandler _getPreviewDataToDashHandler;
         private readonly InsertPersonHandler _insertHandler;
         private readonly DeletePersonHandler _deleteHandler;
+        private readonly UpdatePersonHandler _updateHandler;
         public PersonsController(
             GetAllPersonsHandler getAllPersonsHandler,
             GetNumberOfLastMonthPersonsHandler getNumberOfLastMonthPersonsHandler,
@@ -28,7 +29,8 @@ namespace Application.Controllers
             GetNumberOfPersonsHandler getNumberOfPersonsHandler,
             GetPreviewDataToDashHandler getPreviewDataToDashHandler,
             InsertPersonHandler insertHandler,
-            DeletePersonHandler deleteHandler
+            DeletePersonHandler deleteHandler,
+            UpdatePersonHandler updateHandler
             )
         {
             _getAllPersonsHandler = getAllPersonsHandler;
@@ -38,6 +40,7 @@ namespace Application.Controllers
             _getPreviewDataToDashHandler = getPreviewDataToDashHandler;
             _insertHandler = insertHandler;
             _deleteHandler = deleteHandler;
+            _updateHandler = updateHandler;
         }
         [HttpGet("/table/preview")]
         [ProducesResponseType(typeof(Result), 200)]
@@ -73,7 +76,16 @@ namespace Application.Controllers
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);
         }
-
+        [HttpPut("/person")]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 400)]
+        public IActionResult UpdatePerson([FromBody] UpdatePersonCommand command)
+        {
+            var result = _updateHandler.Handle(command);
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
         [HttpGet("/pending")]
         public IActionResult GetNumberOfPendingPersons()
         {

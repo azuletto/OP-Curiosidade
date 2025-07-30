@@ -24,5 +24,6 @@ namespace Application.Repositories.PersonContext
         Task<int> GetNumberOfLastMonthPersonsAsync();
         Task<AdminRequest> GetAllPersonsAsync();
         IResultBase DeletePersonByIdAsync(Guid id);
+        IResultBase UpdatePersonAsync(PersonDTO personDTO);
     }
 }

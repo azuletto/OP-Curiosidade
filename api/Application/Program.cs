@@ -127,6 +127,7 @@ builder.Services.AddScoped<GetNumberOfPersonsHandler>();
 builder.Services.AddScoped<GetPreviewDataToDashHandler>();
 builder.Services.AddScoped<InsertPersonHandler>();
 builder.Services.AddScoped<DeletePersonHandler>();
+builder.Services.AddScoped<UpdatePersonHandler>();
 
 builder.WebHost.UseUrls("http://localhost:5000", "https://localhost:5001");
 

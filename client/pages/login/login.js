@@ -36,7 +36,7 @@ login_button.addEventListener("click", async function () {
   }
 
   try {
-    const response = await fetch(`${host}/Personal/admin/login`, {
+    const response = await fetch(`${host}/admin/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
