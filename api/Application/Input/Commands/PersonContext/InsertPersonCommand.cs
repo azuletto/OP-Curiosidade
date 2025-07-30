@@ -12,7 +12,6 @@ namespace Application.Input.Commands.PersonContext
     {
         public required string Name { get; set; }
         public required string Email { get; set; }
-        public required bool IsDeleted { get; set; } = false;
         public required DateOnly DateOfBirth { get; set; }
         public required bool Status { get; set; } = true;
         public required string Address { get; set; }

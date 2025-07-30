@@ -1,19 +1,22 @@
 import { regexEmail } from "../Validations/email-regex.js";
-import { initTable, clearTable /*, loadTable */} from "../Table/table.js";
+import { init, clearTable /*, loadTable */} from "../Table/table.js";
 import { getUsersList } from "../tableHandler.js";
-let user = {
-  name: "",
-  age: "",
-  email: "",
-  address: "",
-  info: "",
-  interess: "",
-  feelings: "",
-  valors: "",
-  id: "",
-  time_stamp: "",
-  status: "",
+import { saveUserHandler } from "../CRUD/crudHandler.js";
+let user =
+{
+  name: "string",
+  email: "string",
+  dateOfBirth: "2025-07-30",
+  status: true,
+  address: "string",
+  otherInfos: {
+    valors: "string",
+    feelings: "string",
+    info: "string",
+    interess: "string"
+  }
 };
+
 let users_list = [];
 users_list = getUsersList() || [];
 const submitButton = document.getElementById("submit-button");
@@ -74,6 +77,7 @@ if (window.location.pathname.includes("register")) {
     }
   });
   submitButton.addEventListener("click", function (e) {
+    console.log("Submit button clicked");
     let editMode = JSON.parse(localStorage.getItem("edit_mode"));
     if (!editMode) {
       user.name = document.getElementById("user_name").value;
@@ -87,7 +91,6 @@ if (window.location.pathname.includes("register")) {
       user.status = document.getElementById("user_status").checked
         ? "Ativo"
         : "Inativo";
-      user.time_stamp = new Date().toISOString();
       if (!verfifyUser(user)) {
         e.preventDefault();
         return Error;
@@ -213,12 +216,14 @@ function verifyName(name) {
   } else return true;
 }
 function saveUser(user) {
-  let userUUID = crypto.randomUUID();
-  user.id = userUUID;
-  users_list.push(user);
-  clearTable();
-  //loadTable();
-  initTable();
-  clearModal();
-  modal.close();
+  saveUserHandler(user)
+    .then(() => {
+      clearTable();
+      init();
+      clearModal();
+      modal.close();
+    })
+    .catch((error) => {
+      console.error("Error saving user:", error);
+    });
 }

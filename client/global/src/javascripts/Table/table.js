@@ -4,7 +4,7 @@ const table = document.querySelector("table");
 
 init();
 
-async function init() {
+export async function init() {
   const users = await loadExampleUsers();
   renderTable(users);
 }
@@ -31,7 +31,7 @@ function renderTable(users) {
   table.appendChild(tbody);
 }
 
-function clearTable() {
+export function clearTable() {
   const oldBody = table.querySelector("tbody");
   if (oldBody) oldBody.remove();
 }
