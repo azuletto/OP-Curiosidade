@@ -1,6 +1,4 @@
-﻿using Application.Input.Commands.AdminContext;
-using Application.Input.Commands.PersonContext;
-using Application.Input.Handlers.AdminContext;
+﻿using Application.Input.Commands.PersonContext;
 using Application.Input.Handlers.PersonContext;
 using Application.Output.Results;
 using Microsoft.AspNetCore.Authorization;
@@ -14,7 +12,7 @@ namespace Application.Controllers
     [Produces("application/json")]
     public class PersonsController : ControllerBase
     {
-        private readonly  GetPersonByIdHandler _getPersonByIdHandler;
+        private readonly GetPersonByIdHandler _getPersonByIdHandler;
         private readonly GetAllPersonsHandler _getAllPersonsHandler;
         private readonly GetNumberOfLastMonthPersonsHandler _getNumberOfLastMonthPersonsHandler;
         private readonly GetNumberOfPendingPersonsHandler _getNumberOfPendingPersonsHandler;

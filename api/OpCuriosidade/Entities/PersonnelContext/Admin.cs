@@ -1,6 +1,5 @@
 ﻿using OpCuriosidade.Validations;
 using OpCuriosidade.Validations.Interfaces;
-using System.Diagnostics.Contracts;
 
 namespace OpCuriosidade.Entities.PersonnelContext
 {

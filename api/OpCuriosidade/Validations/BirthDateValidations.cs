@@ -3,7 +3,7 @@ namespace OpCuriosidade.Validations
 {
     public partial class ContractValidations<T>
     {
-        public ContractValidations<T> IsValidBirthDate(DateOnly birthDate,string message,string propertyName)
+        public ContractValidations<T> IsValidBirthDate(DateOnly birthDate, string message, string propertyName)
         {
             if (birthDate > DateOnly.FromDateTime(DateTime.Now))
             {

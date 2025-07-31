@@ -1,16 +1,9 @@
-﻿using Application.Input.Commands.AdminContext;
-using Application.Input.Commands.PersonContext;
+﻿using Application.Input.Commands.PersonContext;
 using Application.Input.Handlers.Interfaces;
 using Application.Output.Results;
 using Application.Output.Results.Interfaces;
-using Application.Repositories.AdminContext;
 using Application.Repositories.PersonContext;
 using OpCuriosidade.Entities.PersonnelContext;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Input.Handlers.PersonContext
 {
@@ -26,7 +19,7 @@ namespace Application.Input.Handlers.PersonContext
         {
             Result result;
 
-            var person = new 
+            var person = new
                 Person(
                 command.Name,
                 command.Email,

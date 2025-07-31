@@ -1,5 +1,4 @@
-﻿using Application.Input.Commands.PersonContext;
-using Application.Input.Commands.PersonContext.ValueObjects;
+﻿using Application.Input.Commands.PersonContext.ValueObjects;
 using Application.Mapper;
 using Application.Output.DTO;
 using Application.Output.Request.TableRequests;
@@ -7,14 +6,8 @@ using Application.Output.Results;
 using Application.Output.Results.Interfaces;
 using Application.Repositories.Migrations;
 using Application.Repositories.Validations;
-using Application.Repositories.Validations;
 using OpCuriosidade.Entities.PersonnelContext;
 using OpCuriosidade.Notifications;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Repositories.PersonContext
 {
@@ -43,7 +36,7 @@ namespace Application.Repositories.PersonContext
         public Task<AdminRequest> GetAllPersonsAsync()
         {
             Result result;
-                AdminRequest adminRequest = new AdminRequest
+            AdminRequest adminRequest = new AdminRequest
             {
                 Result = null,
                 Persons = null
@@ -55,15 +48,15 @@ namespace Application.Repositories.PersonContext
             List<PersonDTO> personsDTO = personsDB
                 .Where(person => !person.IsDeleted)
                 .Select(person => new PersonDTO
-            {
-                Email = person.Email,
-                Id = person.Id,
-                IsDeleted = person.IsDeleted,
-                Name = person.Name,
-                OtherInfos = person.OtherInfos,
-                Status = person.Status,
-                TimeStamp = person.TimeStamp
-            })
+                {
+                    Email = person.Email,
+                    Id = person.Id,
+                    IsDeleted = person.IsDeleted,
+                    Name = person.Name,
+                    OtherInfos = person.OtherInfos,
+                    Status = person.Status,
+                    TimeStamp = person.TimeStamp
+                })
         .ToList();
             result = new Result(resultCode: 200, message: "Pessoas encontradas com sucesso", isOk: true);
             adminRequest.Result = result;

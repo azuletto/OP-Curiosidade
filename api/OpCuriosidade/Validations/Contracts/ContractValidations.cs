@@ -18,7 +18,7 @@ namespace OpCuriosidade.Validations
         }
         public bool isValid()
         {
-            return _notifications.Count == 0 ? true: false;
+            return _notifications.Count == 0 ? true : false;
         }
         public List<Notification> GetNotifications()
         {

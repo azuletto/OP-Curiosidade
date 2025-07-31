@@ -1,14 +1,8 @@
 ﻿using Application.Input.Commands.AdminContext;
 using Application.Input.Handlers.AdminContext;
-using Application.Input.Handlers.PersonContext;
 using Application.Output.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Controllers
 {
