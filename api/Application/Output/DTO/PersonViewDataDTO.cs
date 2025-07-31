@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Output.DTO
 {
-    public class PersonViewData
+    public class PersonViewDataDTO
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

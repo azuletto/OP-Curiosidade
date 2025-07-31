@@ -159,21 +159,17 @@ namespace Application.Repositories.PersonContext
             throw new NotImplementedException();
         }
 
-        public Task<PersonDTO> GetPersonByIdAsync(Guid id)
+        public Task<PersonViewDataDTO> GetPersonByIdAsync(Guid id)
         {
-            PersonDTO personDTO = personsDB
-                .Where(person => person.Id == id && !person.IsDeleted)
-                .Select(person => new PersonDTO
-                {
-                    Name = person.Name,
-                    Email = person.Email,
-                    Address = person.Address,
-                    Status = person.Status,
-                    OtherInfos = person.OtherInfos
-                })
-                .FirstOrDefault();
-
-            return Task.FromResult(personDTO);
+            PersonViewDataMapper mapper = new PersonViewDataMapper();
+            Person person = personsDB
+                .FirstOrDefault(person => person.Id == id && !person.IsDeleted);
+            if (person == null || person.IsDeleted)
+            {
+                Result result = new Result(resultCode: 404, message: "Person not found", isOk: false);
+            }
+            PersonViewDataDTO personViewDataDTO = mapper.MapToViewDTO(person);
+            return Task.FromResult(personViewDataDTO);
         }
 
         public Task<PersonDTO> GetPersonByNameAsync(string name)

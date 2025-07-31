@@ -1,5 +1,5 @@
 import { loadExampleUsers } from "../../model/load-example-users.js";
-
+import { verifyEdit } from "../CRUD/edit-user.js";
 const table = document.querySelector("table");
 
 init();
@@ -53,7 +53,7 @@ function createActionCell(userId) {
   editButton.innerHTML = `<span class="material-symbols-outlined">edit</span>`;
   editButton.onclick = () => {
     localStorage.setItem("edit_mode", JSON.stringify(true));
-    
+    verifyEdit(userId, true);
   };
 
   deleteButton.innerHTML = `<span class="material-symbols-outlined">delete</span>`;

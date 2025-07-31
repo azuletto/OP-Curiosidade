@@ -15,7 +15,7 @@ namespace Application.Repositories.PersonContext
     public interface IPersonRepository
     {
         IResultBase InsertPerson(Person person);
-        Task<PersonDTO> GetPersonByIdAsync(Guid id);
+        Task<PersonViewDataDTO> GetPersonByIdAsync(Guid id);
         Task<PersonDTO> GetPersonByEmailAsync(string email);
         Task<AdminRequest> GetPreviewDataToDashAsync();
         Task<PersonDTO> GetPersonByNameAsync(string name);

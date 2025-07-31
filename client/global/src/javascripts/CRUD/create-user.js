@@ -142,10 +142,10 @@ export function verfifyUser(user) {
   document.getElementById("user_age").classList.remove("invalid-input");
   document.getElementById("user_email").classList.remove("invalid-input");
   document.getElementById("user_adress").classList.remove("invalid-input");
-  const isNameValid = verifyName(user.name);
-  const isEmailValid = verifyEmail(user);
-  const isAgeValid = verifyAge(user.dateOfBirth);
-  const isAddressValid = verifyAdress(user.adress);
+  const isNameValid = verifyName(user.data.name);
+  const isEmailValid = verifyEmail(user.data.email);
+  const isAgeValid = verifyAge(user.data.birthDate);
+  const isAddressValid = verifyAdress(user.data.address);
   if (!isNameValid || !isEmailValid || !isAgeValid || !isAddressValid) {
     document
       .getElementById("modal-header")
@@ -162,11 +162,11 @@ function verifyAdress(adress) {
     return false;
   } else return true;
 }
-function verifyAge(dateOfBirth) {
+function verifyAge(birthDate) {
   if (
-    dateOfBirth < new Date("1920-01-01").toISOString().split("T")[0] ||
-    dateOfBirth > new Date().toISOString().split("T")[0] ||
-    !dateOfBirth
+    birthDate < new Date("1920-01-01").toISOString().split("T")[0] ||
+    birthDate > new Date().toISOString().split("T")[0] ||
+    !birthDate
   ) {
     document.getElementById("user_age").classList.add("invalid-input");
     age_error.innerHTML = "Data de nascimento inválida.";
