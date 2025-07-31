@@ -14,6 +14,7 @@ namespace Application.Controllers
     [Produces("application/json")]
     public class PersonsController : ControllerBase
     {
+        private readonly  GetPersonByIdHandler _getPersonByIdHandler;
         private readonly GetAllPersonsHandler _getAllPersonsHandler;
         private readonly GetNumberOfLastMonthPersonsHandler _getNumberOfLastMonthPersonsHandler;
         private readonly GetNumberOfPendingPersonsHandler _getNumberOfPendingPersonsHandler;
@@ -23,6 +24,7 @@ namespace Application.Controllers
         private readonly DeletePersonHandler _deleteHandler;
         private readonly UpdatePersonHandler _updateHandler;
         public PersonsController(
+            GetPersonByIdHandler getPersonByIdHandler,
             GetAllPersonsHandler getAllPersonsHandler,
             GetNumberOfLastMonthPersonsHandler getNumberOfLastMonthPersonsHandler,
             GetNumberOfPendingPersonsHandler getNumberOfPendingPersonsHandler,
@@ -33,6 +35,7 @@ namespace Application.Controllers
             UpdatePersonHandler updateHandler
             )
         {
+            _getPersonByIdHandler = getPersonByIdHandler;
             _getAllPersonsHandler = getAllPersonsHandler;
             _getNumberOfLastMonthPersonsHandler = getNumberOfLastMonthPersonsHandler;
             _getNumberOfPendingPersonsHandler = getNumberOfPendingPersonsHandler;
@@ -42,6 +45,7 @@ namespace Application.Controllers
             _deleteHandler = deleteHandler;
             _updateHandler = updateHandler;
         }
+
         [HttpGet("/table/preview")]
         [ProducesResponseType(typeof(Result), 200)]
         [ProducesResponseType(typeof(Result), 404)]
@@ -82,6 +86,16 @@ namespace Application.Controllers
         public IActionResult UpdatePerson([FromBody] UpdatePersonCommand command)
         {
             var result = _updateHandler.Handle(command);
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
+        [HttpGet("/person" + "/" + "{id}")]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 404)]
+        public IActionResult GetPersonById(Guid id)
+        {
+            var result = _getPersonByIdHandler.Handle(id);
             return result.IsOk
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);

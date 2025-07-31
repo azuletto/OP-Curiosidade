@@ -161,7 +161,19 @@ namespace Application.Repositories.PersonContext
 
         public Task<PersonDTO> GetPersonByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            PersonDTO personDTO = personsDB
+                .Where(person => person.Id == id && !person.IsDeleted)
+                .Select(person => new PersonDTO
+                {
+                    Name = person.Name,
+                    Email = person.Email,
+                    Address = person.Address,
+                    Status = person.Status,
+                    OtherInfos = person.OtherInfos
+                })
+                .FirstOrDefault();
+
+            return Task.FromResult(personDTO);
         }
 
         public Task<PersonDTO> GetPersonByNameAsync(string name)
@@ -190,6 +202,7 @@ namespace Application.Repositories.PersonContext
         public IResultBase UpdatePersonAsync(PersonDTO personDTO)
         {
             Result result;
+
             var personToEdit = personsDB.Find(personToEdit => personToEdit.Id == personDTO.Id);
             if (personToEdit == null)
             {
@@ -212,7 +225,7 @@ namespace Application.Repositories.PersonContext
             }
 
             personsDB[personsDB.IndexOf(personToEdit)] = personToEdit;
-            result = new Result(resultCode: 200, message: "Dados do admin atualizados com sucesso.", isOk: true);
+            result = new Result(resultCode: 200, message: "Dados do registro atualizados com sucesso.", isOk: true);
             result.SetData(personMapper.MapToDTO(personToEdit));
             return result;
         }

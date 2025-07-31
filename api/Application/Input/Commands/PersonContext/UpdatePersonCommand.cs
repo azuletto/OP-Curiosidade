@@ -1,4 +1,5 @@
-﻿using OpCuriosidade.Entities.PersonnelContext.ValueObjects;
+﻿using Application.Output.DTO;
+using OpCuriosidade.Entities.PersonnelContext.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,6 @@ namespace Application.Input.Commands.PersonContext
 {
     public class UpdatePersonCommand
     {
-        public required Guid Id { get; set; }
-        public required string Name { get; set; }
-        public required string Email { get; set; }
-        public required bool IsDeleted { get; set; } = false;
-        public required DateOnly DateOfBirth { get; set; }
-        public required bool Status { get; set; } = true;
-        public required string Address { get; set; }
-        public OtherInfos? OtherInfos { get; set; } = null;
+        public required PersonDTO personDTO { get; set; }
     }
 }

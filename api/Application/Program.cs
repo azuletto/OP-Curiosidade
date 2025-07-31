@@ -120,6 +120,7 @@ builder.Services.AddScoped<UpdateAdminHandler>();
 builder.Services.AddScoped<GetAdminHandler>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<GetPersonByIdHandler>();
 builder.Services.AddScoped<GetAllPersonsHandler>();
 builder.Services.AddScoped<GetNumberOfLastMonthPersonsHandler>();
 builder.Services.AddScoped<GetNumberOfPendingPersonsHandler>();

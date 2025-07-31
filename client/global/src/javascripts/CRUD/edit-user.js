@@ -13,8 +13,8 @@ export function verifyEdit(userId, edit) {
 }
 function editUser(userId, edit) {
   localStorage.setItem("edit_mode", JSON.stringify(edit));
-  let users = JSON.parse(localStorage.getItem("users_list")) || [];
-  user_edit = users.find((user) => String(user.id) === String(userId));
+  // user_edit = users.find((user) => String(user.id) === String(userId)); -> get user by id 
+  
   if (user_edit) {
     document.getElementById("user_name").value = user_edit.name;
     document.getElementById("user_age").value = user_edit.age;

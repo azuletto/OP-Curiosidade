@@ -51,7 +51,10 @@ function createActionCell(userId) {
   editButton.id = "edit-button";
   
   editButton.innerHTML = `<span class="material-symbols-outlined">edit</span>`;
-  editButton.onclick = () => console.log(userId);
+  editButton.onclick = () => {
+    localStorage.setItem("edit_mode", JSON.stringify(true));
+    
+  };
 
   deleteButton.innerHTML = `<span class="material-symbols-outlined">delete</span>`;
   deleteButton.onclick = () => deleteUser(userId);

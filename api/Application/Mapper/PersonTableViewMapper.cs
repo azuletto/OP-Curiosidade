@@ -21,7 +21,7 @@ namespace Application.Mapper
                 Id = person.Id,
                 Name = person.Name,
                 Email = person.Email,
-                TimeStamp = person.TimeStamp,
+                TimeStamp = (DateTime)person.TimeStamp,
                 Status = person.Status
             }).ToList();
         }

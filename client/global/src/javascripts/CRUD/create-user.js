@@ -4,16 +4,16 @@ import { getUsersList } from "../tableHandler.js";
 import { saveUserHandler } from "../CRUD/crudHandler.js";
 let user =
 {
-  name: "string",
-  email: "string",
-  dateOfBirth: "2025-07-30",
-  status: true,
-  address: "string",
+  name: "",
+  email: "",
+  dateOfBirth: "",
+  status: "",
+  address: "",
   otherInfos: {
-    valors: "string",
-    feelings: "string",
-    info: "string",
-    interess: "string"
+    valors: "",
+    feelings: "",
+    info: "",
+    interess: ""
   }
 };
 
@@ -70,33 +70,28 @@ if (window.location.pathname.includes("register")) {
     }
   });
   allInputs[3].addEventListener("keyup", () => {
-    let addressVer = verifyAdress(document.getElementById("user_adress").value);
-    if (adressVer) {
-      document.getElementById("user_adress").classList.remove("invalid-input");
-      address_error.innerHTML = "";
-    }
+    let addressVer = verifyAddress(document.getElementById("user_adress").value);
   });
   submitButton.addEventListener("click", function (e) {
     console.log("Submit button clicked");
     let editMode = JSON.parse(localStorage.getItem("edit_mode"));
     if (!editMode) {
       user.name = document.getElementById("user_name").value;
-      user.age = document.getElementById("user_age").value;
+      user.dateOfBirth = document.getElementById("user_age").value;
       user.email = document.getElementById("user_email").value;
-      user.adress = document.getElementById("user_adress").value;
-      user.info = document.getElementById("user_info").value;
-      user.interess = document.getElementById("user_interess").value;
-      user.feelings = document.getElementById("user_feelings").value;
-      user.valors = document.getElementById("user_valors").value;
+      user.address = document.getElementById("user_adress").value;
       user.status = document.getElementById("user_status").checked
-        ? "Ativo"
-        : "Inativo";
+      user.otherInfos.info = document.getElementById("user_info").value;
+      user.otherInfos.interess = document.getElementById("user_interess").value;
+      user.otherInfos.feelings = document.getElementById("user_feelings").value;
+      user.otherInfos.valors = document.getElementById("user_valors").value;
+      user.status = document.getElementById("user_status").checked
       if (!verfifyUser(user)) {
         e.preventDefault();
         return Error;
       } else {
       }
-      verifyStorage();
+      //verifyStorage();
       saveUser(user);
       clearUser();
     }
@@ -149,7 +144,7 @@ export function verfifyUser(user) {
   document.getElementById("user_adress").classList.remove("invalid-input");
   const isNameValid = verifyName(user.name);
   const isEmailValid = verifyEmail(user);
-  const isAgeValid = verifyAge(user.age);
+  const isAgeValid = verifyAge(user.dateOfBirth);
   const isAddressValid = verifyAdress(user.adress);
   if (!isNameValid || !isEmailValid || !isAgeValid || !isAddressValid) {
     document
@@ -167,11 +162,11 @@ function verifyAdress(adress) {
     return false;
   } else return true;
 }
-function verifyAge(age) {
+function verifyAge(dateOfBirth) {
   if (
-    age < new Date("1920-01-01").toISOString().split("T")[0] ||
-    age > new Date().toISOString().split("T")[0] ||
-    !age
+    dateOfBirth < new Date("1920-01-01").toISOString().split("T")[0] ||
+    dateOfBirth > new Date().toISOString().split("T")[0] ||
+    !dateOfBirth
   ) {
     document.getElementById("user_age").classList.add("invalid-input");
     age_error.innerHTML = "Data de nascimento inválida.";
@@ -179,7 +174,6 @@ function verifyAge(age) {
   } else return true;
 }
 function verifyEmail(user, isevent = false) {
-  let users_list = getUsersList() || [];
   let editMode = JSON.parse(localStorage.getItem("edit_mode"));
   if (editMode && isevent) {
     if (!regexEmail(user.email)) {
@@ -188,24 +182,26 @@ function verifyEmail(user, isevent = false) {
       return false;
     }
     return true;
-  } else if (editMode) {
+  }
+   else if (!editMode) {
     if (
-      !regexEmail(user.email) ||
-      users_list.find((u) => u.email === user.email && u.id !== user.id)
+      !regexEmail(user.email)
     ) {
       document.getElementById("user_email").classList.add("invalid-input");
       email_error.innerHTML = "E-mail inválido ou já cadastrado.";
       return false;
     } else return true;
-  } else if (!editMode) {
-    if (
-      !regexEmail(user.email) ||
-      users_list.find((u) => u.email === user.email)
-    ) {
-      document.getElementById("user_email").classList.add("invalid-input");
-      email_error.innerHTML = "E-mail inválido ou já cadastrado.";
-      return false;
-    } else return true;
+  }
+}
+function verifyAddress(address) {
+  if (String(address).trim() === "") {
+    document.getElementById("user_adress").classList.add("invalid-input");
+    address_error.innerHTML = "O campo de endereço não pode estar vazio.";
+    return false;
+  } else {
+    document.getElementById("user_adress").classList.remove("invalid-input");
+    address_error.innerHTML = "";
+    return true;
   }
 }
 function verifyName(name) {

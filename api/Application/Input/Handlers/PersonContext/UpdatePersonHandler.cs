@@ -28,22 +28,15 @@ namespace Application.Input.Handlers.PersonContext
             }
             try
             {
-                var personDTO = new Application.Output.DTO.PersonDTO
+                result = (Result)_repository.UpdatePersonAsync(command.personDTO);
+                if (result.IsOk)
                 {
-                    Id = command.Id,
-                    Name = command.Name,
-                    Email = command.Email,
-                    BirthDate = command.DateOfBirth,
-                    Status = command.Status,
-                    Address = command.Address,
-                    OtherInfos = command.OtherInfos
-                };
-                if (personDTO.IsDeleted == true)
-                {
-                    return new Result(400, "Esse registro está deletado", false);
+                    return result;
                 }
-                result = (Result)_repository.UpdatePersonAsync(personDTO);
-                return result;
+                else
+                {
+                    return new Result(400, "Erro ao atualizar pessoa", false);
+                }
             }
             catch (Exception ex)
             {
