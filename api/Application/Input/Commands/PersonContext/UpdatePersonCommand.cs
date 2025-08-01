@@ -4,6 +4,6 @@ namespace Application.Input.Commands.PersonContext
 {
     public class UpdatePersonCommand
     {
-        public required PersonDTO personDTO { get; set; }
+        public required PersonViewDataDTO personViewDataDTO { get; set; }
     }
 }

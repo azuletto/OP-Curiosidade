@@ -188,11 +188,16 @@ namespace Application.Repositories.PersonContext
                 return result;
             }
         }
-        public IResultBase UpdatePersonAsync(PersonDTO personDTO)
+        public IResultBase UpdatePersonAsync(PersonViewDataDTO personViewDataDTO)
         {
             Result result;
 
-            var personToEdit = personsDB.Find(personToEdit => personToEdit.Id == personDTO.Id);
+            if (dataValidation.Validation() == false)
+            {
+                result = new Result(resultCode: 400, message: "Erro na edição do registro", isOk: false);
+                return result;
+            }
+            var personToEdit = personsDB.Find(personToEdit => personToEdit.Id == personViewDataDTO.Id);
             if (personToEdit == null)
             {
                 result = new Result(resultCode: 404, message: "Person not found", isOk: false);
@@ -200,18 +205,19 @@ namespace Application.Repositories.PersonContext
                 result.SetNotifications(new List<Notification> { notification });
                 return result;
             }
-            personToEdit.Name = personDTO.Name;
-            personToEdit.Email = personDTO.Email;
-            personToEdit.BirthDate = personDTO.BirthDate;
-            personToEdit.Status = personDTO.Status;
-            personToEdit.Address = personDTO.Address;
-            personToEdit.OtherInfos = personDTO.OtherInfos;
+            
+            personToEdit.Name = personViewDataDTO.Name;
+            personToEdit.Email = personViewDataDTO.Email;
+            personToEdit.BirthDate = personViewDataDTO.BirthDate;
+            personToEdit.Status = personViewDataDTO.Status;
+            personToEdit.Address = personViewDataDTO.Address;
+            personToEdit.OtherInfos = personViewDataDTO.OtherInfos;
 
-            if (personToEdit.Validation() == false)
-            {
-                result = new Result(resultCode: 400, message: "Erro na criação do registro", isOk: false);
-                return result;
-            }
+            //if (personToEdit.Validation() == false)
+            //{
+            //    result = new Result(resultCode: 400, message: "Erro na edição do registro", isOk: false);
+            //    return result;
+            //}
 
             personsDB[personsDB.IndexOf(personToEdit)] = personToEdit;
             result = new Result(resultCode: 200, message: "Dados do registro atualizados com sucesso.", isOk: true);

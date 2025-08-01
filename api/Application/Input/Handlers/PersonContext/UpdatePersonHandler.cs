@@ -21,7 +21,7 @@ namespace Application.Input.Handlers.PersonContext
             }
             try
             {
-                result = (Result)_repository.UpdatePersonAsync(command.personDTO);
+                result = (Result)_repository.UpdatePersonAsync(command.personViewDataDTO);
                 if (result.IsOk)
                 {
                     return result;
