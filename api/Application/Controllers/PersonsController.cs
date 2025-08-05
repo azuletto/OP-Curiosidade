@@ -47,9 +47,9 @@ namespace Application.Controllers
         [HttpGet("/table/preview")]
         [ProducesResponseType(typeof(Result), 200)]
         [ProducesResponseType(typeof(Result), 404)]
-        public IActionResult GetPreviewDataToDash()
+        public IActionResult GetPreviewDataToDash([FromQuery] TablePaginationCommand command)
         {
-            var result = _getPreviewDataToDashHandler.Handle();
+            var result = _getPreviewDataToDashHandler.Handle(command);
             return result.IsOk
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);

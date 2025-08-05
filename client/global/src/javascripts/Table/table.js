@@ -1,16 +1,47 @@
 import { loadExampleUsers } from "../../model/load-example-users.js";
+import { getTotalUsersCount } from "../../../../pages/dash/get-users-handler.js";
 import { verifyEdit } from "../CRUD/edit-user.js";
 import { deleteUser } from "../CRUD/delete-user.js";
+
+function inDash() {
+  if (window.location.pathname.includes("dash")) {
+    return true;
+  }
+  return false;
+}
+
 const table = document.querySelector("table");
+if (localStorage.getItem("page") === null) {
+  localStorage.setItem("page", "1");
+}
+
+function getCurrentPage() {
+  if (inDash()) { return 1; }
+  return parseInt(localStorage.getItem("page"));
+}
+
+  const totalUsers = await getTotalUsersCount();
+  const rowsPerPage = 10;
+  const totalPages = Math.ceil(totalUsers / rowsPerPage);
+  
+  const nextButton = document.getElementById("next");
+  const prevButton = document.getElementById("previous");
+  
+  const numberDisplay = document.getElementById("number");
+  if (!inDash()) {
+    numberDisplay.textContent = `${getCurrentPage()} / ${totalPages}`;
+  }
 
 init();
 
 export async function init() {
-  const users = await loadExampleUsers();
+  const currentPage = getCurrentPage();
+  const users = await loadExampleUsers((currentPage - 1) * rowsPerPage);
   renderTable(users);
 }
 
 function renderTable(users) {
+  
   clearTable();
 
   const tbody = document.createElement("tbody");
@@ -99,4 +130,27 @@ function formatDate(timestamp) {
       hour12: false,
     })
     .replace(",", " -");
+}
+
+if (!inDash()) {
+  nextButton.addEventListener("click", async () => {
+    let currentPage = getCurrentPage();
+    if (currentPage < totalPages) {
+      currentPage++;
+      localStorage.setItem("page", currentPage.toString());
+      numberDisplay.textContent = `${currentPage} / ${totalPages}`;
+      const users = await loadExampleUsers((currentPage - 1) * rowsPerPage);
+      renderTable(users);
+    }
+  });
+  prevButton.addEventListener("click", async () => {
+    let currentPage = getCurrentPage();
+    if (currentPage > 1) {
+      currentPage--;
+      localStorage.setItem("page", currentPage.toString());
+      numberDisplay.textContent = `${currentPage} / ${totalPages}`;
+      const users = await loadExampleUsers((currentPage - 1) * rowsPerPage);
+      renderTable(users);
+    }
+  });
 }
