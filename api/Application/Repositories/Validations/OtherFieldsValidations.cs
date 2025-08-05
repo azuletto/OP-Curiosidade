@@ -1,6 +1,6 @@
-﻿using System.Text.RegularExpressions;
-using Application.Repositories.Notifications;
+﻿using Application.Repositories.Notifications;
 using OpCuriosidade.Entities.PersonnelContext.ValueObjects;
+using System.Text.RegularExpressions;
 namespace Application.Repositories.Validations;
 
 public partial class ContractValidations<T>

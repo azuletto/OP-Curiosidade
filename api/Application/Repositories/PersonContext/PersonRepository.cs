@@ -88,7 +88,7 @@ namespace Application.Repositories.PersonContext
 
             return Task.FromResult(filteredList);
         }
-        public async Task<AdminRequest> GetPreviewDataToDashAsync(int skipTable)
+        public async Task<AdminRequest> GetPreviewDataToDashAsync(int skipTable, int filterStatus, FilterType filterType)
         {
             Result result;
             AdminRequest adminRequest = new AdminRequest
@@ -100,7 +100,6 @@ namespace Application.Repositories.PersonContext
             {
                 LoadPersons.Load(personsDB);
             }
-            FilterType filterType = new() { filterByTimeStamp = true };
 
             var persons = await GetPersonsByFilter(filterType, filterStatus: 0);
 
@@ -206,7 +205,7 @@ namespace Application.Repositories.PersonContext
                 result.SetNotifications(new List<Notification> { notification });
                 return result;
             }
-            
+
             personToEdit.Name = personViewDataDTO.Name;
             personToEdit.Email = personViewDataDTO.Email;
             personToEdit.BirthDate = personViewDataDTO.BirthDate;
