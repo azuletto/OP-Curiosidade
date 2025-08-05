@@ -1,5 +1,6 @@
 import { loadExampleUsers } from "../../model/load-example-users.js";
 import { verifyEdit } from "../CRUD/edit-user.js";
+import { deleteUser } from "../CRUD/delete-user.js";
 const table = document.querySelector("table");
 
 init();
