@@ -6,9 +6,10 @@ import { getUserByIdHandler, saveUserHandler } from "../CRUD/crudHandler.js";
 let users_list = [];
 let user =
 {
+  data: {
   name: "",
   email: "",
-  dateOfBirth: "",
+  birthDate: "",
   status: "",
   address: "",
   otherInfos: {
@@ -16,6 +17,7 @@ let user =
     feelings: "",
     info: "",
     interess: ""
+    }
   }
 };
 
@@ -78,41 +80,41 @@ if (window.location.pathname.includes("register")) {
   submitButton.addEventListener("click", async function (e) {
     let editMode = JSON.parse(localStorage.getItem("edit_mode"));
     if (!editMode) {
-      user.name = document.getElementById("user_name").value;
-      user.dateOfBirth = document.getElementById("user_age").value;
-      user.email = document.getElementById("user_email").value;
-      user.address = document.getElementById("user_adress").value;
-      user.status = document.getElementById("user_status").checked
-      user.otherInfos.info = document.getElementById("user_info").value;
-      user.otherInfos.interess = document.getElementById("user_interess").value;
-      user.otherInfos.feelings = document.getElementById("user_feelings").value;
-      user.otherInfos.valors = document.getElementById("user_valors").value;
-      user.status = document.getElementById("user_status").checked
-      
+      user.data.name = document.getElementById("user_name").value;
+      user.data.birthDate = document.getElementById("user_age").value;
+      user.data.email = document.getElementById("user_email").value;
+      user.data.address = document.getElementById("user_adress").value;
+      user.data.status = document.getElementById("user_status").checked
+      user.data.otherInfos.info = document.getElementById("user_info").value;
+      user.data.otherInfos.interess = document.getElementById("user_interess").value;
+      user.data.otherInfos.feelings = document.getElementById("user_feelings").value;
+      user.data.otherInfos.valors = document.getElementById("user_valors").value;
+      user.data.status = document.getElementById("user_status").checked
+
       const isValid = await verfifyUser(user);
       if (isValid === false) {
         e.preventDefault();
         return Error;
       } else if (isValid === true) {
         saveUser(user);
-        clearUser();
+        // clearUser();
       }
     }
   });
 }
-function clearUser() {
-  user.name = "";
-  user.age = "";
-  user.email = "";
-  user.adress = "";
-  user.info = "";
-  user.interess = "";
-  user.feelings = "";
-  user.valors = "";
-  user.id = "";
-  user.time_stamp = "";
-  user.status = "";
-}
+// function clearUser() {
+//   user.data.id = "";
+//   user.data.time_stamp = "";
+//   user.data.status = "";
+//   user.data.name = "";
+//   user.data.age = "";
+//   user.data.email = "";
+//   user.data.adress = "";
+//   user.data.otherInfos.info = "";
+//   user.data.otherInfos.interess = "";
+//   user.data.otherInfos.feelings = "";
+//   user.data.otherInfos.valors = "";
+// }
 function clearModal() {
   document.getElementById("user_name").value = "";
   document.getElementById("user_age").value = "";
@@ -179,9 +181,7 @@ function verifyAge(birthDate) {
 }
 async function verifyEmail(user, isevent) {
   let user_edit;
-  if (!isevent) {
-    user_edit = await getUserByIdHandler(user.data.id);
-  }
+
   let editMode = JSON.parse(localStorage.getItem("edit_mode"));
   if (editMode && isevent == true) {
     if (!regexEmail(user.email) || user.email === "") {
@@ -202,7 +202,16 @@ async function verifyEmail(user, isevent) {
       email_error.innerHTML = "E-mail inválido ou já cadastrado.";
       return false;
     } else return true;
-  } else if (!editMode) {
+  } 
+  else if (!editMode && isevent == true) {
+    if (!regexEmail(user.email) || user.email === "") {
+      document.getElementById("user_email").classList.add("invalid-input");
+      email_error.innerHTML = "E-mail inválido, tente novamente.";
+      return false;
+    }
+    return true;
+  }
+  else if (!editMode) {
     if (
       !regexEmail(user.data.email)
     ) {
@@ -224,9 +233,9 @@ function verifyAddress(address) {
   }
 }
 function verifyName(name) {
-  if (String(name).trim() === "") {
+  if (String(name).trim() === "" || name.length < 2 || name.length > 50 || /\d/.test(name)) {
     document.getElementById("user_name").classList.add("invalid-input");
-    name_error.innerHTML = "O campo de nome não pode estar vazio.";
+    name_error.innerHTML = "O campo nome está vazio ou inválido.";
     return false;
   } else return true;
 }

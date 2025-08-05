@@ -23,7 +23,7 @@ namespace Application.Input.Handlers.PersonContext
                 Person(
                 command.Name,
                 command.Email,
-                command.DateOfBirth,
+                command.BirthDate,
                 command.Status,
                 command.Address,
                 command.OtherInfos
