@@ -1,5 +1,5 @@
-﻿using System.Text.RegularExpressions;
-using OpCuriosidade.Notifications;
+﻿using OpCuriosidade.Notifications;
+using System.Text.RegularExpressions;
 namespace OpCuriosidade.Validations
 {
     public partial class ContractValidations<T>

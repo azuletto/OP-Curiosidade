@@ -1,10 +1,5 @@
 ﻿using Application.Mapper.Interface;
 using Application.Output.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Mapper
 {
@@ -21,7 +16,7 @@ namespace Application.Mapper
                 Id = person.Id,
                 Name = person.Name,
                 Email = person.Email,
-                TimeStamp = person.TimeStamp,
+                TimeStamp = (DateTime)person.TimeStamp,
                 Status = person.Status
             }).ToList();
         }

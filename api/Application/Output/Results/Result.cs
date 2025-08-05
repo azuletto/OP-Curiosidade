@@ -1,10 +1,5 @@
 ﻿using Application.Output.Results.Interfaces;
 using OpCuriosidade.Notifications;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Output.Results
 {
@@ -17,7 +12,7 @@ namespace Application.Output.Results
             ResultCode = resultCode;
             Message = message;
             IsOk = isOk;
-            _notifications = new List<Notification>();  
+            _notifications = new List<Notification>();
         }
         public int ResultCode { get; private set; }
         public string Message { get; private set; }

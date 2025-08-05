@@ -1,22 +1,28 @@
 import { regexEmail } from "../Validations/email-regex.js";
-import { init_table, clearTable, loadTable } from "../Table/table.js";
+import { init, clearTable /*, loadTable */} from "../Table/table.js";
 import { getUsersList } from "../tableHandler.js";
-let user = {
-  name: "",
-  age: "",
-  email: "",
-  address: "",
-  info: "",
-  interess: "",
-  feelings: "",
-  valors: "",
-  id: "",
-  time_stamp: "",
-  status: "",
-};
+import { getUserByIdHandler, saveUserHandler } from "../CRUD/crudHandler.js";
+
 let users_list = [];
+let user =
+{
+  data: {
+  name: "",
+  email: "",
+  birthDate: "",
+  status: "",
+  address: "",
+  otherInfos: {
+    valors: "",
+    feelings: "",
+    info: "",
+    interess: ""
+    }
+  }
+};
+
 users_list = getUsersList() || [];
-const submitButton = document.getElementById("submit-button");
+let submitButton = document.getElementById("submit-button");
 const exitButton = document.getElementById("exit-register-modal");
 let user_age = document.getElementById("user_age");
 let email_error = document.getElementById("email-error");
@@ -57,61 +63,58 @@ if (window.location.pathname.includes("register")) {
       age_error.innerHTML = "";
     }
   });
-  allInputs[2].addEventListener("keyup", () => {
-    let blankUser = { email: document.getElementById("user_email").value };
+  allInputs[2].addEventListener("keyup", async () => {
+    let blankUser = {
+      email: document.getElementById("user_email").value
+    };
     let isEvent = true;
-    let emailVer = verifyEmail(blankUser, isEvent);
-    if (emailVer) {
+    let emailVer = await verifyEmail(blankUser, isEvent);
+    if (emailVer === true) {
       document.getElementById("user_email").classList.remove("invalid-input");
       email_error.innerHTML = "";
     }
   });
   allInputs[3].addEventListener("keyup", () => {
-    let addressVer = verifyAdress(document.getElementById("user_adress").value);
-    if (adressVer) {
-      document.getElementById("user_adress").classList.remove("invalid-input");
-      address_error.innerHTML = "";
-    }
+    let addressVer = verifyAddress(document.getElementById("user_adress").value);
   });
-  submitButton.addEventListener("click", function (e) {
+  submitButton.addEventListener("click", async function (e) {
     let editMode = JSON.parse(localStorage.getItem("edit_mode"));
     if (!editMode) {
-      user.name = document.getElementById("user_name").value;
-      user.age = document.getElementById("user_age").value;
-      user.email = document.getElementById("user_email").value;
-      user.adress = document.getElementById("user_adress").value;
-      user.info = document.getElementById("user_info").value;
-      user.interess = document.getElementById("user_interess").value;
-      user.feelings = document.getElementById("user_feelings").value;
-      user.valors = document.getElementById("user_valors").value;
-      user.status = document.getElementById("user_status").checked
-        ? "Ativo"
-        : "Inativo";
-      user.time_stamp = new Date().toISOString();
-      if (!verfifyUser(user)) {
+      user.data.name = document.getElementById("user_name").value;
+      user.data.birthDate = document.getElementById("user_age").value;
+      user.data.email = document.getElementById("user_email").value;
+      user.data.address = document.getElementById("user_adress").value;
+      user.data.status = document.getElementById("user_status").checked
+      user.data.otherInfos.info = document.getElementById("user_info").value;
+      user.data.otherInfos.interess = document.getElementById("user_interess").value;
+      user.data.otherInfos.feelings = document.getElementById("user_feelings").value;
+      user.data.otherInfos.valors = document.getElementById("user_valors").value;
+      user.data.status = document.getElementById("user_status").checked
+
+      const isValid = await verfifyUser(user);
+      if (isValid === false) {
         e.preventDefault();
         return Error;
-      } else {
+      } else if (isValid === true) {
+        saveUser(user);
+        // clearUser();
       }
-      verifyStorage();
-      saveUser(user);
-      clearUser();
     }
   });
 }
-function clearUser() {
-  user.name = "";
-  user.age = "";
-  user.email = "";
-  user.adress = "";
-  user.info = "";
-  user.interess = "";
-  user.feelings = "";
-  user.valors = "";
-  user.id = "";
-  user.time_stamp = "";
-  user.status = "";
-}
+// function clearUser() {
+//   user.data.id = "";
+//   user.data.time_stamp = "";
+//   user.data.status = "";
+//   user.data.name = "";
+//   user.data.age = "";
+//   user.data.email = "";
+//   user.data.adress = "";
+//   user.data.otherInfos.info = "";
+//   user.data.otherInfos.interess = "";
+//   user.data.otherInfos.feelings = "";
+//   user.data.otherInfos.valors = "";
+// }
 function clearModal() {
   document.getElementById("user_name").value = "";
   document.getElementById("user_age").value = "";
@@ -131,7 +134,7 @@ function clearModal() {
   document.getElementById("user_email").classList.remove("invalid-input");
   document.getElementById("user_adress").classList.remove("invalid-input");
 }
-export function verfifyUser(user) {
+export async function verfifyUser(user) {
   email_error.innerHTML = "";
   name_error.innerHTML = "";
   age_error.innerHTML = "";
@@ -144,10 +147,10 @@ export function verfifyUser(user) {
   document.getElementById("user_age").classList.remove("invalid-input");
   document.getElementById("user_email").classList.remove("invalid-input");
   document.getElementById("user_adress").classList.remove("invalid-input");
-  const isNameValid = verifyName(user.name);
-  const isEmailValid = verifyEmail(user);
-  const isAgeValid = verifyAge(user.age);
-  const isAddressValid = verifyAdress(user.adress);
+  const isNameValid = verifyName(user.data.name);
+  const isEmailValid = await verifyEmail(user);
+  const isAgeValid = verifyAge(user.data.birthDate);
+  const isAddressValid = verifyAdress(user.data.address);
   if (!isNameValid || !isEmailValid || !isAgeValid || !isAddressValid) {
     document
       .getElementById("modal-header")
@@ -164,40 +167,53 @@ function verifyAdress(adress) {
     return false;
   } else return true;
 }
-function verifyAge(age) {
+function verifyAge(birthDate) {
   if (
-    age < new Date("1920-01-01").toISOString().split("T")[0] ||
-    age > new Date().toISOString().split("T")[0] ||
-    !age
+    birthDate < new Date("1920-01-01").toISOString().split("T")[0] ||
+    birthDate > new Date().toISOString().split("T")[0] ||
+    birthDate > new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split("T")[0] ||
+    !birthDate
   ) {
     document.getElementById("user_age").classList.add("invalid-input");
     age_error.innerHTML = "Data de nascimento inválida.";
     return false;
   } else return true;
 }
-function verifyEmail(user, isevent = false) {
-  let users_list = getUsersList() || [];
+async function verifyEmail(user, isevent) {
+  let user_edit;
+
   let editMode = JSON.parse(localStorage.getItem("edit_mode"));
-  if (editMode && isevent) {
-    if (!regexEmail(user.email)) {
+  if (editMode && isevent == true) {
+    if (!regexEmail(user.email) || user.email === "") {
+      
+
       document.getElementById("user_email").classList.add("invalid-input");
       email_error.innerHTML = "E-mail inválido, tente novamente.";
+      
       return false;
+    
     }
     return true;
   } else if (editMode) {
     if (
-      !regexEmail(user.email) ||
-      users_list.find((u) => u.email === user.email && u.id !== user.id)
+      !regexEmail(user.data.email)
     ) {
       document.getElementById("user_email").classList.add("invalid-input");
       email_error.innerHTML = "E-mail inválido ou já cadastrado.";
       return false;
     } else return true;
-  } else if (!editMode) {
+  } 
+  else if (!editMode && isevent == true) {
+    if (!regexEmail(user.email) || user.email === "") {
+      document.getElementById("user_email").classList.add("invalid-input");
+      email_error.innerHTML = "E-mail inválido, tente novamente.";
+      return false;
+    }
+    return true;
+  }
+  else if (!editMode) {
     if (
-      !regexEmail(user.email) ||
-      users_list.find((u) => u.email === user.email)
+      !regexEmail(user.data.email)
     ) {
       document.getElementById("user_email").classList.add("invalid-input");
       email_error.innerHTML = "E-mail inválido ou já cadastrado.";
@@ -205,20 +221,33 @@ function verifyEmail(user, isevent = false) {
     } else return true;
   }
 }
+function verifyAddress(address) {
+  if (String(address).trim() === "") {
+    document.getElementById("user_adress").classList.add("invalid-input");
+    address_error.innerHTML = "O campo de endereço não pode estar vazio.";
+    return false;
+  } else {
+    document.getElementById("user_adress").classList.remove("invalid-input");
+    address_error.innerHTML = "";
+    return true;
+  }
+}
 function verifyName(name) {
-  if (String(name).trim() === "") {
+  if (String(name).trim() === "" || name.length < 2 || name.length > 50 || /\d/.test(name)) {
     document.getElementById("user_name").classList.add("invalid-input");
-    name_error.innerHTML = "O campo de nome não pode estar vazio.";
+    name_error.innerHTML = "O campo nome está vazio ou inválido.";
     return false;
   } else return true;
 }
 function saveUser(user) {
-  let userUUID = crypto.randomUUID();
-  user.id = userUUID;
-  users_list.push(user);
-  clearTable();
-  loadTable();
-  init_table();
-  clearModal();
-  modal.close();
+  saveUserHandler(user)
+    .then(() => {
+      clearTable();
+      init();
+      clearModal();
+      modal.close();
+    })
+    .catch((error) => {
+      console.error("Error saving user:", error);
+    });
 }

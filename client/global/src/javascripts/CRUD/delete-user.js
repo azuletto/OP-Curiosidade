@@ -1,4 +1,6 @@
-import { init_table, clearTable, loadTable } from "../Table/table.js";
+import { init, clearTable } from "../Table/table.js";
+import { getUserByIdHandler } from "./crudHandler.js";
+import { deleteUserHandler } from "./deleteUserHandler.js";
 import { getUsersList } from "../tableHandler.js";
 window.deleteUser = deleteUser;
 let users_list = [];
@@ -26,11 +28,11 @@ export function deleteUser(userId) {
   userIdtoDelete = userId;
   confirmModal.showModal();
 }
-function backupDelete(userId) {
-  let user = users_list.find((user) => String(user.id) === String(userId));
+async function backupDelete(userId) {
+  let user = await getUserByIdHandler(userId);
   if (user) {
+    await deleteUserHandler(userId);
     clearTable();
-    loadTable();
-    init_table();
+    init();
   }
 }

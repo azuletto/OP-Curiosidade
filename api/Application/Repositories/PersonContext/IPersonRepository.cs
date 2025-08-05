@@ -1,20 +1,14 @@
-﻿using Application.Input.Commands.PersonContext;
-using Application.Input.Commands.PersonContext.ValueObjects;
-using Application.Output.DTO;
+﻿using Application.Output.DTO;
 using Application.Output.Request.TableRequests;
 using Application.Output.Results.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OpCuriosidade.Entities.PersonnelContext;
 
 namespace Application.Repositories.PersonContext
 {
     public interface IPersonRepository
     {
-        void InsertPerson(PersonDTO person);
-        Task<PersonDTO> GetPersonByIdAsync(Guid id);
+        IResultBase InsertPerson(Person person);
+        Task<PersonViewDataDTO> GetPersonByIdAsync(Guid id);
         Task<PersonDTO> GetPersonByEmailAsync(string email);
         Task<AdminRequest> GetPreviewDataToDashAsync();
         Task<PersonDTO> GetPersonByNameAsync(string name);
@@ -23,5 +17,6 @@ namespace Application.Repositories.PersonContext
         Task<int> GetNumberOfLastMonthPersonsAsync();
         Task<AdminRequest> GetAllPersonsAsync();
         IResultBase DeletePersonByIdAsync(Guid id);
+        IResultBase UpdatePersonAsync(PersonViewDataDTO personDTO);
     }
 }

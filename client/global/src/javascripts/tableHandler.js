@@ -9,7 +9,7 @@ export async function getUsersList() {
   }
 
   try {
-    const response = await fetch(`${API_URL}/Personal/table/preview`, {
+    const response = await fetch(`${API_URL}/table/preview`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

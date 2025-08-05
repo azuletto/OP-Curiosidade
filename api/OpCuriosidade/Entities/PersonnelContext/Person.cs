@@ -10,13 +10,12 @@ namespace OpCuriosidade.Entities.PersonnelContext
             (
             string name,
             string email,
-            bool isDeleted,
             DateOnly birthDate,
             bool status,
             string address,
             OtherInfos? otherInfos = null
             )
-            : base(name, email, isDeleted)
+            : base(name, email)
 
         {
             BirthDate = birthDate;
@@ -57,6 +56,16 @@ namespace OpCuriosidade.Entities.PersonnelContext
                 .IsValidAdress(address: Address, message: "O endereço é inválido", propertyName: "addres")
                 .IsValidOtherInfos(OtherInfos, propertyName: "otherInfos");
             return contracts.isValid();
+        }
+        public ContractValidations<Admin> Validation(bool isRegisterValidation)
+        {
+            var contracts = new ContractValidations<Admin>()
+                .IsValidName(name: Name, message: "O nome é inválido", propertyName: "name")
+                .isValidEmail(email: Email, message: "O email é inválido", propertyName: "email")
+                .IsValidBirthDate(birthDate: BirthDate, message: "A data de nascimento é inválida", propertyName: "birthDate")
+                .IsValidAdress(address: Address, message: "O endereço é inválido", propertyName: "addres")
+                .IsValidOtherInfos(OtherInfos, propertyName: "otherInfos");
+            return contracts;
         }
     }
 }
