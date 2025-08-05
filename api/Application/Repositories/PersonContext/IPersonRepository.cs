@@ -10,7 +10,7 @@ namespace Application.Repositories.PersonContext
         IResultBase InsertPerson(Person person);
         Task<PersonViewDataDTO> GetPersonByIdAsync(Guid id);
         Task<PersonDTO> GetPersonByEmailAsync(string email);
-        Task<AdminRequest> GetPreviewDataToDashAsync();
+        Task<AdminRequest> GetPreviewDataToDashAsync(int skipTable);
         Task<PersonDTO> GetPersonByNameAsync(string name);
         Task<int> GetNumberOfPersonsAsync();
         Task<int> GetNumberOfPendingPersonsAsync();

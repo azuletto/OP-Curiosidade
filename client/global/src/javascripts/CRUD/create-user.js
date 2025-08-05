@@ -3,7 +3,6 @@ import { init, clearTable /*, loadTable */} from "../Table/table.js";
 import { getUsersList } from "../tableHandler.js";
 import { getUserByIdHandler, saveUserHandler } from "../CRUD/crudHandler.js";
 
-let users_list = [];
 let user =
 {
   data: {
@@ -21,7 +20,6 @@ let user =
   }
 };
 
-users_list = getUsersList() || [];
 let submitButton = document.getElementById("submit-button");
 const exitButton = document.getElementById("exit-register-modal");
 let user_age = document.getElementById("user_age");

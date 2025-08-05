@@ -88,7 +88,7 @@ namespace Application.Repositories.PersonContext
 
             return Task.FromResult(filteredList);
         }
-        public async Task<AdminRequest> GetPreviewDataToDashAsync()
+        public async Task<AdminRequest> GetPreviewDataToDashAsync(int skipTable)
         {
             Result result;
             AdminRequest adminRequest = new AdminRequest
@@ -116,6 +116,7 @@ namespace Application.Repositories.PersonContext
                     Status = person.Status,
                     TimeStamp = person.TimeStamp
                 })
+                .Skip(skipTable)
                 .Take(10)
                 .ToList();
 
