@@ -1,79 +1,77 @@
 window.verifyEdit = verifyEdit;
 import { verfifyUser } from "./create-user.js";
+import { getUserByIdHandler } from "./crudHandler.js";
 import {
   clearTable,
-  loadTable,
-  init_table,
+  init,
 } from "../../javascripts/Table/table.js";
-import { getUsersList } from "../tableHandler.js";
+//import { getUsersList } from "../tableHandler.js";
+import { updateUser } from "./updateUserHandler.js"
 let user_edit;
 const submitButton = document.getElementById("submit-button");
 export function verifyEdit(userId, edit) {
   editUser(userId, edit);
 }
-function editUser(userId, edit) {
+async function editUser(userId, edit) {
   localStorage.setItem("edit_mode", JSON.stringify(edit));
-  let users = JSON.parse(localStorage.getItem("users_list")) || [];
-  user_edit = users.find((user) => String(user.id) === String(userId));
+  user_edit = await getUserByIdHandler(userId);
   if (user_edit) {
-    document.getElementById("user_name").value = user_edit.name;
-    document.getElementById("user_age").value = user_edit.age;
-    document.getElementById("user_email").value = user_edit.email;
-    document.getElementById("user_adress").value = user_edit.adress;
-    document.getElementById("user_info").value = user_edit.info;
-    document.getElementById("user_interess").value = user_edit.interess;
-    document.getElementById("user_feelings").value = user_edit.feelings;
-    document.getElementById("user_valors").value = user_edit.valors;
-    document.getElementById("user_status").checked =
-      user_edit.status === "Ativo";
+    document.getElementById("user_name").value = user_edit.data.name;
+    document.getElementById("user_email").value = user_edit.data.email;
+    document.getElementById("user_age").value = user_edit.data.birthDate;
+    document.getElementById("user_adress").value = user_edit.data.address;
+    document.getElementById("user_info").value = user_edit.data.otherInfos.info;
+    document.getElementById("user_interess").value = user_edit.data.otherInfos.interess;
+    document.getElementById("user_feelings").value = user_edit.data.otherInfos.feelings;
+    document.getElementById("user_valors").value = user_edit.data.otherInfos.valors;
+switch (user_edit.data.status) {
+  case true:
+  case "Ativo": // Se vier como string "Ativo"
+    document.getElementById("user_status").checked = true;
+    break;
+  case false:
+  case "Inativo": // Se vier como string "Inativo"
+    document.getElementById("user_status").checked = false;
+    break;
+  default:
+    document.getElementById("user_status").checked = false; // Valor inválido = desmarca
+    break;
+}
+    // document.getElementById("user_status").checked = user_edit.data.status === true;
     modal.showModal();
   }
 }
 if (window.location.pathname.includes("register")) {
-  submitButton.addEventListener("click", function (e) {
+  submitButton.addEventListener("click", async function (e) {
     e.preventDefault();
-    user_edit.name = document.getElementById("user_name").value;
-    user_edit.age = document.getElementById("user_age").value;
-    user_edit.email = document.getElementById("user_email").value;
-    user_edit.adress = document.getElementById("user_adress").value;
-    user_edit.info = document.getElementById("user_info").value;
-    user_edit.interess = document.getElementById("user_interess").value;
-    user_edit.feelings = document.getElementById("user_feelings").value;
-    user_edit.valors = document.getElementById("user_valors").value;
-    user_edit.status = document.getElementById("user_status").checked
-      ? "Ativo"
-      : "Inativo";
-    let users_list = getUsersList() || [];
-    if (verfifyUser(user_edit)) {
-      users_list.find((user) => String(user.id) === String(user_edit.id)).name =
-        user_edit.name;
-      users_list.find((user) => String(user.id) === String(user_edit.id)).age =
-        user_edit.age;
-      users_list.find(
-        (user) => String(user.id) === String(user_edit.id)
-      ).email = user_edit.email;
-      users_list.find(
-        (user) => String(user.id) === String(user_edit.id)
-      ).adress = user_edit.adress;
-      users_list.find((user) => String(user.id) === String(user_edit.id)).info =
-        user_edit.info;
-      users_list.find(
-        (user) => String(user.id) === String(user_edit.id)
-      ).interess = user_edit.interess;
-      users_list.find(
-        (user) => String(user.id) === String(user_edit.id)
-      ).feelings = user_edit.feelings;
-      users_list.find(
-        (user) => String(user.id) === String(user_edit.id)
-      ).valors = user_edit.valors;
-      users_list.find(
-        (user) => String(user.id) === String(user_edit.id)
-      ).status = user_edit.status;
-      localStorage.setItem("edit_mode", JSON.stringify(false));
-      clearTable();
-      loadTable();
-      init_table();
-      modal.close();
+  
+    user_edit.data.name = document.getElementById("user_name").value;
+    user_edit.data.email = document.getElementById("user_email").value;
+    user_edit.data.birthDate = document.getElementById("user_age").value;
+    user_edit.data.status = document.getElementById("user_status").checked
+      ? true
+      : false;
+    user_edit.data.address = document.getElementById("user_adress").value;
+    user_edit.data.otherInfos.valors = document.getElementById("user_valors").value;
+    user_edit.data.otherInfos.feelings = document.getElementById("user_feelings").value;
+    user_edit.data.otherInfos.info = document.getElementById("user_info").value;
+    user_edit.data.otherInfos.interess = document.getElementById("user_interess").value;
+
+    const payload = {
+      personViewDataDTO: user_edit.data
     }
+const isValid = await verfifyUser(user_edit);
+
+if (isValid === true) {
+  await updateUser(payload);
+  localStorage.setItem("edit_mode", JSON.stringify(false));
+  clearTable();
+  init();
+  modal.close();
+} else {
+  e.preventDefault();
+  return Error;
+}
+ 
   });
 }

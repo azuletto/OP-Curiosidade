@@ -4,14 +4,6 @@ using Application.Output.DTO;
 using Application.Output.Results;
 using Application.Output.Results.Interfaces;
 using Application.Repositories.AdminContext;
-using OpCuriosidade.Entities.PersonnelContext;
-using OpCuriosidade.Notifications;
-using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Input.Handlers.AdminContext
 {

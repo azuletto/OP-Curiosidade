@@ -5,12 +5,12 @@ namespace OpCuriosidade.Entities.PersonnelContext
     public abstract class BaseEntity : IValidations
     {
         private List<Notification> _notifications = new List<Notification>();
-        protected BaseEntity(string name, string email, bool isDeleted)
+        protected BaseEntity(string name, string email)
         {
             Id = Guid.NewGuid();
             Name = name;
             Email = email;
-            IsDeleted = isDeleted;
+            IsDeleted = false;
             TimeStamp = DateTime.UtcNow;
         }
         protected BaseEntity(string name, string email, bool isDeleted, DateTime timeStamp)

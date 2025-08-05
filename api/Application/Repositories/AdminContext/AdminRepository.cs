@@ -3,14 +3,8 @@ using Application.Output.DTO;
 using Application.Output.Results;
 using Application.Output.Results.Interfaces;
 using Application.Repositories.Validations;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using OpCuriosidade.Entities.PersonnelContext;
 using OpCuriosidade.Notifications;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Repositories.AdminContext
 {

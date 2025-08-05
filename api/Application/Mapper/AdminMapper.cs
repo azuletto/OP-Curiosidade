@@ -1,11 +1,6 @@
 ﻿using Application.Mapper.Interface;
 using Application.Output.DTO;
 using OpCuriosidade.Entities.PersonnelContext;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Mapper
 {
@@ -15,15 +10,7 @@ namespace Application.Mapper
         {
             if (admin == null)
             {
-                return new AdminDTO
-                {
-                    Id = null,
-                    Name = null,
-                    Email = null,
-                    IsDeleted = false,
-                    TimeStamp = null,
-                    Password = null
-                };
+                return new AdminDTO();
             }
             return new AdminDTO
             {
