@@ -42,7 +42,7 @@ switch (user_edit.data.status) {
   }
 }
 if (window.location.pathname.includes("register")) {
-  submitButton.addEventListener("click", function (e) {
+  submitButton.addEventListener("click", async function (e) {
     e.preventDefault();
   
     user_edit.data.name = document.getElementById("user_name").value;
@@ -60,12 +60,18 @@ if (window.location.pathname.includes("register")) {
     const payload = {
       personViewDataDTO: user_edit.data
     }
-    if (verfifyUser(user_edit)) {
-      updateUser(payload);
-      localStorage.setItem("edit_mode", JSON.stringify(false));
-      clearTable();
-      init();
-      modal.close();
-    }
+const isValid = await verfifyUser(user_edit);
+
+if (isValid === true) {
+  await updateUser(payload);
+  localStorage.setItem("edit_mode", JSON.stringify(false));
+  clearTable();
+  init();
+  modal.close();
+} else {
+  e.preventDefault();
+  return Error;
+}
+ 
   });
 }

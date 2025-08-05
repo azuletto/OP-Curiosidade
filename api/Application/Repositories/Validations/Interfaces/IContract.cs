@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Repositories.Validations.Interfaces
 {
-    internal interface IContract
+    public interface IContract
     {
     }
 }

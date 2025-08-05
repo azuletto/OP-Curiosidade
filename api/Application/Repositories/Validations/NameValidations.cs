@@ -1,5 +1,5 @@
-﻿using OpCuriosidade.Notifications;
-namespace OpCuriosidade.Validations;
+﻿using Application.Repositories.Notifications;
+namespace Application.Repositories.Validations;
 
 public partial class ContractValidations<T>
 {

@@ -1,7 +1,6 @@
-﻿using OpCuriosidade.Notifications;
-using System.Text.RegularExpressions;
-namespace OpCuriosidade.Validations
-{
+﻿using System.Text.RegularExpressions;
+using Application.Repositories.Notifications;
+namespace Application.Repositories.Validations;
     public partial class ContractValidations<T>
     {
         public ContractValidations<T> isValidEmail(string email, string message, string propertyName)
@@ -26,4 +25,3 @@ namespace OpCuriosidade.Validations
             return this;
         }
     }
-}

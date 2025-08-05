@@ -192,7 +192,7 @@ namespace Application.Repositories.PersonContext
         {
             Result result;
 
-            if (dataValidation.Validation() == false)
+            if (personViewDataDTO.Validation() == false)
             {
                 result = new Result(resultCode: 400, message: "Erro na edição do registro", isOk: false);
                 return result;
@@ -212,12 +212,6 @@ namespace Application.Repositories.PersonContext
             personToEdit.Status = personViewDataDTO.Status;
             personToEdit.Address = personViewDataDTO.Address;
             personToEdit.OtherInfos = personViewDataDTO.OtherInfos;
-
-            //if (personToEdit.Validation() == false)
-            //{
-            //    result = new Result(resultCode: 400, message: "Erro na edição do registro", isOk: false);
-            //    return result;
-            //}
 
             personsDB[personsDB.IndexOf(personToEdit)] = personToEdit;
             result = new Result(resultCode: 200, message: "Dados do registro atualizados com sucesso.", isOk: true);

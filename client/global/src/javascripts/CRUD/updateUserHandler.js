@@ -1,7 +1,6 @@
 import { API_URL } from "../../../../config.js";
 let token = localStorage.getItem("token") || "";
 export async function updateUser(payload) {
-    console.log("Updating user with payload:", payload);
   try {
     const response = await fetch(`${API_URL}/person`, {
       method: 'PUT',

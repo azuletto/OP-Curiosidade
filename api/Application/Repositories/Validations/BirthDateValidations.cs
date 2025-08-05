@@ -1,6 +1,6 @@
-﻿using OpCuriosidade.Notifications;
-namespace OpCuriosidade.Validations
-{
+﻿using Application.Repositories.Notifications;
+namespace Application.Repositories.Validations;
+
     public partial class ContractValidations<T>
     {
         public ContractValidations<T> IsValidBirthDate(DateOnly birthDate, string message, string propertyName)
@@ -24,4 +24,3 @@ namespace OpCuriosidade.Validations
             return this;
         }
     }
-}
