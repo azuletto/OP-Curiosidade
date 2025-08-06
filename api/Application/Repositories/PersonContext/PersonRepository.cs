@@ -101,7 +101,7 @@ namespace Application.Repositories.PersonContext
                 LoadPersons.Load(personsDB);
             }
 
-            var persons = await GetPersonsByFilter(filterType, filterStatus: 0);
+            var persons = await GetPersonsByFilter(filterType, filterStatus);
 
             List<PersonDTO> personsDTO = persons
                 .Where(person => !person.IsDeleted)
@@ -155,8 +155,8 @@ namespace Application.Repositories.PersonContext
         public Task<PersonViewDataDTO> GetPersonByIdAsync(Guid id)
         {
             PersonViewDataMapper mapper = new PersonViewDataMapper();
-            Person person = personsDB
-                .FirstOrDefault(person => person.Id == id && !person.IsDeleted);
+            Person person = 
+                personsDB.FirstOrDefault(person => person.Id == id && !person.IsDeleted);
             if (person == null || person.IsDeleted)
             {
                 Result result = new Result(resultCode: 404, message: "Person not found", isOk: false);

@@ -17,7 +17,13 @@ namespace Application.Input.Handlers.PersonContext
             Result result;
             try
             {
-                var previewData = _repository.GetPreviewDataToDashAsync(command.SkipTable).Result;
+                var previewData = _repository.GetPreviewDataToDashAsync
+                    (
+                    command.skipTable, 
+                    command.filterStatus, 
+                    command.filterType
+                    )
+                    .Result;
                 result = new Result(200, "Dados de pré-visualização obtidos com sucesso", true);
                 result.SetData(previewData);
             }

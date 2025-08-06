@@ -3,6 +3,14 @@ import { getTotalUsersCount } from "../../../../pages/dash/get-users-handler.js"
 import { verifyEdit } from "../CRUD/edit-user.js";
 import { deleteUser } from "../CRUD/delete-user.js";
 
+let filterStatus = 0;
+let filterType = {
+  filterByName: false,
+  filterByTimeStamp: true,
+  filterByStatus: false,
+  filterByEmail: false,
+};
+
 function inDash() {
   if (window.location.pathname.includes("dash")) {
     return true;
@@ -15,17 +23,19 @@ if (localStorage.getItem("page") === null) {
   localStorage.setItem("page", "1");
 }
 
-function getCurrentPage() {
+export function getCurrentPage() {
   if (inDash()) { return 1; }
   return parseInt(localStorage.getItem("page"));
 }
 
   const totalUsers = await getTotalUsersCount();
-  const rowsPerPage = 10;
+  export const rowsPerPage = 10;
   const totalPages = Math.ceil(totalUsers / rowsPerPage);
   
   const nextButton = document.getElementById("next");
   const prevButton = document.getElementById("previous");
+  const lastPageButton = document.getElementById("last");
+  const firstPageButton = document.getElementById("first");
   
   const numberDisplay = document.getElementById("number");
   if (!inDash()) {
@@ -34,9 +44,34 @@ function getCurrentPage() {
 
 init();
 
-export async function init() {
+export async function init(payload) {
   const currentPage = getCurrentPage();
-  const users = await loadExampleUsers((currentPage - 1) * rowsPerPage);
+  if (inDash()) {
+     payload = {
+       skipTable: (currentPage - 1) * rowsPerPage,
+         filterStatus: 0,
+          FilterType: {
+            filterByName: false,
+            filterByTimeStamp: true,
+            filterByStatus: false,
+            filterByEmail: false
+      }
+    }
+  } else {
+    if (!payload) {
+      payload = {
+        skipTable: (currentPage - 1) * rowsPerPage,
+        filterStatus: 0,
+        FilterType: {
+          filterByName: false,
+          filterByTimeStamp: true,
+          filterByStatus: false,
+          filterByEmail: false
+        }
+      };
+    }
+  }
+  const users = await loadExampleUsers(payload);
   renderTable(users);
 }
 
@@ -139,18 +174,83 @@ if (!inDash()) {
       currentPage++;
       localStorage.setItem("page", currentPage.toString());
       numberDisplay.textContent = `${currentPage} / ${totalPages}`;
-      const users = await loadExampleUsers((currentPage - 1) * rowsPerPage);
-      renderTable(users);
+      await loadAndRenderUsers(currentPage, rowsPerPage);
     }
   });
+
   prevButton.addEventListener("click", async () => {
     let currentPage = getCurrentPage();
     if (currentPage > 1) {
       currentPage--;
       localStorage.setItem("page", currentPage.toString());
       numberDisplay.textContent = `${currentPage} / ${totalPages}`;
-      const users = await loadExampleUsers((currentPage - 1) * rowsPerPage);
-      renderTable(users);
+      await loadAndRenderUsers(currentPage, rowsPerPage);
     }
   });
+
+  lastPageButton.addEventListener("click", async () => {
+    localStorage.setItem("page", totalPages.toString());
+    numberDisplay.textContent = `${totalPages} / ${totalPages}`;
+    await loadAndRenderUsers(totalPages, rowsPerPage);
+  });
+
+  firstPageButton.addEventListener("click", async () => {
+    localStorage.setItem("page", "1");
+    numberDisplay.textContent = `1 / ${totalPages}`;
+    await loadAndRenderUsers(1, rowsPerPage);
+  });
+
+}
+async function loadAndRenderUsers(currentPage, rowsPerPage) {
+  let payload = {
+    skipTable: (currentPage - 1) * rowsPerPage,
+    filterStatus: getFilterStatus(),
+    FilterType: {
+      filterByName: false,
+      filterByTimeStamp: true,
+      filterByStatus: false,
+      filterByEmail: false
+    }
+  };
+
+  function getFilterStatus() {
+    let status = localStorage.getItem("sort-status");
+    if (status === null) {
+      return 0;
+    }
+    return parseInt(status);
+  }
+
+  const filterType = localStorage.getItem("sort");
+  switch (filterType) {
+    case "name":
+      payload.FilterType.filterByName = true;
+      payload.FilterType.filterByTimeStamp = false;
+      payload.FilterType.filterByStatus = false;
+      payload.FilterType.filterByEmail = false;
+      break;
+
+    case "email":
+      payload.FilterType.filterByEmail = true;
+      payload.FilterType.filterByTimeStamp = false;
+      payload.FilterType.filterByName = false;
+      payload.FilterType.filterByStatus = false;
+      break;
+
+    case "status":
+      payload.FilterType.filterByStatus = true;
+      payload.FilterType.filterByTimeStamp = false;
+      payload.FilterType.filterByName = false;
+      payload.FilterType.filterByEmail = false;
+      break;
+
+    case "timestamp":
+      payload.FilterType.filterByTimeStamp = true;
+      payload.FilterType.filterByName = false;
+      payload.FilterType.filterByStatus = false;
+      payload.FilterType.filterByEmail = false;
+      break;
+  }
+  const users = await loadExampleUsers(payload);
+  renderTable(users);
 }
