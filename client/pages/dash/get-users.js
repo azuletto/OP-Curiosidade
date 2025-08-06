@@ -1,5 +1,9 @@
 import { loadExampleUsers } from "../../global/src/model/load-example-users.js";
-import { getTotalUsersCount, getMonthUsersCount, getPendingUsersCount } from "./get-users-handler.js";
+import {
+  getTotalUsersCount,
+  getMonthUsersCount,
+  getPendingUsersCount,
+} from "./get-users-handler.js";
 
 // let users_list = await loadExampleUsers();
 let title_total = document.getElementById("title-total");

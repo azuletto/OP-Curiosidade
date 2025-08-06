@@ -82,7 +82,7 @@ namespace Application.Repositories.PersonContext
             {
                 (not null, 0) => personsDB.OrderByDescending(selector).ToList(),
                 (not null, 1) => personsDB.OrderBy(selector).ToList(),
-                (not null, 2) => personsDB,
+                (not null, 2) => personsDB.OrderByDescending(p => p.TimeStamp).ToList(),
                 _ => personsDB
             };
 

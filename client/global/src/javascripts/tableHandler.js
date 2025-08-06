@@ -16,15 +16,15 @@ export async function getUsersList(payloadObject) {
     `filterType.filterByName=${payloadObject.FilterType.filterByName}`,
     `filterType.filterByTimeStamp=${payloadObject.FilterType.filterByTimeStamp}`,
     `filterType.filterByStatus=${payloadObject.FilterType.filterByStatus}`,
-    `filterType.filterByEmail=${payloadObject.FilterType.filterByEmail}`
-  ].join('&');
+    `filterType.filterByEmail=${payloadObject.FilterType.filterByEmail}`,
+  ].join("&");
 
   try {
     const response = await fetch(`${API_URL}/table/preview?${queryParams}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       credentials: "include",
     });
