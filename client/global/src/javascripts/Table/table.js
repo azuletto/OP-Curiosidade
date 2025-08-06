@@ -24,39 +24,41 @@ if (localStorage.getItem("page") === null) {
 }
 
 export function getCurrentPage() {
-  if (inDash()) { return 1; }
+  if (inDash()) {
+    return 1;
+  }
   return parseInt(localStorage.getItem("page"));
 }
 
-  const totalUsers = await getTotalUsersCount();
-  export const rowsPerPage = 10;
-  const totalPages = Math.ceil(totalUsers / rowsPerPage);
-  
-  const nextButton = document.getElementById("next");
-  const prevButton = document.getElementById("previous");
-  const lastPageButton = document.getElementById("last");
-  const firstPageButton = document.getElementById("first");
-  
-  const numberDisplay = document.getElementById("number");
-  if (!inDash()) {
-    numberDisplay.textContent = `${getCurrentPage()} / ${totalPages}`;
-  }
+const totalUsers = await getTotalUsersCount();
+export const rowsPerPage = 10;
+const totalPages = Math.ceil(totalUsers / rowsPerPage);
+
+const nextButton = document.getElementById("next");
+const prevButton = document.getElementById("previous");
+const lastPageButton = document.getElementById("last");
+const firstPageButton = document.getElementById("first");
+
+const numberDisplay = document.getElementById("number");
+if (!inDash()) {
+  numberDisplay.textContent = `${getCurrentPage()} / ${totalPages}`;
+}
 
 init();
 
 export async function init(payload) {
   const currentPage = getCurrentPage();
   if (inDash()) {
-     payload = {
-       skipTable: (currentPage - 1) * rowsPerPage,
-         filterStatus: 0,
-          FilterType: {
-            filterByName: false,
-            filterByTimeStamp: true,
-            filterByStatus: false,
-            filterByEmail: false
-      }
-    }
+    payload = {
+      skipTable: (currentPage - 1) * rowsPerPage,
+      filterStatus: 0,
+      FilterType: {
+        filterByName: false,
+        filterByTimeStamp: true,
+        filterByStatus: false,
+        filterByEmail: false,
+      },
+    };
   } else {
     if (!payload) {
       payload = {
@@ -66,8 +68,8 @@ export async function init(payload) {
           filterByName: false,
           filterByTimeStamp: true,
           filterByStatus: false,
-          filterByEmail: false
-        }
+          filterByEmail: false,
+        },
       };
     }
   }
@@ -76,7 +78,6 @@ export async function init(payload) {
 }
 
 function renderTable(users) {
-  
   clearTable();
 
   const tbody = document.createElement("tbody");
@@ -89,7 +90,8 @@ function renderTable(users) {
     const tdStatus = createStatusCell(user.status);
     const tdDate = createCell(formatDate(user.timeStamp));
     tr.append(tdName, tdEmail, tdStatus, tdDate);
-    if (window.location.pathname.includes("register")) { const tdActions = createActionCell(user.id);
+    if (window.location.pathname.includes("register")) {
+      const tdActions = createActionCell(user.id);
       tr.append(tdActions);
     }
     tbody.appendChild(tr);
@@ -111,12 +113,12 @@ function createCell(text) {
 
 function createActionCell(userId) {
   const tdActions = document.createElement("td");
-  
+
   const deleteButton = document.createElement("button");
   deleteButton.id = "delete-button";
   const editButton = document.createElement("button");
   editButton.id = "edit-button";
-  
+
   editButton.innerHTML = `<span class="material-symbols-outlined">edit</span>`;
   editButton.onclick = () => {
     localStorage.setItem("edit_mode", JSON.stringify(true));
@@ -125,11 +127,11 @@ function createActionCell(userId) {
 
   deleteButton.innerHTML = `<span class="material-symbols-outlined">delete</span>`;
   deleteButton.onclick = () => deleteUser(userId);
-  
+
   tdActions.appendChild(editButton);
   tdActions.appendChild(deleteButton);
-  
-  return tdActions  ;
+
+  return tdActions;
 }
 
 function createStatusCell(status) {
@@ -199,7 +201,6 @@ if (!inDash()) {
     numberDisplay.textContent = `1 / ${totalPages}`;
     await loadAndRenderUsers(1, rowsPerPage);
   });
-
 }
 async function loadAndRenderUsers(currentPage, rowsPerPage) {
   let payload = {
@@ -209,8 +210,8 @@ async function loadAndRenderUsers(currentPage, rowsPerPage) {
       filterByName: false,
       filterByTimeStamp: true,
       filterByStatus: false,
-      filterByEmail: false
-    }
+      filterByEmail: false,
+    },
   };
 
   function getFilterStatus() {

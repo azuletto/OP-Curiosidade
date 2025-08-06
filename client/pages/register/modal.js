@@ -11,6 +11,7 @@ modalClose.onclick = function () {
 cancelButton.onclick = function () {
   modal.close();
 };
+
 document
   .getElementById("register-button")
   .addEventListener("click", function () {

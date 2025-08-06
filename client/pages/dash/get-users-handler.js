@@ -2,7 +2,7 @@ import { API_URL } from "../../../../client/config.js";
 
 export async function getTotalUsersCount() {
   const token = localStorage.getItem("token");
-  
+
   if (!token) {
     console.error("Token não encontrado no localStorage");
     return null;
@@ -13,7 +13,7 @@ export async function getTotalUsersCount() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       credentials: "include",
     });
@@ -36,7 +36,7 @@ export async function getTotalUsersCount() {
 }
 export async function getMonthUsersCount() {
   const token = localStorage.getItem("token");
-  
+
   if (!token) {
     console.error("Token não encontrado no localStorage");
     return null;
@@ -47,7 +47,7 @@ export async function getMonthUsersCount() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       credentials: "include",
     });
@@ -70,7 +70,7 @@ export async function getMonthUsersCount() {
 }
 export async function getPendingUsersCount() {
   const token = localStorage.getItem("token");
-  
+
   if (!token) {
     console.error("Token não encontrado no localStorage");
     return null;
@@ -81,7 +81,7 @@ export async function getPendingUsersCount() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       credentials: "include",
     });
