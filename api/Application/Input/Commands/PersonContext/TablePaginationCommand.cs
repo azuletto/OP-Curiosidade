@@ -1,15 +1,12 @@
 ﻿using Application.Input.Commands.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using Application.Input.Commands.PersonContext.ValueObjects;
 
 namespace Application.Input.Commands.PersonContext
 {
     public class TablePaginationCommand : ICommandBase
     {
-        public required int SkipTable { get; set; }
+        public required int skipTable { get; set; }
+        public required int filterStatus { get; set; }
+        public required FilterType filterType { get; set; }
     }
 }

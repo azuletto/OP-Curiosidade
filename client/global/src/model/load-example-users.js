@@ -1,5 +1,5 @@
 import { getUsersList } from "../javascripts/tableHandler.js";
-export async function loadExampleUsers(skipTable) {
-  const exampleUsers = await getUsersList(skipTable);
+export async function loadExampleUsers(payload) {
+  const exampleUsers = await getUsersList(payload);
   return exampleUsers;
 }

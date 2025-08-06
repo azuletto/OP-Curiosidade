@@ -1,17 +1,26 @@
 import { API_URL } from "../../../../client/config.js";
 
-export async function getUsersList(skipTable) {
+export async function getUsersList(payloadObject) {
   const token = localStorage.getItem("token");
-  if (skipTable === undefined) {
-    skipTable = 0; // Default value if skipTable is not provided
+  if (payloadObject.skipTable === undefined) {
+    payloadObject.skipTable = 0; // Default value if skipTable is not provided
   }
   if (!token) {
     console.error("Token não encontrado no localStorage");
     return null;
   }
 
+  const queryParams = [
+    `skipTable=${payloadObject.skipTable}`,
+    `filterStatus=${payloadObject.filterStatus}`,
+    `filterType.filterByName=${payloadObject.FilterType.filterByName}`,
+    `filterType.filterByTimeStamp=${payloadObject.FilterType.filterByTimeStamp}`,
+    `filterType.filterByStatus=${payloadObject.FilterType.filterByStatus}`,
+    `filterType.filterByEmail=${payloadObject.FilterType.filterByEmail}`
+  ].join('&');
+
   try {
-    const response = await fetch(`${API_URL}/table/preview?SkipTable=${skipTable}`, {
+    const response = await fetch(`${API_URL}/table/preview?${queryParams}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

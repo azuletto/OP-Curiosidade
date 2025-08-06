@@ -88,7 +88,7 @@ namespace Application.Repositories.PersonContext
 
             return Task.FromResult(filteredList);
         }
-        public async Task<AdminRequest> GetPreviewDataToDashAsync(int skipTable)
+        public async Task<AdminRequest> GetPreviewDataToDashAsync(int skipTable, int filterStatus, FilterType filterType)
         {
             Result result;
             AdminRequest adminRequest = new AdminRequest
@@ -100,9 +100,8 @@ namespace Application.Repositories.PersonContext
             {
                 LoadPersons.Load(personsDB);
             }
-            FilterType filterType = new() { filterByTimeStamp = true };
 
-            var persons = await GetPersonsByFilter(filterType, filterStatus: 0);
+            var persons = await GetPersonsByFilter(filterType, filterStatus);
 
             List<PersonDTO> personsDTO = persons
                 .Where(person => !person.IsDeleted)
@@ -156,8 +155,8 @@ namespace Application.Repositories.PersonContext
         public Task<PersonViewDataDTO> GetPersonByIdAsync(Guid id)
         {
             PersonViewDataMapper mapper = new PersonViewDataMapper();
-            Person person = personsDB
-                .FirstOrDefault(person => person.Id == id && !person.IsDeleted);
+            Person person = 
+                personsDB.FirstOrDefault(person => person.Id == id && !person.IsDeleted);
             if (person == null || person.IsDeleted)
             {
                 Result result = new Result(resultCode: 404, message: "Person not found", isOk: false);
@@ -206,7 +205,7 @@ namespace Application.Repositories.PersonContext
                 result.SetNotifications(new List<Notification> { notification });
                 return result;
             }
-            
+
             personToEdit.Name = personViewDataDTO.Name;
             personToEdit.Email = personViewDataDTO.Email;
             personToEdit.BirthDate = personViewDataDTO.BirthDate;
