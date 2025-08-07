@@ -113,6 +113,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddSingleton(new List<Admin>());
 builder.Services.AddSingleton(new List<Person>());
+builder.Services.AddScoped<SearchPersonsHandler>();
 builder.Services.AddScoped<LoginAdminHandler>();
 builder.Services.AddScoped<InsertAdminHandler>();
 builder.Services.AddScoped<DeleteAdminHandler>();

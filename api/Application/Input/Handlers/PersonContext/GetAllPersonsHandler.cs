@@ -22,7 +22,7 @@ namespace Application.Input.Handlers.PersonContext
                     return new Result(404, "Nenhuma pessoa encontrada", false);
                 }
                 Result result = adminRequest.Result;
-                result.SetData(PersonTableViewMapper.MapToTableView(adminRequest.Persons.ToList()));
+                result.SetData(adminRequest.Persons.ToList());
                 return result;
             }
             catch (Exception ex)

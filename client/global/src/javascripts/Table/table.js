@@ -2,6 +2,36 @@ import { loadExampleUsers } from "../../model/load-example-users.js";
 import { getTotalUsersCount } from "../../../../pages/dash/get-users-handler.js";
 import { verifyEdit } from "../CRUD/edit-user.js";
 import { deleteUser } from "../CRUD/delete-user.js";
+import { API_URL } from "../../../../config.js";
+import { clearSortButtons } from "./table-sort.js";
+
+const input = document.getElementsByClassName("search-bar")[0];
+const paginationButtons = document.getElementById("pagination-buttons");
+let query_data = [];
+let timeout;
+
+input.addEventListener("input", () => {
+  clearTimeout(timeout);
+
+  timeout = setTimeout(() => {
+    const query = input.value.trim();
+    clearSortButtons();
+    if (query) {
+      paginationButtons.style.display = "none";
+      console.log("Buscando por:", query);
+      fetch(`${API_URL}/search?searchTerm=${query}`)
+        .then((res) => res.json())
+        .then((data) => {
+          query_data = data;
+          renderTable(query_data.data);
+        });
+    } else {
+      paginationButtons.style.display = "flex";
+      console.log("Input vazio. Reiniciando...");
+      init(); // <- sua função para restaurar o estado original
+    }
+  }, 1000);
+});
 
 let filterStatus = 0;
 let filterType = {
@@ -27,7 +57,11 @@ export function getCurrentPage() {
   if (inDash()) {
     return 1;
   }
-  return parseInt(localStorage.getItem("page"));
+  let current_page = parseInt(localStorage.getItem("page"));
+  if (!current_page || isNaN(current_page)) {
+    current_page = 1;
+  }
+  return current_page;
 }
 
 const totalUsers = await getTotalUsersCount();
