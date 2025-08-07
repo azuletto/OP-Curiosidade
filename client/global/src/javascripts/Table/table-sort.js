@@ -33,7 +33,7 @@ function loadFilterStatus() {
 if (!currentSort) {
   currentSort = "timestamp";
   let payload = {
-    skipTable: (currentPage - 1) * rowsPerPage,
+    skipTable: (getCurrentPage() - 1) * rowsPerPage,
     filterStatus: 0,
     FilterType: {
       filterByName: false,
@@ -45,7 +45,7 @@ if (!currentSort) {
   init(payload);
   localStorage.setItem("sort", currentSort);
 }
-function clearSortButtons() {
+export function clearSortButtons() {
   sortName.innerHTML = "NOME";
   sortEmail.innerHTML = "EMAIL";
   sortStatusElement.innerHTML = "STATUS";
