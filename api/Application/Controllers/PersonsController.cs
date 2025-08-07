@@ -12,6 +12,7 @@ namespace Application.Controllers
     [Produces("application/json")]
     public class PersonsController : ControllerBase
     {
+        private readonly SearchPersonsHandler _searchPersonsHandler;
         private readonly GetPersonByIdHandler _getPersonByIdHandler;
         private readonly GetAllPersonsHandler _getAllPersonsHandler;
         private readonly GetNumberOfLastMonthPersonsHandler _getNumberOfLastMonthPersonsHandler;
@@ -22,6 +23,7 @@ namespace Application.Controllers
         private readonly DeletePersonHandler _deleteHandler;
         private readonly UpdatePersonHandler _updateHandler;
         public PersonsController(
+            SearchPersonsHandler searchPersonsHandler,
             GetPersonByIdHandler getPersonByIdHandler,
             GetAllPersonsHandler getAllPersonsHandler,
             GetNumberOfLastMonthPersonsHandler getNumberOfLastMonthPersonsHandler,
@@ -33,6 +35,7 @@ namespace Application.Controllers
             UpdatePersonHandler updateHandler
             )
         {
+            _searchPersonsHandler = searchPersonsHandler;
             _getPersonByIdHandler = getPersonByIdHandler;
             _getAllPersonsHandler = getAllPersonsHandler;
             _getNumberOfLastMonthPersonsHandler = getNumberOfLastMonthPersonsHandler;
@@ -43,13 +46,23 @@ namespace Application.Controllers
             _deleteHandler = deleteHandler;
             _updateHandler = updateHandler;
         }
+        [HttpGet("/search")]
+        [ProducesResponseType(typeof(Result), 200)]
+        [ProducesResponseType(typeof(Result), 404)]
+        public IActionResult SearchPersons([FromQuery] string searchTerm)
+        {
+            var result = _searchPersonsHandler.Handle(searchTerm);
+            return result.IsOk
+                ? Ok(result)
+                : StatusCode(result.ResultCode, result);
+        }
 
         [HttpGet("/table/preview")]
         [ProducesResponseType(typeof(Result), 200)]
         [ProducesResponseType(typeof(Result), 404)]
-        public IActionResult GetPreviewDataToDash()
+        public IActionResult GetPreviewDataToDash([FromQuery] TablePaginationCommand command)
         {
-            var result = _getPreviewDataToDashHandler.Handle();
+            var result = _getPreviewDataToDashHandler.Handle(command);
             return result.IsOk
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);

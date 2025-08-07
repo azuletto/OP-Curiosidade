@@ -7,7 +7,6 @@ let users_list = [];
 let desableUsers = [];
 let userIdtoDelete = "";
 const confirmModal = document.getElementById("delete-confirm");
-users_list = getUsersList() || [];
 desableUsers = JSON.parse(localStorage.getItem("desable_users")) || [];
 
 if (localStorage.getItem("desable_users") === null) {

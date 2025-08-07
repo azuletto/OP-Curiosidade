@@ -8,6 +8,7 @@ using Application.Repositories.Migrations;
 using Application.Repositories.Validations;
 using OpCuriosidade.Entities.PersonnelContext;
 using OpCuriosidade.Notifications;
+using System.Xml.Linq;
 
 namespace Application.Repositories.PersonContext
 {
@@ -45,15 +46,13 @@ namespace Application.Repositories.PersonContext
             {
                 LoadPersons.Load(personsDB);
             }
-            List<PersonDTO> personsDTO = personsDB
+            List<PersonTableViewDTO> personsDTO = personsDB
                 .Where(person => !person.IsDeleted)
-                .Select(person => new PersonDTO
+                .Select(person => new PersonTableViewDTO
                 {
                     Email = person.Email,
                     Id = person.Id,
-                    IsDeleted = person.IsDeleted,
                     Name = person.Name,
-                    OtherInfos = person.OtherInfos,
                     Status = person.Status,
                     TimeStamp = person.TimeStamp
                 })
@@ -82,13 +81,13 @@ namespace Application.Repositories.PersonContext
             {
                 (not null, 0) => personsDB.OrderByDescending(selector).ToList(),
                 (not null, 1) => personsDB.OrderBy(selector).ToList(),
-                (not null, 2) => personsDB,
+                (not null, 2) => personsDB.OrderByDescending(p => p.TimeStamp).ToList(),
                 _ => personsDB
             };
 
             return Task.FromResult(filteredList);
         }
-        public async Task<AdminRequest> GetPreviewDataToDashAsync()
+        public async Task<AdminRequest> GetPreviewDataToDashAsync(int skipTable, int filterStatus, FilterType filterType)
         {
             Result result;
             AdminRequest adminRequest = new AdminRequest
@@ -100,22 +99,20 @@ namespace Application.Repositories.PersonContext
             {
                 LoadPersons.Load(personsDB);
             }
-            FilterType filterType = new() { filterByTimeStamp = true };
 
-            var persons = await GetPersonsByFilter(filterType, filterStatus: 0);
+            var persons = await GetPersonsByFilter(filterType, filterStatus);
 
-            List<PersonDTO> personsDTO = persons
+            List<PersonTableViewDTO> personsDTO = persons
                 .Where(person => !person.IsDeleted)
-                .Select(person => new PersonDTO
+                .Select(person => new PersonTableViewDTO
                 {
                     Email = person.Email,
                     Id = person.Id,
-                    IsDeleted = person.IsDeleted,
                     Name = person.Name,
-                    OtherInfos = person.OtherInfos,
                     Status = person.Status,
                     TimeStamp = person.TimeStamp
                 })
+                .Skip(skipTable)
                 .Take(10)
                 .ToList();
 
@@ -147,27 +144,97 @@ namespace Application.Repositories.PersonContext
             return Task.FromResult(count);
         }
 
-        public Task<PersonDTO> GetPersonByEmailAsync(string email)
+        public Task<AdminRequest> GetPersonByEmailAsync(string email)
         {
-            throw new NotImplementedException();
-        }
+            Result result;
+            AdminRequest adminRequest = new AdminRequest
+            {
+                Result = null,
+                Persons = null
+            };
+            if (!personsDB.Any())
+            {
+                LoadPersons.Load(personsDB);
+            }
+            email = email.ToLowerInvariant();
+            email = email.Trim();
 
+            List<PersonTableViewDTO> personsDTO = personsDB
+                .Where(person => person.Name.ToLowerInvariant().Contains(email) && !person.IsDeleted)
+                .Select(person => new PersonTableViewDTO
+                {
+                    Email = person.Email,
+                    Id = person.Id,
+                    Name = person.Name,
+                    Status = person.Status,
+                    TimeStamp = person.TimeStamp
+                })
+                .ToList();
+            if (personsDTO.Count == 0)
+            {
+                result = new Result(resultCode: 404, message: "Nenhuma pessoa encontrada com o email fornecido", isOk: false);
+            }
+            else
+            {
+                result = new Result(resultCode: 200, message: "Pessoa encontrada com sucesso", isOk: true);
+            }
+            adminRequest.Result = result;
+            adminRequest.Persons = personsDTO;
+            result.SetData(adminRequest.Persons);
+            return Task.FromResult(adminRequest);
+        }
+        public Task<AdminRequest> GetPersonByNameAsync(string name)
+        {
+            Result result;
+            AdminRequest adminRequest = new AdminRequest
+            {
+                Result = null,
+                Persons = null
+            };
+            if (!personsDB.Any())
+            {
+                LoadPersons.Load(personsDB);
+            }
+
+            name = name.ToLowerInvariant();
+            name = name.Trim();
+
+            List<PersonTableViewDTO> personsDTO = personsDB
+                .Where(person => person.Name.ToLowerInvariant().Contains(name) && !person.IsDeleted)
+                .Select(person => new PersonTableViewDTO
+                {
+                    Email = person.Email,
+                    Id = person.Id,
+                    Name = person.Name,
+                    Status = person.Status,
+                    TimeStamp = person.TimeStamp
+                })
+                .ToList();
+
+            if (personsDTO.Count == 0)
+            {
+                result = new Result(resultCode: 404, message: "Nenhuma pessoa encontrada com o email fornecido", isOk: false);
+            }
+            else
+            {
+                result = new Result(resultCode: 200, message: "Pessoa encontrada com sucesso", isOk: true);
+            }
+            adminRequest.Result = result;
+            adminRequest.Persons = personsDTO;
+            result.SetData(adminRequest.Persons);
+            return Task.FromResult(adminRequest);
+        }
         public Task<PersonViewDataDTO> GetPersonByIdAsync(Guid id)
         {
             PersonViewDataMapper mapper = new PersonViewDataMapper();
-            Person person = personsDB
-                .FirstOrDefault(person => person.Id == id && !person.IsDeleted);
+            Person person = 
+                personsDB.FirstOrDefault(person => person.Id == id && !person.IsDeleted);
             if (person == null || person.IsDeleted)
             {
                 Result result = new Result(resultCode: 404, message: "Person not found", isOk: false);
             }
             PersonViewDataDTO personViewDataDTO = mapper.MapToViewDTO(person);
             return Task.FromResult(personViewDataDTO);
-        }
-
-        public Task<PersonDTO> GetPersonByNameAsync(string name)
-        {
-            throw new NotImplementedException();
         }
 
         public IResultBase InsertPerson(Person person)
@@ -205,7 +272,7 @@ namespace Application.Repositories.PersonContext
                 result.SetNotifications(new List<Notification> { notification });
                 return result;
             }
-            
+
             personToEdit.Name = personViewDataDTO.Name;
             personToEdit.Email = personViewDataDTO.Email;
             personToEdit.BirthDate = personViewDataDTO.BirthDate;

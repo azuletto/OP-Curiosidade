@@ -1,4 +1,5 @@
-﻿using Application.Output.DTO;
+﻿using Application.Input.Commands.PersonContext.ValueObjects;
+using Application.Output.DTO;
 using Application.Output.Request.TableRequests;
 using Application.Output.Results.Interfaces;
 using OpCuriosidade.Entities.PersonnelContext;
@@ -9,9 +10,9 @@ namespace Application.Repositories.PersonContext
     {
         IResultBase InsertPerson(Person person);
         Task<PersonViewDataDTO> GetPersonByIdAsync(Guid id);
-        Task<PersonDTO> GetPersonByEmailAsync(string email);
-        Task<AdminRequest> GetPreviewDataToDashAsync();
-        Task<PersonDTO> GetPersonByNameAsync(string name);
+        Task<AdminRequest> GetPersonByEmailAsync(string email);
+        Task<AdminRequest> GetPreviewDataToDashAsync(int skipTable, int filterStatus, FilterType filterType);
+        Task<AdminRequest> GetPersonByNameAsync(string name);
         Task<int> GetNumberOfPersonsAsync();
         Task<int> GetNumberOfPendingPersonsAsync();
         Task<int> GetNumberOfLastMonthPersonsAsync();
