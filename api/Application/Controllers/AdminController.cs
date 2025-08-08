@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Controllers
 {
+    //[Authorize(Roles = "Admin")]
+    [ApiController]
+    [Route("admin")]
+    [Produces("application/json")]
     public class AdminController : ControllerBase
     {
         private readonly InsertAdminHandler _insertHandler;
@@ -35,7 +39,7 @@ namespace Application.Controllers
         public IActionResult CreateAdmin([FromBody] InsertAdminCommand command)
         {
             var result = _insertHandler.Handle(command);
-
+            
             return result.IsOk
                 ? Ok(result)
                 : StatusCode(result.ResultCode, result);

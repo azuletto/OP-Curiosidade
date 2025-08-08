@@ -1,4 +1,4 @@
-import { init, getCurrentPage, rowsPerPage } from "./table.js";
+import { init, getCurrentPage, rowsPerPage, inDash } from "./table.js";
 
 const sortByNameButton = document.getElementById("sort-name");
 const sortByEmailButton = document.getElementById("sort-email");
@@ -71,7 +71,6 @@ function loadIconSortButtons(string) {
       break;
 
     case "status":
-      console.log("Status sort clicked");
       clearSortButtons();
       sortStatusElement.innerHTML =
         sortStatus === "0"
@@ -97,74 +96,76 @@ async function verifySort(currentSort) {
     localStorage.setItem("sort-status", "0");
   }
 }
-sortByNameButton.addEventListener("click", async () => {
-  let sortStatus = loadFilterStatus();
-  currentSort = "name";
-  await verifySort(currentSort);
-  loadIconSortButtons(currentSort);
-  init({
-    skipTable: (getCurrentPage() - 1) * rowsPerPage,
-    filterStatus: sortStatus,
-    FilterType: {
-      filterByName: true,
-      filterByTimeStamp: false,
-      filterByStatus: false,
-      filterByEmail: false,
-    },
+if (!inDash()) {
+  sortByNameButton.addEventListener("click", async () => {
+    let sortStatus = loadFilterStatus();
+    currentSort = "name";
+    await verifySort(currentSort);
+    loadIconSortButtons(currentSort);
+    init({
+      skipTable: (getCurrentPage() - 1) * rowsPerPage,
+      filterStatus: sortStatus,
+      FilterType: {
+        filterByName: true,
+        filterByTimeStamp: false,
+        filterByStatus: false,
+        filterByEmail: false,
+      },
+    });
+    localStorage.setItem("sort", currentSort);
   });
-  localStorage.setItem("sort", currentSort);
-});
 
-sortByEmailButton.addEventListener("click", async () => {
-  let sortStatus = loadFilterStatus();
-  currentSort = "email";
-  await verifySort(currentSort);
-  loadIconSortButtons(currentSort);
-  init({
-    skipTable: (getCurrentPage() - 1) * rowsPerPage,
-    filterStatus: sortStatus,
-    FilterType: {
-      filterByName: false,
-      filterByTimeStamp: false,
-      filterByStatus: false,
-      filterByEmail: true,
-    },
+  sortByEmailButton.addEventListener("click", async () => {
+    let sortStatus = loadFilterStatus();
+    currentSort = "email";
+    await verifySort(currentSort);
+    loadIconSortButtons(currentSort);
+    init({
+      skipTable: (getCurrentPage() - 1) * rowsPerPage,
+      filterStatus: sortStatus,
+      FilterType: {
+        filterByName: false,
+        filterByTimeStamp: false,
+        filterByStatus: false,
+        filterByEmail: true,
+      },
+    });
+    localStorage.setItem("sort", currentSort);
   });
-  localStorage.setItem("sort", currentSort);
-});
 
-sortByStatusButton.addEventListener("click", async () => {
-  let sortStatus = loadFilterStatus();
-  currentSort = "status";
-  await verifySort(currentSort);
-  loadIconSortButtons(currentSort);
-  init({
-    skipTable: (getCurrentPage() - 1) * rowsPerPage,
-    filterStatus: sortStatus,
-    FilterType: {
-      filterByName: false,
-      filterByTimeStamp: false,
-      filterByStatus: true,
-      filterByEmail: false,
-    },
+  sortByStatusButton.addEventListener("click", async () => {
+    let sortStatus = loadFilterStatus();
+    currentSort = "status";
+    await verifySort(currentSort);
+    loadIconSortButtons(currentSort);
+    init({
+      skipTable: (getCurrentPage() - 1) * rowsPerPage,
+      filterStatus: sortStatus,
+      FilterType: {
+        filterByName: false,
+        filterByTimeStamp: false,
+        filterByStatus: true,
+        filterByEmail: false,
+      },
+    });
+    localStorage.setItem("sort", currentSort);
   });
-  localStorage.setItem("sort", currentSort);
-});
 
-sortByTimeStampButton.addEventListener("click", async () => {
-  let sortStatus = loadFilterStatus();
-  currentSort = "timestamp";
-  await verifySort(currentSort);
-  loadIconSortButtons(currentSort);
-  init({
-    skipTable: (getCurrentPage() - 1) * rowsPerPage,
-    filterStatus: sortStatus,
-    FilterType: {
-      filterByName: false,
-      filterByTimeStamp: true,
-      filterByStatus: false,
-      filterByEmail: false,
-    },
+  sortByTimeStampButton.addEventListener("click", async () => {
+    let sortStatus = loadFilterStatus();
+    currentSort = "timestamp";
+    await verifySort(currentSort);
+    loadIconSortButtons(currentSort);
+    init({
+      skipTable: (getCurrentPage() - 1) * rowsPerPage,
+      filterStatus: sortStatus,
+      FilterType: {
+        filterByName: false,
+        filterByTimeStamp: true,
+        filterByStatus: false,
+        filterByEmail: false,
+      },
+    });
+    localStorage.setItem("sort", currentSort);
   });
-  localStorage.setItem("sort", currentSort);
-});
+}

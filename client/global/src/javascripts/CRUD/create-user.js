@@ -99,24 +99,10 @@ if (window.location.pathname.includes("register")) {
         return Error;
       } else if (isValid === true) {
         saveUser(user);
-        // clearUser();
       }
     }
   });
 }
-// function clearUser() {
-//   user.data.id = "";
-//   user.data.time_stamp = "";
-//   user.data.status = "";
-//   user.data.name = "";
-//   user.data.age = "";
-//   user.data.email = "";
-//   user.data.adress = "";
-//   user.data.otherInfos.info = "";
-//   user.data.otherInfos.interess = "";
-//   user.data.otherInfos.feelings = "";
-//   user.data.otherInfos.valors = "";
-// }
 function clearModal() {
   document.getElementById("user_name").value = "";
   document.getElementById("user_age").value = "";

@@ -3,7 +3,7 @@ import { API_URL } from "../../../../client/config.js";
 export async function getUsersList(payloadObject) {
   const token = localStorage.getItem("token");
   if (payloadObject.skipTable === undefined) {
-    payloadObject.skipTable = 0; // Default value if skipTable is not provided
+    payloadObject.skipTable = 0;
   }
   if (!token) {
     console.error("Token não encontrado no localStorage");

@@ -4,7 +4,7 @@ import { verifyEdit } from "../CRUD/edit-user.js";
 import { deleteUser } from "../CRUD/delete-user.js";
 import { API_URL } from "../../../../config.js";
 import { clearSortButtons } from "./table-sort.js";
-
+const token = localStorage.getItem("token") || "";
 const input = document.getElementsByClassName("search-bar")[0];
 const paginationButtons = document.getElementById("pagination-buttons");
 let query_data = [];
@@ -16,19 +16,29 @@ input.addEventListener("input", () => {
   timeout = setTimeout(() => {
     const query = input.value.trim();
     clearSortButtons();
+
     if (query) {
       paginationButtons.style.display = "none";
-      console.log("Buscando por:", query);
-      fetch(`${API_URL}/search?searchTerm=${query}`)
+
+      fetch(`${API_URL}/search?searchTerm=${query}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        credentials: "include",
+      })
         .then((res) => res.json())
         .then((data) => {
           query_data = data;
           renderTable(query_data.data);
+        })
+        .catch((error) => {
+          console.error("Erro ao buscar dados:", error);
         });
     } else {
       paginationButtons.style.display = "flex";
-      console.log("Input vazio. Reiniciando...");
-      init(); // <- sua função para restaurar o estado original
+      init();
     }
   }, 1000);
 });
@@ -41,7 +51,7 @@ let filterType = {
   filterByEmail: false,
 };
 
-function inDash() {
+export function inDash() {
   if (window.location.pathname.includes("dash")) {
     return true;
   }

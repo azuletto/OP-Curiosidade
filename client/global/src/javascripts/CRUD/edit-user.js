@@ -2,7 +2,6 @@ window.verifyEdit = verifyEdit;
 import { verfifyUser } from "./create-user.js";
 import { getUserByIdHandler } from "./crudHandler.js";
 import { clearTable, init } from "../../javascripts/Table/table.js";
-//import { getUsersList } from "../tableHandler.js";
 import { updateUser } from "./updateUserHandler.js";
 let user_edit;
 const submitButton = document.getElementById("submit-button");
@@ -26,22 +25,21 @@ async function editUser(userId, edit) {
       user_edit.data.otherInfos.valors;
     switch (user_edit.data.status) {
       case true:
-      case "Ativo": // Se vier como string "Ativo"
+      case "Ativo":
         document.getElementById("user_status").checked = true;
         break;
       case false:
-      case "Inativo": // Se vier como string "Inativo"
+      case "Inativo":
         document.getElementById("user_status").checked = false;
         break;
       default:
-        document.getElementById("user_status").checked = false; // Valor inválido = desmarca
+        document.getElementById("user_status").checked = false;
         break;
     }
-    // document.getElementById("user_status").checked = user_edit.data.status === true;
     modal.showModal();
   }
 }
-if (window.location.pathname.includes("register")) {
+if (window.location.pathname.includes("register") && localStorage.getItem("edit_mode") === "true") {
   submitButton.addEventListener("click", async function (e) {
     e.preventDefault();
 

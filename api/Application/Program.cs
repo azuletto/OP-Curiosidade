@@ -31,7 +31,9 @@ builder.Services.AddCors(options =>
               .AllowCredentials();
     });
 });
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+        .AddApplicationPart(typeof(Application.Controllers.AdminController).Assembly);
+
 builder.Services.AddEndpointsApiExplorer();
 var key = Encoding.UTF8.GetBytes(Config.PrivateKey);
 

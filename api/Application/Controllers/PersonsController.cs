@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]

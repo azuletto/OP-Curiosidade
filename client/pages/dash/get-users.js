@@ -5,7 +5,6 @@ import {
   getPendingUsersCount,
 } from "./get-users-handler.js";
 
-// let users_list = await loadExampleUsers();
 let title_total = document.getElementById("title-total");
 let pending_users = document.getElementById("title-pending");
 let title_month_users = document.getElementById("title-month");
