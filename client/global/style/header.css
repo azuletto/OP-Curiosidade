@@ -11,9 +11,10 @@ body {
 #geral-container {
   display: flex;
   position: static;
-  margin-left: 22vw;
+  margin-left: clamp(200px, 30vw, 340px);
   margin-right: 0;
 }
+
 #logo-text {
   font-size: large;
   margin-right: 10px;
@@ -28,16 +29,16 @@ body {
 }
 #opcuriosidade-header {
   margin-top: 1.5%;
+  margin-left: 6.5%;
   margin-bottom: 20%;
   display: flex;
   background: var(--principal-color);
   height: 71px;
-  width: 90%;
+  width: 100%;
   gap: 20px;
   border-radius: 4px;
   justify-content: center;
   align-items: center;
-  justify-self: center;
 }
 #aside-container {
   display: flex;
@@ -75,15 +76,15 @@ aside {
 }
 nav {
   top: 0;
+  left: 0;
+  position: fixed;
   display: flex;
   flex-direction: column;
-  justify-items: center;
-  position: fixed;
   overflow-y: auto;
-  left: 0;
   background-color: var(--header-color);
   height: 100vh;
-  width: 23vw;
+  padding-right: 4%;
+  width: fit-content;
   z-index: 2000;
   border: none;
   overflow-x: hidden;
@@ -193,8 +194,6 @@ input {
 }
 .nav-opt {
   display: flex;
-  align-self: center;
-  margin-left: 14px;
   height: 0;
   margin-top: 0;
   padding-bottom: 8px;
@@ -206,6 +205,7 @@ input {
   border-radius: 4px;
   font-weight: normal;
   padding: 10px;
+  padding-right: 32px;
   display: block;
   margin-bottom: 12px;
   margin-left: 13px;

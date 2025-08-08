@@ -16,7 +16,7 @@
   --status-color-a: rgb(0, 157, 8);
   --status-color-i: rgb(201, 9, 9);
   --dialog-border-color: rgb(245, 245, 245);
-  --principal-color: linear-gradient(to left, #a9cef7, #85a0cb);
+  --principal-color: linear-gradient(to left, #96beff58, #0073ff2d);
   --status-bk-color-a: rgba(0, 255, 0, 0.254);
   --status-bk-color-i: rgba(255, 0, 0, 0.254);
   --input-text-color: rgb(200, 200, 200);
@@ -67,7 +67,7 @@
   --register-btn-collor-hvr: rgb(13, 124, 13);
   --press-btn-collor: rgb(41, 41, 99);
   --press-btn-collor-hvr: rgb(26, 26, 63);
-  --principal-color: linear-gradient(to left, #55637e, rgb(34, 69, 89));
+  --principal-color: linear-gradient(to left, #55637e72, rgba(34, 69, 89, 0.547));
   --confirm-button-hover-color: rgba(27, 117, 27, 0.274);
   --calendar-icon-filter: invert(1) saturate(1000%);
   --button-text-color: white;

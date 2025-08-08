@@ -118,6 +118,12 @@ p {
   #table-title {
     display: none;
   }
+
+  .status-bk {
+    border: none !important;
+    color: black !important;
+    text-align: center !important;
+  }
   td {
     color: black;
     border: solid;
